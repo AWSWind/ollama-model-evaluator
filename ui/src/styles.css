@@ -1,0 +1,94 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+ * Design tokens.
+ *
+ * Defined as ``R G B`` triplets (no ``rgb(...)`` wrapper) so Tailwind
+ * can compose opacity via ``rgb(var(--bg) / <alpha-value>)`` — see
+ * ``tailwind.config.js``. Dark values override the same variables on
+ * ``[data-theme="dark"]``; the ThemeProvider in ``src/theme.tsx``
+ * toggles that attribute on ``<html>``.
+ */
+
+:root {
+  /* Core surface */
+  --bg: 255 255 255;
+  --bg-alt: 250 251 252;
+  --fg: 15 23 42;
+  --fg-muted: 71 85 105;
+  --fg-subtle: 148 163 184;
+  --border: 226 232 240;
+  --border-strong: 203 213 225;
+
+  /* Brand accent (indigo 700 / soft 50) */
+  --accent: 67 56 202;
+  --accent-soft: 238 242 255;
+
+  /* Status tokens */
+  --pass: 22 163 74;
+  --pass-soft: 220 252 231;
+  --fail: 220 38 38;
+  --fail-soft: 254 226 226;
+  --warn: 217 119 6;
+  --info: 29 78 216;
+  --info-soft: 219 234 254;
+}
+
+[data-theme="dark"] {
+  --bg: 11 15 23;
+  --bg-alt: 17 23 34;
+  --fg: 229 233 240;
+  --fg-muted: 154 163 181;
+  --fg-subtle: 95 103 121;
+  --border: 30 38 54;
+  --border-strong: 45 54 72;
+
+  --accent: 129 140 248;
+  --accent-soft: 30 27 75;
+
+  --pass: 74 222 128;
+  --pass-soft: 5 46 22;
+  --fail: 248 113 113;
+  --fail-soft: 69 10 10;
+  --warn: 245 158 11;
+  --info: 147 197 253;
+  --info-soft: 11 31 77;
+}
+
+/* Base element tweaks */
+html, body {
+  height: 100%;
+}
+body {
+  background: rgb(var(--bg));
+  color: rgb(var(--fg));
+  font-family: theme("fontFamily.sans");
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Smooth theme transitions on the most common surfaces. Scoped to
+ * background + border + colour so we do not cause layout flicker. */
+body, .theme-surface {
+  transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+
+/* Tabular-aligned numbers everywhere a ``.num`` class appears. */
+.num {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum";
+}
+
+/* Subtle scrollbar that matches the theme (WebKit only). */
+*::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+*::-webkit-scrollbar-thumb {
+  background: rgb(var(--border-strong));
+  border-radius: 999px;
+}
+*::-webkit-scrollbar-track {
+  background: transparent;
+}

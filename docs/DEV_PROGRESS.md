@@ -38,8 +38,8 @@ $REMOTE_PW   = '<your-ssh-password>'
 | Spec (requirements / design / tasks) | ✅ complete | 27 top-level / 73 leaf tasks all `[x]` |
 | Backend src | ✅ complete | 41 `.py` files under `backend/src/` |
 | Backend tests | ✅ 447 passing | property `max_examples` was lowered to 20 (below spec's 100 floor) for faster CI; restore before release |
-| UI src | ✅ complete | 20 `.ts/.tsx` files; 10 route/reducer/property tests passing |
-| UI build artifact | ✅ deployed | `ui/dist/assets/index-DU6IvWc4.js` (227 KB). Rebuilt + synced 2026-05-10 17:14 UTC. |
+| UI src | ✅ redesigned | 30 `.ts/.tsx` files across `src/routes/`, `src/ui/` primitives, `src/theme.tsx`. Tailwind + Radix + lucide-react. Light/dark with auto-detect. |
+| UI build artifact | ✅ deployed | `ui/dist/assets/index-Btpmhoz3.js` (+ CSS + map). Rebuilt + synced 2026-05-10. |
 | Evaluation suites | ✅ **33 suites / 4 910 cases** | 14 hand-authored + 5 canonical-adapter + 14 HuggingFace (Tier 2+3) + 5 coding-focused. All with short descriptions surfaced in the UI dropdown tooltip and under the selector. Synced to `.224`. |
 | Shared artifacts | ✅ | `shared/openapi.yaml`, `evaluation-suite.schema.json`, `run-report.schema.json` |
 | Deployment scripts | ✅ | `scripts/{install,deploy-remote,start,stop}.{sh,ps1}` + `start.bat` / `stop.bat` + `Makefile` |
@@ -71,6 +71,23 @@ $REMOTE_PW   = '<your-ssh-password>'
 ---
 
 ## Session Log
+
+### 2026-05-10 (10th session) — UI redesign (Option A · dense data-first + dark mode)
+
+Moved the UI from inline styles to a real design system:
+
+- **Stack**: Tailwind CSS v3 + Radix UI primitives (Tooltip, Dialog, Select) + `lucide-react` icons + `clsx` for class-merging. Bundle went from 230 KB → 262 KB JS + 18 KB CSS (still under 80 KB gzipped).
+- **Theming**: CSS-variable-based design tokens in `src/styles.css`; `ThemeProvider` in `src/theme.tsx` with `light`/`dark`/`auto` modes, `prefers-color-scheme` auto-detect, persisted to `localStorage`. A pre-React script in `index.html` applies the theme before hydration so there's no flash of wrong theme.
+- **Primitives**: `Button`, `Card`, `Chip`, `Pill`, `Progress`, `Table`, `Input`, `Label`, `Tooltip`, `ThemeToggle` under `ui/src/ui/`. Each has a focused single responsibility, small surface.
+- **Layout**: left sidebar with logo + nav (New Run / History / Compare), top bar with theme toggle, main column for route content. Responsive down to narrow screens.
+- **Suite picker**: suites grouped by category (Reasoning / Knowledge / Coding / Math / Instruction / Multilingual / Long context / Safety / Open-ended / Other — `ui/src/routes/suiteCategories.ts`). Each unselected suite shown as a card with `name · N cases · ~ETA` + a **short one-line summary** (hand-authored ≤70-char copy per suite) inline. Hover reveals a Radix tooltip with the full backend description.
+- **Models picker**: same card-style approach; tooltip on hover shows `parameter_size`, `quantization_level`, and `size on disk` pulled from the live `/api/tags` payload.
+- **Pass/fail styling**: status Pills with semantic tone tokens (`pass` / `fail` / `running` / `warn` / `neutral`). Running pill has a pulsing dot.
+- **History / Compare**: same card + Table primitives; history row downloads as icon-buttons; status rendered as Pill; compare deltas coloured green/red by sign.
+
+Tests: backend 447 pass, UI 18 pass. No regressions. Property-test selectors (`data-testid`, `data-field`, `data-field-block`, `data-field-error`) preserved end-to-end.
+
+Deployed bundle: `ui/dist/assets/index-Btpmhoz3.js` + `index-BSRi4XrQ.css`.
 
 ### 2026-05-10 (9th session) — Git init + initial commit
 

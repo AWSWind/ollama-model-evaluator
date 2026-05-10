@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Option B · Modern acrylic — Ollama Model Evaluator</title>
+<style>
+  :root {
+    --accent: #6d5cff;
+    --accent-2: #22d3ee;
+    --pass: #22c55e;
+    --fail: #f87171;
+    --fg: #0f172a;
+    --fg-muted: rgba(15, 23, 42, 0.62);
+    --bg-body: #f5f4ff;
+    --glass-bg: rgba(255, 255, 255, 0.55);
+    --glass-bg-strong: rgba(255, 255, 255, 0.72);
+    --glass-border: rgba(255, 255, 255, 0.6);
+    --glass-shadow: 0 20px 60px -20px rgba(37, 19, 132, 0.18),
+                    0 6px 20px -8px rgba(37, 19, 132, 0.12);
+    --radius: 16px;
+  }
+  [data-theme="dark"] {
+    --fg: #f8fafc;
+    --fg-muted: rgba(248, 250, 252, 0.66);
+    --bg-body: #0a0e1a;
+    --glass-bg: rgba(30, 28, 58, 0.55);
+    --glass-bg-strong: rgba(30, 28, 58, 0.8);
+    --glass-border: rgba(255, 255, 255, 0.12);
+    --glass-shadow: 0 20px 60px -20px rgba(0, 0, 0, 0.5),
+                    0 6px 20px -8px rgba(0, 0, 0, 0.4);
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--fg);
+    min-height: 100vh;
+    background:
+      radial-gradient(900px 600px at 8% -10%, #c7d2fe 0%, transparent 60%),
+      radial-gradient(700px 500px at 100% 0%, #fbcfe8 0%, transparent 55%),
+      radial-gradient(800px 700px at 60% 120%, #a5f3fc 0%, transparent 55%),
+      var(--bg-body);
+    background-attachment: fixed;
+  }
+  [data-theme="dark"] body,
+  html[data-theme="dark"] body {
+    background:
+      radial-gradient(900px 600px at 8% -10%, #4338ca 0%, transparent 60%),
+      radial-gradient(700px 500px at 100% 0%, #831843 0%, transparent 55%),
+      radial-gradient(800px 700px at 60% 120%, #164e63 0%, transparent 55%),
+      var(--bg-body);
+  }
+
+  .app {
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    min-height: 100vh;
+    padding: 16px;
+    gap: 16px;
+  }
+
+  .sidebar {
+    background: var(--glass-bg);
+    backdrop-filter: blur(22px) saturate(160%);
+    -webkit-backdrop-filter: blur(22px) saturate(160%);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius);
+    padding: 22px 18px;
+    box-shadow: var(--glass-shadow);
+    height: fit-content;
+    position: sticky;
+    top: 16px;
+  }
+  .logo {
+    font-weight: 700;
+    font-size: 1.05rem;
+    letter-spacing: -0.01em;
+    margin-bottom: 26px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .logo::before {
+    content: "";
+    width: 22px; height: 22px;
+    background: linear-gradient(135deg, var(--accent), var(--accent-2));
+    border-radius: 6px;
+    box-shadow: 0 0 20px rgba(109, 92, 255, 0.5);
+  }
+  .nav { display: flex; flex-direction: column; gap: 4px; }
+  .nav a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 9px 12px;
+    border-radius: 10px;
+    color: var(--fg-muted);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: background 0.15s, color 0.15s;
+  }
+  .nav a:hover { background: var(--glass-bg-strong); color: var(--fg); }
+  .nav a.active {
+    background: linear-gradient(135deg, var(--accent), var(--accent-2));
+    color: white;
+    box-shadow: 0 4px 16px rgba(109, 92, 255, 0.4);
+  }
+
+  .main { max-width: 1080px; padding: 4px 8px 80px; }
+  .h1 {
+    font-size: 1.7rem;
+    font-weight: 700;
+    margin: 8px 0 8px;
+    letter-spacing: -0.02em;
+    background: linear-gradient(135deg, var(--accent), var(--accent-2));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    display: inline-block;
+  }
+  .sub { color: var(--fg-muted); margin: 0 0 28px; }
+
+  .card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(22px) saturate(160%);
+    -webkit-backdrop-filter: blur(22px) saturate(160%);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius);
+    padding: 22px 24px;
+    box-shadow: var(--glass-shadow);
+    margin-bottom: 16px;
+    position: relative;
+    overflow: hidden;
+  }
+  .card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(135deg, rgba(255,255,255,0.55), rgba(255,255,255,0.05));
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+  .card h3 {
+    margin: 0 0 4px;
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: -0.005em;
+  }
+  .hint { color: var(--fg-muted); font-size: 0.86rem; margin: 0 0 14px; }
+
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+  .chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    background: rgba(109, 92, 255, 0.12);
+    border: 1px solid rgba(109, 92, 255, 0.25);
+    color: var(--fg);
+    border-radius: 999px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    backdrop-filter: blur(8px);
+  }
+  .chip .x { cursor: pointer; opacity: 0.5; font-weight: 700; }
+  .chip.ghost {
+    background: transparent;
+    border: 1px dashed rgba(109, 92, 255, 0.35);
+    color: var(--fg-muted);
+  }
+
+  .input-group { display: flex; flex-wrap: wrap; gap: 14px; }
+  .input-group > div { flex: 1 1 180px; }
+  label {
+    display: block;
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--fg-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 6px;
+  }
+  input[type="number"], input[type="text"], select {
+    width: 100%;
+    padding: 9px 12px;
+    background: var(--glass-bg-strong);
+    border: 1px solid var(--glass-border);
+    border-radius: 10px;
+    color: var(--fg);
+    font-family: inherit;
+    font-size: 0.92rem;
+    backdrop-filter: blur(8px);
+  }
+  input:focus { outline: none; box-shadow: 0 0 0 4px rgba(109, 92, 255, 0.25); border-color: var(--accent); }
+
+  .btn {
+    padding: 9px 16px;
+    border-radius: 10px;
+    border: 1px solid var(--glass-border);
+    background: var(--glass-bg-strong);
+    color: var(--fg);
+    font-family: inherit;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    backdrop-filter: blur(8px);
+  }
+  .btn:hover { background: var(--glass-bg); }
+  .btn.primary {
+    background: linear-gradient(135deg, var(--accent), var(--accent-2));
+    border-color: transparent;
+    color: white;
+    box-shadow: 0 6px 20px rgba(109, 92, 255, 0.45);
+  }
+  .btn.primary:hover { filter: brightness(1.05); }
+
+  .row { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+  .tot { color: var(--fg-muted); }
+  .tot strong { color: var(--fg); font-weight: 600; }
+
+  .donut {
+    --size: 64px;
+    --pct: 75.5;
+    width: var(--size); height: var(--size);
+    border-radius: 50%;
+    background:
+      conic-gradient(var(--pass) calc(var(--pct) * 1%), rgba(255,255,255,0.15) 0);
+    position: relative;
+    display: inline-grid; place-items: center;
+    flex-shrink: 0;
+  }
+  .donut::after {
+    content: attr(data-pct);
+    position: absolute;
+    inset: 8px;
+    background: var(--glass-bg-strong);
+    border-radius: 50%;
+    display: grid; place-items: center;
+    font-weight: 700;
+    font-size: 0.92rem;
+    backdrop-filter: blur(8px);
+  }
+
+  .kpi-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+  .kpi {
+    padding: 14px 16px;
+    border-radius: 12px;
+    background: var(--glass-bg-strong);
+    border: 1px solid var(--glass-border);
+  }
+  .kpi .k-label { font-size: 0.74rem; color: var(--fg-muted); text-transform: uppercase; letter-spacing: 0.06em; }
+  .kpi .k-val { font-size: 1.5rem; font-weight: 700; font-variant-numeric: tabular-nums; margin-top: 2px; }
+
+  .progress {
+    position: relative;
+    height: 10px;
+    background: rgba(109, 92, 255, 0.15);
+    border-radius: 999px;
+    overflow: hidden;
+    margin: 10px 0 4px;
+  }
+  .progress > span {
+    display: block;
+    height: 100%;
+    border-radius: 999px;
+    background: linear-gradient(90deg, var(--accent), var(--accent-2));
+    box-shadow: 0 0 18px rgba(109, 92, 255, 0.55);
+  }
+
+  .pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 2px 10px;
+    border-radius: 999px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    border: 1px solid transparent;
+  }
+  .pill.running { background: rgba(109, 92, 255, 0.18); color: var(--accent); border-color: rgba(109, 92, 255, 0.4); }
+  .pill.strong  { background: rgba(34, 197, 94, 0.18);  color: var(--pass); border-color: rgba(34, 197, 94, 0.4); }
+  .pill.weak    { background: rgba(248, 113, 113, 0.18); color: var(--fail); border-color: rgba(248, 113, 113, 0.4); }
+
+  table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    font-size: 0.92rem;
+  }
+  th {
+    text-align: left;
+    padding: 10px 14px;
+    font-weight: 600;
+    color: var(--fg-muted);
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+  td { padding: 12px 14px; border-top: 1px solid var(--glass-border); }
+  .num { font-variant-numeric: tabular-nums; text-align: right; }
+
+  .back { color: var(--fg-muted); font-size: 0.88rem; text-decoration: none; display: inline-block; margin-bottom: 10px; }
+  .back:hover { color: var(--fg); }
+
+  .theme-toggle {
+    position: fixed;
+    top: 24px;
+    right: 28px;
+    padding: 8px 14px;
+    border-radius: 999px;
+    border: 1px solid var(--glass-border);
+    background: var(--glass-bg-strong);
+    color: var(--fg);
+    backdrop-filter: blur(10px);
+    cursor: pointer;
+    font-size: 0.82rem;
+    z-index: 10;
+  }
+
+  .suite-desc {
+    margin-top: 10px;
+    padding: 8px 12px;
+    background: var(--glass-bg-strong);
+    border-radius: 10px;
+    border: 1px solid var(--glass-border);
+    color: var(--fg-muted);
+    font-size: 0.86rem;
+  }
+</style>
+</head>
+<body>
+<button class="theme-toggle" onclick="document.documentElement.dataset.theme = document.documentElement.dataset.theme === 'dark' ? '' : 'dark';">Toggle theme</button>
+
+<div class="app">
+  <aside class="sidebar">
+    <div class="logo">Evaluator</div>
+    <nav class="nav">
+      <a class="active" href="#">▶ New Run</a>
+      <a href="#">◎ History</a>
+      <a href="#">⇄ Compare</a>
+    </nav>
+  </aside>
+
+  <main class="main">
+    <a class="back" href="./index.html">← back to previews</a>
+    <div><span class="h1">New Run</span></div>
+    <p class="sub">Pick models and suites, kick off a benchmark. Estimated time updates live.</p>
+
+    <div class="card">
+      <h3>Models</h3>
+      <p class="hint">Live from Ollama · 9 available on this host</p>
+      <div class="chips">
+        <span class="chip">qwen3.6:27b (27.8B) <span class="x">×</span></span>
+        <span class="chip">qwen3.5:35b-a3b (36B) <span class="x">×</span></span>
+        <span class="chip ghost">+ add model…</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Suites</h3>
+      <p class="hint">33 suites · 4 910 cases total</p>
+      <div class="chips">
+        <span class="chip">mmlu · 200 · ~50 m <span class="x">×</span></span>
+        <span class="chip">gsm8k · 100 · ~25 m <span class="x">×</span></span>
+        <span class="chip">cruxeval-output · 200 · ~50 m <span class="x">×</span></span>
+        <span class="chip ghost">+ add suite…</span>
+      </div>
+      <div class="suite-desc">mmlu — 57-subject academic multiple-choice across sciences, humanities, social sciences, professional exams.</div>
+    </div>
+
+    <div class="card">
+      <h3>Run parameters</h3>
+      <div class="input-group" style="margin-top: 6px;">
+        <div><label>Repetitions</label><input type="number" value="1" /></div>
+        <div><label>Concurrency</label><input type="number" value="1" /></div>
+        <div><label>Tag filter</label><input type="text" placeholder="science, math" /></div>
+        <div><label>Judge model</label><input type="text" placeholder="(optional)" /></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="row">
+        <div class="tot">
+          Total: <strong>500</strong> cases across <strong>3</strong> suites · rough est. <strong>~2 h 5 m</strong> for 2 models
+        </div>
+        <button class="btn primary">Start run →</button>
+      </div>
+    </div>
+
+    <div style="margin-top: 28px;">
+      <span class="h1" style="font-size: 1.2rem;">Live view preview — run in progress</span>
+    </div>
+
+    <div class="card">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px;">
+        <div>
+          <div style="font-weight: 600; font-size: 1rem;">Run d241202…</div>
+          <div style="color: var(--fg-muted); font-size: 0.86rem;">Started 3 m ago · <span class="pill running">● running</span></div>
+        </div>
+        <button class="btn">Cancel run</button>
+      </div>
+
+      <div class="progress"><span style="width: 38%"></span></div>
+      <div style="display: flex; justify-content: space-between; font-size: 0.85rem; color: var(--fg-muted); margin-bottom: 18px;">
+        <span>190 / 500 complete</span>
+        <span>~1 h 17 m remaining</span>
+      </div>
+
+      <div style="display: flex; align-items: center; gap: 20px;">
+        <div class="donut" style="--pct: 75.5;" data-pct="75.5%"></div>
+        <div class="kpi-grid" style="flex: 1;">
+          <div class="kpi"><div class="k-label">Passed</div><div class="k-val" style="color: var(--pass)">142</div></div>
+          <div class="kpi"><div class="k-label">Failed</div><div class="k-val" style="color: var(--fail)">46</div></div>
+          <div class="kpi"><div class="k-label">Errored</div><div class="k-val">1</div></div>
+          <div class="kpi"><div class="k-label">Mean tok/s</div><div class="k-val">29.8</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Live per-model results</h3>
+      <p class="hint">Incremental; final report will include the full breakdown</p>
+      <table>
+        <thead>
+          <tr>
+            <th>Model</th>
+            <th class="num">Passed</th>
+            <th class="num">Failed</th>
+            <th class="num">Pass rate</th>
+            <th class="num">tokens/s</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>qwen3.5:35b-a3b</strong></td>
+            <td class="num">82</td>
+            <td class="num">18</td>
+            <td class="num"><strong>82.0%</strong></td>
+            <td class="num">48.97</td>
+            <td><span class="pill strong">strong</span></td>
+          </tr>
+          <tr>
+            <td><strong>qwen3.6:27b</strong></td>
+            <td class="num">60</td>
+            <td class="num">28</td>
+            <td class="num"><strong>68.2%</strong></td>
+            <td class="num">10.54</td>
+            <td><span class="pill weak">trailing</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </main>
+</div>
+</body>
+</html>

@@ -4,15 +4,16 @@ import { BrowserRouter } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 import { App } from "./App";
+import { ThemeProvider } from "./theme";
+import "./styles.css";
 
 /**
  * Entry point for the Ollama Model Evaluator UI.
  *
- * Wraps the {@link App} component tree in a {@link QueryClientProvider}
- * (TanStack Query powers REST caching per design §UI state) and a
- * {@link BrowserRouter} so the route components can use
- * `react-router-dom` hooks such as `useNavigate`, `useParams`, and
- * `useSearchParams`.
+ * Wraps the {@link App} component tree in:
+ * * {@link ThemeProvider} — CSS-variable-based light/dark theme + auto-detect
+ * * {@link QueryClientProvider} — TanStack Query for REST caching
+ * * {@link BrowserRouter} — ``react-router-dom`` hooks such as ``useNavigate``
  */
 
 // Single QueryClient for the whole app. We keep caches hot for the
@@ -34,10 +35,12 @@ if (!container) {
 
 createRoot(container).render(
   <StrictMode>
-    <QueryClientProvider client={queryClient}>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
-    </QueryClientProvider>
+    <ThemeProvider>
+      <QueryClientProvider client={queryClient}>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </QueryClientProvider>
+    </ThemeProvider>
   </StrictMode>,
 );

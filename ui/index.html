@@ -3,7 +3,33 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="light dark" />
     <title>Ollama Model Evaluator</title>
+    <link rel="preconnect" href="https://rsms.me/" />
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
+    <!--
+      Set the theme BEFORE React hydrates so first paint already matches
+      the user's persisted choice or OS preference. This mirrors the
+      ``ThemeProvider`` bootstrap exactly and is the standard
+      "no-flash-of-wrong-theme" trick.
+    -->
+    <script>
+      (function () {
+        try {
+          var stored = localStorage.getItem("ollama-eval-theme");
+          var dark;
+          if (stored === "dark") dark = true;
+          else if (stored === "light") dark = false;
+          else dark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+          if (dark) {
+            document.documentElement.setAttribute("data-theme", "dark");
+            document.documentElement.style.colorScheme = "dark";
+          } else {
+            document.documentElement.style.colorScheme = "light";
+          }
+        } catch (_) {}
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>

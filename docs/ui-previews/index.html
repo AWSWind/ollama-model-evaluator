@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>UI Style Previews — Ollama Model Evaluator</title>
+<style>
+  :root {
+    --bg: #f6f7f9;
+    --fg: #111827;
+    --muted: #6b7280;
+    --card: #ffffff;
+    --border: #e5e7eb;
+    --accent: #4f46e5;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Roboto, sans-serif;
+    background: var(--bg);
+    color: var(--fg);
+    line-height: 1.55;
+  }
+  .wrap { max-width: 1100px; margin: 0 auto; padding: 48px 24px 80px; }
+  h1 { font-size: 2rem; margin: 0 0 8px; font-weight: 700; letter-spacing: -0.02em; }
+  .lead { color: var(--muted); font-size: 1rem; margin: 0 0 40px; max-width: 640px; }
+  .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  @media (max-width: 900px) { .grid { grid-template-columns: 1fr; } }
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s;
+    display: flex;
+    flex-direction: column;
+  }
+  .card:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(17, 24, 39, 0.08); border-color: #c7cbd1; }
+  .thumb {
+    height: 220px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.85rem;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+  }
+  .thumb.a { background: linear-gradient(135deg, #1f2937, #4f46e5); }
+  .thumb.b { background: linear-gradient(135deg, #60a5fa, #a855f7, #ec4899); }
+  .thumb.c { background: linear-gradient(135deg, #0b0d10, #10b981); }
+  .body { padding: 20px 22px 24px; }
+  .body h2 { margin: 0 0 6px; font-size: 1.15rem; }
+  .body p { margin: 0 0 12px; color: var(--muted); font-size: 0.92rem; }
+  .tags { display: flex; gap: 6px; flex-wrap: wrap; }
+  .tag {
+    font-size: 0.75rem;
+    padding: 3px 9px;
+    border-radius: 999px;
+    background: #f3f4f6;
+    color: #374151;
+  }
+  footer { margin-top: 48px; color: var(--muted); font-size: 0.88rem; }
+  code { font-family: "SF Mono", "JetBrains Mono", Consolas, monospace; font-size: 0.88em; background: #eef0f3; padding: 1px 6px; border-radius: 4px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>UI style previews</h1>
+  <p class="lead">
+    Three mockups of the New Run page (+ a slice of the live run panel) rendered in different styles.
+    Open each, resize your browser, and pick the direction you like. Then we implement it for real in React.
+  </p>
+
+  <div class="grid">
+    <a class="card" href="./option-a-dense.html">
+      <div class="thumb a">A · Dense data-first</div>
+      <div class="body">
+        <h2>Option A · Dense data-first</h2>
+        <p>Linear/GitHub/HF Spaces feel. Tight typography, high-contrast tables, sparing accent, light + dark via tokens.</p>
+        <div class="tags">
+          <span class="tag">information-dense</span>
+          <span class="tag">table-friendly</span>
+          <span class="tag">timeless</span>
+        </div>
+      </div>
+    </a>
+
+    <a class="card" href="./option-b-acrylic.html">
+      <div class="thumb b">B · Modern acrylic</div>
+      <div class="body">
+        <h2>Option B · Modern acrylic (Aero successor)</h2>
+        <p>Frosted translucent cards, colored gradient backdrop, soft glow on focus. Windows 11 Mica / macOS Sequoia vibe.</p>
+        <div class="tags">
+          <span class="tag">glassy</span>
+          <span class="tag">colourful</span>
+          <span class="tag">expressive</span>
+        </div>
+      </div>
+    </a>
+
+    <a class="card" href="./option-c-dark.html">
+      <div class="thumb c">C · Dark dev-tool</div>
+      <div class="body">
+        <h2>Option C · Dark-first dev tool</h2>
+        <p>Warp / GitHub dark / Linear. Near-black background, bright status pills, keyboard-first hints, OLED-friendly.</p>
+        <div class="tags">
+          <span class="tag">focused</span>
+          <span class="tag">OLED-friendly</span>
+          <span class="tag">keyboard-first</span>
+        </div>
+      </div>
+    </a>
+  </div>
+
+  <footer>
+    These are static mockups — the data is hand-rolled. The real UI reuses the same event-stream reducer and REST client behind the scenes. Once you pick, I'll build it on a feature branch, iterate route-by-route, and commit when each one looks right.
+  </footer>
+</div>
+</body>
+</html>

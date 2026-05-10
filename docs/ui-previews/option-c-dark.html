@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Option C · Dark-first dev tool — Ollama Model Evaluator</title>
+<style>
+  :root {
+    --bg: #0a0b0f;
+    --bg-1: #0f1117;
+    --bg-2: #151820;
+    --bg-3: #1c2029;
+    --fg: #e6e8ed;
+    --fg-muted: #8b94a7;
+    --fg-subtle: #58617a;
+    --border: #20242e;
+    --border-strong: #2d323e;
+    --accent: #10b981;
+    --accent-glow: rgba(16, 185, 129, 0.25);
+    --pass: #22c55e;
+    --fail: #ef4444;
+    --warn: #f59e0b;
+    --info: #3b82f6;
+    --mono: "JetBrains Mono", "SF Mono", Consolas, monospace;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--fg);
+    background: var(--bg);
+    background-image:
+      radial-gradient(1200px 600px at 100% -20%, rgba(16, 185, 129, 0.07) 0%, transparent 60%),
+      radial-gradient(800px 500px at 0% 100%, rgba(59, 130, 246, 0.05) 0%, transparent 60%);
+    min-height: 100vh;
+  }
+
+  .app {
+    display: grid;
+    grid-template-columns: 230px 1fr;
+    min-height: 100vh;
+  }
+
+  .sidebar {
+    background: var(--bg-1);
+    border-right: 1px solid var(--border);
+    padding: 20px 14px;
+  }
+  .logo {
+    font-weight: 700;
+    font-size: 0.92rem;
+    letter-spacing: 0.02em;
+    margin-bottom: 28px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--fg);
+  }
+  .logo::before {
+    content: "⚡";
+    width: 22px; height: 22px;
+    display: grid; place-items: center;
+    background: var(--bg-3);
+    border: 1px solid var(--border-strong);
+    border-radius: 5px;
+    color: var(--accent);
+    font-size: 0.88rem;
+  }
+  .sidebar-group {
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: var(--fg-subtle);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    padding: 0 10px 8px;
+    margin-top: 14px;
+  }
+  .nav { display: flex; flex-direction: column; gap: 2px; }
+  .nav a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 7px 10px;
+    border-radius: 6px;
+    color: var(--fg-muted);
+    text-decoration: none;
+    font-size: 0.88rem;
+    position: relative;
+  }
+  .nav a:hover { background: var(--bg-2); color: var(--fg); }
+  .nav a.active {
+    background: var(--bg-3);
+    color: var(--fg);
+    font-weight: 500;
+    box-shadow: inset 2px 0 0 var(--accent);
+  }
+  .kbd {
+    margin-left: auto;
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    padding: 1px 6px;
+    border: 1px solid var(--border-strong);
+    border-radius: 4px;
+    color: var(--fg-subtle);
+    background: var(--bg-2);
+  }
+
+  .main { padding: 28px 36px 80px; max-width: 1100px; }
+  .h1 { font-size: 1.35rem; font-weight: 600; margin: 0 0 6px; letter-spacing: -0.01em; }
+  .sub { color: var(--fg-muted); margin: 0 0 24px; font-size: 0.88rem; }
+
+  .card {
+    background: var(--bg-1);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 18px 20px;
+    margin-bottom: 16px;
+  }
+  .card h3 {
+    margin: 0 0 4px;
+    font-size: 0.88rem;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+    color: var(--fg);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .card h3::before {
+    content: "";
+    width: 3px;
+    height: 14px;
+    background: var(--accent);
+    border-radius: 2px;
+  }
+  .hint { color: var(--fg-muted); font-size: 0.82rem; margin: 0 0 12px; }
+
+  .chips { display: flex; flex-wrap: wrap; gap: 6px; }
+  .chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 10px;
+    background: var(--bg-3);
+    border: 1px solid var(--border-strong);
+    color: var(--fg);
+    border-radius: 6px;
+    font-size: 0.84rem;
+    font-family: var(--mono);
+  }
+  .chip .x { cursor: pointer; opacity: 0.55; font-weight: 700; }
+  .chip.ghost {
+    background: transparent;
+    border: 1px dashed var(--border-strong);
+    color: var(--fg-subtle);
+    font-family: inherit;
+  }
+
+  .input-group { display: flex; flex-wrap: wrap; gap: 12px; }
+  .input-group > div { flex: 1 1 180px; }
+  label {
+    display: block;
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: var(--fg-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 6px;
+  }
+  input[type="number"], input[type="text"] {
+    width: 100%;
+    padding: 7px 10px;
+    background: var(--bg-2);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    color: var(--fg);
+    font-family: var(--mono);
+    font-size: 0.88rem;
+  }
+  input:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px var(--accent-glow);
+  }
+
+  .btn {
+    padding: 7px 14px;
+    border-radius: 6px;
+    border: 1px solid var(--border-strong);
+    background: var(--bg-3);
+    color: var(--fg);
+    font-family: inherit;
+    font-size: 0.86rem;
+    font-weight: 500;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .btn:hover { background: var(--border); }
+  .btn.primary {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #031a12;
+    font-weight: 600;
+    box-shadow: 0 0 20px var(--accent-glow);
+  }
+  .btn.primary:hover { filter: brightness(1.08); }
+  .btn .kbd { background: rgba(255,255,255,0.12); border-color: rgba(255,255,255,0.2); color: inherit; }
+
+  .row { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+  .tot { color: var(--fg-muted); font-size: 0.88rem; }
+  .tot strong { color: var(--fg); font-weight: 600; font-family: var(--mono); }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.88rem;
+  }
+  th, td {
+    text-align: left;
+    padding: 9px 12px;
+    border-bottom: 1px solid var(--border);
+    font-family: var(--mono);
+  }
+  th {
+    font-family: inherit;
+    font-weight: 600;
+    color: var(--fg-muted);
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    background: var(--bg-2);
+  }
+  tbody tr:hover { background: var(--bg-2); }
+  .num { text-align: right; font-variant-numeric: tabular-nums; }
+
+  .pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 1px 8px;
+    border-radius: 4px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    font-family: inherit;
+    border: 1px solid transparent;
+  }
+  .pill::before {
+    content: "";
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: currentColor;
+    box-shadow: 0 0 6px currentColor;
+  }
+  .pill.pass { background: rgba(34, 197, 94, 0.12); color: var(--pass); border-color: rgba(34, 197, 94, 0.25); }
+  .pill.fail { background: rgba(239, 68, 68, 0.12); color: var(--fail); border-color: rgba(239, 68, 68, 0.25); }
+  .pill.running { background: rgba(59, 130, 246, 0.12); color: var(--info); border-color: rgba(59, 130, 246, 0.25); }
+  .pill.running::before { animation: pulse 1.6s infinite; }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+  }
+
+  .progress {
+    position: relative;
+    height: 4px;
+    background: var(--bg-3);
+    border-radius: 2px;
+    overflow: hidden;
+    margin: 4px 0 2px;
+  }
+  .progress > span {
+    display: block;
+    height: 100%;
+    background: linear-gradient(90deg, var(--accent), #22d3ee);
+    box-shadow: 0 0 14px var(--accent-glow);
+  }
+
+  .kpi-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+  .kpi {
+    padding: 10px 14px;
+    background: var(--bg-2);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+  }
+  .kpi .k-label { font-size: 0.7rem; color: var(--fg-muted); text-transform: uppercase; letter-spacing: 0.08em; font-weight: 600; }
+  .kpi .k-val { font-size: 1.5rem; font-weight: 600; font-family: var(--mono); font-variant-numeric: tabular-nums; margin-top: 2px; letter-spacing: -0.02em; }
+
+  .back { color: var(--fg-muted); font-size: 0.84rem; text-decoration: none; display: inline-block; margin-bottom: 14px; }
+  .back:hover { color: var(--fg); }
+
+  code, .mono { font-family: var(--mono); }
+  .command-hint {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 10px;
+    border: 1px solid var(--border);
+    background: var(--bg-2);
+    color: var(--fg-muted);
+    border-radius: 6px;
+    font-size: 0.78rem;
+    margin-bottom: 14px;
+  }
+  .suite-desc {
+    margin-top: 10px;
+    padding: 8px 12px;
+    background: var(--bg-2);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--accent);
+    border-radius: 4px;
+    color: var(--fg-muted);
+    font-size: 0.84rem;
+  }
+
+  .top-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 24px;
+    border-bottom: 1px solid var(--border);
+    background: var(--bg-1);
+  }
+  .search-hint {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 12px;
+    background: var(--bg-2);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    color: var(--fg-muted);
+    font-size: 0.82rem;
+  }
+  .status-dots {
+    display: flex;
+    gap: 14px;
+    font-size: 0.78rem;
+    color: var(--fg-muted);
+    font-family: var(--mono);
+  }
+  .status-dots span::before {
+    content: "●";
+    color: var(--pass);
+    margin-right: 5px;
+  }
+</style>
+</head>
+<body>
+<div class="app">
+  <aside class="sidebar">
+    <div class="logo">Evaluator</div>
+
+    <div class="sidebar-group">Workspace</div>
+    <nav class="nav">
+      <a class="active" href="#">▶ New Run <span class="kbd">N</span></a>
+      <a href="#">◎ History <span class="kbd">H</span></a>
+      <a href="#">⇄ Compare <span class="kbd">C</span></a>
+    </nav>
+
+    <div class="sidebar-group">Runs</div>
+    <nav class="nav">
+      <a href="#">● d241202… <span class="kbd" style="color: var(--info)">live</span></a>
+      <a href="#">7a23ba05…</a>
+      <a href="#">e575de3f…</a>
+      <a href="#">def79a7d…</a>
+    </nav>
+  </aside>
+
+  <main>
+    <div class="top-bar">
+      <div class="search-hint">search runs…<span class="kbd">⌘K</span></div>
+      <div class="status-dots">
+        <span>ollama 0.20.3</span>
+        <span>backend :8765</span>
+        <span>9 models</span>
+      </div>
+    </div>
+
+    <div class="main">
+      <a class="back" href="./index.html">← back to previews</a>
+      <h1 class="h1">New Run</h1>
+      <p class="sub">Pick models and suites, kick off a benchmark. Estimated time updates live.</p>
+
+      <div class="card">
+        <h3>Models</h3>
+        <p class="hint">Live from ollama · 9 available</p>
+        <div class="chips">
+          <span class="chip">qwen3.6:27b <span class="x">×</span></span>
+          <span class="chip">qwen3.5:35b-a3b <span class="x">×</span></span>
+          <span class="chip ghost">+ add model</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Suites</h3>
+        <p class="hint">33 suites · 4 910 cases</p>
+        <div class="chips">
+          <span class="chip">mmlu · 200 · ~50m <span class="x">×</span></span>
+          <span class="chip">gsm8k · 100 · ~25m <span class="x">×</span></span>
+          <span class="chip">cruxeval-output · 200 · ~50m <span class="x">×</span></span>
+          <span class="chip ghost">+ add suite</span>
+        </div>
+        <div class="suite-desc">mmlu — 57-subject academic multiple-choice across sciences, humanities, social sciences, professional exams.</div>
+      </div>
+
+      <div class="card">
+        <h3>Run parameters</h3>
+        <div class="input-group" style="margin-top: 6px;">
+          <div><label>Repetitions</label><input type="number" value="1" /></div>
+          <div><label>Concurrency</label><input type="number" value="1" /></div>
+          <div><label>Tag filter</label><input type="text" placeholder="science, math" /></div>
+          <div><label>Judge model</label><input type="text" placeholder="(optional)" /></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="row">
+          <div class="tot">
+            Total: <strong>500</strong> cases across <strong>3</strong> suites · rough est. <strong>~2h 5m</strong> for 2 models
+          </div>
+          <button class="btn primary">Start run <span class="kbd">↵</span></button>
+        </div>
+      </div>
+
+      <h1 class="h1" style="margin-top: 32px; font-size: 1.1rem;">Live view — run in progress</h1>
+
+      <div class="card">
+        <div class="row" style="margin-bottom: 14px;">
+          <div>
+            <div style="font-weight: 600; font-size: 0.94rem;">Run <code>d241202…</code></div>
+            <div style="color: var(--fg-muted); font-size: 0.82rem; margin-top: 3px;">Started 3m ago · <span class="pill running">running</span></div>
+          </div>
+          <button class="btn">Cancel</button>
+        </div>
+
+        <div class="progress"><span style="width: 38%"></span></div>
+        <div style="display: flex; justify-content: space-between; font-size: 0.82rem; color: var(--fg-muted); margin-bottom: 16px; font-family: var(--mono);">
+          <span>190 / 500 complete · 38.0%</span>
+          <span>eta ~1h 17m</span>
+        </div>
+
+        <div class="kpi-grid">
+          <div class="kpi"><div class="k-label">Passed</div><div class="k-val" style="color: var(--pass)">142</div></div>
+          <div class="kpi"><div class="k-label">Failed</div><div class="k-val" style="color: var(--fail)">46</div></div>
+          <div class="kpi"><div class="k-label">Errored</div><div class="k-val">1</div></div>
+          <div class="kpi"><div class="k-label">Pass rate</div><div class="k-val">75.5%</div></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Live per-model results</h3>
+        <p class="hint">Incremental · final report will include the full breakdown</p>
+        <table>
+          <thead>
+            <tr>
+              <th>Model</th>
+              <th class="num">Pass</th>
+              <th class="num">Fail</th>
+              <th class="num">Rate</th>
+              <th class="num">tok/s</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>qwen3.5:35b-a3b</strong></td>
+              <td class="num">82</td>
+              <td class="num">18</td>
+              <td class="num" style="color: var(--pass)"><strong>82.0%</strong></td>
+              <td class="num">48.97</td>
+              <td><span class="pill pass">strong</span></td>
+            </tr>
+            <tr>
+              <td><strong>qwen3.6:27b</strong></td>
+              <td class="num">60</td>
+              <td class="num">28</td>
+              <td class="num"><strong>68.2%</strong></td>
+              <td class="num">10.54</td>
+              <td><span class="pill fail">trailing</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </main>
+</div>
+</body>
+</html>

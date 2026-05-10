@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Option A · Dense data-first — Ollama Model Evaluator</title>
+<style>
+  :root {
+    --bg: #ffffff;
+    --bg-alt: #fafbfc;
+    --fg: #0f172a;
+    --fg-muted: #475569;
+    --fg-subtle: #94a3b8;
+    --border: #e2e8f0;
+    --border-strong: #cbd5e1;
+    --accent: #4338ca;
+    --accent-soft: #eef2ff;
+    --pass: #16a34a;
+    --pass-soft: #dcfce7;
+    --fail: #dc2626;
+    --fail-soft: #fee2e2;
+    --warn: #d97706;
+    --shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.06);
+    --shadow-md: 0 4px 14px rgba(15, 23, 42, 0.08);
+    --radius: 8px;
+  }
+  [data-theme="dark"] {
+    --bg: #0b0f17;
+    --bg-alt: #111722;
+    --fg: #e5e9f0;
+    --fg-muted: #9aa3b5;
+    --fg-subtle: #5f6779;
+    --border: #1e2636;
+    --border-strong: #2d3648;
+    --accent: #818cf8;
+    --accent-soft: #1e1b4b;
+    --pass: #4ade80;
+    --pass-soft: #052e16;
+    --fail: #f87171;
+    --fail-soft: #450a0a;
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
+    --shadow-md: 0 4px 14px rgba(0, 0, 0, 0.55);
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size: 14px;
+    line-height: 1.5;
+    background: var(--bg);
+    color: var(--fg);
+  }
+  .app {
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    min-height: 100vh;
+  }
+  .sidebar {
+    border-right: 1px solid var(--border);
+    padding: 20px 16px;
+    background: var(--bg-alt);
+  }
+  .logo {
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    margin-bottom: 32px;
+    font-size: 0.92rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .logo::before {
+    content: "";
+    width: 14px;
+    height: 14px;
+    background: linear-gradient(135deg, var(--accent), #22d3ee);
+    border-radius: 4px;
+  }
+  .nav { display: flex; flex-direction: column; gap: 2px; }
+  .nav a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 7px 10px;
+    border-radius: 6px;
+    color: var(--fg-muted);
+    text-decoration: none;
+    font-size: 0.88rem;
+  }
+  .nav a:hover { background: var(--bg); color: var(--fg); }
+  .nav a.active { background: var(--accent-soft); color: var(--accent); font-weight: 600; }
+  .main { padding: 28px 36px; max-width: 1100px; }
+  .h1 { font-size: 1.4rem; font-weight: 600; margin: 0 0 6px; letter-spacing: -0.015em; }
+  .sub { color: var(--fg-muted); margin: 0 0 28px; font-size: 0.9rem; }
+  .card {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 20px 22px;
+    box-shadow: var(--shadow-sm);
+    margin-bottom: 20px;
+  }
+  .card h3 {
+    margin: 0 0 4px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    letter-spacing: -0.005em;
+  }
+  .card .hint { color: var(--fg-muted); font-size: 0.82rem; margin: 0 0 16px; }
+  label {
+    display: block;
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--fg-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 8px;
+  }
+  .chips { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+  .chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 10px;
+    background: var(--accent-soft);
+    color: var(--accent);
+    border: 1px solid transparent;
+    border-radius: 999px;
+    font-size: 0.82rem;
+    font-weight: 500;
+  }
+  .chip .x { cursor: pointer; opacity: 0.55; font-weight: 700; }
+  .chip.ghost {
+    background: transparent;
+    border: 1px dashed var(--border-strong);
+    color: var(--fg-subtle);
+  }
+  .input-group {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .input-group > div { flex: 1 1 180px; }
+  input[type="number"], input[type="text"], select {
+    width: 100%;
+    padding: 7px 10px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    background: var(--bg);
+    color: var(--fg);
+    font-family: inherit;
+    font-size: 0.9rem;
+  }
+  input:focus, select:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px var(--accent-soft);
+  }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 14px;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+    background: var(--bg);
+    color: var(--fg);
+    font-size: 0.88rem;
+    font-weight: 500;
+    cursor: pointer;
+    font-family: inherit;
+  }
+  .btn:hover { border-color: var(--border-strong); }
+  .btn.primary {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: white;
+  }
+  .btn.primary:hover { background: #3730a3; border-color: #3730a3; }
+  .row { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+  .tot { font-size: 0.88rem; color: var(--fg-muted); }
+  .tot strong { color: var(--fg); font-weight: 600; }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.88rem;
+  }
+  th, td {
+    text-align: left;
+    padding: 9px 12px;
+    border-bottom: 1px solid var(--border);
+  }
+  th {
+    font-weight: 600;
+    color: var(--fg-muted);
+    font-size: 0.76rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    background: var(--bg-alt);
+  }
+  tbody tr:hover { background: var(--bg-alt); }
+  .num { font-variant-numeric: tabular-nums; text-align: right; }
+
+  .pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 1px 8px;
+    border-radius: 4px;
+    font-size: 0.76rem;
+    font-weight: 600;
+  }
+  .pill.pass { background: var(--pass-soft); color: var(--pass); }
+  .pill.fail { background: var(--fail-soft); color: var(--fail); }
+  .pill.running { background: #dbeafe; color: #1d4ed8; }
+  [data-theme="dark"] .pill.running { background: #0b1f4d; color: #93c5fd; }
+
+  .progress {
+    position: relative;
+    height: 6px;
+    background: var(--border);
+    border-radius: 999px;
+    overflow: hidden;
+    margin: 6px 0 2px;
+  }
+  .progress > span {
+    display: block;
+    height: 100%;
+    background: var(--accent);
+    transition: width 0.3s ease;
+  }
+
+  .kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+  }
+  .kpi {
+    padding: 12px 14px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    background: var(--bg-alt);
+  }
+  .kpi .k-label { font-size: 0.72rem; color: var(--fg-muted); text-transform: uppercase; letter-spacing: 0.06em; }
+  .kpi .k-val { font-size: 1.4rem; font-weight: 600; font-variant-numeric: tabular-nums; margin-top: 2px; }
+
+  .back {
+    color: var(--fg-muted);
+    font-size: 0.85rem;
+    text-decoration: none;
+    display: inline-block;
+    margin-bottom: 16px;
+  }
+  .back:hover { color: var(--fg); }
+
+  .theme-toggle {
+    position: fixed;
+    top: 20px;
+    right: 24px;
+    padding: 6px 10px;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+    background: var(--bg);
+    color: var(--fg);
+    cursor: pointer;
+    font-size: 0.8rem;
+  }
+
+  .suite-desc {
+    color: var(--fg-muted);
+    font-size: 0.8rem;
+    margin-top: 4px;
+  }
+</style>
+</head>
+<body>
+<button id="theme-toggle" class="theme-toggle" title="Toggle theme">🌙 Dark</button>
+<script>
+  // Theme bootstrap: restore previous choice, or auto-match the OS.
+  // Uses localStorage so the preference sticks across reloads, and
+  // matches ``prefers-color-scheme`` on first visit so people landing
+  // in a dark-themed OS see the dark variant immediately.
+  (function () {
+    const KEY = "ollama-eval-theme";
+    const root = document.documentElement;
+    const btn = document.getElementById("theme-toggle");
+
+    function apply(theme) {
+      if (theme === "dark") {
+        root.setAttribute("data-theme", "dark");
+        btn.textContent = "☀ Light";
+      } else {
+        root.removeAttribute("data-theme");
+        btn.textContent = "🌙 Dark";
+      }
+    }
+
+    const saved = localStorage.getItem(KEY);
+    if (saved === "dark" || saved === "light") {
+      apply(saved);
+    } else if (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) {
+      apply("dark");
+    } else {
+      apply("light");
+    }
+
+    btn.addEventListener("click", function () {
+      const next = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
+      localStorage.setItem(KEY, next);
+      apply(next);
+    });
+  })();
+</script>
+
+<div class="app">
+  <aside class="sidebar">
+    <div class="logo">Evaluator</div>
+    <nav class="nav">
+      <a class="active" href="#">▶ New Run</a>
+      <a href="#">◎ History</a>
+      <a href="#">⇄ Compare</a>
+    </nav>
+  </aside>
+
+  <main class="main">
+    <a class="back" href="./index.html">← back to previews</a>
+    <h1 class="h1">New Run</h1>
+    <p class="sub">Pick models and suites, kick off a benchmark. Estimated time updates live.</p>
+
+    <div class="card">
+      <h3>Models</h3>
+      <p class="hint">Live from Ollama · 9 available on this host</p>
+      <div class="chips">
+        <span class="chip">qwen3.6:27b (27.8B) <span class="x">×</span></span>
+        <span class="chip">qwen3.5:35b-a3b (36B) <span class="x">×</span></span>
+        <span class="chip ghost">+ add model…</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Suites</h3>
+      <p class="hint">33 suites · 4 910 cases total</p>
+      <div class="chips">
+        <span class="chip">mmlu · 200 cases · ~50 m <span class="x">×</span></span>
+        <span class="chip">gsm8k · 100 cases · ~25 m <span class="x">×</span></span>
+        <span class="chip">cruxeval-output · 200 cases · ~50 m <span class="x">×</span></span>
+        <span class="chip ghost">+ add suite…</span>
+      </div>
+      <div class="suite-desc">mmlu — 57-subject academic multiple-choice across sciences, humanities, social sciences, professional exams.</div>
+    </div>
+
+    <div class="card">
+      <h3>Run parameters</h3>
+      <div class="input-group" style="margin-top: 6px;">
+        <div><label>Repetitions</label><input type="number" value="1" /></div>
+        <div><label>Concurrency</label><input type="number" value="1" /></div>
+        <div><label>Tag filter</label><input type="text" placeholder="science, math" /></div>
+        <div><label>Judge model</label><input type="text" placeholder="(optional)" /></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="row">
+        <div class="tot">
+          Total: <strong>500</strong> cases across <strong>3</strong> suites · rough est. <strong>~2 h 5 m</strong> for 2 models
+        </div>
+        <button class="btn primary">Start run →</button>
+      </div>
+    </div>
+
+    <h1 class="h1" style="margin-top: 32px; font-size: 1.15rem;">Live view preview — run in progress</h1>
+    <div class="card">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px;">
+        <div>
+          <div style="font-weight: 600; font-size: 1rem;">Run <code style="font-family: monospace; background: var(--bg-alt); padding: 1px 6px; border-radius: 4px; font-size: 0.82rem;">d241202…</code></div>
+          <div style="color: var(--fg-muted); font-size: 0.82rem;">Started 3 m ago · <span class="pill running">running</span></div>
+        </div>
+        <button class="btn">Cancel run</button>
+      </div>
+
+      <div class="progress"><span style="width: 38%"></span></div>
+      <div style="display: flex; justify-content: space-between; font-size: 0.8rem; color: var(--fg-muted); margin-bottom: 16px;">
+        <span>190 / 500 complete</span>
+        <span>~1 h 17 m remaining</span>
+      </div>
+
+      <div class="kpi-grid">
+        <div class="kpi"><div class="k-label">Passed</div><div class="k-val" style="color: var(--pass)">142</div></div>
+        <div class="kpi"><div class="k-label">Failed</div><div class="k-val" style="color: var(--fail)">46</div></div>
+        <div class="kpi"><div class="k-label">Errored</div><div class="k-val">1</div></div>
+        <div class="kpi"><div class="k-label">Pass rate</div><div class="k-val">75.5%</div></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Live per-model results</h3>
+      <p class="hint">Incremental; final report will include the full breakdown</p>
+      <table>
+        <thead>
+          <tr>
+            <th>Model</th>
+            <th class="num">Passed</th>
+            <th class="num">Failed</th>
+            <th class="num">Pass rate</th>
+            <th class="num">tokens/s</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>qwen3.5:35b-a3b</strong></td>
+            <td class="num">82</td>
+            <td class="num">18</td>
+            <td class="num"><strong>82.0%</strong></td>
+            <td class="num">48.97</td>
+            <td><span class="pill pass">strong</span></td>
+          </tr>
+          <tr>
+            <td><strong>qwen3.6:27b</strong></td>
+            <td class="num">60</td>
+            <td class="num">28</td>
+            <td class="num"><strong>68.2%</strong></td>
+            <td class="num">10.54</td>
+            <td><span class="pill fail">trailing</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </main>
+</div>
+</body>
+</html>

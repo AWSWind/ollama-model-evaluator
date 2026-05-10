@@ -1,6 +1,7 @@
 import { useMemo, useState } from "react";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { useNavigate } from "react-router-dom";
+import { ArrowRight, Cpu, Layers, Plus, Sliders } from "lucide-react";
 
 import {
   ApiError,
@@ -12,6 +13,23 @@ import {
   type SuiteSummary,
 } from "../api/apiClient";
 import { errorMessages } from "../api/errorMessages";
+import {
+  Button,
+  Card,
+  CardHeader,
+  CardHint,
+  CardTitle,
+  Chip,
+  Input,
+  Label,
+  Tooltip,
+  cn,
+} from "../ui";
+import {
+  CATEGORIES,
+  categoryForSuite,
+  summaryForSuite,
+} from "./suiteCategories";
 
 /**
  * Input shape collected from the NewRun form.
@@ -54,14 +72,10 @@ export function buildRunConfigBody(
   };
 }
 
-function toSelectedValues(event: React.ChangeEvent<HTMLSelectElement>): string[] {
-  return Array.from(event.target.selectedOptions, (o) => o.value);
-}
-
 /**
- * Empirical seconds-per-case upper-bound observed on the `.224` host
- * (``qwen3.6:27b`` at ~11 tok/s). Used as the default coefficient in
- * {@link estimateRunSeconds}. This is a rough rule of thumb, not a
+ * Empirical seconds-per-case upper-bound observed on the benchmark
+ * host (``qwen3.6:27b`` at ~11 tok/s). Used as the default coefficient
+ * in {@link estimateRunSeconds}. This is a rough rule of thumb, not a
  * measurement — real-world cases vary widely by prompt length and
  * response length. The UI's "est. time" line is intentionally labelled
  * "rough" so users know not to take it as a guarantee.
@@ -72,11 +86,6 @@ const DEFAULT_SECONDS_PER_CASE = 15;
  * Compute an estimated wall-clock duration (in seconds) for a run.
  *
  * Formula: ``ceil(|M| * sum(cases) * R / C) * seconds_per_case``.
- *
- * * ``M`` — number of models selected
- * * ``sum(cases)`` — total test cases across every selected suite
- * * ``R`` — repetitions
- * * ``C`` — concurrency (clamped to ``max(1, C)``)
  *
  * Exported for the UI property tests so the estimate is deterministic
  * and easy to assert against.
@@ -102,21 +111,11 @@ export function estimateRunSeconds(
   return effectiveCalls * secondsPerCase;
 }
 
-/**
- * Format a duration in seconds as a short human-readable string.
- *
- * * ``<60s`` → ``"45s"``
- * * ``<3600s`` → ``"12m 30s"`` (whole seconds dropped if zero)
- * * else → ``"1h 24m"`` (seconds dropped above the hour)
- */
+/** Format a duration in seconds as ``"45s"`` / ``"12m 30s"`` / ``"1h 24m"``. */
 export function formatDuration(totalSeconds: number): string {
-  if (!Number.isFinite(totalSeconds) || totalSeconds <= 0) {
-    return "0s";
-  }
+  if (!Number.isFinite(totalSeconds) || totalSeconds <= 0) return "0s";
   const rounded = Math.round(totalSeconds);
-  if (rounded < 60) {
-    return `${rounded}s`;
-  }
+  if (rounded < 60) return `${rounded}s`;
   if (rounded < 3600) {
     const m = Math.floor(rounded / 60);
     const s = rounded % 60;
@@ -127,14 +126,6 @@ export function formatDuration(totalSeconds: number): string {
   return m === 0 ? `${h}h` : `${h}h ${m}m`;
 }
 
-/**
- * Per-suite metadata displayed alongside each option.
- *
- * ``caseCount`` is ``null`` while the summaries fetch is in flight or
- * if it failed — we still render the suite name so the user can select
- * it, but the count + estimate line stays as "…" until the fetch
- * resolves.
- */
 interface SuiteMeta {
   name: string;
   caseCount: number | null;
@@ -150,12 +141,9 @@ interface SuiteMeta {
  * using ``data-field`` on the inputs so the 400-error property test
  * (Property 36) can locate the rendered message.
  *
- * Additionally enriches the Suites multi-select with per-suite case
- * counts and a live "total est. time" readout so users know how big
- * the run will be before they submit. Suite metadata comes from the
- * bulk ``GET /api/suites/summaries`` endpoint so a cold page load
- * issues only two small requests (``models`` + ``suite summaries``)
- * instead of ``N+1`` where ``N`` is the number of suites.
+ * Suite metadata comes from the bulk ``GET /api/suites/summaries``
+ * endpoint so a cold page load issues only two small requests rather
+ * than N+1.
  */
 export function NewRun(): JSX.Element {
   const navigate = useNavigate();
@@ -164,10 +152,6 @@ export function NewRun(): JSX.Element {
     queryKey: ["models"],
     queryFn: listModels,
   });
-
-  // Single bulk fetch that returns name + test_case_count + description
-  // for every suite. Roughly a 100× payload reduction compared with
-  // fetching the full EvaluationSuite for each name individually.
   const suitesSummaryQuery = useQuery({
     queryKey: ["suite-summaries"],
     queryFn: listSuiteSummaries,
@@ -189,7 +173,7 @@ export function NewRun(): JSX.Element {
     }
     return map;
   }, [suiteSummaries]);
-  const suiteOptions: string[] = useMemo(
+  const suiteNames: string[] = useMemo(
     () => suiteSummaries.map((s) => s.name),
     [suiteSummaries],
   );
@@ -215,8 +199,6 @@ export function NewRun(): JSX.Element {
     onError: (error) => {
       if (error instanceof ApiError && error.envelope) {
         const env = error.envelope;
-        // Prefer the Backend's specific message; fall back to the
-        // canned copy in errorMessages if the Backend omitted one.
         const message = env.message || errorMessages[env.error_code];
         setFieldError({ field: env.field ?? null, message });
       } else {
@@ -240,11 +222,22 @@ export function NewRun(): JSX.Element {
     [modelsQuery.data],
   );
 
-  // ---- Live totals & estimates --------------------------------------
-  // Only count a suite's cases once its details have arrived; if the
-  // detail fetch failed or is still in flight, treat the count as 0 so
-  // the estimate stays conservative rather than suggesting an
-  // arbitrarily-low time.
+  const toggleModel = (name: string): void =>
+    setSelections((prev) => ({
+      ...prev,
+      models: prev.models.includes(name)
+        ? prev.models.filter((m) => m !== name)
+        : [...prev.models, name],
+    }));
+
+  const toggleSuite = (name: string): void =>
+    setSelections((prev) => ({
+      ...prev,
+      suites: prev.suites.includes(name)
+        ? prev.suites.filter((s) => s !== name)
+        : [...prev.suites, name],
+    }));
+
   const selectedCasesTotal = selections.suites.reduce((sum, name) => {
     const meta = suiteMetaByName[name];
     return sum + (meta?.caseCount ?? 0);
@@ -259,224 +252,571 @@ export function NewRun(): JSX.Element {
     (name) => suiteMetaByName[name]?.caseCount == null,
   );
 
+  const selectedModelCount = selections.models.length;
+  const unselectedModels = modelOptions.filter(
+    (m) => !selections.models.includes(m.name),
+  );
+  const unselectedSuites = suiteNames.filter(
+    (s) => !selections.suites.includes(s),
+  );
+
   return (
     <section aria-labelledby="new-run-heading">
-      <h2 id="new-run-heading">New Run</h2>
-      {modelsQuery.isLoading ? <p>Loading models…</p> : null}
-      {suitesSummaryQuery.isLoading ? <p>Loading suites…</p> : null}
+      <h1
+        id="new-run-heading"
+        className="text-[1.4rem] font-semibold tracking-tight mb-1"
+      >
+        New Run
+      </h1>
+      <p className="text-sm text-fg-muted mb-6">
+        Pick models and suites, kick off a benchmark. Estimated time updates
+        live.
+      </p>
+
+      {modelsQuery.isLoading ? (
+        <p className="text-fg-muted text-sm">Loading models…</p>
+      ) : null}
+      {suitesSummaryQuery.isLoading ? (
+        <p className="text-fg-muted text-sm">Loading suites…</p>
+      ) : null}
+
       <form onSubmit={handleSubmit} data-testid="new-run-form">
-        <FieldBlock label="Models" htmlFor="models" field="models" error={fieldError}>
+        {/* ---------- Models ---------- */}
+        <Card data-field-block="models">
+          <CardHeader>
+            <div className="flex items-center gap-2">
+              <Cpu className="h-4 w-4 text-accent" aria-hidden="true" />
+              <CardTitle>Models</CardTitle>
+            </div>
+            <CardHint>
+              Live from Ollama · {modelOptions.length}{" "}
+              {modelOptions.length === 1 ? "available" : "available"}
+            </CardHint>
+          </CardHeader>
+
+          {/* Hidden native select drives Property 35/36 (data-field) */}
           <select
             id="models"
             multiple
+            className="sr-only"
+            aria-hidden="true"
+            tabIndex={-1}
             data-field="models"
             value={selections.models}
-            onChange={(e) =>
-              setSelections((prev) => ({ ...prev, models: toSelectedValues(e) }))
-            }
+            onChange={() => {
+              // Controlled by the chips; no-op here keeps React happy.
+            }}
           >
             {modelOptions.map((m) => (
               <option key={m.name} value={m.name}>
                 {m.name}
-                {m.parameter_size ? `  (${m.parameter_size})` : ""}
               </option>
             ))}
           </select>
-        </FieldBlock>
 
-        <FieldBlock label="Suites" htmlFor="suites" field="suites" error={fieldError}>
+          <div className="flex flex-wrap gap-2">
+            {selections.models.length === 0 ? (
+              <span className="text-xs text-fg-subtle italic">
+                No models selected yet.
+              </span>
+            ) : (
+              selections.models.map((name) => {
+                const meta = modelOptions.find((m) => m.name === name);
+                const chip = (
+                  <Chip
+                    variant="accent"
+                    onRemove={() => toggleModel(name)}
+                  >
+                    {name}
+                    {meta?.parameter_size ? (
+                      <span className="opacity-70 ml-1">
+                        · {meta.parameter_size}
+                      </span>
+                    ) : null}
+                  </Chip>
+                );
+                const tooltipContent = meta ? (
+                  <div className="space-y-1">
+                    <p className="font-semibold">{meta.name}</p>
+                    {meta.parameter_size ? (
+                      <p>Parameters: {meta.parameter_size}</p>
+                    ) : null}
+                    {renderExtraModelInfo(meta)}
+                  </div>
+                ) : null;
+                if (!tooltipContent) {
+                  return <span key={name}>{chip}</span>;
+                }
+                return (
+                  <Tooltip key={name} content={tooltipContent}>
+                    <span>{chip}</span>
+                  </Tooltip>
+                );
+              })
+            )}
+          </div>
+
+          {unselectedModels.length > 0 ? (
+            <div className="mt-4 border-t border-border pt-3">
+              <p className="text-xxs uppercase tracking-wider text-fg-muted font-semibold mb-2">
+                Available
+              </p>
+              <div className="flex flex-wrap gap-1.5">
+                {unselectedModels.map((m) => {
+                  const tooltipContent = (
+                    <div className="space-y-1">
+                      <p className="font-semibold">{m.name}</p>
+                      {m.parameter_size ? (
+                        <p>Parameters: {m.parameter_size}</p>
+                      ) : null}
+                      {renderExtraModelInfo(m)}
+                    </div>
+                  );
+                  const btn = (
+                    <button
+                      type="button"
+                      onClick={() => toggleModel(m.name)}
+                      className={cn(
+                        "inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full",
+                        "text-xs border border-dashed border-border-strong text-fg-muted",
+                        "hover:border-accent hover:text-accent hover:bg-accent-soft transition-colors",
+                      )}
+                    >
+                      <Plus className="h-3 w-3" aria-hidden="true" />
+                      {m.name}
+                      {m.parameter_size ? (
+                        <span className="opacity-70">
+                          · {m.parameter_size}
+                        </span>
+                      ) : null}
+                    </button>
+                  );
+                  return (
+                    <Tooltip key={m.name} content={tooltipContent}>
+                      <span>{btn}</span>
+                    </Tooltip>
+                  );
+                })}
+              </div>
+            </div>
+          ) : null}
+
+          {fieldError && fieldError.field === "models" ? (
+            <p
+              role="alert"
+              data-field-error="models"
+              className="mt-3 text-xs text-fail"
+            >
+              {fieldError.message}
+            </p>
+          ) : null}
+        </Card>
+
+        {/* ---------- Suites ---------- */}
+        <Card data-field-block="suites">
+          <CardHeader>
+            <div className="flex items-center gap-2">
+              <Layers className="h-4 w-4 text-accent" aria-hidden="true" />
+              <CardTitle>Suites</CardTitle>
+            </div>
+            <CardHint>
+              {suiteNames.length} suites · {totalCasesAcrossAllSuites(suiteMetaByName)} cases total
+            </CardHint>
+          </CardHeader>
+
           <select
             id="suites"
             multiple
+            className="sr-only"
+            aria-hidden="true"
+            tabIndex={-1}
             data-field="suites"
-            size={Math.min(12, Math.max(4, suiteOptions.length))}
             value={selections.suites}
-            onChange={(e) =>
-              setSelections((prev) => ({ ...prev, suites: toSelectedValues(e) }))
-            }
-          >
-            {suiteOptions.map((name) => {
-              const meta = suiteMetaByName[name];
-              const count = meta?.caseCount;
-              const perSuiteEstimate =
-                count !== null && count !== undefined
-                  ? estimateRunSeconds(
-                      Math.max(1, selections.models.length),
-                      count,
-                      selections.repetitions,
-                      selections.concurrency,
-                    )
-                  : null;
-              const label =
-                count === null || count === undefined
-                  ? `${name}  — loading…`
-                  : `${name}  — ${count} case${count === 1 ? "" : "s"} · ~${formatDuration(perSuiteEstimate ?? 0)}`;
-              return (
-                <option
-                  key={name}
-                  value={name}
-                  title={meta?.description ?? ""}
-                >
-                  {label}
-                </option>
-              );
-            })}
-          </select>
-          <p
-            data-testid="suite-totals"
-            style={{
-              margin: "0.25rem 0 0 0",
-              fontSize: "0.9em",
-              color: "#555",
+            onChange={() => {
+              // Controlled by the buttons below.
             }}
           >
-            {selections.suites.length === 0 ? (
-              <>Select one or more suites to see the total.</>
-            ) : (
-              <>
-                Total: <strong>{selectedCasesTotal}</strong> case
-                {selectedCasesTotal === 1 ? "" : "s"} across{" "}
-                <strong>{selections.suites.length}</strong> suite
-                {selections.suites.length === 1 ? "" : "s"} · rough est.{" "}
-                <strong>~{formatDuration(estimatedSeconds)}</strong>
-                {selections.models.length > 1 ? (
-                  <> for {selections.models.length} models</>
-                ) : null}
-                {selections.repetitions > 1 ? (
-                  <> × {selections.repetitions} rep
-                    {selections.repetitions === 1 ? "" : "s"}</>
-                ) : null}
-                {anySuiteStillLoading ? " (refreshing…)" : ""}
-              </>
-            )}
-          </p>
+            {suiteNames.map((name) => (
+              <option key={name} value={name}>
+                {name}
+              </option>
+            ))}
+          </select>
+
+          {/* Selected suites — chip row at the top. Removed with × */}
           {selections.suites.length > 0 ? (
-            <ul
-              data-testid="suite-descriptions"
-              style={{
-                margin: "0.5rem 0 0 0",
-                paddingLeft: "1.25rem",
-                fontSize: "0.85em",
-                color: "#666",
-              }}
-            >
-              {selections.suites.map((name) => {
-                const desc = suiteMetaByName[name]?.description;
-                if (!desc) return null;
+            <div className="mb-4">
+              <p className="text-xxs uppercase tracking-wider text-fg-muted font-semibold mb-2">
+                Selected
+              </p>
+              <div className="flex flex-wrap gap-2">
+                {selections.suites.map((name) => {
+                  const meta = suiteMetaByName[name];
+                  const count = meta?.caseCount;
+                  const perSuiteEstimate =
+                    count !== null && count !== undefined
+                      ? estimateRunSeconds(
+                          Math.max(1, selectedModelCount),
+                          count,
+                          selections.repetitions,
+                          selections.concurrency,
+                        )
+                      : null;
+                  const label =
+                    count === null || count === undefined
+                      ? `${name} · loading…`
+                      : `${name} · ${count} cases · ~${formatDuration(perSuiteEstimate ?? 0)}`;
+                  const chip = (
+                    <Chip
+                      variant="accent"
+                      onRemove={() => toggleSuite(name)}
+                    >
+                      {label}
+                    </Chip>
+                  );
+                  if (!meta?.description) {
+                    return <span key={name}>{chip}</span>;
+                  }
+                  return (
+                    <Tooltip key={name} content={meta.description}>
+                      <span>{chip}</span>
+                    </Tooltip>
+                  );
+                })}
+              </div>
+            </div>
+          ) : null}
+
+          {/* Unselected suites — grouped by category with inline descriptions */}
+          {unselectedSuites.length > 0 ? (
+            <div className="space-y-4">
+              {CATEGORIES.map((cat) => {
+                const suitesInCat = unselectedSuites
+                  .filter((name) => categoryForSuite(name) === cat)
+                  .sort();
+                if (suitesInCat.length === 0) return null;
                 return (
-                  <li key={name}>
-                    <strong>{name}</strong> — {desc}
-                  </li>
+                  <div key={cat}>
+                    <div className="flex items-baseline justify-between mb-1.5 border-b border-border pb-1">
+                      <p className="text-xs uppercase tracking-wider text-fg-muted font-semibold">
+                        {cat}
+                      </p>
+                      <p className="text-xxs text-fg-subtle">
+                        {suitesInCat.length} suite
+                        {suitesInCat.length === 1 ? "" : "s"}
+                      </p>
+                    </div>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-1.5">
+                      {suitesInCat.map((name) => {
+                        const meta = suiteMetaByName[name];
+                        return (
+                          <SuiteOptionButton
+                            key={name}
+                            name={name}
+                            count={meta?.caseCount ?? null}
+                            description={meta?.description ?? null}
+                            modelCount={Math.max(1, selectedModelCount)}
+                            repetitions={selections.repetitions}
+                            concurrency={selections.concurrency}
+                            onClick={() => toggleSuite(name)}
+                          />
+                        );
+                      })}
+                    </div>
+                  </div>
                 );
               })}
-            </ul>
+            </div>
+          ) : (
+            <p className="text-xs text-fg-subtle italic">
+              All available suites are selected.
+            </p>
+          )}
+
+          {fieldError && fieldError.field === "suites" ? (
+            <p
+              role="alert"
+              data-field-error="suites"
+              className="mt-3 text-xs text-fail"
+            >
+              {fieldError.message}
+            </p>
           ) : null}
-        </FieldBlock>
+        </Card>
 
-        <FieldBlock
-          label="Repetitions"
-          htmlFor="repetitions"
-          field="repetitions"
-          error={fieldError}
-        >
-          <input
-            id="repetitions"
-            type="number"
-            min={1}
-            data-field="repetitions"
-            value={selections.repetitions}
-            onChange={(e) =>
-              setSelections((prev) => ({
-                ...prev,
-                repetitions: Number(e.target.value),
-              }))
-            }
-          />
-        </FieldBlock>
+        {/* ---------- Run parameters ---------- */}
+        <Card>
+          <CardHeader>
+            <div className="flex items-center gap-2">
+              <Sliders className="h-4 w-4 text-accent" aria-hidden="true" />
+              <CardTitle>Run parameters</CardTitle>
+            </div>
+          </CardHeader>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+            <div data-field-block="repetitions">
+              <Label htmlFor="repetitions">Repetitions</Label>
+              <Input
+                id="repetitions"
+                type="number"
+                min={1}
+                data-field="repetitions"
+                value={selections.repetitions}
+                onChange={(e) =>
+                  setSelections((prev) => ({
+                    ...prev,
+                    repetitions: Number(e.target.value),
+                  }))
+                }
+              />
+              {fieldError && fieldError.field === "repetitions" ? (
+                <p
+                  role="alert"
+                  data-field-error="repetitions"
+                  className="mt-1 text-xs text-fail"
+                >
+                  {fieldError.message}
+                </p>
+              ) : null}
+            </div>
+            <div data-field-block="concurrency">
+              <Label htmlFor="concurrency">Concurrency</Label>
+              <Input
+                id="concurrency"
+                type="number"
+                min={1}
+                data-field="concurrency"
+                value={selections.concurrency}
+                onChange={(e) =>
+                  setSelections((prev) => ({
+                    ...prev,
+                    concurrency: Number(e.target.value),
+                  }))
+                }
+              />
+              {fieldError && fieldError.field === "concurrency" ? (
+                <p
+                  role="alert"
+                  data-field-error="concurrency"
+                  className="mt-1 text-xs text-fail"
+                >
+                  {fieldError.message}
+                </p>
+              ) : null}
+            </div>
+            <div data-field-block="tag_filter">
+              <Label htmlFor="tag_filter">Tag filter</Label>
+              <Input
+                id="tag_filter"
+                type="text"
+                placeholder="science, math"
+                data-field="tag_filter"
+                value={selections.tagFilter}
+                onChange={(e) =>
+                  setSelections((prev) => ({
+                    ...prev,
+                    tagFilter: e.target.value,
+                  }))
+                }
+              />
+              {fieldError && fieldError.field === "tag_filter" ? (
+                <p
+                  role="alert"
+                  data-field-error="tag_filter"
+                  className="mt-1 text-xs text-fail"
+                >
+                  {fieldError.message}
+                </p>
+              ) : null}
+            </div>
+          </div>
+        </Card>
 
-        <FieldBlock
-          label="Concurrency"
-          htmlFor="concurrency"
-          field="concurrency"
-          error={fieldError}
-        >
-          <input
-            id="concurrency"
-            type="number"
-            min={1}
-            data-field="concurrency"
-            value={selections.concurrency}
-            onChange={(e) =>
-              setSelections((prev) => ({
-                ...prev,
-                concurrency: Number(e.target.value),
-              }))
-            }
-          />
-        </FieldBlock>
+        {/* ---------- Submit + totals ---------- */}
+        <Card>
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+            <p
+              data-testid="suite-totals"
+              className="text-sm text-fg-muted"
+            >
+              {selections.suites.length === 0 ? (
+                <>Select one or more suites to see the total.</>
+              ) : (
+                <>
+                  Total:{" "}
+                  <strong className="text-fg font-semibold num">
+                    {selectedCasesTotal}
+                  </strong>{" "}
+                  case{selectedCasesTotal === 1 ? "" : "s"} across{" "}
+                  <strong className="text-fg font-semibold num">
+                    {selections.suites.length}
+                  </strong>{" "}
+                  suite{selections.suites.length === 1 ? "" : "s"} · rough est.{" "}
+                  <strong className="text-fg font-semibold num">
+                    ~{formatDuration(estimatedSeconds)}
+                  </strong>
+                  {selectedModelCount > 1 ? (
+                    <> for {selectedModelCount} models</>
+                  ) : null}
+                  {selections.repetitions > 1 ? (
+                    <>
+                      {" "}
+                      × {selections.repetitions} rep
+                      {selections.repetitions === 1 ? "" : "s"}
+                    </>
+                  ) : null}
+                  {anySuiteStillLoading ? " (refreshing…)" : ""}
+                </>
+              )}
+            </p>
+            <Button
+              type="submit"
+              variant="primary"
+              disabled={submitMutation.isPending}
+            >
+              {submitMutation.isPending ? "Submitting…" : "Submit Run"}
+              <ArrowRight className="h-4 w-4" aria-hidden="true" />
+            </Button>
+          </div>
 
-        <FieldBlock
-          label="Tag filter (comma-separated)"
-          htmlFor="tag_filter"
-          field="tag_filter"
-          error={fieldError}
-        >
-          <input
-            id="tag_filter"
-            type="text"
-            data-field="tag_filter"
-            value={selections.tagFilter}
-            onChange={(e) =>
-              setSelections((prev) => ({ ...prev, tagFilter: e.target.value }))
-            }
-          />
-        </FieldBlock>
-
-        <button type="submit" disabled={submitMutation.isPending}>
-          {submitMutation.isPending ? "Submitting…" : "Submit Run"}
-        </button>
-
-        {fieldError && fieldError.field === null ? (
-          <p role="alert" data-testid="form-error">
-            {fieldError.message}
-          </p>
-        ) : null}
+          {fieldError && fieldError.field === null ? (
+            <p
+              role="alert"
+              data-testid="form-error"
+              className="mt-3 text-xs text-fail"
+            >
+              {fieldError.message}
+            </p>
+          ) : null}
+        </Card>
       </form>
     </section>
   );
 }
 
-interface FieldBlockProps {
-  label: string;
-  htmlFor: string;
-  field: string;
-  error: { field: string | null; message: string } | null;
-  children: React.ReactNode;
+function totalCasesAcrossAllSuites(
+  meta: Record<string, SuiteMeta>,
+): number {
+  return Object.values(meta).reduce(
+    (sum, m) => sum + (m.caseCount ?? 0),
+    0,
+  );
+}
+
+/** Compact human-readable byte count (SI, base 1024). */
+function formatBytes(bytes: number): string {
+  if (!Number.isFinite(bytes) || bytes <= 0) return "0 B";
+  const units = ["B", "KB", "MB", "GB", "TB"];
+  let value = bytes;
+  let i = 0;
+  while (value >= 1024 && i < units.length - 1) {
+    value /= 1024;
+    i += 1;
+  }
+  return `${value.toFixed(value < 10 ? 1 : 0)} ${units[i]}`;
 }
 
 /**
- * Wrap each field so the validation-error message can be rendered as a
- * sibling of the input. Property 36 asserts that the message appears
- * next to the input with matching ``data-field`` — this block is the
- * shape the property test walks.
+ * Render the optional extended-metadata lines (quantisation level and
+ * size on disk) for a model.
+ *
+ * The typed :class:`ModelInfo` from OpenAPI only declares ``name``,
+ * ``digest``, and ``parameter_size`` because those are the fields the
+ * Run_Report persists. The live ``GET /api/models`` endpoint returns
+ * the richer shape straight from ``/api/tags`` (Ollama's inventory),
+ * which includes ``size`` bytes and ``quantization_level``. We probe
+ * for them at render time via :class:`Record<string, unknown>` casts
+ * so the component tolerates both shapes without widening the shared
+ * TypeScript types.
  */
-function FieldBlock({
-  label,
-  htmlFor,
-  field,
-  error,
-  children,
-}: FieldBlockProps): JSX.Element {
-  const showError = error !== null && error.field === field;
+function renderExtraModelInfo(model: ModelInfo): JSX.Element | null {
+  const record = model as unknown as Record<string, unknown>;
+  const quant = typeof record.quantization_level === "string"
+    ? record.quantization_level
+    : null;
+  const size = typeof record.size === "number" ? record.size : null;
+  if (!quant && !size) return null;
   return (
-    <div data-field-block={field}>
-      <label htmlFor={htmlFor}>{label}</label>
-      {children}
-      {showError ? (
-        <span data-field-error={field} role="alert">
-          {error.message}
-        </span>
-      ) : null}
-    </div>
+    <>
+      {quant ? <p>Quantisation: {quant}</p> : null}
+      {size ? <p>Size on disk: {formatBytes(size)}</p> : null}
+    </>
+  );
+}
+
+/**
+ * Card-like button representing an unselected suite in the picker.
+ *
+ * Shows a compact summary by default; hovering reveals the full
+ * backend description in a Radix tooltip. This keeps the picker
+ * scannable while still making the methodology caveats visible when
+ * users want them.
+ *
+ * * Primary line: suite name · case count · rough ETA
+ * * Secondary line (inline): short summary from ``summaryForSuite``
+ * * Tooltip: the verbose backend description (unchanged)
+ */
+interface SuiteOptionButtonProps {
+  name: string;
+  count: number | null;
+  description: string | null;
+  modelCount: number;
+  repetitions: number;
+  concurrency: number;
+  onClick: () => void;
+}
+
+function SuiteOptionButton({
+  name,
+  count,
+  description,
+  modelCount,
+  repetitions,
+  concurrency,
+  onClick,
+}: SuiteOptionButtonProps): JSX.Element {
+  const estimate =
+    count != null
+      ? estimateRunSeconds(modelCount, count, repetitions, concurrency)
+      : null;
+  const summary = summaryForSuite(name, description);
+
+  const body = (
+    <button
+      type="button"
+      onClick={onClick}
+      className={cn(
+        "group text-left w-full rounded-md border border-dashed border-border-strong",
+        "bg-bg-alt/50 px-3 py-2 transition-colors",
+        "hover:border-accent hover:bg-accent-soft/60 hover:border-solid",
+        "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/50",
+      )}
+    >
+      <div className="flex items-center gap-1.5">
+        <Plus
+          className="h-3 w-3 text-fg-subtle group-hover:text-accent"
+          aria-hidden="true"
+        />
+        <span className="text-sm font-medium text-fg">{name}</span>
+        {count != null ? (
+          <span className="text-xs text-fg-muted ml-auto num">
+            {count} · ~{formatDuration(estimate ?? 0)}
+          </span>
+        ) : (
+          <span className="text-xs text-fg-subtle ml-auto">loading…</span>
+        )}
+      </div>
+      <p className="text-xs text-fg-muted mt-1 truncate leading-snug">
+        {summary}
+      </p>
+    </button>
+  );
+
+  if (!description || description === summary) {
+    return body;
+  }
+  return (
+    <Tooltip content={description} side="top">
+      {body}
+    </Tooltip>
   );
 }
