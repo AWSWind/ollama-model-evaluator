@@ -333,7 +333,7 @@ Conventions:
     - _Requirements: 13.3_
 
   - [x] 17.4 Generate `shared/openapi.yaml` and `shared/*.schema.json` from the Pydantic models
-    - Add a `scripts/regen_schemas.py` that writes the files; wire it into a CI-friendly `brazil-build`-or-equivalent verification that asserts the committed copies match the generated ones.
+    - Add a `scripts/regen_schemas.py` that writes the files; wire it into a CI verification that asserts the committed copies match the generated ones.
     - _Requirements: 13.7_
 
   - [x] 17.5 Write property test for 404 error envelope

@@ -29,6 +29,19 @@ const ThemeContext = createContext<ThemeContextValue | null>(null);
 
 function readStoredMode(): ThemeMode {
   if (typeof window === "undefined") return "auto";
+  // Allow ?theme=dark|light|auto in the URL to override (and persist) the
+  // stored choice. Handy for sharing dark-mode links and for headless
+  // screenshotting tools.
+  try {
+    const qs = new URLSearchParams(window.location.search);
+    const override = qs.get("theme");
+    if (override === "dark" || override === "light" || override === "auto") {
+      window.localStorage.setItem(STORAGE_KEY, override);
+      return override;
+    }
+  } catch {
+    // ignore storage or URL parsing failures
+  }
   const raw = window.localStorage.getItem(STORAGE_KEY);
   if (raw === "light" || raw === "dark" || raw === "auto") return raw;
   return "auto";

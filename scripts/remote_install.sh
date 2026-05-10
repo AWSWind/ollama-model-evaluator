@@ -1,10 +1,9 @@
 #!/usr/bin/env bash
-# Remote install + build for the Ollama Model Evaluator on 192.168.1.224.
-# Executed by kiro after rsyncing the project to
-# /home/azurewind/workspaces/AI-Model-Evaluation.
+# Remote install + build for the Ollama Model Evaluator on a lab host.
+# Rsync the project up, then run this script over SSH.
 set -euo pipefail
 
-PROJECT_ROOT="/home/azurewind/workspaces/AI-Model-Evaluation"
+PROJECT_ROOT="${PROJECT_ROOT:-$HOME/workspaces/AI-Model-Evaluation}"
 cd "$PROJECT_ROOT"
 
 echo "=== [1/4] Python venv ==="

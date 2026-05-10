@@ -16,6 +16,11 @@
     <script>
       (function () {
         try {
+          var qs = new URLSearchParams(window.location.search);
+          var override = qs.get("theme");
+          if (override === "dark" || override === "light") {
+            localStorage.setItem("ollama-eval-theme", override);
+          }
           var stored = localStorage.getItem("ollama-eval-theme");
           var dark;
           if (stored === "dark") dark = true;

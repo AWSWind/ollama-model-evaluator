@@ -36,6 +36,9 @@ history.db-wal
 .env.local
 .env
 
+# Internal dev journal (identifying paths / lab host names)
+docs/DEV_PROGRESS.md
+
 # Editor / OS
 .DS_Store
 Thumbs.db
