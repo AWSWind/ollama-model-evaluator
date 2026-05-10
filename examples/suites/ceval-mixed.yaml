@@ -1,0 +1,2709 @@
+defaults:
+  max_tokens: 128
+  stop_sequences: []
+  temperature: 0.0
+description: 'C-Eval: Chinese academic MCQ across six subjects (computer network,
+  HS math, Chinese literature, law, modern history, economics). Evaluates Chinese-language
+  knowledge.'
+name: ceval-mixed
+test_cases:
+  - expected_output: D
+    id: ceval/computer_network/0
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bD\b
+    prompt: "问题:局域网的协议结构包括____。\nⅠ．网络层Ⅱ．数据链路层\nⅢ．物理层Ⅳ．介质访问控制层\nA) Ⅰ、Ⅱ、Ⅲ\nB) Ⅰ、Ⅱ、Ⅳ\n\
+      C) Ⅰ、Ⅲ、Ⅳ\nD) Ⅱ、Ⅲ、Ⅳ\n请只用一个字母(A、B、C 或 D)回答。"
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - ceval
+      - computer_network
+      - zh
+    temperature: null
+  - expected_output: A
+    id: ceval/computer_network/1
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "问题:现在大量的计算机是通过诸如以太网这样的局域网连入广域网的，而局域网与广域网的互联是通过____实现的。\nA) 路由器\nB) 资源子网\n\
+      C) 桥接器\nD) 中继器\n请只用一个字母(A、B、C 或 D)回答。"
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - ceval
+      - computer_network
+      - zh
+    temperature: null
+  - expected_output: D
+    id: ceval/computer_network/2
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bD\b
+    prompt: "问题:已知当前TCP连接的RTT值为35ms，连续收到3个确认报文段，它们比相应的数据报文段的发送时间滞后了27ms、30ms与21ms。假设α=0.2，则第三个确认报文段到达后新的RTT估计值为____。\n\
+      A) 33.4ms\nB) 32.7ms\nC) 21ms\nD) 30.4ms\n请只用一个字母(A、B、C 或 D)回答。"
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - ceval
+      - computer_network
+      - zh
+    temperature: null
+  - expected_output: D
+    id: ceval/computer_network/3
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bD\b
+    prompt: "问题:关于传输层的面向连接服务的特性是____。\nA) 既不保证可靠，也不保证按序交付\nB) 不保证可靠，但保证按序交付\nC) 保证可靠，但不保证按序交付\n\
+      D) 既保证可靠，也保证按序交付\n请只用一个字母(A、B、C 或 D)回答。"
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - ceval
+      - computer_network
+      - zh
+    temperature: null
+  - expected_output: D
+    id: ceval/computer_network/4
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bD\b
+    prompt: "问题:对于UDP协议，如果想实现可靠传输，应在哪一层实现____\nA) 数据链路层\nB) 网络层\nC) 传输层\nD) 应用层\n\
+      请只用一个字母(A、B、C 或 D)回答。"
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - ceval
+      - computer_network
+      - zh
+    temperature: null
+  - expected_output: C
+    id: ceval/computer_network/5
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bC\b
+    prompt: "问题:HTTP1.0中，传输一个文本和三个图片需要建立____个TCP连接\nA) 2\nB) 3\nC) 4\nD) 5\n请只用一个字母(A、B、C
+      或 D)回答。"
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - ceval
+      - computer_network
+      - zh
+    temperature: null
+  - expected_output: B
+    id: ceval/computer_network/6
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "问题:主机甲与主机乙之间已建立一个TCP连接，主机甲向主机乙发送了3个连续的TCP段，分别包含300字节、400字节和500字节的有效载荷，第3个段的序号为9000若主机乙仅正确接收到第1和第3个段，则主机乙发送给主机甲的确认序号是____。\n\
+      A) 300\nB) 500\nC) 1200\nD) 1400\n请只用一个字母(A、B、C 或 D)回答。"
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - ceval
+      - computer_network
+      - zh
+    temperature: null
+  - expected_output: C
+    id: ceval/computer_network/7
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bC\b
+    prompt: "问题:数据链路层采用了后退N帧的(GBN)协议，如果发送窗口的大小是32，那么至少需要____位的序列号才能保证协议不出错。\nA) 4\n\
+      B) 5\nC) 6\nD) 7\n请只用一个字母(A、B、C 或 D)回答。"
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - ceval
+      - computer_network
+      - zh
+    temperature: null
+  - expected_output: B
+    id: ceval/computer_network/8
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "问题:下列关于交换技术叙述错误的是____\nA) 电路交换在发送与接收方的物理链路上预留带宽\nB) 数据报交换可能出现分组乱序\nC)
+      数据报交换可能出现分组乱序\nD) 报文交换要求有较大缓存\n请只用一个字母(A、B、C 或 D)回答。"
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - ceval
+      - computer_network
+      - zh
+    temperature: null
+  - expected_output: A
+    id: ceval/computer_network/9
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "问题:UDP报头部长度为____。\nA) 8B\nB) 20B\nC) 60B\nD) 不定长\n请只用一个字母(A、B、C 或 D)回答。"
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - ceval
+      - computer_network
+      - zh
+    temperature: null
+  - expected_output: B
+    id: ceval/computer_network/10
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "问题:____采用链路状态算法\nA) RIP\nB) OSPF\nC) BGP-4\nD) EGP\n请只用一个字母(A、B、C 或 D)回答。"
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - ceval
+      - computer_network
+      - zh
+    temperature: null
+  - expected_output: C
+    id: ceval/computer_network/11
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bC\b
+    prompt: "问题:在802.3标准中，发送帧之前需要____\nA) 等待冲突\nB) 等待令牌\nC) 监听介质\nD) 接受一个帧\n请只用一个字母(A、B、C
+      或 D)回答。"
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - ceval
+      - computer_network
+      - zh
+    temperature: null
+  - expected_output: C
+    id: ceval/computer_network/12
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bC\b
+    prompt: "问题:一个TCP连接的数据传输阶段，如果发送端的发送窗口值由2000变为3000，意味着发送端可以____。\nA) 在收到一个确认之前可以发送3000个TCP报文段\n\
+      B) 在收到一个确认之前可以发送1000字节\nC) 在收到一个确认之前可以发送3000字节\nD) 在收到一个确认之前可以发送2000个TCP报文段\n\
+      请只用一个字母(A、B、C 或 D)回答。"
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - ceval
+      - computer_network
+      - zh
+    temperature: null
+  - expected_output: C
+    id: ceval/computer_network/13
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bC\b
+    prompt: "问题:TCP端对端通信作用于____\nA) 主机之间\nB) 网络之间\nC) 进程之间\nD) 主机到网络\n请只用一个字母(A、B、C
+      或 D)回答。"
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - ceval
+      - computer_network
+      - zh
+    temperature: null
+  - expected_output: C
+    id: ceval/computer_network/14
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bC\b
+    prompt: "问题:若采用后退N帧ARQ协议进行流量控制，帧编号字段为7位，则发送窗口的最大长度为____。\nA) 7\nB) 8\nC) 127\n\
+      D) 128\n请只用一个字母(A、B、C 或 D)回答。"
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - ceval
+      - computer_network
+      - zh
+    temperature: null
+  - expected_output: D
+    id: ceval/computer_network/15
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bD\b
+    prompt: "问题:TCP“三次握手”过程中，第二次“握手”时，发送的报文段中____标志位被置为1。\nA) SYN\nB) ACK\nC) ACK和RST\n\
+      D) SYN和ACK\n请只用一个字母(A、B、C 或 D)回答。"
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - ceval
+      - computer_network
+      - zh
+    temperature: null
+  - expected_output: C
+    id: ceval/computer_network/16
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bC\b
+    prompt: "问题:一个TCP连接的数据传输阶段，如果发送端的发送窗口值由2000变为3000，意味着发送端可以____。\nA) 在收到一个确认之前可以发送3000个TCP报文段\n\
+      B) 在收到一个确认之前可以发送1000B\nC) 在收到一个确认之前可以发送3000B\nD) 在收到一个确认之前可以发送2000个TCP报文段\n\
+      请只用一个字母(A、B、C 或 D)回答。"
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - ceval
+      - computer_network
+      - zh
+    temperature: null
+  - expected_output: C
+    id: ceval/computer_network/17
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bC\b
+    prompt: "问题:使用位填充方法，以01111110为位首flag，数据为011011111111111111110010，求问传送时要添加几个0____\n\
+      A) 1\nB) 2\nC) 3\nD) 4\n请只用一个字母(A、B、C 或 D)回答。"
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - ceval
+      - computer_network
+      - zh
+    temperature: null
+  - expected_output: C
+    id: ceval/computer_network/18
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bC\b
+    prompt: "问题:对于传输层来说错误的是____\nA) TCP是全双工协议\nB) TCP是字节流协议\nC) TCP和UDP协议不能使用同一个端口\n\
+      D) TSAD是IP和端口的组合\n请只用一个字母(A、B、C 或 D)回答。"
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - ceval
+      - computer_network
+      - zh
+    temperature: null
+  - expected_output: D
+    id: ceval/high_school_mathematics/0
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bD\b
+    prompt: "问题:已知$平面\\alpha // 平面\\beta$，$m\\subset\\alpha$，$n\\subset\\beta$，则下列结论一定正确是____\n\
+      A) m,n是平行直线\nB) m,n是异面直线\nC) m,n是共面直线\nD) m,n是不相交直线\n请只用一个字母(A、B、C 或 D)回答。"
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - ceval
+      - high_school_mathematics
+      - zh
+    temperature: null
+  - expected_output: A
+    id: ceval/high_school_mathematics/1
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "问题:若平面$\\alpha$的法向量为$\\vec{n}_{1}=(3,2,1)$，平面$\\beta$的法向量为$\\vec{n}_{2}=(2,0,-1)$则平面$\\\
+      alpha$与平面$\\beta$夹角的余弦值为____\nA) $\\frac{\\sqrt{70}}{14}$\nB) $\\frac{\\sqrt{70}}{10}$\n\
+      C) $-\\frac{\\sqrt{70}}{14}$\nD) $-\\frac{\\sqrt{70}}{10}$\n请只用一个字母(A、B、C 或
+      D)回答。"
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - ceval
+      - high_school_mathematics
+      - zh
+    temperature: null
+  - expected_output: D
+    id: ceval/high_school_mathematics/2
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bD\b
+    prompt: "问题:要得到函数$f(x)=\\sin(2x+{\\frac{\\pi}{3}})$的导函数$f^{\\prime}(x)$的图象，只需将$f(x)$的图像____\n\
+      A) 向左平移$\\frac{\\pi}{2}$个单位，再把各点的纵坐标伸长到原来的2倍（横坐标不变）\nB) 向左平移$\\frac{\\pi}{2}$个单位，再把各点的纵坐标缩短到原来的$\\\
+      frac{1}{2}$倍（横坐标不变）\nC) 向右平移$\\frac{\\pi}{4}$个单位，再把各点的纵坐标伸长到原来的$\\frac{1}{2}$倍（横坐标不变）\n\
+      D) 向右平移$\\frac{\\pi}{4}$个单位，再把各点的纵坐标伸长到原来的2倍（横坐标不变）\n请只用一个字母(A、B、C 或 D)回答。"
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - ceval
+      - high_school_mathematics
+      - zh
+    temperature: null
+  - expected_output: C
+    id: ceval/high_school_mathematics/3
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bC\b
+    prompt: "问题:17世纪，在研究天文学的过程中，为了简化大数运算，苏格兰数学家纳皮尔发明了对数，对数的思想方法即把乘方和乘法运算分别转化为乘法和加法，数学家拉普拉斯称赞为“对数的发明在实效上等于把天文学家的寿命延长了许多倍”.已知$\\\
+      lg2\\approx0.3010$，$\\lg3\\approx0.4771$，设$N=4^5\\times27$，则N所在的区间为____\nA)
+      $\\left(10^{15},10^{16}\\right)$\nB) $\\left(10^{16},10^{17}\\right)$\nC) $\\\
+      left(10^{17},10^{18}\\right)$\nD) $\\left(10^{18},10^{19}\\right)$\n请只用一个字母(A、B、C
+      或 D)回答。"
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - ceval
+      - high_school_mathematics
+      - zh
+    temperature: null
+  - expected_output: B
+    id: ceval/high_school_mathematics/4
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "问题:在边长为3，4，5的三角形内部任取一点P,则点P到三个顶点距离都大于1的概率为____\nA) $\\frac{6-\\pi}{6}$\n\
+      B) $\\frac{12-\\pi}{12}$\nC) $\\frac{\\pi}{6}$\nD) $\\frac{\\pi}{12}$\n请只用一个字母(A、B、C
+      或 D)回答。"
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - ceval
+      - high_school_mathematics
+      - zh
+    temperature: null
+  - expected_output: D
+    id: ceval/high_school_mathematics/5
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bD\b
+    prompt: "问题:已知$\\sin(\\frac{\\pi}{4}-x)=\\frac{3}{5}$，则$\\sin2x$的值为____\nA) $\\\
+      frac{19}{25}$\nB) $\\frac{16}{25}$\nC) $\\frac{14}{25}$\nD) $\\frac{7}{25}$\n\
+      请只用一个字母(A、B、C 或 D)回答。"
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - ceval
+      - high_school_mathematics
+      - zh
+    temperature: null
+  - expected_output: A
+    id: ceval/high_school_mathematics/6
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "问题:已知条件$p:\\left|x+1\\right|>2$，条件$q:x>a$,且$\\neg p$是$\\neg q$的充分不必要条件，则实数a的取值范围是____\n\
+      A) $a\\geq1$\nB) $a\\leq1$\nC) $a\\geq-1$\nD) $a\\leq -3$\n请只用一个字母(A、B、C 或 D)回答。"
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - ceval
+      - high_school_mathematics
+      - zh
+    temperature: null
+  - expected_output: D
+    id: ceval/high_school_mathematics/7
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bD\b
+    prompt: "问题:椭圆$x^{2}+m y^{2}=1$的焦点在x轴上，长轴长是短轴长的两倍，则m的值为____\nA) $\\dfrac{1}{4}$\n\
+      B) $\\dfrac{1}{2}$\nC) 2\nD) 4\n请只用一个字母(A、B、C 或 D)回答。"
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - ceval
+      - high_school_mathematics
+      - zh
+    temperature: null
+  - expected_output: D
+    id: ceval/high_school_mathematics/8
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bD\b
+    prompt: "问题:为做好社区新冠疫情防控工作，需将五名志愿者分配到三个社区去开展工作，每名志愿者只分配到一个社区，每个社区至少分配一名志愿者，志愿者甲和乙必须去同一个社区，则不同的分配方法共有____\n\
+      A) 12种\nB) 18种\nC) 24种\nD) 36种\n请只用一个字母(A、B、C 或 D)回答。"
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - ceval
+      - high_school_mathematics
+      - zh
+    temperature: null
+  - expected_output: A
+    id: ceval/high_school_mathematics/9
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "问题:某一电子集成块有三个元件a，b，c并联构成，三个元件是否有故障相互独立．已知至少1个元件正常工作，该集成块就能正常运行．若每个元件能正常工作的概率均为$\\\
+      frac{4}{5}$则在该集成块能够正常工作的情况下，有且仅有一个元件出现故障的概率为____\nA) $\\frac{12}{31}$\nB) $\\\
+      frac{48}{125}$\nC) $\\frac{16}{25}$\nD) $\\frac{16}{125}$\n请只用一个字母(A、B、C 或 D)回答。"
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - ceval
+      - high_school_mathematics
+      - zh
+    temperature: null
+  - expected_output: B
+    id: ceval/high_school_mathematics/10
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "问题:抛物线$x^2=2y$的焦点坐标是____\nA) $(\\frac{1}{4},0)$\nB) $(0,\\frac{1}{2})$\n\
+      C) $(0,\\frac{1}{4})$\nD) $(\\frac{1}{2},0)$\n请只用一个字母(A、B、C 或 D)回答。"
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - ceval
+      - high_school_mathematics
+      - zh
+    temperature: null
+  - expected_output: B
+    id: ceval/high_school_mathematics/11
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "问题:数学对于一个国家的发展至关重要，发达国家常常把保持数学领先地位作为他们的战略需求．现某大学为提高数学系学生的数学素养，特开设了“古今数学思想”“世界数学通史”“几何原本”“什么是数学”四门选修课程，要求数学系每位同学每学年至多选3门，大一到大三3学年必须将四门选修课程选完，则每位同学的不同选修方式有____\n\
+      A) 60种\nB) 78种\nC) 84种\nD) 144种\n请只用一个字母(A、B、C 或 D)回答。"
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - ceval
+      - high_school_mathematics
+      - zh
+    temperature: null
+  - expected_output: D
+    id: ceval/high_school_mathematics/12
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bD\b
+    prompt: "问题:$\\forall x\\neq0$,$\\left(x+\\frac{1}{x}\\right)^{10}$可写成关于$\\left(x^2+\\\
+      frac{1}{x^2}\\right)$的多项式，则该多项式各项系数之和为____\nA) 240\nB) 241\nC) 242\nD) 243\n\
+      请只用一个字母(A、B、C 或 D)回答。"
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - ceval
+      - high_school_mathematics
+      - zh
+    temperature: null
+  - expected_output: D
+    id: ceval/high_school_mathematics/13
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bD\b
+    prompt: "问题:若抛物线$y^2=2px$的焦点与椭圆$\\frac{x^2}{6}+\\frac{y^2}{2}=1$的右焦点重合，则p的值为____\n\
+      A) -2\nB) 2\nC) -4\nD) 4\n请只用一个字母(A、B、C 或 D)回答。"
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - ceval
+      - high_school_mathematics
+      - zh
+    temperature: null
+  - expected_output: C
+    id: ceval/high_school_mathematics/14
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bC\b
+    prompt: "问题:已知函数$f(x)$是定义在$\\mathbb{R}$上的偶函数，且在$\\left(0,+\\infty\\right)$上单调递增，则____\n\
+      A) $f(-3)<f(-\\log_{3}13)<f(2^{0.6})$\nB) $f(-3)<f(2^{0.6})<f(-\\log_{3}13)$\n\
+      C) $f(2^{0.6})< f(-\\log_{3}13) <f(-3)$\nD) $f(2^{0.6})<f(-3)< f(-\\log_{3}13)
+      $\n请只用一个字母(A、B、C 或 D)回答。"
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - ceval
+      - high_school_mathematics
+      - zh
+    temperature: null
+  - expected_output: A
+    id: ceval/high_school_mathematics/15
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "问题:已知函数$f(x)=a \\ln x-2x$,若不等式$f(x+1)>a x-2e^{x}$在$x \\in \\left(0 +\\\
+      infty\\right)$上恒成立，则实数a的取值范围是____\nA) $a{\\leq}2$\nB) $a\\geq2$\nC) $a{\\leq}0$\n\
+      D) $0\\leq a\\leq2$\n请只用一个字母(A、B、C 或 D)回答。"
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - ceval
+      - high_school_mathematics
+      - zh
+    temperature: null
+  - expected_output: C
+    id: ceval/high_school_mathematics/16
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bC\b
+    prompt: "问题:已知全集为实数集$\\mathbb{R}$，集合$A=\\{x|x^{2}-2x<0\\},B=\\left\\{x|l og_{2}x>0\\
+      right\\}$，则$\\left(\\complement_R A \\right) \\cap B$的值为____\nA) $\\left(-\\\
+      infty,0\\right]\\cup(1,+\\infty)$\nB) $\\left(0,1\\right]$\nC) $\\left[2,+\\\
+      infty\\right)$\nD) $\\emptyset$\n请只用一个字母(A、B、C 或 D)回答。"
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - ceval
+      - high_school_mathematics
+      - zh
+    temperature: null
+  - expected_output: C
+    id: ceval/high_school_mathematics/17
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bC\b
+    prompt: "问题:过双曲线${\\frac{x^{2}}{a^{2}}}-{\\frac{y^{2}}{b^{2}}}=1(a>0,b>0)$的一个焦点F引它的渐近线的垂线，垂足为M，延长FM交y轴于E，若|FM|=2|ME|，则该双曲线的离心率为____\n\
+      A) 3\nB) 2\nC) $\\sqrt3$\nD) $\\sqrt2$\n请只用一个字母(A、B、C 或 D)回答。"
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - ceval
+      - high_school_mathematics
+      - zh
+    temperature: null
+  - expected_output: A
+    id: ceval/chinese_language_and_literature/0
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "问题:《三国志·蜀书·诸葛亮传》：“每自比于管仲、乐毅，时人莫之许也。”句中“于”的用法是____。\nA) 表对象\nB) 表比较\n\
+      C) 表原因\nD) 表施事\n请只用一个字母(A、B、C 或 D)回答。"
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - ceval
+      - chinese_language_and_literature
+      - zh
+    temperature: null
+  - expected_output: C
+    id: ceval/chinese_language_and_literature/1
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bC\b
+    prompt: "问题:剧作家____被誉为“中国十六世纪的莎士比亚”。\nA) 关汉卿\nB) 白朴\nC) 汤显祖\nD) 马致远\n请只用一个字母(A、B、C
+      或 D)回答。"
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - ceval
+      - chinese_language_and_literature
+      - zh
+    temperature: null
+  - expected_output: D
+    id: ceval/chinese_language_and_literature/2
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bD\b
+    prompt: "问题:下列语言中，属于印欧语系拉丁语族的语言是____。\nA) 英语\nB) 俄语\nC) 德语\nD) 法语\n请只用一个字母(A、B、C
+      或 D)回答。"
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - ceval
+      - chinese_language_and_literature
+      - zh
+    temperature: null
+  - expected_output: C
+    id: ceval/chinese_language_and_literature/3
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bC\b
+    prompt: "问题:《杜十娘怒沉百宝箱》出自____。\nA) 《传奇》\nB) 《聊斋志异》\nC) “三言”\nD) “二拍”\n请只用一个字母(A、B、C
+      或 D)回答。"
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - ceval
+      - chinese_language_and_literature
+      - zh
+    temperature: null
+  - expected_output: C
+    id: ceval/chinese_language_and_literature/4
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bC\b
+    prompt: "问题:“塑”这个字的音节的声母是____。\nA) sh\nB) x\nC) s\nD) 零声母\n请只用一个字母(A、B、C 或 D)回答。"
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - ceval
+      - chinese_language_and_literature
+      - zh
+    temperature: null
+  - expected_output: A
+    id: ceval/chinese_language_and_literature/5
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "问题:“员、可、乡、分、展、从”中包含的自由语素是____。\nA) 乡、分、从\nB) 可、分、展\nC) 员、乡、分\nD) 员、可、乡\n\
+      请只用一个字母(A、B、C 或 D)回答。"
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - ceval
+      - chinese_language_and_literature
+      - zh
+    temperature: null
+  - expected_output: B
+    id: ceval/chinese_language_and_literature/6
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "问题:《本草纲目》的作者是____李时珍。\nA) 南宋人\nB) 明朝人\nC) 元朝人\nD) 清朝人\n请只用一个字母(A、B、C
+      或 D)回答。"
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - ceval
+      - chinese_language_and_literature
+      - zh
+    temperature: null
+  - expected_output: D
+    id: ceval/chinese_language_and_literature/7
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bD\b
+    prompt: "问题:下列句中，不属于宾语前置的是____。\nA) 姜氏何厌之有?\nB) 斥鷃笑之曰：“彼且奚适也?”\nC) 居则曰：“不吾知也!”\n\
+      D) 胡不见我于王?\n请只用一个字母(A、B、C 或 D)回答。"
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - ceval
+      - chinese_language_and_literature
+      - zh
+    temperature: null
+  - expected_output: C
+    id: ceval/chinese_language_and_literature/8
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bC\b
+    prompt: "问题:d、t、n、l四个辅声的发音部位是____。\nA) 舌尖前\nB) 舌面\nC) 舌尖中\nD) 舌尖后\n请只用一个字母(A、B、C
+      或 D)回答。"
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - ceval
+      - chinese_language_and_literature
+      - zh
+    temperature: null
+  - expected_output: B
+    id: ceval/chinese_language_and_literature/9
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "问题:《论语·述而》：“若圣与仁，则吾岂敢?抑为之不厌，诲人不倦，则可谓云尔已矣。”句中“抑”的用法是____。\nA) 表示假设\nB)
+      表示转折\nC) 表示原因\nD) 表示目的\n请只用一个字母(A、B、C 或 D)回答。"
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - ceval
+      - chinese_language_and_literature
+      - zh
+    temperature: null
+  - expected_output: D
+    id: ceval/chinese_language_and_literature/10
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bD\b
+    prompt: "问题:____是中国古代蒙学教育所采用的一种识字课本，由周兴嗣编撰而成。\nA) 《三字经》\nB) 《弟子规》\nC) 《百家姓》\n\
+      D) 《千字文》\n请只用一个字母(A、B、C 或 D)回答。"
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - ceval
+      - chinese_language_and_literature
+      - zh
+    temperature: null
+  - expected_output: B
+    id: ceval/chinese_language_and_literature/11
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "问题:音位是____。\nA) 最小的语音语义结合体\nB) 一个语音系统中能区别意义的最小语音单位\nC) 语言中最小的能区别意义的语音特征单位\n\
+      D) 语言中有区别性特征的最小语音单位\n请只用一个字母(A、B、C 或 D)回答。"
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - ceval
+      - chinese_language_and_literature
+      - zh
+    temperature: null
+  - expected_output: D
+    id: ceval/chinese_language_and_literature/12
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bD\b
+    prompt: "问题:关于词的本义和基本义的关系，下列表述正确的是____。\nA) 完全不一致\nB) 完全一致\nC) 本义比基本义更常用\nD) 基本义比本义更常用\n\
+      请只用一个字母(A、B、C 或 D)回答。"
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - ceval
+      - chinese_language_and_literature
+      - zh
+    temperature: null
+  - expected_output: A
+    id: ceval/chinese_language_and_literature/13
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "问题:目前最通用的楷书印刷体是____。\nA) 宋体\nB) 仿宋体\nC) 楷体\nD) 黑体\n请只用一个字母(A、B、C 或 D)回答。"
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - ceval
+      - chinese_language_and_literature
+      - zh
+    temperature: null
+  - expected_output: B
+    id: ceval/chinese_language_and_literature/14
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "问题:卢舍那大佛是石窟雕塑中____的代表作。\nA) 云冈石窟\nB) 龙门石窟\nC) 莫高窟\nD) 麦积山石窟\n请只用一个字母(A、B、C
+      或 D)回答。"
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - ceval
+      - chinese_language_and_literature
+      - zh
+    temperature: null
+  - expected_output: A
+    id: ceval/chinese_language_and_literature/15
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "问题:“队”与“坠”是____。\nA) 古今字\nB) 异体字\nC) 通假字\nD) 繁简字\n请只用一个字母(A、B、C 或 D)回答。"
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - ceval
+      - chinese_language_and_literature
+      - zh
+    temperature: null
+  - expected_output: D
+    id: ceval/chinese_language_and_literature/16
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bD\b
+    prompt: "问题:《四世同堂》中的冠晓荷是____。\nA) 老派市民的形象\nB) 革命者的形象\nC) 正直的知识分子形象\nD) 民族败类的形象\n\
+      请只用一个字母(A、B、C 或 D)回答。"
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - ceval
+      - chinese_language_and_literature
+      - zh
+    temperature: null
+  - expected_output: C
+    id: ceval/chinese_language_and_literature/17
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bC\b
+    prompt: "问题:“我、你、他”是____。\nA) 指示代词\nB) 疑问代词\nC) 人称代词\nD) 名词\n请只用一个字母(A、B、C 或 D)回答。"
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - ceval
+      - chinese_language_and_literature
+      - zh
+    temperature: null
+  - expected_output: D
+    id: ceval/chinese_language_and_literature/18
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bD\b
+    prompt: "问题:下列有歧义的一项是____。\nA) 进口汽车\nB) 路边种着树\nC) 洗得干净\nD) 咬死了猎人的鸡\n请只用一个字母(A、B、C
+      或 D)回答。"
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - ceval
+      - chinese_language_and_literature
+      - zh
+    temperature: null
+  - expected_output: A
+    id: ceval/chinese_language_and_literature/19
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "问题:[p][p‘][b][m]四个音素的区别主要是____。\nA) 清浊\nB) 发音方法\nC) 发音部位\nD) 送气与否\n请只用一个字母(A、B、C
+      或 D)回答。"
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - ceval
+      - chinese_language_and_literature
+      - zh
+    temperature: null
+  - expected_output: D
+    id: ceval/chinese_language_and_literature/20
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bD\b
+    prompt: "问题:英语名词“lab”(实验室)原来的形式是“laboratory”，这在词的形成方式上属于____。\nA) 直接成词\nB) 变形成词\n\
+      C) 变性成词\nD) 逆序成词\n请只用一个字母(A、B、C 或 D)回答。"
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - ceval
+      - chinese_language_and_literature
+      - zh
+    temperature: null
+  - expected_output: C
+    id: ceval/chinese_language_and_literature/21
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bC\b
+    prompt: "问题:《史记·高祖本纪》：“今则来，沛公恐不得有此。”句中“则”的用法是____。\nA) 表示承接\nB) 表示转折\nC) 表示假设\n\
+      D) 表示因果\n请只用一个字母(A、B、C 或 D)回答。"
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - ceval
+      - chinese_language_and_literature
+      - zh
+    temperature: null
+  - expected_output: B
+    id: ceval/chinese_language_and_literature/22
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "问题:“现在轮到你说了”是____。\nA) 连谓句\nB) 兼语句\nC) 被动句\nD) 双宾语句\n请只用一个字母(A、B、C 或
+      D)回答。"
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - ceval
+      - chinese_language_and_literature
+      - zh
+    temperature: null
+  - expected_output: B
+    id: ceval/law/0
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "问题:与《大清律例》相比，《大清现行刑律》的变化不包括____。\nA) 取消了六部分篇的法典编纂体例\nB) 删除了“十恶”重罪等内容\n\
+      C) 对于婚姻、继承、田宅、钱债等纯属民事性质的行为不再科刑\nD) 增加了一些新罪名，诸如妨害国交罪、妨害选举罪、私铸银元罪等\n请只用一个字母(A、B、C
+      或 D)回答。"
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - ceval
+      - law
+      - zh
+    temperature: null
+  - expected_output: D
+    id: ceval/law/1
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bD\b
+    prompt: "问题:刘婆婆回家途中，看见邻居肖婆婆带着外孙小勇和另一家邻居的孩子小囡(均为4岁多)在小区花园中玩耍，便上前拿出几根香蕉递给小勇，随后离去。小勇接过香蕉后，递给小囡一根，小囡吞食时误入气管导致休克，经抢救无效死亡。对此，下列哪一选项是正确的?____\n\
+      A) 刘婆婆应对小囡的死亡承担民事责任\nB) 肖婆婆应对小囡的死亡承担民事责任\nC) 小勇的父母应对小囡的死亡承担民事责任\nD) 属意外事件，不产生相关人员的过错责任\n\
+      请只用一个字母(A、B、C 或 D)回答。"
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - ceval
+      - law
+      - zh
+    temperature: null
+  - expected_output: A
+    id: ceval/law/2
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "问题:甲、乙、丙三人分别出资30万元、30万元、40万元购买重型货车一辆，从事长途运输。三人约定：甲负责驾驶，乙负责对车管理维护，而丙负责招揽业务，且3年内不得分割共有物。三人对其他事项未作约定。甲、丙二人未经乙的同意，擅自签订抵押合同将该车抵押给不知情的丁，并办理了抵押登记。后来，甲因疲劳驾驶发生事故，造成行人戊受伤。对此，下列说法正确的是____。\n\
+      A) 甲、乙、丙对于货车享有的权利份额，应当按照出资额确定\nB) 戊只能要求甲赔偿损失\nC) 丁善意取得货车的抵押权\nD) 甲、乙、丙可以随时请求分割共有物\n\
+      请只用一个字母(A、B、C 或 D)回答。"
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - ceval
+      - law
+      - zh
+    temperature: null
+  - expected_output: C
+    id: ceval/law/3
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bC\b
+    prompt: "问题:伪证罪只能发生在____。\nA) 立案侦查以前\nB) 起诉之后\nC) 立案、侦查、起诉和审判过程中\nD) 判决宣告以后\n\
+      请只用一个字母(A、B、C 或 D)回答。"
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - ceval
+      - law
+      - zh
+    temperature: null
+  - expected_output: C
+    id: ceval/law/4
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bC\b
+    prompt: "问题:在下列犯罪形态中，适用“从一重处断”原则予以论处的是____。\nA) 结果加重犯\nB) 继续犯\nC) 想象竞合犯\nD) 吸收犯\n\
+      请只用一个字母(A、B、C 或 D)回答。"
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - ceval
+      - law
+      - zh
+    temperature: null
+  - expected_output: C
+    id: ceval/law/5
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bC\b
+    prompt: "问题:以牟利为目的，盗接他人通信线路、复制他人电信码号或者明知是盗接、复制的电信设备、设施而使用的，应构成____。\nA) 非法经营罪\n\
+      B) 侵占罪\nC) 盗窃罪\nD) 破坏公用电信设施罪\n请只用一个字母(A、B、C 或 D)回答。"
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - ceval
+      - law
+      - zh
+    temperature: null
+  - expected_output: B
+    id: ceval/law/6
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "问题:下列选项中，属于代理情形的是____。\nA) 甲委托乙把自己的孩子从幼儿园接回来\nB) 丙接受丁的委托，以丁的名义与戊签订买卖合同\n\
+      C) 赵某接受钱某的委托，将钱某不接受缔约要求的意思表示向孙某作了回复\nD) 远大公司由法定代表人李某与宏远公司法定代表人周某签订加工承揽合同\n请只用一个字母(A、B、C
+      或 D)回答。"
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - ceval
+      - law
+      - zh
+    temperature: null
+  - expected_output: C
+    id: ceval/law/7
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bC\b
+    prompt: "问题:下列不属于告诉才处理的情形是____。\nA) 侵占罪\nB) 侮辱罪未严重危害社会秩序和国家利益的\nC) 虐待罪致使被害人重伤、死亡的\n\
+      D) 暴力干涉婚姻自由罪，未致使被害人死亡的\n请只用一个字母(A、B、C 或 D)回答。"
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - ceval
+      - law
+      - zh
+    temperature: null
+  - expected_output: B
+    id: ceval/law/8
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "问题:下列选项中，属于无因行为的是____。\nA) 出售房屋\nB) 汇票的出票\nC) 赠与电脑\nD) 继承遗产\n请只用一个字母(A、B、C
+      或 D)回答。"
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - ceval
+      - law
+      - zh
+    temperature: null
+  - expected_output: D
+    id: ceval/law/9
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bD\b
+    prompt: "问题:《刑法》第115条第2款规定“过失犯前款罪的……”，属于____。\nA) 简单罪状\nB) 叙明罪状\nC) 空白罪状\nD) 引证罪状\n\
+      请只用一个字母(A、B、C 或 D)回答。"
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - ceval
+      - law
+      - zh
+    temperature: null
+  - expected_output: D
+    id: ceval/law/10
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bD\b
+    prompt: "问题:某住宅小区业主从事的下列行为中，不必将相关情况告知物业服务人的情形是____。\nA) 业主甲将其房屋出租给赵某\nB) 业主乙在其住宅上设立居住权供其弟居住\n\
+      C) 业主丙依法将建筑区划内的绿地改造成花园\nD) 业主丁在其住宅上设立地役权\n请只用一个字母(A、B、C 或 D)回答。"
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - ceval
+      - law
+      - zh
+    temperature: null
+  - expected_output: D
+    id: ceval/law/11
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bD\b
+    prompt: "问题:甲因盗窃罪案发被捕，在侦查人员对其审讯期间，甲交代了自己与乙在交通工具上抢劫3万元的犯罪事实，并协助侦查机关将乙抓获。对甲的抢劫罪____。\n\
+      A) 可以从轻或者减轻处罚\nB) 可以减轻或者免除处罚\nC) 可以免除处罚\nD) 应当减轻或者免除处罚\n请只用一个字母(A、B、C 或 D)回答。"
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - ceval
+      - law
+      - zh
+    temperature: null
+  - expected_output: C
+    id: ceval/law/12
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bC\b
+    prompt: "问题:甲、乙同为儿童玩具生产商。六一节前夕，丙与甲商谈进货事宜。乙知道后向丙提出更优惠条件，并指使丁假借订货与甲接洽，报价高于丙以阻止甲与丙签约。丙经比较与乙签约，丁随即终止与甲的谈判，甲因此遭受损失。对此，下列哪一说法是正确的?____\n\
+      A) 乙应对甲承担缔约过失责任\nB) 丙应对甲承担缔约过失责任\nC) 丁应对甲承担缔约过失责任\nD) 乙、丙、丁无须对甲承担缔约过失责任\n请只用一个字母(A、B、C
+      或 D)回答。"
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - ceval
+      - law
+      - zh
+    temperature: null
+  - expected_output: A
+    id: ceval/law/13
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "问题:下列选项中，能够引起不当得利之债发生的是____。\nA) 为回赎绑票向绑匪交付赎金\nB) 为邻居垫支话费\nC) 冒名将他人稿酬取走\n\
+      D) 履行期限到来之前向债权人发货\n请只用一个字母(A、B、C 或 D)回答。"
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - ceval
+      - law
+      - zh
+    temperature: null
+  - expected_output: A
+    id: ceval/law/14
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "问题:下列要素中，不能作为商标申请注册的是____。\nA) 商务标语\nB) 声音\nC) 字母\nD) 颜色组合\n请只用一个字母(A、B、C
+      或 D)回答。"
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - ceval
+      - law
+      - zh
+    temperature: null
+  - expected_output: D
+    id: ceval/law/15
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bD\b
+    prompt: "问题:张某在甲期刊社发表了一篇颇具价值的学术论文，但未作版权说明。乙期刊社将该学术论文作为资料刊登。则乙期刊社的行为____。\nA) 属于合理使用，不必向著作权人支付报酬\n\
+      B) 属于侵犯著作权的行为\nC) 不必经甲期刊社同意，但应向其支付报酬\nD) 不必经张某同意，但应向其支付报酬\n请只用一个字母(A、B、C 或 D)回答。"
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - ceval
+      - law
+      - zh
+    temperature: null
+  - expected_output: D
+    id: ceval/law/16
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bD\b
+    prompt: "问题:甲将其对乙享有的10万元货款债权转让给丙，丙再转让给丁，乙均不知情。乙将债务转让给戊，得到了甲的同意。丁要求乙履行债务，乙以其不知情为由抗辩。下列哪一表述是正确的?____\n\
+      A) 甲将债权转让给丙的行为无效\nB) 丙将债权转让给丁的行为无效\nC) 乙将债务转让给戊的行为无效\nD) 如乙清偿10万元债务，则享有对戊的求偿权\n\
+      请只用一个字母(A、B、C 或 D)回答。"
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - ceval
+      - law
+      - zh
+    temperature: null
+  - expected_output: D
+    id: ceval/law/17
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bD\b
+    prompt: "问题:下列选项中，可以适用不当得利主张请求权的情形是____。\nA) 甲为自己正在读大学的弟弟乙支付学费，后甲要求乙返还\nB) 丙明知不欠丁的钱而执意向丁还钱，后丙要求丁返还该金钱\n\
+      C) 张某偿还了欠李某的赌债，后张某要求李某返还赌资\nD) 陈某和吴某同在河边放牛，后陈某的一头牛走入吴某的牛群中，而吴某对此并不知情\n请只用一个字母(A、B、C
+      或 D)回答。"
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - ceval
+      - law
+      - zh
+    temperature: null
+  - expected_output: C
+    id: ceval/law/18
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bC\b
+    prompt: "问题:幼儿园教师甲在幼儿园卫生间多次用针刺戳肖某等10余名幼儿的臀部，虽未造成伤害后果，但情节十分恶劣。甲的行为应认定为____。\nA)
+      侮辱罪\nB) 猥亵儿童罪\nC) 虐待被监护、看护人罪\nD) 故意伤害罪\n请只用一个字母(A、B、C 或 D)回答。"
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - ceval
+      - law
+      - zh
+    temperature: null
+  - expected_output: D
+    id: ceval/law/19
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bD\b
+    prompt: "问题:甲、乙因生活琐事互相斗殴，乙感到不是甲的对手而逃跑。甲紧追不舍，乙逃出500米后被甲赶上。甲用木棍向乙头部猛击。情急之下，乙抽出随身携带的水果刀朝甲刺去，致甲重伤。乙的行为____。\n\
+      A) 构成故意杀人罪未遂\nB) 构成故意伤害罪\nC) 构成寻衅滋事罪\nD) 不构成犯罪\n请只用一个字母(A、B、C 或 D)回答。"
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - ceval
+      - law
+      - zh
+    temperature: null
+  - expected_output: A
+    id: ceval/law/20
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "问题:甲、乙是某高校住同一寝室的研究生，二人合用一台电脑。甲向美国某大学申请留美奖学金，并将此事告知乙。美方发出电子邮件，邀请甲赴美留学。恰巧甲不在，乙出于嫉妒，擅自发邮件拒绝美方邀请。数日后甲发电子邮件向美方询问，美方告知甲因其拒绝邀请而不再考虑。乙侵犯了甲的____。\n\
+      A) 姓名权\nB) 名誉权\nC) 名称权\nD) 隐私权\n请只用一个字母(A、B、C 或 D)回答。"
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - ceval
+      - law
+      - zh
+    temperature: null
+  - expected_output: C
+    id: ceval/law/21
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bC\b
+    prompt: "问题:下列关于法律推理的表述，能够成立的是____。\nA) 演绎推理是一种或然性推理\nB) 归纳推理是从一般知识推出个别知识的推理\n\
+      C) 类比推理是判例法国家运用的一种基本的法律推理方法\nD) 辩证推理实际上是一种立法活动\n请只用一个字母(A、B、C 或 D)回答。"
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - ceval
+      - law
+      - zh
+    temperature: null
+  - expected_output: A
+    id: ceval/law/22
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "问题:关于我国宪法修改，下列哪一选项是正确的____。\nA) 我国修宪实践中既有对宪法的部分修改，也有对宪法的全面修改\nB) 经1/10以上的全国人大代表提议，可以启动宪法修改程序\n\
+      C) 全国人大常委会是法定的修宪主体\nD) 宪法修正案是我国宪法规定的宪法修改方式\n请只用一个字母(A、B、C 或 D)回答。"
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - ceval
+      - law
+      - zh
+    temperature: null
+  - expected_output: D
+    id: ceval/law/23
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bD\b
+    prompt: "问题:下列关于我国刑法中罪刑法定原则的理解，正确的是____。\nA) 简单罪状因缺乏明确性不符合罪刑法定原则\nB) 将习惯法视为刑法的渊源不违反罪刑法定原则\n\
+      C) 罪刑法定原则不允许有利于被告人的新法溯及既往\nD) 罪刑法定原则中的“法”不包括行政法规\n请只用一个字母(A、B、C 或 D)回答。"
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - ceval
+      - law
+      - zh
+    temperature: null
+  - expected_output: D
+    id: ceval/modern_chinese_history/0
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bD\b
+    prompt: "问题:率领北平国民党军队接受和平改编的国民党将领是____\nA) 张治中\nB) 蔡廷锴\nC) 杜聿明\nD) 傅作义\n请只用一个字母(A、B、C
+      或 D)回答。"
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - ceval
+      - modern_chinese_history
+      - zh
+    temperature: null
+  - expected_output: C
+    id: ceval/modern_chinese_history/1
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bC\b
+    prompt: "问题:七届二中全会召开的地点是____\nA) 北平\nB) 延安\nC) 西柏坡\nD) 上海\n请只用一个字母(A、B、C 或 D)回答。"
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - ceval
+      - modern_chinese_history
+      - zh
+    temperature: null
+  - expected_output: D
+    id: ceval/modern_chinese_history/2
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bD\b
+    prompt: "问题:下列不平等条约中，赔款数额最多的是____\nA) 《南京条约》\nB) 《北京条约》\nC) 《马关条约》\nD) 《辛丑条约》\n\
+      请只用一个字母(A、B、C 或 D)回答。"
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - ceval
+      - modern_chinese_history
+      - zh
+    temperature: null
+  - expected_output: D
+    id: ceval/modern_chinese_history/3
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bD\b
+    prompt: "问题:《双十协定》的签订，中共取得的战略优势是____\nA) 获得了自卫战争的准备时间\nB) 解放区获得了合法地位\nC) 赢得了民主党派的支持\n\
+      D) 取得了政治上的主动地位\n请只用一个字母(A、B、C 或 D)回答。"
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - ceval
+      - modern_chinese_history
+      - zh
+    temperature: null
+  - expected_output: C
+    id: ceval/modern_chinese_history/4
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bC\b
+    prompt: "问题:1946年1月10日，政治协商会议在重庆开幕，共产党与民主党派和无党派人士的代表密切合作，推动政协会议达成了政府组织、国民大会、和平建国纲领、宪法草案、军事问题等五项决议。这些决议及其他协议____\n\
+      A) 是蒋介石发动内战的依据\nB) 是社会主义性质的决议\nC) 有利于冲破蒋介石的独裁统治和实行民主政治，有利于和平建国\nD) 是新民主主义性质的决议\n\
+      请只用一个字母(A、B、C 或 D)回答。"
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - ceval
+      - modern_chinese_history
+      - zh
+    temperature: null
+  - expected_output: D
+    id: ceval/modern_chinese_history/5
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bD\b
+    prompt: "问题:我国对农业社会主义改造采取的方针是____\nA) 典型示范\nB) 自愿互利\nC) 国家帮助\nD) 积极发展、稳步前进、逐步过渡\n\
+      请只用一个字母(A、B、C 或 D)回答。"
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - ceval
+      - modern_chinese_history
+      - zh
+    temperature: null
+  - expected_output: C
+    id: ceval/modern_chinese_history/6
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bC\b
+    prompt: "问题:孙中山三民主义思想的核心是____\nA) 驱除鞑虏\nB) 恢复中华\nC) 创立民国\nD) 平均地权\n请只用一个字母(A、B、C
+      或 D)回答。"
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - ceval
+      - modern_chinese_history
+      - zh
+    temperature: null
+  - expected_output: A
+    id: ceval/modern_chinese_history/7
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "问题:北伐战争对准的军阀是____①吴佩孚②孙传芳③张作霖④段祺瑞\nA) ①②③\nB) ②③④\nC) ①③④\nD) ①②③④\n\
+      请只用一个字母(A、B、C 或 D)回答。"
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - ceval
+      - modern_chinese_history
+      - zh
+    temperature: null
+  - expected_output: C
+    id: ceval/modern_chinese_history/8
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bC\b
+    prompt: "问题:抗日战争胜利后，某些民主党派的领导人物曾经鼓吹“中间路线”，即在共产党和国民党的建国方案中间，寻找出第三条道路，但最终幻灭了。其幻灭的根本原因在于____\n\
+      A) 没有武装力量、没有统一的政纲\nB) 国民党当局对民主党派的迫害\nC) 资产阶级共和国方案在中国行不通\nD) 民主党派不是单一阶级的政党\n\
+      请只用一个字母(A、B、C 或 D)回答。"
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - ceval
+      - modern_chinese_history
+      - zh
+    temperature: null
+  - expected_output: C
+    id: ceval/modern_chinese_history/9
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bC\b
+    prompt: "问题:中国共产党在实践中探索中国建设社会主义道路开始的标志是____\nA) 中华人民共和国的建立\nB) 过渡时期总路线的提出\nC)
+      《论十大关系》的发表\nD) 中共八大的召开\n请只用一个字母(A、B、C 或 D)回答。"
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - ceval
+      - modern_chinese_history
+      - zh
+    temperature: null
+  - expected_output: D
+    id: ceval/modern_chinese_history/10
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bD\b
+    prompt: "问题:我国的改革从经济体制改革着手，经济体制的改革首先在____\nA) 思想解放上取得突破\nB) 对外开放上取得进展\nC) 城市经济体制改革取得突破性进展\n\
+      D) 农村取得突破性进展\n请只用一个字母(A、B、C 或 D)回答。"
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - ceval
+      - modern_chinese_history
+      - zh
+    temperature: null
+  - expected_output: A
+    id: ceval/modern_chinese_history/11
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "问题:大革命时期的统一战线和抗日民族统一战线____\nA) 都有共同的政治纲领\nB) 均采取党内合作方式\nC) 全具有反帝反封建性质\n\
+      D) 皆有各阶层广泛参加\n请只用一个字母(A、B、C 或 D)回答。"
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - ceval
+      - modern_chinese_history
+      - zh
+    temperature: null
+  - expected_output: D
+    id: ceval/modern_chinese_history/12
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bD\b
+    prompt: "问题:中国各民主党派是阶级联盟性质的政党，其形成时的社会基础主要是____\nA) 开明绅士、地产实力派\nB) 工人、农民、小资产阶级\n\
+      C) 工人、农民、小资产阶级、民族资产阶级\nD) 民族资产阶级、城市小资产阶级以及同这些阶级相联系的知识分子和其他爱国分子\n请只用一个字母(A、B、C
+      或 D)回答。"
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - ceval
+      - modern_chinese_history
+      - zh
+    temperature: null
+  - expected_output: D
+    id: ceval/modern_chinese_history/13
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bD\b
+    prompt: "问题:1947年刘邓大军挺进中原的重大意义在于____\nA) 影响战略决战主攻方向\nB) 粉碎蒋介石的重点进攻\nC) 改变敌我双方的力量对比\n\
+      D) 改变解放战争的战略态势\n请只用一个字母(A、B、C 或 D)回答。"
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - ceval
+      - modern_chinese_history
+      - zh
+    temperature: null
+  - expected_output: A
+    id: ceval/modern_chinese_history/14
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "问题:党的过渡时期总路线的“一体”指的是____\nA) 国家工业化\nB) 对农业的社会主义改造\nC) 对手工业的社会主义改造\nD)
+      对资本主义工商业的社会主义改造\n请只用一个字母(A、B、C 或 D)回答。"
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - ceval
+      - modern_chinese_history
+      - zh
+    temperature: null
+  - expected_output: A
+    id: ceval/modern_chinese_history/15
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "问题:革命统一战线正式建立的标志是____\nA) 国民党“一大”的召开\nB) 国民党改组\nC) 三民主义发展为新三民主义\nD) 中共“三大”的召开\n\
+      请只用一个字母(A、B、C 或 D)回答。"
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - ceval
+      - modern_chinese_history
+      - zh
+    temperature: null
+  - expected_output: C
+    id: ceval/modern_chinese_history/16
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bC\b
+    prompt: "问题:1949年9月21日，中国人民政治协商会议第一届全体会议通过了具有临时宪法作用的是____\nA) 《中华民国临时约法》\nB) 《和平宪法》\n\
+      C) 《中国人民政治协商会议共同纲领》\nD) 《中华人民共和国宪法》\n请只用一个字母(A、B、C 或 D)回答。"
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - ceval
+      - modern_chinese_history
+      - zh
+    temperature: null
+  - expected_output: D
+    id: ceval/modern_chinese_history/17
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bD\b
+    prompt: "问题:抗战进入相持阶段后，中国人民在华北给日本侵略者沉重打击的一次军事行动是____\nA) 百团大战\nB) 平型关战役\nC) 凇沪会战\n\
+      D) 台儿庄战役\n请只用一个字母(A、B、C 或 D)回答。"
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - ceval
+      - modern_chinese_history
+      - zh
+    temperature: null
+  - expected_output: D
+    id: ceval/modern_chinese_history/18
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bD\b
+    prompt: "问题:戊戌变法的阶级基础是____\nA) 农民阶级\nB) 开明地主\nC) 爱国知识分子\nD) 民族资产阶级\n请只用一个字母(A、B、C
+      或 D)回答。"
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - ceval
+      - modern_chinese_history
+      - zh
+    temperature: null
+  - expected_output: D
+    id: ceval/modern_chinese_history/19
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bD\b
+    prompt: "问题:下列关于洋务运动叙述不正确的是____\nA) 洋务运动是封建统治阶级为了维护自己的统治而进行的一场自救运动\nB) 客观上促进了资本主义的发展\n\
+      C) 口号是“自强”和 “求富”\nD) 触及到了封建统治的根基\n请只用一个字母(A、B、C 或 D)回答。"
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - ceval
+      - modern_chinese_history
+      - zh
+    temperature: null
+  - expected_output: C
+    id: ceval/modern_chinese_history/20
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bC\b
+    prompt: "问题:1944年4月至1945年1月，日本发动打通中国大陆交通线的战役是____\nA) 忻口战役\nB) 淞沪战役\nC) 豫湘桂战役\n\
+      D) 枣宜会战\n请只用一个字母(A、B、C 或 D)回答。"
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - ceval
+      - modern_chinese_history
+      - zh
+    temperature: null
+  - expected_output: B
+    id: ceval/modern_chinese_history/21
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "问题:中国共产党发出“停止内战，一致抗日”的号召是在____\nA) 蒋介石对中央苏区第四次“围剿”时\nB) “何梅协定”签订后\nC)
+      瓦窑堡会议期间\nD) 西安事变发生后\n请只用一个字母(A、B、C 或 D)回答。"
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - ceval
+      - modern_chinese_history
+      - zh
+    temperature: null
+  - expected_output: D
+    id: ceval/modern_chinese_history/22
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bD\b
+    prompt: "问题:由于帝国主义、封建主义、官僚资本主义的残酷压迫，中国人民走上了反帝反封建反官僚资本主义斗争的伟大时代。民主革命的主要力量是____\n\
+      A) 工人\nB) 民族资产阶级\nC) 工人、农民\nD) 工人、农民、城市小资产阶级群众\n请只用一个字母(A、B、C 或 D)回答。"
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - ceval
+      - modern_chinese_history
+      - zh
+    temperature: null
+  - expected_output: D
+    id: ceval/college_economics/0
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bD\b
+    prompt: "问题:在均衡价格下____\nA) 价格趋于下降\nB) 供给量超过需求量\nC) 价格趋于上升\nD) 价格不应变动\n请只用一个字母(A、B、C
+      或 D)回答。"
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - ceval
+      - college_economics
+      - zh
+    temperature: null
+  - expected_output: A
+    id: ceval/college_economics/1
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "问题:完全竞争市场中，行业面临的需求曲线是____。\nA) 一条向右下方倾斜的曲线\nB) 一条向右上方倾斜的曲线\nC) 一条水平线\n\
+      D) 一条向左上方倾斜的曲线\n请只用一个字母(A、B、C 或 D)回答。"
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - ceval
+      - college_economics
+      - zh
+    temperature: null
+  - expected_output: D
+    id: ceval/college_economics/2
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bD\b
+    prompt: "问题:根据生命周期假说，消费者的消费对积累的财富的比率的变化情况是____。\nA) 在退休前，这个比率是上升的，退休后，这个比率是下降的\n\
+      B) 在退休前后，这个比率保持不变\nC) 在退休前后，这个比率都下降\nD) 在退休前，这个比率下降，退休后，则会上升\n请只用一个字母(A、B、C
+      或 D)回答。"
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - ceval
+      - college_economics
+      - zh
+    temperature: null
+  - expected_output: B
+    id: ceval/college_economics/3
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "问题:当两种商品中一种商品的价格发生变动时，这两种商品的需求量都同时增加或减少，则这两种商品的需求交叉价格弹性为____\nA) 正值\n\
+      B) 负值\nC) 0\nD) 1\n请只用一个字母(A、B、C 或 D)回答。"
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - ceval
+      - college_economics
+      - zh
+    temperature: null
+  - expected_output: A
+    id: ceval/college_economics/4
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "问题:劳动力参与率反映的是____。\nA) 成年劳动力占成年人口的比率\nB) 成年人就业比率\nC) 劳动力就业比率\nD) 劳动力就业比率与失业比率之和\n\
+      请只用一个字母(A、B、C 或 D)回答。"
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - ceval
+      - college_economics
+      - zh
+    temperature: null
+  - expected_output: C
+    id: ceval/college_economics/5
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bC\b
+    prompt: "问题:当一国人均GDP极低时____\nA) 它注定要永远穷下去\nB) 它必定是一个小国\nC) 由于“追求效应“，它有较迅速增长的潜力\n\
+      D) 资本增加对产量的影响微乎其微\n请只用一个字母(A、B、C 或 D)回答。"
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - ceval
+      - college_economics
+      - zh
+    temperature: null
+  - expected_output: B
+    id: ceval/college_economics/6
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "问题:某股票的β值为1.8，股票市场报酬率是10%，市场无风险报酬率为6%。按照资本资产定价模型，该股票的预期报酬率是____。\nA)
+      0.122\nB) 0.132\nC) 0.142\nD) 0.152\n请只用一个字母(A、B、C 或 D)回答。"
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - ceval
+      - college_economics
+      - zh
+    temperature: null
+  - expected_output: C
+    id: ceval/college_economics/7
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bC\b
+    prompt: "问题:外部效应可以产生于____\nA) 人的消费行为而非生产行为\nB) 人的生产行为而非消费行为\nC) 人的生产行为和消费行为\n\
+      D) 以上都不是\n请只用一个字母(A、B、C 或 D)回答。"
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - ceval
+      - college_economics
+      - zh
+    temperature: null
+  - expected_output: B
+    id: ceval/college_economics/8
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "问题:已知某商品的需求量增加80%，而同期消费者的收入却增加了40%，则该商品很可能是____。\nA) 必需品\nB) 奢侈品\nC)
+      一般低档商品\nD) 吉芬商品\n请只用一个字母(A、B、C 或 D)回答。"
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - ceval
+      - college_economics
+      - zh
+    temperature: null
+  - expected_output: A
+    id: ceval/college_economics/9
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "问题:无差异曲线是一条具有负斜率的直线，则说明____。\nA) 商品是完全替代的\nB) 边际效用不再递减\nC) 偏好是非凸的\nD)
+      偏好不具有单调性\n请只用一个字母(A、B、C 或 D)回答。"
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - ceval
+      - college_economics
+      - zh
+    temperature: null
+  - expected_output: C
+    id: ceval/college_economics/10
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bC\b
+    prompt: "问题:下列哪一项不列入国内生产总值的核算？____\nA) 出口到国外的一批货物\nB) 经纪人为一座旧房买卖收取的一笔佣金\nC) 政府给贫困家庭发放的一笔救济金\n\
+      D) 保险公司收到一笔家庭财产保险\n请只用一个字母(A、B、C 或 D)回答。"
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - ceval
+      - college_economics
+      - zh
+    temperature: null
+  - expected_output: C
+    id: ceval/college_economics/11
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bC\b
+    prompt: "问题:一厂商的生产函数为f(x，y，z)=(x+y)0.5z0.5，三种要素x，y，z的价格为1，2，3。假如y价格升为原来的2倍，其他两种的价格不变，则总的生产成本____。\n\
+      A) 增加了50%\nB) 增加了2倍\nC) 不变\nD) 以上说法都不对\n请只用一个字母(A、B、C 或 D)回答。"
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - ceval
+      - college_economics
+      - zh
+    temperature: null
+  - expected_output: A
+    id: ceval/college_economics/12
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "问题:在一条狭窄的巷子里，两个年轻人骑着自行车相向而行，每个人都有两个策略，即或者选择“冲过去”，或者选择“避让”。如果选择避让，不管对方采取什么策略，他得到的收益都是0，如果一人采取“冲过去”的战略，那么如果对方采取“避让”，他得到的收益是9；如果对方不避让，他得到的收益是-36。这个博弈有两个纯策略纳什均衡和____。\n\
+      A) 一个混合策略纳什均衡，即两个人都以80%的概率选择“避让”，以20%的概率选择“冲过去”\nB) 一个混合策略纳什均衡，即一个人以20%的概率选择“避让”，另一个人以80%的概率选择“冲过去”\n\
+      C) 一个混合策略纳什均衡，即两个人都以40%的概率选择“避让”，以60%的概率选择“冲过去”\nD) 没有混合策略纳什均衡\n请只用一个字母(A、B、C
+      或 D)回答。"
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - ceval
+      - college_economics
+      - zh
+    temperature: null
+  - expected_output: A
+    id: ceval/college_economics/13
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "问题:洛伦兹曲线越是向横轴凸出____\nA) 基尼系数就越大，收入就越不平等\nB) 基尼系数就越大，收入就越平等\nC) 基尼系数就越小，收入就越不平等\n\
+      D) 基尼系数就越小，收入就越平等\n请只用一个字母(A、B、C 或 D)回答。"
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - ceval
+      - college_economics
+      - zh
+    temperature: null
+  - expected_output: A
+    id: ceval/college_economics/14
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "问题:下列哪种情况使总收益增加？____\nA) 需求缺乏弹性，提高价格\nB) 需求缺乏弹性，降低价格\nC) 需求富有弹性，提高价格\n\
+      D) 需求单位弹性，降低价格\n请只用一个字母(A、B、C 或 D)回答。"
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - ceval
+      - college_economics
+      - zh
+    temperature: null
+  - expected_output: C
+    id: ceval/college_economics/15
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bC\b
+    prompt: "问题:兰德只买激光唱片和棒棒糖，他有固定收入，不能借钱，当他沿着预算约束移动时____\nA) 激光唱片的价格在改变，而其收入和棒棒糖的价格不变\n\
+      B) 棒棒糖的价格在改变，而其收入和激光唱片的价格不变\nC) 激光唱片和棒棒糖的价格在改变，而其收入不变\nD) 激光唱片和棒棒糖的价格及其收入都不变\n\
+      请只用一个字母(A、B、C 或 D)回答。"
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - ceval
+      - college_economics
+      - zh
+    temperature: null
+  - expected_output: B
+    id: ceval/college_economics/16
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "问题:若供给曲线上每一点的点弹性都等于1，则供给曲线只能是一条____\nA) 过原点的45线\nB) 过原点的直线\nC) 平行于横轴的直线\n\
+      D) 垂直于横轴的直线\n请只用一个字母(A、B、C 或 D)回答。"
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - ceval
+      - college_economics
+      - zh
+    temperature: null
+  - expected_output: A
+    id: ceval/college_economics/17
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "问题:微观经济学的基本假设之一是____假设\nA) 经济人\nB) 社会人\nC) 自我实现人\nD) 复杂人\n请只用一个字母(A、B、C
+      或 D)回答。"
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - ceval
+      - college_economics
+      - zh
+    temperature: null
+  - expected_output: B
+    id: ceval/college_economics/18
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "问题:在不考虑税收和补贴的情况下，企业将资本的租金成本计算为____。\nA) 实际利率\nB) 资本品价格×(名义利率减去通货膨胀率再加上折旧率)\n\
+      C) 名义利率减去折旧率\nD) 名义利率\n请只用一个字母(A、B、C 或 D)回答。"
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - ceval
+      - college_economics
+      - zh
+    temperature: null
+  - expected_output: A
+    id: ceval/college_economics/19
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "问题:技术进步一般会导致____\nA) 供给曲线右移\nB) 供给量沿着供给曲线减少\nC) 一个人增加他所消费的所有商品的数量\nD)
+      供给量沿着供给曲线增加\n请只用一个字母(A、B、C 或 D)回答。"
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - ceval
+      - college_economics
+      - zh
+    temperature: null
+  - expected_output: D
+    id: ceval/college_economics/20
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bD\b
+    prompt: "问题:在计划经济时代，许多商品经常短缺。在市场经济时代，人们通常能够买到需要的商品。这是因为：____\nA) 计划经济时代比市场经济时代的生产能力更低\n\
+      B) 计划经济时代比市场经济时代的消费水平更高\nC) 市场经济时代生产者的道德更加高尚，处处为消费者着想\nD) 市场价格引导了生产者和需求者的自利行为，达到人们满意的程度\n\
+      请只用一个字母(A、B、C 或 D)回答。"
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - ceval
+      - college_economics
+      - zh
+    temperature: null
+  - expected_output: A
+    id: ceval/college_economics/21
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "问题:如果某一种商品的价格下跌10%,由此导致人们用于购买该商品的货币支出增加5%,则需求曲线在这一区域内的需求价格弹性为____\nA)
+      富有弹性\nB) 完全无弹性\nC) 缺乏弹性，但不是完全无弹性\nD) 具有单位弹性\n请只用一个字母(A、B、C 或 D)回答。"
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - ceval
+      - college_economics
+      - zh
+    temperature: null
+  - expected_output: C
+    id: ceval/college_economics/22
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bC\b
+    prompt: "问题:假设一国的β=0.8，政府购买支出减少了100亿元，由此产生的政府财政盈余通过减少等额的税收来抵消。那么，对国民收入的影响为____。\n\
+      A) 增加500亿元\nB) 增加400亿元\nC) 减少100亿元\nD) 政府购买支出减少额为税收所抵消，故对国民收入没有影响\n请只用一个字母(A、B、C
+      或 D)回答。"
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - ceval
+      - college_economics
+      - zh
+    temperature: null
+  - expected_output: C
+    id: ceval/college_economics/23
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bC\b
+    prompt: "问题:I=Px·X+Py·Y是消费者的____\nA) 需求函数\nB) 效用函数\nC) 预算约束方程\nD) 不确定\n请只用一个字母(A、B、C
+      或 D)回答。"
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - ceval
+      - college_economics
+      - zh
+    temperature: null
+  - expected_output: C
+    id: ceval/college_economics/24
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bC\b
+    prompt: "问题:成本函数[C=f（Q）]表示的是____\nA) 支出一定成本与在一定价格下的不同要素最大购买量间的关系\nB) 成本与产量之间的关系\n\
+      C) 成本随产量的变化而变化\nD) 产量随着成本的变化而变化\n请只用一个字母(A、B、C 或 D)回答。"
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - ceval
+      - college_economics
+      - zh
+    temperature: null
+  - expected_output: D
+    id: ceval/college_economics/25
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bD\b
+    prompt: "问题:根据完全竞争市场的条件，以下哪些行业最接近完全竞争行业____\nA) 家电行业\nB) 汽车行业\nC) 蔬菜行业\nD) 玉米行业\n\
+      请只用一个字母(A、B、C 或 D)回答。"
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - ceval
+      - college_economics
+      - zh
+    temperature: null
+  - expected_output: B
+    id: ceval/college_economics/26
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "问题:在完全竞争厂商的短期均衡产量上，AR小于SAC但大于AVC，则厂商____\nA) 亏损，立即停产\nB) 亏损，但应继续生产\n\
+      C) 亏损，生产或不生产都可以\nD) 获得正常利润，继续生产\n请只用一个字母(A、B、C 或 D)回答。"
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - ceval
+      - college_economics
+      - zh
+    temperature: null
+  - expected_output: C
+    id: ceval/college_economics/27
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bC\b
+    prompt: "问题:在得出棉花种植户的供给曲线时，下列除哪一个因素以外，其余均保持为常数____\nA) 土壤的肥沃程度\nB) 棉花种植面积\nC)
+      技术水平\nD) 棉花的价格\n请只用一个字母(A、B、C 或 D)回答。"
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - ceval
+      - college_economics
+      - zh
+    temperature: null
+  - expected_output: B
+    id: ceval/college_economics/28
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "问题:下列各项不属于政府购买的是____。\nA) 地方政府办三所中学\nB) 政府给低收入者提供一笔住房补贴\nC) 政府订购一批军火\n\
+      D) 政府建造办公大楼\n请只用一个字母(A、B、C 或 D)回答。"
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - ceval
+      - college_economics
+      - zh
+    temperature: null
+  - expected_output: B
+    id: ceval/college_economics/29
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "问题:使用自有资金也应计算利息收入，这种利息从成本角度看是____\nA) 固定成本\nB) 隐含成本\nC) 会计成本\nD) 生产成本\n\
+      请只用一个字母(A、B、C 或 D)回答。"
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - ceval
+      - college_economics
+      - zh
+    temperature: null
+  - expected_output: D
+    id: ceval/college_economics/30
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bD\b
+    prompt: "问题:在资本完全流动的条件下，如果一国外汇市场实行间接标价法，而且该经济可以用浮动汇率的蒙代尔-弗莱明模型准确描述，那么，在均衡状态下，给定其他条件不变，当国内税收增加时，会导致____。\n\
+      A) 总收入下降，汇率上升，贸易余额上升\nB) 总收入不变，汇率上升，贸易余额下降\nC) 总收入上升，汇率下降，贸易余额上升\nD) 总收入不变，汇率下降，贸易余额上升\n\
+      请只用一个字母(A、B、C 或 D)回答。"
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - ceval
+      - college_economics
+      - zh
+    temperature: null
+  - expected_output: B
+    id: ceval/college_economics/31
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "问题:假定本国的重要贸易伙伴由于实行货币扩张而发生了较为严重的通货膨胀，在固定汇率制度之下，下面哪种情况描述的是合理的?____\nA)
+      本国贸易逆差\nB) 政府采取措施令货币贬值\nC) 投机行为将会稳定汇率\nD) 本国货币供给减少\n请只用一个字母(A、B、C 或 D)回答。"
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - ceval
+      - college_economics
+      - zh
+    temperature: null
+  - expected_output: A
+    id: ceval/college_economics/32
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "问题:新凯恩斯主义者认为，劳动供过于求时，____。\nA) 会产生非自愿性失业\nB) 工资会跌落\nC) 一方面会产生非自愿性失业，一方面工资会跌落\n\
+      D) 工资并不会跌落，非自愿性失业也不会产生\n请只用一个字母(A、B、C 或 D)回答。"
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - ceval
+      - college_economics
+      - zh
+    temperature: null
+  - expected_output: B
+    id: ceval/college_economics/33
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "问题:社会技术进步导致部分人不适应工作岗位要求，由此产生的失业属于____。\nA) 自愿性失业\nB) 结构性失业\nC) 需求不足的失业\n\
+      D) 摩擦性失业\n请只用一个字母(A、B、C 或 D)回答。"
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - ceval
+      - college_economics
+      - zh
+    temperature: null
+  - expected_output: A
+    id: ceval/college_economics/34
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "问题:甲公司是垄断厂商，利润为100万元。现有乙公司，欲进入同一市场。如果乙公司不进入，自然没有收益。如果乙公司选择进入，甲公司可以选择接纳和阻挠，如果选择容纳，则两个公司都可以获得利润50万元，如果选择阻挠，则两家公司都会损耗50万元，这个博弈的均衡解为____。\n\
+      A) 乙公司进入，甲公司接纳\nB) 乙公司不进入，甲公司接纳\nC) 乙公司进入，甲公司阻挠\nD) 乙公司不进入，甲公司阻挠\n请只用一个字母(A、B、C
+      或 D)回答。"
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - ceval
+      - college_economics
+      - zh
+    temperature: null
+  - expected_output: A
+    id: ceval/college_economics/35
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "问题:企业购买生产要素所引起的成本为____\nA) 显成本\nB) 隐成本\nC) 固定成本\nD) 机会成本\n请只用一个字母(A、B、C
+      或 D)回答。"
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - ceval
+      - college_economics
+      - zh
+    temperature: null
+  - expected_output: D
+    id: ceval/college_economics/36
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bD\b
+    prompt: "问题:垄断竞争厂商获得最大利润的方法有____\nA) 质量竞争\nB) 调整价格从而确定产量\nC) 广告竞争\nD) 上述方法都可以\n\
+      请只用一个字母(A、B、C 或 D)回答。"
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - ceval
+      - college_economics
+      - zh
+    temperature: null
+  - expected_output: A
+    id: ceval/college_economics/37
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "问题:科斯定理假设交易成本为____\nA) 0\nB) 1\nC) 大于1\nD) 大于0小于1\n请只用一个字母(A、B、C 或 D)回答。"
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - ceval
+      - college_economics
+      - zh
+    temperature: null
+  - expected_output: D
+    id: ceval/college_economics/38
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bD\b
+    prompt: "问题:序数效用论对消费者偏好的假设包括____\nA) 边际效用递减\nB) 货币边际效用不变\nC) 传递性\nD) 不饱和性\n请只用一个字母(A、B、C
+      或 D)回答。"
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - ceval
+      - college_economics
+      - zh
+    temperature: null
+  - expected_output: B
+    id: ceval/college_economics/39
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "问题:垄断竞争厂商的长期均衡与短期均衡的区别是长期均衡的____\nA) P=ACmin\nB) 厂商的主观需求曲线与长期平均成本曲线相切\n\
+      C) P=AC\nD) 主观需求曲线与客观需求曲线相交\n请只用一个字母(A、B、C 或 D)回答。"
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - ceval
+      - college_economics
+      - zh
+    temperature: null
+  - expected_output: D
+    id: ceval/college_economics/40
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bD\b
+    prompt: "问题:无差异曲线上任一点斜率的绝对值代表了____\nA) 消费者为了提高效用而获得另一些商品时愿意放弃的某一种商品的数量\nB) 消费者花在各种商品上的货币总值\n\
+      C) 两种商品的价格的价格比率\nD) 在确保消费者效用不变的情况下，一种商品和另一种商品的交换比率\n请只用一个字母(A、B、C 或 D)回答。"
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - ceval
+      - college_economics
+      - zh
+    temperature: null
+  - expected_output: A
+    id: ceval/college_economics/41
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "问题:消费者的根本问题是____\nA) 在预算约束内实现效用最大化\nB) 在一定的效用水平内实现预算约束最小化\nC) 在预算约束内实现效用最小化\n\
+      D) 在一定的效用水平内实现预算约束最大化\n请只用一个字母(A、B、C 或 D)回答。"
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - ceval
+      - college_economics
+      - zh
+    temperature: null
+  - expected_output: B
+    id: ceval/college_economics/42
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "问题:当厂商支付高于市场工资的效率工资时____。\nA) 经济在充分就业的状态下运行\nB) 存在对劳动力的过剩供给\nC) 不存在非自愿性失业\n\
+      D) 劳动力市场在效率工资水平下出清\n请只用一个字母(A、B、C 或 D)回答。"
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - ceval
+      - college_economics
+      - zh
+    temperature: null
+  - expected_output: D
+    id: ceval/college_economics/43
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bD\b
+    prompt: "问题:兰德只买激光唱片和棒棒糖，他有固定收入，不能借钱，当他沿着预算约束移动时____\nA) 激光唱片的价格在改变，而其收入和棒棒糖的价格不变\n\
+      B) 棒棒糖的价格在改变，而其收入和激光唱片的价格不变\nC) 激光唱片和棒棒糖的价格在改变，而其收入不变\nD) 激光唱片和棒棒糖的价格及其收入都不变\n\
+      请只用一个字母(A、B、C 或 D)回答。"
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - ceval
+      - college_economics
+      - zh
+    temperature: null
+  - expected_output: B
+    id: ceval/college_economics/44
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "问题:如果增加一单位劳动可减少三单位资本且能使产量不变，则MRTSLK为____\nA) 1/3\nB) 3\nC) 1\nD) 6\n\
+      请只用一个字母(A、B、C 或 D)回答。"
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - ceval
+      - college_economics
+      - zh
+    temperature: null
+  - expected_output: D
+    id: ceval/college_economics/45
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bD\b
+    prompt: "问题:如图所示，两个消费者的无差异曲线相切于E1、E2、E3，这意味着____。\nA) 对于消费者1而言，E1的效用水平高于E2\nB)
+      对于消费者2而言，E3的效用水平高于E2\nC) E2属于帕累托最优状态，E1和E3不属于帕累托最优状态\nD) E1、E2、E3都属于帕累托最优状态\n\
+      请只用一个字母(A、B、C 或 D)回答。"
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - ceval
+      - college_economics
+      - zh
+    temperature: null
+  - expected_output: D
+    id: ceval/college_economics/46
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bD\b
+    prompt: "问题:关于宏观经济政策的选择，下列说法中错误的是____。\nA) 当经济陷入流动性陷阱时，建议采用财政政策而非货币政策\nB) 当挤出效应很明显时，采取货币政策更能够成功\n\
+      C) 在古典世界里，应该采用货币政策而不是财政政策\nD) 在古典世界里，给定的货币数量的变化对收入水平的影响最小\n请只用一个字母(A、B、C 或 D)回答。"
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - ceval
+      - college_economics
+      - zh
+    temperature: null
+  - expected_output: A
+    id: ceval/college_economics/47
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "问题:劳动市场上存在三个工人，每人的保留工资分别为2000元/月、1800元/月、1500元/月，并且在劳动市场上三人的要求工资均为保留工资。如果厂商同时雇佣这三个人，月工资为2000元/月。这三个工人能得到的经济租为____元。\n\
+      A) 0、200、500\nB) 均为500\nC) 均为200\nD) 均为0\n请只用一个字母(A、B、C 或 D)回答。"
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - ceval
+      - college_economics
+      - zh
+    temperature: null
+  - expected_output: B
+    id: ceval/college_economics/48
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "问题:供给的增加会降低价格，除非____。\nA) 供给是完全无弹性的\nB) 需求是完全有弹性的\nC) 需求量增加\nD) 需求高度缺乏弹性\n\
+      请只用一个字母(A、B、C 或 D)回答。"
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - ceval
+      - college_economics
+      - zh
+    temperature: null
+  - expected_output: A
+    id: ceval/college_economics/49
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "问题:根据费雪的消费理论，如果实际利率为正，那么____。\nA) 用第一期的收入衡量的第二期消费成本低于同等数量的第一期消费\nB) 第二期的收入比第一期的同等数量的收入值得更多\n\
+      C) 消费者将不愿借钱，从而其第一期的消费小于第一期的收入\nD) A、B、C均正确\n请只用一个字母(A、B、C 或 D)回答。"
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - ceval
+      - college_economics
+      - zh
+    temperature: null
+version: '1.0'

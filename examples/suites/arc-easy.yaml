@@ -1,0 +1,5443 @@
+defaults:
+  max_tokens: 256
+  stop_sequences: []
+  temperature: 0.0
+description: 'AI2 ARC-Easy: grade-school science MCQ, easier split. Good baseline
+  for basic science/knowledge.'
+name: arc-easy
+test_cases:
+  - expected_output: '3'
+    id: arc-easy/NYSEDREGENTS_2015_8_24
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \b3\b
+    prompt: "Question: The length of one day on Earth is determined by how long it
+      takes\n1) the Moon to revolve once\n2) the Moon to rotate once\n3) Earth to
+      rotate once\n4) Earth to revolve once\nAnswer with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: C
+    id: arc-easy/Mercury_7137480
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bC\b
+    prompt: "Question: Ava conducted an experiment to determine respiratory rates
+      during different activities. She counted the number of breaths per minute. Ava
+      noted that the number of breaths increases as physical activity increases. Why
+      is there an increase in the number of breaths per minute as activity increases?\n\
+      A) As activity increases, more oxygen is exhaled.\nB) As activity increases,
+      breathing becomes more efficient.\nC) As activity increases, the oxygen needs
+      of cells increase.\nD) As activity increases, the rate of the heart beating
+      increases.\nAnswer with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: D
+    id: arc-easy/MCAS_2012_8_23649
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bD\b
+    prompt: "Question: Some types of bacteria can only live where oxygen is not present.
+      These bacteria were well adapted to life on Earth over 2 billion years ago.
+      Which of the following changes caused many of these bacteria to become extinct?\n\
+      A) the slow movement of tectonic plates\nB) the varying temperatures of each
+      season\nC) an increase in volcanic activity under the oceans\nD) an increase
+      in the number of photosynthetic organisms\nAnswer with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: C
+    id: arc-easy/Mercury_179130
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bC\b
+    prompt: "Question: The average temperature of Earth's surface has increased approximately
+      1°C in the past century. Which of the following can best explain this increase
+      in temperature?\nA) higher levels of oxygen in the atmosphere\nB) lower levels
+      of ozone in the atmosphere\nC) higher levels of carbon dioxide in the atmosphere\n\
+      D) lower levels of nitrogen in the atmosphere\nAnswer with the single option
+      letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: D
+    id: arc-easy/Mercury_SC_414087
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bD\b
+    prompt: "Question: Some pea plants always have peas with smooth skin. Other pea
+      plants always have peas with wrinkled skin. How can a student best predict which
+      kind of pea will grow from a seed that is planted?\nA) by checking the amount
+      of water in the soil\nB) by checking how often the pea plant receives sunlight\n\
+      C) by checking how much space the plant will have to grow\nD) by checking the
+      type of peas growing on the parent plants\nAnswer with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: B
+    id: arc-easy/Mercury_402102
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Question: The Moon is in orbit around Earth. What keeps the Moon from
+      changing its orbit?\nA) friction\nB) gravity\nC) weight\nD) rotation\nAnswer
+      with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: D
+    id: arc-easy/MCAS_1999_8_9
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bD\b
+    prompt: "Question: Large amounts of industrial gases are released into the atmosphere
+      every day. What happens to those gases?\nA) They are broken down by ultraviolet
+      light from the Sun.\nB) They are converted into nitrogen and oxygen.\nC) They
+      rise through the atmosphere and go into outer space.\nD) They remain in the
+      atmosphere for long periods of time.\nAnswer with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: '4'
+    id: arc-easy/NYSEDREGENTS_2015_8_31
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \b4\b
+    prompt: "Question: Which type of energy is transferred by vibrational waves?\n\
+      1) nuclear\n2) light\n3) chemical\n4) sound\nAnswer with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: D
+    id: arc-easy/MCAS_8_2015_14
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bD\b
+    prompt: "Question: A species of moth in England has both a light-colored form
+      and a dark-colored form. In the mid-1800s, the percentage of dark-colored moths
+      increased in areas where black soot from factories covered the trees. The soot
+      in these areas has decreased in more recent times as a result of pollution laws.
+      Which of the following statements describes what has most likely happened to
+      the moth populations in these areas?\nA) The moth populations went extinct.\n\
+      B) The moth populations migrated south.\nC) The percentage of light-colored
+      moths in the populations decreased.\nD) The percentage of dark-colored moths
+      in the populations decreased.\nAnswer with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: B
+    id: arc-easy/Mercury_SC_400588
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Question: When conducting a scientific experiment in the field, you are
+      expected to\nA) completely clear the area.\nB) leave the area as you found it.\n\
+      C) take anything you may need later.\nD) destroy specimens once you have observed
+      them.\nAnswer with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: D
+    id: arc-easy/Mercury_178605
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bD\b
+    prompt: "Question: Which of the following is a chemical property of silver?\n\
+      A) malleable\nB) white metal\nC) conductor of heat\nD) reacts with nitric acid\n\
+      Answer with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: C
+    id: arc-easy/MDSA_2013_8_2
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bC\b
+    prompt: "Question: Each layer of Earth has different properties. Which statement
+      best describes the mantle of Earth?\nA) The mantle lies below the core.\nB)
+      The mantle is composed of hot gases.\nC) The mantle lies between the core and
+      the crust.\nD) The mantle temperature is lower than the crust temperature.\n\
+      Answer with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: A
+    id: arc-easy/Mercury_SC_LBS10680
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Question: What allows a light bulb to give off light?\nA) the current
+      flowing through the wire to the light bulb\nB) the light bulb giving electrical
+      energy to the battery\nC) the light bulb generating heat energy\nD) the battery
+      pushing light through the wire\nAnswer with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: D
+    id: arc-easy/Mercury_7094553
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bD\b
+    prompt: "Question: Biologists moved a predator from sea level to a higher altitude,
+      where they noticed that the predator became tired more quickly. If this predator
+      had to live at a higher altitude, which adaptation would be necessary for it
+      to survive?\nA) increased digestion rate\nB) growth of additional teeth\nC)
+      reduction of respiration rate\nD) production of more red blood cells\nAnswer
+      with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: B
+    id: arc-easy/FCAT_2012_8_4
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Question: An object moves through space with balanced forces acting on
+      it. Which statement best describes the speed and direction of the object as
+      long as the forces acting on it remain balanced?\nA) The speed and direction
+      of the object will both change.\nB) The speed and direction of the object will
+      remain constant.\nC) The speed will change, but the direction will remain constant.\n\
+      D) The speed will remain constant, but the direction will change.\nAnswer with
+      the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: C
+    id: arc-easy/Mercury_SC_402122
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bC\b
+    prompt: "Question: Which of the following is a function of the digestive system
+      of the human body?\nA) carrying oxygen to the lungs\nB) sending signals from
+      the brain to the spinal cord\nC) breaking down food into nutrients\nD) providing
+      support for the body\nAnswer with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: D
+    id: arc-easy/Mercury_400278
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bD\b
+    prompt: "Question: In order for a material to be effective for cooking, it must
+      have which physical property?\nA) low melting point\nB) high electric charge\n\
+      C) high reactivity with water\nD) low thermal expansion\nAnswer with the single
+      option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: A
+    id: arc-easy/Mercury_7007683
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Question: Which parts of an atom are reactive during a chemical process?\n\
+      A) electrons\nB) protons\nC) neutrons\nD) molecules\nAnswer with the single
+      option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: A
+    id: arc-easy/Mercury_7085873
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Question: Which of the following best describes two atoms of oxygen that
+      are chemically bonded to each other?\nA) molecule\nB) compound\nC) solution\n\
+      D) mixture\nAnswer with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: B
+    id: arc-easy/NYSEDREGENTS_2015_4_19
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Question: During which process do animals increase in size?\nA) breathing\n\
+      B) growing\nC) shedding\nD) repairing\nAnswer with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: '1'
+    id: arc-easy/NYSEDREGENTS_2008_8_26
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \b1\b
+    prompt: "Question: Studies of earthquake waves have helped scientists determine
+      the\n1) structure of Earth's interior\n2) depth of the oceans\n3) cause of dinosaur
+      extinction\n4) age of Earth\nAnswer with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: C
+    id: arc-easy/Mercury_SC_402258
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bC\b
+    prompt: "Question: In an experiment, water and salt are mixed together. What is
+      the best way to separate the salt from the water?\nA) filter the salt\nB) freeze
+      the mixture\nC) evaporate the water\nD) pour the water out of the container\n\
+      Answer with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: D
+    id: arc-easy/Mercury_SC_401238
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bD\b
+    prompt: "Question: Many birds avoid eating the viceroy butterfly because it looks
+      like the monarch butterfly. Monarch butterflies contain a substance that makes
+      the birds sick when monarchs are eaten. The development of the pattern of the
+      viceroy butterfly to look like the monarch butterfly is an example of\nA) camouflage.\n\
+      B) coloration.\nC) diversity.\nD) mimicry.\nAnswer with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: A
+    id: arc-easy/NYSEDREGENTS_2013_4_26
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Question: A large amount of oil was spilled in a lake environment. Within
+      a few weeks, the number of plants and animals living in the area where the oil
+      was spilled will most likely\nA) decrease\nB) increase\nC) remain the same\n\
+      Answer with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: D
+    id: arc-easy/Mercury_7001313
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bD\b
+    prompt: "Question: Increasing and revising scientific knowledge of different types
+      of bacteria will most likely enable scientists to develop ways to\nA) help patients
+      spend less time in the emergency room.\nB) aid research students who are studying
+      complex organisms.\nC) help make medicines from newly discovered plants.\nD)
+      develop specialized antibiotics that are directed at single-celled organisms.\n\
+      Answer with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: A
+    id: arc-easy/LEAP_2004_4_10258
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Question: What is one way people are helping the environment?\nA) They
+      are planting trees to replace the ones that are cut.\nB) They are building more
+      roads so more people can see natural areas.\nC) They are building more dumps
+      to hold the trash we create.\nD) They are using their cars more to get to places
+      faster.\nAnswer with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: D
+    id: arc-easy/Mercury_7124128
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bD\b
+    prompt: "Question: The breakfast that a student ate provided energy for bicycling
+      later in the day. Which energy transformation most likely occurred?\nA) radiant
+      to nuclear\nB) chemical to nuclear\nC) radiant to mechanical\nD) chemical to
+      mechanical\nAnswer with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: A
+    id: arc-easy/Mercury_SC_408439
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Question: Brian knows deserts get less rain than other ecosystems. However,
+      he also knows that plants can survive in the desert. Which characteristic of
+      a plant most likely helps it live in a desert?\nA) the ability to store water\n\
+      B) the ability to attract insects\nC) the ability to stop predators\nD) the
+      ability to drop its leaves\nAnswer with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: C
+    id: arc-easy/MDSA_2009_8_32
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bC\b
+    prompt: "Question: Science students investigated the cause of the different phases
+      of the moon. The model that would best demonstrate the cause of the phases of
+      the moon would include representations of\nA) the moon and Earth\nB) the moon
+      and the sun\nC) the moon, the sun, and Earth\nD) the moon, the sun, and Venus\n\
+      Answer with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: A
+    id: arc-easy/MDSA_2008_5_25
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Question: Many natural resources are found in Maryland and the surrounding
+      area. Some of these natural resources are renewable and some are nonrenewable.
+      People use both kinds of resources in daily activities. Using natural resources
+      often produces waste products. Burning fossil fuels, such as oil, coal, and
+      gasoline produces pollution. Which type of pollution is most often produced
+      by burning fossil fuels?\nA) air pollution\nB) land pollution\nC) noise pollution\n\
+      D) water pollution\nAnswer with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: C
+    id: arc-easy/MSA_2013_5_15
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bC\b
+    prompt: "Question: Water cycles through three states of matter on Earth. What
+      has the greatest effect on the state of matter of water?\nA) tides\nB) gravity\n\
+      C) the sun\nD) the moon\nAnswer with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: B
+    id: arc-easy/MCAS_2006_8_25
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Question: Sal is looking at a map of Massachusetts. He has measured the
+      distance, in inches, from Boston to Salem on the map. He wants to know how many
+      actual miles the inches represent. What feature of the map should he look for?\n\
+      A) key\nB) scale\nC) legend\nD) compass\nAnswer with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: D
+    id: arc-easy/CSZ_2008_5_CSZ10233
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bD\b
+    prompt: "Question: Plants and animals are composed of organic compounds. Which
+      of the following are the common elements found in organic compounds?\nA) iron,
+      oxygen, nickel, copper.\nB) sodium, potassium, gold, hydrogen.\nC) helium, neon,
+      argon, krypton.\nD) carbon, hydrogen, oxygen, nitrogen.\nAnswer with the single
+      option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: B
+    id: arc-easy/Mercury_7037275
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Question: How is the mass of an atom calculated?\nA) add the number of
+      protons to the number of electrons\nB) add the number of protons to the number
+      of neutrons\nC) subtract the number of protons from the number of neutrons\n\
+      D) subtract the number of electrons from the sum of protons and neutrons\nAnswer
+      with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: C
+    id: arc-easy/Mercury_7086800
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bC\b
+    prompt: "Question: Soil that drains slowly most likely has a high amount of\n\
+      A) ash.\nB) sand.\nC) clay.\nD) peat.\nAnswer with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: '3'
+    id: arc-easy/NYSEDREGENTS_2008_8_15
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \b3\b
+    prompt: "Question: A broken bone heals through the process of\n1) adaptation\n\
+      2) mutation\n3) cell division\n4) chemical digestion\nAnswer with the single
+      option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: D
+    id: arc-easy/Mercury_7218488
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bD\b
+    prompt: "Question: The discovery of tectonic plates and the cause of their movement
+      is best described as a result of which scientific procedure?\nA) direct observation
+      of the important properties of the Earth system\nB) controlled laboratory experimentation
+      on a simulation of geological systems\nC) methodical testing of a valid hypothesis
+      statement\nD) inquiry into the causes of observed geological phenomena\nAnswer
+      with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: B
+    id: arc-easy/NAEP_2005_8_S11+11
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Question: A person produces two sound waves with a flute, one immediately
+      after the other. Both sound waves have the same pitch, but the second one is
+      louder. Which of the following properties is greater for the second sound wave?\n\
+      A) Frequency\nB) Amplitude\nC) Wavelength\nD) Speed in air\nAnswer with the
+      single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: D
+    id: arc-easy/NYSEDREGENTS_2012_4_20
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bD\b
+    prompt: "Question: Green plants get the energy they need to make food from\nA)
+      water\nB) air\nC) soil\nD) sunlight\nAnswer with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: C
+    id: arc-easy/Mercury_401240
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bC\b
+    prompt: "Question: Most species of ducks have webbed feet. The webbed feet are
+      an example of\nA) behavioral trait.\nB) a learned trait.\nC) an inherited trait.\n\
+      D) an instinctive trait.\nAnswer with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: C
+    id: arc-easy/Mercury_7007543
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bC\b
+    prompt: "Question: Which part of a sound wave measures loudness?\nA) wavelength\n\
+      B) magnitude\nC) amplitude\nD) frequency\nAnswer with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: D
+    id: arc-easy/TIMSS_2003_4_pg12
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bD\b
+    prompt: "Question: The fossils of dinosaurs that lived millions of years ago can
+      be found in\nA) the water of oceans.\nB) the ice on ponds.\nC) the trunks of
+      trees.\nD) rocks in the ground.\nAnswer with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: B
+    id: arc-easy/TIMSS_2003_4_pg14
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Question: Each year the Earth moves once around\nA) Mars\nB) the Sun\n\
+      C) the Moon\nD) all the other planets\nAnswer with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: D
+    id: arc-easy/Mercury_401760
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bD\b
+    prompt: "Question: Sodium bicarbonate (NaHCO_{3}) will neutralize stomach acid
+      (HCl) in a double replacement reaction as follows: NaHCO_{3} + HCl -> NaCl +
+      CO_{2} + \\Box What is the product necessary to make this reaction complete?\n\
+      A) 2HO\nB) HO_{2}\nC) H_{2}O_{2}\nD) H_{2}O\nAnswer with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: C
+    id: arc-easy/Mercury_178308
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bC\b
+    prompt: "Question: In the late 1700s, Antoine Lavoisier performed a series of
+      experiments to find out what happened when a substance burned. In each experiment,
+      he observed that the weight of a container and its contents was the same at
+      the end of the experiment as it had been in the beginning. These observations
+      led him to propose the law of\nA) combustion.\nB) fixed proportions.\nC) conservation
+      of mass.\nD) conservation of energy.\nAnswer with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: D
+    id: arc-easy/ACTAAP_2009_5_4
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bD\b
+    prompt: "Question: In the United States, windmills have been used for farming
+      for hundreds of years. Which simple machine is the most important part of a
+      windmill?\nA) lever\nB) pulley\nC) inclined plane\nD) wheel and axle\nAnswer
+      with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: D
+    id: arc-easy/Mercury_7206063
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bD\b
+    prompt: "Question: The climate of an area would be expected to have the least
+      fluctuations in temperatures where the\nA) atmospheric nitrogen is low.\nB)
+      vegetation is sparse.\nC) days are longest.\nD) humidity is high.\nAnswer with
+      the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: '4'
+    id: arc-easy/NYSEDREGENTS_2012_8_9
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \b4\b
+    prompt: "Question: In living things, traits are passed on from one generation
+      to the next by the transfer of\n1) blood\n2) minerals\n3) Calories\n4) DNA\n\
+      Answer with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: A
+    id: arc-easy/Mercury_7161403
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Question: Aerogels are compounds formed by the drying of certain gels.
+      Although the aerogel hardens into a solid material, the particles in the gel
+      are much farther apart than those of most solids and particles are held together
+      by strong bridges of covalently bonded atoms. Which of the following is a likely
+      property of aerogels?\nA) very low density\nB) high electrical conductivity\n\
+      C) very low melting point\nD) very flexible\nAnswer with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: B
+    id: arc-easy/OHAT_2008_8_29
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Question: Which explains the relationship between hours of sunlight and
+      seasons?\nA) the rotation of Earth on its axis\nB) the tilt of Earth's axis
+      relative to the sun\nC) the location of Earth's orbit in the solar system\n\
+      D) the motion of the moon as it travels around Earth\nAnswer with the single
+      option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: D
+    id: arc-easy/Mercury_400556
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bD\b
+    prompt: "Question: What can be inferred from a food product advertisement that
+      claims \"30% less fat than our leading competitors\"?\nA) It is a sugar-free
+      product.\nB) It will help a person lose weight.\nC) It is the healthiest choice
+      available.\nD) The fat content of the item is reduced.\nAnswer with the single
+      option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: C
+    id: arc-easy/MCAS_2003_8_26
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bC\b
+    prompt: "Question: A container is filled with 100 mL of water and placed in a
+      freezer. The water in the container freezes at 0°C. A second container filled
+      with 90 mL of water is placed in a second freezer. At what temperature does
+      this second container of water freeze?\nA) -10°C\nB) -1°C\nC) 0°C\nD) 10°C\n\
+      Answer with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: A
+    id: arc-easy/Mercury_7210193
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Question: Which resource is more available due to improvements in deep-sea
+      drilling technology?\nA) crude oil\nB) fresh water\nC) thermal energy\nD) salt
+      reserves\nAnswer with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: C
+    id: arc-easy/Mercury_SC_400181
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bC\b
+    prompt: "Question: Which characteristic best identifies a pure substance?\nA)
+      shape\nB) texture\nC) melting point\nD) state of matter\nAnswer with the single
+      option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: D
+    id: arc-easy/Mercury_7024745
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bD\b
+    prompt: "Question: A student wants to perform an experiment to determine what
+      temperature is best for growing tomato plants. Which is the best piece of equipment
+      to use in this experiment to measure the independent variable?\nA) rain gauge\n\
+      B) light meter\nC) tape measure\nD) thermometer\nAnswer with the single option
+      letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: B
+    id: arc-easy/Mercury_7109690
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Question: What would be the initial result if a DNA molecule did not
+      replicate accurately?\nA) infertility of the organism\nB) incorrect protein
+      synthesis\nC) increase in reproduction rate\nD) immediate death of the organism\n\
+      Answer with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: A
+    id: arc-easy/Mercury_7113803
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Question: When a fern reproduces with spores, the offspring\nA) will
+      be genetically identical to the parent plant.\nB) will be better able to adapt
+      to the environment.\nC) will have half the genetic materials of the parent plant.\n\
+      D) will have twice the genetic materials of the parent plant.\nAnswer with the
+      single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: D
+    id: arc-easy/Mercury_SC_LBS11008
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bD\b
+    prompt: "Question: A lumber company plants new trees where a forest once stood.
+      This is an example of\nA) conserving resources.\nB) consuming resources.\nC)
+      recycling resources.\nD) replacing resources.\nAnswer with the single option
+      letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: C
+    id: arc-easy/TIMSS_2011_8_pg19
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bC\b
+    prompt: "Question: What is the main difference between planets and moons in our
+      solar system?\nA) All planets can support life; moons cannot.\nB) All planets
+      have atmospheres; moons do not.\nC) All planets orbit the Sun; all moons orbit
+      planets.\nD) All planets are larger than all moons.\nAnswer with the single
+      option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: C
+    id: arc-easy/Mercury_7242900
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bC\b
+    prompt: "Question: When a small group of organisms colonizes a new habitat, the
+      population may be genetically different from the parent population due to differences
+      in allele frequencies. The process responsible for this is\nA) natural selection.\n\
+      B) disruptive selection.\nC) genetic drift.\nD) genetic equilibrium.\nAnswer
+      with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: C
+    id: arc-easy/NCEOGA_2013_5_24
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bC\b
+    prompt: "Question: After a rain, a puddle of water remains on a sidewalk. After
+      a day of sunshine, the puddle is gone. Which process is most responsible for
+      the disappearance of the puddle?\nA) precipitation\nB) transpiration\nC) evaporation\n\
+      D) condensation\nAnswer with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: B
+    id: arc-easy/Mercury_7161298
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Question: In an ecosystem, not all of the energy that is available is
+      used by the organisms. Some energy becomes unavailable before it can be transferred
+      to organisms in the next trophic level. How does the energy most likely become
+      unavailable?\nA) The energy is stored as food.\nB) The energy is dissipated
+      as heat.\nC) The energy is trapped in dead organisms.\nD) The energy is moved
+      to another ecosystem.\nAnswer with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: D
+    id: arc-easy/Mercury_402634
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bD\b
+    prompt: "Question: In which state are molecules of a substance arranged in the
+      most orderly way?\nA) gas\nB) liquid\nC) plasma\nD) solid\nAnswer with the single
+      option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: D
+    id: arc-easy/Mercury_7013458
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bD\b
+    prompt: "Question: During its lifetime, a star will evolve through several stages.
+      In which stage does a star spend most of its life?\nA) red giant\nB) red dwarf\n\
+      C) white dwarf\nD) main sequence\nAnswer with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: D
+    id: arc-easy/Mercury_SC_405020
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bD\b
+    prompt: "Question: Oxygen-rich blood returns from the lungs to the heart. Which
+      two systems are most directly involved in this process?\nA) excretory and digestive\n\
+      B) circulatory and excretory\nC) digestive and respiratory\nD) respiratory and
+      circulatory\nAnswer with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: C
+    id: arc-easy/Mercury_7250285
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bC\b
+    prompt: "Question: A population of tree-climbing lizard lives on one bank of a
+      large river. The other bank of the river is a treeless prairie. During a flood,
+      40 lizards were transferred to the prairie side of the river. After 200 generations,
+      this transferred population of lizard lost the ability to climb.Which mechanism
+      is most likely responsible for this loss of function within the transferred
+      population?\nA) gene flow\nB) natural selection\nC) genetic drift\nD) mutation\n\
+      Answer with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: A
+    id: arc-easy/Mercury_400347
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Question: A 20-N force acts on a 5-kg object at rest. How fast will the
+      object accelerate on a frictionless surface?\nA) 4 m/s^2\nB) 15 m/s^2\nC) 25
+      m/s^2\nD) 100 m/s^2\nAnswer with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: D
+    id: arc-easy/Mercury_7222845
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bD\b
+    prompt: "Question: Which of these events is an example of a change in climate?\n\
+      A) Afternoon clouds form and block the sunlight.\nB) A series of tornadoes occurs
+      over a one-week period.\nC) An overnight temperature drop causes frost to form.\n\
+      D) The average amount of annual precipitation decreases.\nAnswer with the single
+      option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: D
+    id: arc-easy/Mercury_400471
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bD\b
+    prompt: "Question: Secondary pollutants are produced in the environment by chemical
+      reactions involving primary or emitted chemicals. Which of the following is
+      a secondary pollutant?\nA) carbon monoxide (CO)\nB) nitrogen oxide (NO)\nC)
+      methane (CH_{4})\nD) ozone (O_{3})\nAnswer with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: C
+    id: arc-easy/MEAP_2004_8_48
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bC\b
+    prompt: "Question: What unit of measure should Jerry use to report the volume
+      of a liquid?\nA) degrees Celsius\nB) kilograms\nC) milliliters\nD) centimeters\n\
+      Answer with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: D
+    id: arc-easy/Mercury_SC_401833
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bD\b
+    prompt: "Question: Students went on a class field trip to Natural Bridge Caverns.
+      They noticed rock formations in the cave called stalactites. Which of these
+      processes caused the stalactites to form?\nA) heat\nB) pressure\nC) freezing\n\
+      D) deposition\nAnswer with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: B
+    id: arc-easy/Mercury_SC_408362
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Question: Jessica wants to see cells in an oak tree leaf. Which tool
+      is best for Jessica to use to see the cells?\nA) binoculars\nB) microscope\n\
+      C) reading glasses\nD) magnifying glass\nAnswer with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: B
+    id: arc-easy/TIMSS_2011_4_pg51
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Question: How often does Earth rotate on its axis?\nA) once every 12
+      hours\nB) once every 24 hours\nC) once every month\nD) once every year\nAnswer
+      with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: D
+    id: arc-easy/Mercury_7218050
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bD\b
+    prompt: "Question: A city is experiencing heavy smog formed by motor vehicle exhaust.
+      Which of these weather conditions contributes most to the formation of smog?\n\
+      A) dry line\nB) cold front\nC) tropical cyclone\nD) temperature inversion\n\
+      Answer with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: B
+    id: arc-easy/Mercury_415262
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Question: Which of the following could help to reduce a home heating
+      bill in winter?\nA) replacing wood doors with aluminum doors\nB) using more
+      insulation in the walls of the home\nC) removing thick rugs and heavy curtains
+      in the home\nD) painting the roof of the home white to reflect light\nAnswer
+      with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: B
+    id: arc-easy/Mercury_7190050
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Question: El Niño is a term that refers to the oceanic phenomenon in
+      which the surface water temperatures increase. The increase in water temperature
+      usually occurs in the tropical Pacific Ocean. Which will most likely occur as
+      a result of this phenomenon to cause environmental changes?\nA) melting of the
+      polar ice caps\nB) varied atmospheric conditions\nC) an increase in volcanic
+      eruptions\nD) an increase in the length of summers\nAnswer with the single option
+      letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: C
+    id: arc-easy/Mercury_SC_400676
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bC\b
+    prompt: "Question: A student hears on the radio that the outside temperature is
+      32°C. What type of weather will the student most likely expect when she steps
+      outside?\nA) cool, rainy fall weather\nB) cold, snowy winter weather\nC) hot,
+      sunny summer weather\nD) spring weather with flowers blooming\nAnswer with the
+      single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: C
+    id: arc-easy/Mercury_415745
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bC\b
+    prompt: "Question: How are electromagnetic waves different from other waves?\n\
+      A) They have very short wavelengths.\nB) They transmit energy instead of matter.\n\
+      C) They can travel through a vacuum and through matter.\nD) They can change
+      direction by reflection when they strike an object.\nAnswer with the single
+      option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: A
+    id: arc-easy/ACTAAP_2015_5_8
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Question: Antarctica is a continent at Earth's south pole. Fossils of
+      tropical fern plants were discovered in Antarctica even though these plants
+      do not grow there today. Which conclusion does the fossil evidence best support?\n\
+      A) Millions of years ago, Antarctica was in a warmer location on Earth.\nB)
+      Recently, a natural disaster killed all of the fern plants in Antarctica.\n\
+      C) Recently, birds stopped carrying the seeds of fern plants to Antarctica.\n\
+      D) Millions of years ago, Earth's south pole was much colder than it is today.\n\
+      Answer with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: D
+    id: arc-easy/Mercury_SC_410895
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bD\b
+    prompt: "Question: Darryl learns that freezing temperatures may help cause weathering.
+      Which statement explains how freezing temperatures most likely cause weathering?\n\
+      A) by freezing the leaves on trees\nB) by causing rocks to stick together\n\
+      C) by turning acid rain into acid snow\nD) by freezing water in the cracks of
+      rocks\nAnswer with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: C
+    id: arc-easy/MCAS_2011_8_17683
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bC\b
+    prompt: "Question: A student prepared the following list of characteristics about
+      a cellular organelle. present in animal cells present in plant cells helps make
+      energy available to the cell Which of the following cellular structures is the
+      student describing?\nA) cell wall\nB) chloroplast\nC) mitochondrion\nD) nucleus\n\
+      Answer with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: B
+    id: arc-easy/MCAS_2012_5_23619
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Question: Which of the following processes makes it possible for plants
+      to use energy from sunlight to produce their own food?\nA) metamorphosis\nB)
+      photosynthesis\nC) pollination\nD) reproduction\nAnswer with the single option
+      letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: A
+    id: arc-easy/MCAS_2004_5_32
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Question: Energy appears in many forms. What form of energy is lightning?\n\
+      A) electrical energy\nB) mechanical energy\nC) magnetic energy\nD) sound energy\n\
+      Answer with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: D
+    id: arc-easy/Mercury_SC_400187
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bD\b
+    prompt: "Question: Which process turns a large rock into a pile of smaller stones?\n\
+      A) deposition\nB) sedimentation\nC) fossilizing\nD) weathering\nAnswer with
+      the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: B
+    id: arc-easy/VASoL_2008_5_20
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Question: A student throws a ball. Which of these best describes the
+      moving ball?\nA) The ball has light energy.\nB) The ball has kinetic energy.\n\
+      C) The ball is transferring sound energy to the air.\nD) The ball is transferring
+      light energy to the air.\nAnswer with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: B
+    id: arc-easy/Mercury_7057785
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Question: Why are diseases transmitted through the bites of infected
+      animals not considered contagious diseases?\nA) The infected animals do not
+      show symptoms.\nB) The person in direct contact is the only one infected.\n\
+      C) Humans do not become sick from animal diseases.\nD) The diseases are treatable
+      with antibiotics.\nAnswer with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: A
+    id: arc-easy/Mercury_7064698
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Question: When iron combines with oxygen in a moist environment, rust
+      forms because of a\nA) chemical reaction.\nB) physical reaction.\nC) change
+      in density.\nD) change in temperature.\nAnswer with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: A
+    id: arc-easy/MCAS_2011_5_10
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Question: Which two forms of energy could best be used to increase the
+      temperature of a sheet of copper?\nA) heat and light\nB) heat and sound\nC)
+      light and magnetism\nD) electricity and sound\nAnswer with the single option
+      letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: A
+    id: arc-easy/Mercury_SC_401308
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Question: Which event helps to renew a resource?\nA) A seed is planted
+      from a tree.\nB) An offshore rig pumps oil.\nC) A car is filled with gasoline.\n\
+      D) An office is heated with coal.\nAnswer with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: B
+    id: arc-easy/Mercury_7056648
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Question: Which event is an example of conduction?\nA) Sunlight travels
+      from the Sun to warm Earth.\nB) Boiling water in a pot warms a spoon inside
+      the pot.\nC) A fire in a fireplace warms the air in a room.\nD) Cold water is
+      heated in a microwave oven.\nAnswer with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: '3'
+    id: arc-easy/NYSEDREGENTS_2008_8_24
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \b3\b
+    prompt: "Question: Which information would probably be most helpful to someone
+      trying to identify a mineral sample?\n1) location and mass of the sample\n2)
+      shape and texture of the sample\n3) hardness and streak of the sample\n4) color
+      and size of the sample\nAnswer with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: C
+    id: arc-easy/VASoL_2009_3_26
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bC\b
+    prompt: "Question: Which of these senses lets Dora know when a skunk has been
+      close to her house?\nA) Taste\nB) Touch\nC) Smell\nD) Hearing\nAnswer with the
+      single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: D
+    id: arc-easy/Mercury_7008960
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bD\b
+    prompt: "Question: During a collision, a seat belt slows the speed of a crash
+      dummy. What is the direction of the net force exerted by the seat belt compared
+      to the direction of the crash dummy's motion?\nA) in the same direction\nB)
+      in a vertical direction\nC) in a downward direction\nD) in the opposite direction\n\
+      Answer with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: C
+    id: arc-easy/TIMSS_2011_4_pg58
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bC\b
+    prompt: "Question: Calcium is a mineral that helps make your bones and teeth strong.
+      Which of these foods is the best source of calcium?\nA) candy\nB) rice\nC) cheese\n\
+      D) meat\nAnswer with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: B
+    id: arc-easy/MCAS_1999_4_15
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Question: Needles on a cactus plant are actually leaves. This needle
+      shape helps the plant survive by\nA) catching food.\nB) preventing water loss.\n\
+      C) staying in place.\nD) reproducing.\nAnswer with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: C
+    id: arc-easy/Mercury_400060
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bC\b
+    prompt: "Question: Which statement below best explains why several fossils of
+      sea organisms were discovered buried deep in an area of dry land?\nA) The fossils
+      changed locations.\nB) The area had a shift in climate.\nC) The land was once
+      underwater.\nD) A glacier once covered the area.\nAnswer with the single option
+      letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: C
+    id: arc-easy/Mercury_7074900
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bC\b
+    prompt: "Question: In order for cells to grow at a normal rate, they must\nA)
+      take in light.\nB) be specialized.\nC) take in nutrients.\nD) be of similar
+      size.\nAnswer with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: B
+    id: arc-easy/Mercury_SC_408425
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Question: The human body is made up of several systems. The mouth, esophagus,
+      and stomach are all parts of which system?\nA) circulatory\nB) digestive\nC)
+      nervous\nD) skeletal\nAnswer with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: D
+    id: arc-easy/Mercury_SC_405081
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bD\b
+    prompt: "Question: Some classrooms have computers. The computer is most useful
+      to the students because it helps them\nA) play games.\nB) watch movies.\nC)
+      listen to music.\nD) find information.\nAnswer with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: C
+    id: arc-easy/MEAP_2005_5_16
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bC\b
+    prompt: "Question: When butterfly eggs hatch, the young are called ___.\nA) worms\n\
+      B) cocoons\nC) caterpillars\nD) little butterflies\nAnswer with the single option
+      letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: D
+    id: arc-easy/Mercury_7001575
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bD\b
+    prompt: "Question: Which characteristic of wolves is most likely learned?\nA)
+      fur color\nB) eyesight\nC) litter size\nD) social behavior\nAnswer with the
+      single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: B
+    id: arc-easy/Mercury_7264180
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Question: In 2001, NASA launched a probe to investigate very low-energy
+      radiation emitted when the universe began. What part of the electromagnetic
+      spectrum does this probe observe and record?\nA) infrared\nB) microwave\nC)
+      ultraviolet\nD) visible\nAnswer with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: A
+    id: arc-easy/Mercury_SC_402052
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Question: Which reflects light?\nA) mirror\nB) camera\nC) telescope\n\
+      D) eyeglasses\nAnswer with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: C
+    id: arc-easy/MDSA_2008_8_29
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bC\b
+    prompt: "Question: Leaf cells are one type of tree cell. Which process occurs
+      in a growing leaf cell?\nA) evolution\nB) adaptation\nC) sugar production\n\
+      D) sexual reproduction\nAnswer with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: D
+    id: arc-easy/Mercury_7188860
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bD\b
+    prompt: "Question: The universe is believed to be approximately 14 billion years
+      old. As a result of gravitational attraction, which most likely developed first
+      after the Big Bang?\nA) a planet\nB) a comet\nC) a moon\nD) a star\nAnswer with
+      the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: C
+    id: arc-easy/CSZ20770
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bC\b
+    prompt: "Question: Iron oxides, such as rust, form when iron metal reacts with
+      oxygen in the air. What are the chemical symbols for the two elements found
+      in iron oxide?\nA) I and O\nB) Ir and O\nC) Fe and O\nD) Pb and O\nAnswer with
+      the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: C
+    id: arc-easy/Mercury_SC_409595
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bC\b
+    prompt: "Question: As wood in a campfire burns, it releases heat and becomes ash.
+      What kind of change occurs in the wood when it burns and releases heat?\nA)
+      nuclear\nB) magnetic\nC) chemical\nD) mechanical\nAnswer with the single option
+      letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: D
+    id: arc-easy/TIMSS_1995_8_L7
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bD\b
+    prompt: "Question: The crews of two boats at sea can communicate with each other
+      by shouting. Why is it impossible for the crews of two spaceships a similar
+      distance apart in space to do this?\nA) The sound is reflected more in space.\n\
+      B) The pressure is too high inside the spaceships.\nC) The spaceships are traveling
+      faster than sound.\nD) There is no air in space for the sound to travel through.\n\
+      Answer with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: C
+    id: arc-easy/OHAT_2008_5_30
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bC\b
+    prompt: "Question: Some processes that shape Earth's surface are slow. Other processes
+      are rapid. Which statement describes a rapid change?\nA) Glaciers melt and form
+      rivers.\nB) Wind weathers rocks into sand.\nC) Earthquakes move land and rocks.\n\
+      D) Rivers carry sediment and build deltas.\nAnswer with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: B
+    id: arc-easy/Mercury_185238
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Question: As members of a food web, humans are considered to be\nA) producers.\n\
+      B) consumers.\nC) decomposers.\nD) scavengers.\nAnswer with the single option
+      letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: C
+    id: arc-easy/Mercury_SC_401120
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bC\b
+    prompt: "Question: Which tool is best used to observe a soil sample?\nA) camera\n\
+      B) compass\nC) hand lens\nD) telescope\nAnswer with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: B
+    id: arc-easy/ACTAAP_2014_7_10
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Question: Which gas is the most abundant in Earth's atmosphere?\nA) oxygen\n\
+      B) nitrogen\nC) water vapor\nD) carbon dioxide\nAnswer with the single option
+      letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: C
+    id: arc-easy/Mercury_SC_406672
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bC\b
+    prompt: "Question: Which is a function of a seed?\nA) forming fruit\nB) making
+      pollen\nC) storing food for a new plant\nD) taking in water from the ground\n\
+      Answer with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: A
+    id: arc-easy/Mercury_7108238
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Question: In the 18th century, smallpox was a common and deadly disease.
+      A country doctor, Edward Jenner, observed that patients working with cattle
+      who contracted a mild disease called cowpox, never came down with the more serious
+      smallpox. When Jenner obtained liquid from cowpox sores and injected it into
+      healthy patients, they became immune to smallpox. What term best describes Jenner's
+      treatment for smallpox?\nA) vaccination\nB) gene therapy\nC) chemotherapy\n\
+      D) genetic engineering\nAnswer with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: C
+    id: arc-easy/Mercury_SC_405783
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bC\b
+    prompt: "Question: Every organism in an ecosystem receives energy from another
+      source. Which of these organisms receives its energy directly from the Sun?\n\
+      A) deer\nB) fungus\nC) grass\nD) hawk\nAnswer with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: B
+    id: arc-easy/OHAT_2007_8_42
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Question: Which phenomena occur as a result of the gravitational attraction
+      between the moon and Earth?\nA) eclipses\nB) ocean tides\nC) seasonal changes\n\
+      D) phases of the moon\nAnswer with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: B
+    id: arc-easy/NYSEDREGENTS_2012_4_23
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Question: Trees start as seeds and grow into mature trees that produce
+      more seeds. This pattern represents a\nA) food chain\nB) life cycle\nC) food
+      supply\nD) life span\nAnswer with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: B
+    id: arc-easy/MEAP_2004_8_1
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Question: Tony always drinks water before and after his long bike rides.
+      Why does his body need water when he exercises?\nA) Drinking water after exercise
+      allows the body to sleep.\nB) Drinking water after exercise helps to replace
+      lost fluids.\nC) Drinking water before exercise helps increase the heart rate.\n\
+      D) Drinking water before exercise prevents the body from sweating.\nAnswer with
+      the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: C
+    id: arc-easy/MCAS_8_2015_17
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bC\b
+    prompt: "Question: A hearing aid is a small device that contains an amplifier,
+      a battery, a microphone, and a speaker. Which part of a hearing aid functions
+      to detect sounds in the user's environment?\nA) the amplifier\nB) the battery\n\
+      C) the microphone\nD) the speaker\nAnswer with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: B
+    id: arc-easy/TAKS_2009_8_12
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Question: Which process below uses carbon dioxide and the sun's radiant
+      energy to produce chemical energy?\nA) Evaporation\nB) Photosynthesis\nC) Respiration\n\
+      D) Decomposition\nAnswer with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: A
+    id: arc-easy/MCAS_2005_9_9
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Question: One method of heat distribution is a baseboard forced hot water
+      system. A baseboard system carries hot water through a pipe that passes through
+      many small, flat plates called fins. What is the purpose of these fins?\nA)
+      to dissipate the heat of the hot water flowing through the pipe\nB) to prevent
+      the baseboard from coming in contact with hot surfaces\nC) to replace the heated
+      air leaving the system with cold air\nD) to prevent dust and other particles
+      from entering the baseboard\nAnswer with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: B
+    id: arc-easy/MDSA_2010_5_19
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Question: The Statue of Liberty was built in France and then taken apart
+      into 350 pieces for shipping. When the pieces arrived in New York, the statue
+      was put together. Which statement describes the relationship between the mass
+      of the 350 pieces and the mass of the whole statue?\nA) The mass of the pieces
+      is greater than the mass of the statue.\nB) The mass of the pieces is the same
+      as the mass of the statue.\nC) The mass of the statue is greater than the mass
+      of the pieces.\nD) The mass of the statue is not related to the mass of the
+      pieces.\nAnswer with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: A
+    id: arc-easy/MCAS_2004_9_20
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Question: What part of a communication system converts binary codes in
+      a computer into recognizable characters?\nA) decoder\nB) encoder\nC) receiver\n\
+      D) transmitter\nAnswer with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: C
+    id: arc-easy/Mercury_LBS10523
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bC\b
+    prompt: "Question: What process makes it possible for the nutrients from organic
+      material to be added to soil?\nA) weathering\nB) erosion\nC) decomposition\n\
+      D) succession\nAnswer with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: C
+    id: arc-easy/Mercury_SC_416124
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bC\b
+    prompt: "Question: Which two human body systems are most responsible for getting
+      oxygen to cells?\nA) digestive and skeletal\nB) skeletal and circulatory\nC)
+      circulatory and respiratory\nD) respiratory and digestive\nAnswer with the single
+      option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: A
+    id: arc-easy/VASoL_2009_5_3
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Question: The Apollo 11 mission was able to retrieve samples of the Moon's
+      surface because it was the first mission to have astronauts\nA) land on the
+      Moon\nB) orbit a planet\nC) return to Earth\nD) walk in space\nAnswer with the
+      single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: B
+    id: arc-easy/NYSEDREGENTS_2015_4_13
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Question: Which color baseball cap would absorb the most light on a sunny
+      day?\nA) pink\nB) black\nC) white\nD) yellow\nAnswer with the single option
+      letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: A
+    id: arc-easy/Mercury_7016240
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Question: Which is the most important safety measure to follow when using
+      an acid in a classroom laboratory?\nA) wearing protective clothing and goggles\n\
+      B) keeping the window open\nC) closing the door to the hall\nD) using bright
+      fluorescent lights\nAnswer with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: D
+    id: arc-easy/VASoL_2011_5_16
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bD\b
+    prompt: "Question: A scientist found a fossil of an organism that had gills. When
+      the organism was living, the area in which it lived was most likely covered
+      by ___.\nA) forest\nB) grassland\nC) bare rock\nD) water\nAnswer with the single
+      option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: B
+    id: arc-easy/Mercury_SC_415535
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Question: If you place a thermometer into a glass of boiling water, what
+      temperature should the thermometer read?\nA) 32°C\nB) 100°C\nC) 200°C\nD) 212°C\n\
+      Answer with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: A
+    id: arc-easy/Mercury_407132
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Question: A student walks along a trail by a lake on a cool summer morning.
+      Which statement is an observation the student could make?\nA) Fog is rising
+      from the lake.\nB) The water is too cold for swimming.\nC) The water is cold
+      because it comes from melted snow.\nD) The temperature of the air is rising
+      because the Sun is out.\nAnswer with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: A
+    id: arc-easy/Mercury_SC_416096
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Question: How do plants get water and minerals?\nA) absorbed from the
+      soil though the roots\nB) absorbed from the soil through the stem\nC) absorbed
+      from the air through the flowers\nD) absorbed from the air through the leaves\n\
+      Answer with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: A
+    id: arc-easy/Mercury_7128870
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Question: A teacher uses an instrument that records decibel levels. What
+      is the teacher measuring?\nA) noise levels\nB) intensity of light\nC) relative
+      humidity\nD) types of thermal energy\nAnswer with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: C
+    id: arc-easy/Mercury_7114923
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bC\b
+    prompt: "Question: Clownfish take shelter in the tentacles of sea anemones and
+      keep sea anemones clean. Which type of relationship does this represent?\nA)
+      parasitism\nB) commensalism\nC) mutualism\nD) neutralism\nAnswer with the single
+      option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: A
+    id: arc-easy/Mercury_7148208
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Question: Biochemical reactions that require high temperatures to proceed
+      are able to take place at body temperature within the cells of living organisms.
+      Which factor is mainly responsible for allowing biochemical reactions to proceed
+      at body temperature?\nA) The cellular enzymes act as catalysts.\nB) The small
+      size of cells keeps reactants together.\nC) The pH of the cytoplasm increases
+      reaction rate.\nD) The reactants are present in small quantities in the cell.\n\
+      Answer with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: B
+    id: arc-easy/OHAT_2008_8_15
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Question: Two galaxies are interacting with each other. What is the force
+      that draws these two galaxies toward each other?\nA) friction\nB) gravity\n\
+      C) electricity\nD) magnetism\nAnswer with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: D
+    id: arc-easy/AKDE&ED_2012_4_39
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bD\b
+    prompt: "Question: Sand is a type of soil that is made of very tiny pieces of
+      material. Which process most likely forms sand?\nA) the rotation of Earth\n\
+      B) the growth of animals\nC) the decay of large trees\nD) the weathering of
+      rocks\nAnswer with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: '2'
+    id: arc-easy/NYSEDREGENTS_2015_8_21
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \b2\b
+    prompt: "Question: Which factor is most likely to cause the number of rabbits
+      living in an area to increase?\n1) less water\n2) fewer predators\n3) lack of
+      shelter\n4) limited food\nAnswer with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: C
+    id: arc-easy/Mercury_7216720
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bC\b
+    prompt: "Question: Which of the following is a part of the process of sexual reproduction?\n\
+      A) budding\nB) regeneration\nC) pollination\nD) fragmentation\nAnswer with the
+      single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: A
+    id: arc-easy/Mercury_SC_405499
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Question: Jagged mountains would most likely become rounded hills through
+      which process?\nA) erosion\nB) deposition\nC) volcanic activity\nD) chemical
+      change\nAnswer with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: A
+    id: arc-easy/Mercury_7017010
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Question: Which tools are needed to measure the effects of friction on
+      a block of wood?\nA) meter stick, spring scale\nB) balance, stopwatch\nC) balance,
+      meter stick\nD) meter stick, stopwatch\nAnswer with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: D
+    id: arc-easy/Mercury_SC_406688
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bD\b
+    prompt: "Question: A student wants to know which type of soil holds the most water.
+      Which action should the student most likely do to answer the question?\nA) compare
+      how the soils are alike\nB) put the soils into different groups\nC) record the
+      weight of the soil\nD) watch how quickly the soil drains\nAnswer with the single
+      option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: D
+    id: arc-easy/Mercury_SC_401119
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bD\b
+    prompt: "Question: Maria Mitchell discovered a comet in 1847 that was later named
+      after her. Maria Mitchell's discovery contributed to which branch of science?\n\
+      A) biology\nB) chemistry\nC) geology\nD) astronomy\nAnswer with the single option
+      letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: A
+    id: arc-easy/VASoL_2010_3_13
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Question: The teeth of a carnivore are MOSTLY -\nA) pointed\nB) rounded\n\
+      C) wide\nD) flat\nAnswer with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: A
+    id: arc-easy/ACTAAP_2007_7_22
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Question: Which is the function of the gallbladder?\nA) store bile\n\
+      B) produce bile\nC) store digestive enzymes\nD) produce digestive enzymes\n\
+      Answer with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: A
+    id: arc-easy/TAKS_2009_8_29
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Question: Some students measure the mass of a small pile of leaves before
+      and after the leaves decompose. Each time the students measure the mass, they
+      place a container with the decomposing leaves on a balance. Before recording
+      the mass of the leaves, the students must do which of the following?\nA) Subtract
+      the mass of the container\nB) Add leaves from other plants to the container\n\
+      C) Allow the leaves to settle in the container for a few days\nD) Use a metric
+      ruler to measure the volume of the container\nAnswer with the single option
+      letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: D
+    id: arc-easy/Mercury_SC_402079
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bD\b
+    prompt: "Question: Which material is a good conductor of heat?\nA) plastic\nB)
+      rubber\nC) glass\nD) copper\nAnswer with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: B
+    id: arc-easy/MEA_2014_5_15
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Question: Which type of organism is made of one cell?\nA) trees\nB) bacteria\n\
+      C) fern\nD) fish\nAnswer with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: C
+    id: arc-easy/Mercury_7115290
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bC\b
+    prompt: "Question: After a volcanic eruption, it takes a long time for large ecosystems
+      to fully recover. Which statement best explains why the development takes so
+      long?\nA) Space is limited for growth.\nB) The quality of light is low.\nC)
+      Soil must be created.\nD) Minerals are destroyed.\nAnswer with the single option
+      letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: A
+    id: arc-easy/Mercury_SC_401331
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Question: Melting, boiling, and freezing are examples of\nA) physical
+      changes.\nB) chemical changes.\nC) magnetic changes.\nD) electrical changes.\n\
+      Answer with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: A
+    id: arc-easy/Mercury_7141278
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Question: In which of the following are nutrients directly absorbed from
+      the bloodstream?\nA) cell\nB) organ\nC) organisms\nD) tissue\nAnswer with the
+      single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: C
+    id: arc-easy/Mercury_SC_401316
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bC\b
+    prompt: "Question: Which physical feature exists both on Earth and on the Moon?\n\
+      A) lakes\nB) forests\nC) mountains\nD) clouds\nAnswer with the single option
+      letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: C
+    id: arc-easy/Mercury_7210018
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bC\b
+    prompt: "Question: A student observes different characteristics of a rock. Which
+      observation best describes a fact about the rock?\nA) It has a nice surface.\n\
+      B) It has an interesting shape.\nC) It is made of several layers.\nD) It feels
+      warm when touched.\nAnswer with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: D
+    id: arc-easy/Mercury_7058503
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bD\b
+    prompt: "Question: Which organisms break down dead matter and recycle nutrients
+      back into the ecosystem?\nA) grasses and trees\nB) rabbits and deer\nC) lions
+      and alligators\nD) mushrooms and bacteria\nAnswer with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: C
+    id: arc-easy/Mercury_SC_405120
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bC\b
+    prompt: "Question: A coach is standing at the finish line of a race. He is holding
+      a stopwatch. What is the coach most likely measuring with the stopwatch?\nA)
+      the time of day\nB) the distance of the race\nC) the time it took to run the
+      race\nD) the number of steps taken by the runners\nAnswer with the single option
+      letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: B
+    id: arc-easy/MCAS_2003_5_3
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Question: What causes sound?\nA) sunlight\nB) vibrations\nC) x-rays\n\
+      D) pitch\nAnswer with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: D
+    id: arc-easy/Mercury_402144
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bD\b
+    prompt: "Question: Look at the equation. 2H_{2} + O_{2} -> 2H_{2}O What does the
+      equation show?\nA) heat being added to oxygen\nB) helium mixing with oxygen\n\
+      C) heat combining with oxygen\nD) hydrogen and oxygen combining\nAnswer with
+      the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: C
+    id: arc-easy/LEAP__4_10226
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bC\b
+    prompt: "Question: Carmine's mother drinks four cans of soft drink each day. After
+      drinking the soft drinks, Carmine's mother should\nA) throw the cans in the
+      trash.\nB) send the cans to a landfill.\nC) take the cans to be recycled.\n\
+      D) crush the cans before putting them in the trash.\nAnswer with the single
+      option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: D
+    id: arc-easy/Mercury_417126
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bD\b
+    prompt: "Question: Bacillus thuringiensis (Bt) is a soil bacterium that is toxic
+      to certain insects. Genes from this bacterium have been inserted into cotton
+      to make Bt cotton. Farmers that use Bt cotton would most likely use less of
+      which of the following?\nA) water\nB) fertilizer\nC) herbicide\nD) insecticide\n\
+      Answer with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: A
+    id: arc-easy/Mercury_405942
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Question: A student compares a plant cell to an animal cell. Which structure
+      will the student find ONLY in the plant cell?\nA) chloroplast\nB) nucleus\n\
+      C) mitochondrion\nD) cytoplasm\nAnswer with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: C
+    id: arc-easy/Mercury_7121905
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bC\b
+    prompt: "Question: In what form do plants store the energy produced from sunlight?\n\
+      A) radiant\nB) thermal\nC) chemical\nD) mechanical\nAnswer with the single option
+      letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: B
+    id: arc-easy/Mercury_SC_401817
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Question: All of these are examples of observation and measurement except\n\
+      A) charting where birds fly.\nB) attracting birds with birdseed.\nC) counting
+      the number of birds that fly by.\nD) illustrating the different birds that fly
+      by.\nAnswer with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: A
+    id: arc-easy/Mercury_SC_409149
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Question: Jesus learned that a space probe named Voyager 1 was launched
+      from Earth in 1977. It will take Voyager 1 more than 500 years to travel 1 light
+      year. What is a light year used to measure in space?\nA) distance\nB) energy\n\
+      C) force\nD) time\nAnswer with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: C
+    id: arc-easy/Mercury_SC_400375
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bC\b
+    prompt: "Question: Which of these actions causes wind?\nA) rotation of Earth on
+      its axis\nB) movement of air from water to land\nC) uneven heating of Earth's
+      surface\nD) air passing Earth as it revolves around the Sun\nAnswer with the
+      single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: D
+    id: arc-easy/Mercury_415686
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bD\b
+    prompt: "Question: What type of energy is transmitted from the Sun to Earth through
+      space?\nA) heat energy\nB) kinetic energy\nC) electrical energy\nD) electromagnetic
+      energy\nAnswer with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: B
+    id: arc-easy/MCAS_2005_5_10
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Question: When trees develop leaves in the spring, 10 changes occur on
+      the forest floor. Why does the development of leaves cause changes on the forest
+      floor?\nA) Rainfall increases.\nB) Sunlight is reduced.\nC) Wind speed increases.\n\
+      D) Animal migration is stopped.\nAnswer with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: D
+    id: arc-easy/MCAS_1998_4_11
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bD\b
+    prompt: "Question: A dish of sugar water was left on a window sill. One week later,
+      there were only sugar crystals left in the dish. The water was gone. The best
+      explanation for the appearance of sugar crystals is\nA) some of the water was
+      absorbed by the dish.\nB) the air condensed.\nC) the light shining on the window
+      sill produced more sugar.\nD) the water evaporated.\nAnswer with the single
+      option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: C
+    id: arc-easy/Mercury_7026810
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bC\b
+    prompt: "Question: The burning of fossil fuels in cities results in high levels
+      of air pollution. Which urban design would best help reduce air pollution?\n\
+      A) numerous park areas\nB) frequent trash recycling\nC) efficient public transportation\n\
+      D) effective street lighting\nAnswer with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: A
+    id: arc-easy/Mercury_7282695
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Question: Which two behaviors best demonstrate stewardship?\nA) reducing
+      consumption, recycling wastes\nB) increasing consumption, discarding wastes\n\
+      C) reducing consumption, discarding wastes\nD) increasing consumption, recycling
+      wastes\nAnswer with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: C
+    id: arc-easy/MCAS_2010_5_14
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bC\b
+    prompt: "Question: Which of the following metals will be attracted to a magnet?\n\
+      A) copper\nB) gold\nC) iron\nD) silver\nAnswer with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: B
+    id: arc-easy/Mercury_SC_405199
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Question: Which of these will most likely harm a habitat?\nA) planting
+      trees\nB) water pollution\nC) rainfall\nD) sunlight\nAnswer with the single
+      option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: A
+    id: arc-easy/Mercury_SC_402124
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Question: About how long does it take Earth to make a complete revolution
+      around the Sun?\nA) 1 year\nB) 1 week\nC) 1 day\nD) 1 hour\nAnswer with the
+      single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: D
+    id: arc-easy/Mercury_7211015
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bD\b
+    prompt: "Question: Which of these is the fundamental unit of life?\nA) system\n\
+      B) organ\nC) tissue\nD) cell\nAnswer with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: A
+    id: arc-easy/VASoL_2009_3_27
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Question: A puddle of water on a concrete driveway will disappear after
+      a few hours during a sunny day. Where does the water go as it disappears?\n\
+      A) It goes into the air.\nB) Animals drink it.\nC) It soaks into the concrete.\n\
+      D) It becomes a different substance.\nAnswer with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: B
+    id: arc-easy/Mercury_7018463
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Question: Which characteristic of sound makes it possible for bats to
+      fly in the dark without hitting any objects?\nA) refraction\nB) reflection\n\
+      C) conduction\nD) amplification\nAnswer with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: A
+    id: arc-easy/Mercury_177223
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Question: In a classroom demonstration, a teacher pours sulfuric acid
+      on some granulated sugar in a beaker. The sugar turns yellow and then black.
+      Smoke rises and a strong smell is released. This demonstration is an example
+      of what kind of change?\nA) chemical\nB) physical\nC) magnetic\nD) electric\n\
+      Answer with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: A
+    id: arc-easy/MCAS_2004_8_20
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Question: A class conducts an experiment to determine the best color
+      to paint a solar water heater that they plan to build. For their experimental
+      test, the students have four identical cans. They paint one black, one green,
+      one red, and one white. Each can is filled with 500 mL of 22°C water, and is
+      allowed to sit in the sun for two hours. Which color can will have the greatest
+      increase in water temperature?\nA) black\nB) green\nC) red\nD) white\nAnswer
+      with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: B
+    id: arc-easy/Mercury_SC_408344
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Question: Henry learned that without the right kind of energy, plants
+      cannot survive. What form of energy is used by plants to perform photosynthesis?\n\
+      A) electrical\nB) light\nC) mechanical\nD) wind\nAnswer with the single option
+      letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: C
+    id: arc-easy/Mercury_7024780
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bC\b
+    prompt: "Question: In a laboratory procedure, students added sodium hydroxide
+      crystals to a beaker of water and allowed the resulting solution to cool. Based
+      on this information, which type of chemical process most likely occurred?\n\
+      A) electrical\nB) energetic\nC) exothermic\nD) endothermic\nAnswer with the
+      single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: A
+    id: arc-easy/Mercury_7074988
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Question: Eating food that is undercooked can lead to a disease that
+      affects the digestive system. Which body part is directly affected by the disease?\n\
+      A) intestines\nB) arteries\nC) nerves\nD) sinuses\nAnswer with the single option
+      letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: C
+    id: arc-easy/Mercury_400598
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bC\b
+    prompt: "Question: Electrical wires are coated with a rubber or plastic because
+      these materials are good\nA) resistors.\nB) magnets.\nC) insulators.\nD) conductors.\n\
+      Answer with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: A
+    id: arc-easy/TIMSS_1995_8_I16
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Question: A metal spoon, a wooden spoon, and a plastic spoon are placed
+      in hot water. After 15 seconds, which spoon will feel hottest?\nA) The metal
+      spoon\nB) The wooden spoon\nC) The plastic spoon\nD) The three spoons will feel
+      the same.\nAnswer with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: B
+    id: arc-easy/Mercury_SC_401779
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Question: Which of the following is the best conductor of heat?\nA) oven
+      mitts\nB) a metal bowl\nC) a wooden spoon\nD) rubber soled shoes\nAnswer with
+      the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: C
+    id: arc-easy/MCAS_2001_8_9
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bC\b
+    prompt: "Question: Use the information below to answer the question. Manufacturing
+      uses many steps to change natural resources into products. Some of these steps
+      change natural resources into industrial materials. These steps are called primary
+      processes. All of the following are primary processes except\nA) melting iron
+      ore.\nB) producing lumber.\nC) molding plastic.\nD) crushing rock into gravel.\n\
+      Answer with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: A
+    id: arc-easy/Mercury_SC_413002
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Question: Seismometers measure quick changes that happen in the crust
+      of our planet. Which of the following is a seismometer used to measure?\nA)
+      earthquake\nB) erosion\nC) flooding\nD) weathering\nAnswer with the single option
+      letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: D
+    id: arc-easy/Mercury_7010063
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bD\b
+    prompt: "Question: Ocean currents, like the Gulf Stream, affect world climate
+      by\nA) spreading plant and animal life over a wider area.\nB) ensuring ocean
+      density is not the same globally.\nC) carrying sediment from rivers and inland
+      basins.\nD) transferring heat to and from various regions.\nAnswer with the
+      single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: D
+    id: arc-easy/Mercury_SC_401214
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bD\b
+    prompt: "Question: People take in and release gases from the air when they breathe.
+      Which exhaled gas is a waste product of respiration?\nA) oxygen\nB) helium\n\
+      C) hydrogen\nD) carbon dioxide\nAnswer with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: B
+    id: arc-easy/Mercury_SC_401136
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Question: The process of water changing from its liquid state to a gas
+      in the water cycle is known as\nA) precipitation.\nB) evaporation.\nC) condensation.\n\
+      D) translation.\nAnswer with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: '1'
+    id: arc-easy/NYSEDREGENTS_2013_8_16
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \b1\b
+    prompt: "Question: Which pathway do most nutrients take after a person takes a
+      bite of food?\n1) digestive system -> circulatory system -> body cells\n2) circulatory
+      system -> body cells -> digestive system\n3) digestive system -> body cells
+      -> circulatory system\n4) circulatory system -> digestive system -> body cells\n\
+      Answer with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: C
+    id: arc-easy/Mercury_7263008
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bC\b
+    prompt: "Question: Which two theories of Moon formation propose that much or all
+      of the material comprising the Moon came from Earth?\nA) The Fission Theory
+      and The Coaccretion Theory\nB) The Coaccretion Theory and The Capture Theory\n\
+      C) The Fission Theory and the Giant Impact Theory\nD) The Capture Theory and
+      the Giant Impact Theory\nAnswer with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: D
+    id: arc-easy/Mercury_7093013
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bD\b
+    prompt: "Question: Plant leaves have tiny pores. These pores help plants release
+      water from their tissues into the\nA) lithosphere.\nB) biosphere.\nC) hydrosphere.\n\
+      D) atmosphere.\nAnswer with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: B
+    id: arc-easy/Mercury_7219030
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Question: As some organisms die, their remains become buried by mud and
+      are eventually compressed into a type of rock. Which of these is a rock type
+      that forms from this process?\nA) igneous\nB) sedimentary\nC) magma\nD) metamorphic\n\
+      Answer with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: D
+    id: arc-easy/MCAS_2011_5_17671
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bD\b
+    prompt: "Question: The Sun is the largest body in the solar system. The Sun is
+      a ___.\nA) moon\nB) planet\nC) satellite\nD) star\nAnswer with the single option
+      letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: D
+    id: arc-easy/Mercury_7222863
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bD\b
+    prompt: "Question: When light reflects off certain crystals in the atmosphere,
+      effects called halos appear. Which substance in the atmosphere forms these crystals?\n\
+      A) carbon dioxide\nB) oxygen\nC) sulfur dioxide\nD) water\nAnswer with the single
+      option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: '4'
+    id: arc-easy/NYSEDREGENTS_2015_8_33
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \b4\b
+    prompt: "Question: Heat transfer by conduction occurs when molecules\n1) flow
+      as currents through liquids\n2) form waves that travel through space\n3) become
+      less dense and rise\n4) collide with other molecules\nAnswer with the single
+      option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: A
+    id: arc-easy/MCAS_2012_8_23645
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Question: Leather basketballs are made for indoor use on smooth surfaces.
+      Rubber basketballs are made for use on many different surfaces. Which of the
+      following properties of rubber makes it better than leather for use on many
+      different surfaces?\nA) Rubber is durable.\nB) Rubber is lightweight.\nC) Rubber
+      is dark in color.\nD) Rubber is quickly produced.\nAnswer with the single option
+      letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: '3'
+    id: arc-easy/NYSEDREGENTS_2010_8_34
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \b3\b
+    prompt: "Question: Most scientists agree that an increase in the amount of greenhouse
+      gases entering Earth's atmosphere causes\n1) a decrease in sea level\n2) a decrease
+      in average surface temperatures\n3) an increase in melting of polar ice caps\n\
+      4) an increase in crustal plate movement\nAnswer with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: B
+    id: arc-easy/Mercury_7207463
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Question: Which of these properties of water has the greatest effect
+      on the water cycle?\nA) neutral pH\nB) freezing and boiling points\nC) dissolves
+      many substances\nD) forms six-sided crystals\nAnswer with the single option
+      letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: B
+    id: arc-easy/Mercury_7094395
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Question: Last year Steve was shorter than his brother. This year Steve
+      is taller than his brother. What cell process is directly responsible for Steve's
+      growth?\nA) diffusion\nB) mitosis\nC) osmosis\nD) respiration\nAnswer with the
+      single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: C
+    id: arc-easy/VASoL_2008_3_21
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bC\b
+    prompt: "Question: Which of these is MOST likely made from only one material?\n\
+      A) A pencil\nB) A bicycle\nC) A paper clip\nD) A pair of shoes\nAnswer with
+      the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: D
+    id: arc-easy/VASoL_2009_5_36
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bD\b
+    prompt: "Question: An electric motor is designed to turn electrical energy into
+      ___.\nA) solar energy\nB) potential energy\nC) static electricity\nD) mechanical
+      energy\nAnswer with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: A
+    id: arc-easy/Mercury_405948
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Question: Plastic conducts very little thermal energy or electricity.
+      Because of this property, plastic would most likely be used to cover\nA) metal.\n\
+      B) wood.\nC) solids.\nD) liquids.\nAnswer with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: A
+    id: arc-easy/Mercury_SC_LBS10616
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Question: Earth is tilted as it travels around the Sun. The tilt changes
+      the amount of energy each area gets from the Sun, which makes some months of
+      the year warmer than others. What are the four main temperature changes in a
+      year called?\nA) seasons\nB) climate\nC) weather\nD) quarters\nAnswer with the
+      single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: A
+    id: arc-easy/Mercury_7057593
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Question: When the Northern Hemisphere is tilted away from the Sun causing
+      the rays of light to hit Earth at large angles, which season occurs?\nA) winter\n\
+      B) spring\nC) summer\nD) fall\nAnswer with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: D
+    id: arc-easy/Mercury_SC_404975
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bD\b
+    prompt: "Question: Students are attempting to make a doorbell ring using some
+      wire and a battery. What is needed to make the bell ring?\nA) friction\nB) gravity\n\
+      C) a convection current\nD) an electrical circuit\nAnswer with the single option
+      letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: C
+    id: arc-easy/TIMSS_2003_8_pg99
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bC\b
+    prompt: "Question: Animals and plants are made up of a number of different chemical
+      elements. What happens to all of these elements when animals and plants die?\n\
+      A) They die with the animal or plant.\nB) They evaporate into the atmosphere.\n\
+      C) They are recycled back into the environment.\nD) They change into different
+      elements.\nAnswer with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: B
+    id: arc-easy/Mercury_7142748
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Question: When heat flows from a hot spot to a cooler spot, entropy increases.
+      When heat is forced to flow from a cool spot to a warmer spot, entropy decreases.
+      Marta is looking for something in her house that causes a decrease in entropy.
+      Which of these should she choose?\nA) an ice cube melting\nB) the refrigerator\n\
+      C) an egg frying\nD) the toaster\nAnswer with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: C
+    id: arc-easy/Mercury_SC_400364
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bC\b
+    prompt: "Question: If the climate in an area changed over time to become very
+      cold, which change would most likely help a species living there to survive?\n\
+      A) a thicker neck and longer tail\nB) a larger mouth and stronger jaws\nC) an
+      increase in fur and fat\nD) an increase in height and speed\nAnswer with the
+      single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: D
+    id: arc-easy/NAEP_2009_4_S7+6
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bD\b
+    prompt: "Question: A thermometer shows that the outside air temperature is colder
+      than the temperature at which water turns to ice. However, ice on the sidewalk
+      melts. What probably caused this?\nA) The air heating the sidewalk\nB) The sidewalk
+      reflecting sunlight into the air\nC) The wind causing the ice on the sidewalk
+      to melt\nD) The sunlight making the sidewalk warmer than the air\nAnswer with
+      the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: B
+    id: arc-easy/Mercury_7124320
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Question: Three scientists conducted the same experiment to analyze the
+      effectiveness of a cleaning agent on household bacteria. What is the main advantage
+      of having the experiment repeated?\nA) More bacteria will be destroyed.\nB)
+      The results will be more reliable.\nC) A scientific journal will publish their
+      work.\nD) The conclusion will lead to new discoveries.\nAnswer with the single
+      option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: B
+    id: arc-easy/Mercury_7215863
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Question: Which process is most effective for separating sodium chloride
+      from a saltwater solution?\nA) filtration\nB) evaporation\nC) magnetic separation\n\
+      D) chemical separation\nAnswer with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: D
+    id: arc-easy/Mercury_SC_LBS10391
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bD\b
+    prompt: "Question: Which of the following is a first-level consumer?\nA) wolf\n\
+      B) hawk\nC) carrot\nD) rabbit\nAnswer with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: C
+    id: arc-easy/Mercury_7201163
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bC\b
+    prompt: "Question: The bacterium Brucella abortus causes fever in humans. Biologists
+      studying this bacterium found that when exposed to light, the bacterium becomes
+      more virulent. How can this change in virulence most likely be described?\n\
+      A) as a behavioral adaptation\nB) as a survival disadvantage\nC) as a response
+      to a stimulus\nD) as an acquired characteristic\nAnswer with the single option
+      letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: A
+    id: arc-easy/MCAS_2011_5_11
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Question: Which of the following best explains why electrical wires are
+      usually covered with plastic or rubber?\nA) to insulate the electrical wire\n\
+      B) to keep the electrical wire warm\nC) to make the electrical wire stronger\n\
+      D) to make the electrical wire more flexible\nAnswer with the single option
+      letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: D
+    id: arc-easy/Mercury_401313
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bD\b
+    prompt: "Question: Which type of rock is formed when particles are compacted and
+      cemented together?\nA) igneous\nB) metallic\nC) metamorphic\nD) sedimentary\n\
+      Answer with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: C
+    id: arc-easy/Mercury_7017798
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bC\b
+    prompt: "Question: What has occurred when bubbles form in a liquid that is being
+      heated?\nA) Oxygen is absorbed from the air.\nB) Heat is radiating in the liquid.\n\
+      C) The boiling point has been reached.\nD) Molecular stability in the liquid
+      is increasing.\nAnswer with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: A
+    id: arc-easy/Mercury_416375
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Question: Which of these events during a storm at sea can add oxygen
+      from the atmosphere to ocean water?\nA) high winds\nB) lightning\nC) pressure
+      change\nD) temperature change\nAnswer with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: D
+    id: arc-easy/Mercury_403974
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bD\b
+    prompt: "Question: A doorbell circuit converts electrical energy into mechanical
+      energy. The mechanical energy is in the form of vibrations that ultimately produce\n\
+      A) chemical energy.\nB) thermal energy.\nC) radiant energy.\nD) sound energy.\n\
+      Answer with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: C
+    id: arc-easy/MSA_2012_5_13
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bC\b
+    prompt: "Question: The water cycle requires energy. The main source of energy
+      for the water cycle is\nA) wind\nB) gravity\nC) the sun\nD) the moon\nAnswer
+      with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: B
+    id: arc-easy/VASoL_2011_5_34
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Question: Which layer of Earth is the thinnest?\nA) Inner core\nB) Crust\n\
+      C) Outer core\nD) Mantle\nAnswer with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: C
+    id: arc-easy/Mercury_7268030
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bC\b
+    prompt: "Question: Which of these is a threat to the survival of an ecosystem?\n\
+      A) predator-prey population cycles\nB) less biomass at higher levels of the
+      food web\nC) a shrinking variety of animal and plant species\nD) competition
+      among some consumer populations\nAnswer with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: B
+    id: arc-easy/Mercury_SC_406012
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Question: The nervous system consists of the brain, spinal cord, and
+      nerves that run throughout the entire body. Which of these is one function of
+      the nervous system?\nA) supports body posture\nB) controls body functions\n\
+      C) supplies the blood with oxygen\nD) carries blood to and from the heart\n\
+      Answer with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: C
+    id: arc-easy/Mercury_7282135
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bC\b
+    prompt: "Question: Air pollution can influence a person's quality of life. Which
+      best identifies the influence of air pollution?\nA) It is a behavioral influence.\n\
+      B) It is a genetic influence.\nC) It is an environmental influence.\nD) It is
+      a dietary influence.\nAnswer with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: D
+    id: arc-easy/Mercury_405777
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bD\b
+    prompt: "Question: What is the most important property architects must consider
+      when selecting materials for the walls, ceilings, and floors for a new concert
+      hall?\nA) thermal properties\nB) chemical properties\nC) electrical properties\n\
+      D) acoustical properties\nAnswer with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: A
+    id: arc-easy/Mercury_7284008
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Question: Which is the most cooperative relationship between species?\n\
+      A) mutualism\nB) predation\nC) parasitism\nD) coexistence\nAnswer with the single
+      option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: B
+    id: arc-easy/VASoL_2008_5_25
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Question: A bicyclist rides on a flat road and then stops pedaling but
+      does not apply the brakes. The bicycle stops because of ___.\nA) balance\nB)
+      friction\nC) attraction\nD) magnetism\nAnswer with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: D
+    id: arc-easy/Mercury_407661
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bD\b
+    prompt: "Question: Which of these must occur when a substance goes through a chemical
+      change?\nA) The substance gets larger.\nB) The substance changes phases.\nC)
+      The substance changes shape.\nD) The substance forms a new substance.\nAnswer
+      with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: B
+    id: arc-easy/MDSA_2011_8_2
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Question: One solar day on Jupiter lasts only 9 hours and 50 minutes.
+      What causes a solar day?\nA) diameter of the planet\nB) rotational speed of
+      the planet\nC) speed of a planet in orbit around the sun\nD) diameter of the
+      orbit of a planet around the sun\nAnswer with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: A
+    id: arc-easy/Mercury_184328
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Question: What information about stars can be learned by using a spectrometer?\n\
+      A) chemical composition\nB) distance from Earth\nC) size\nD) speed\nAnswer with
+      the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: A
+    id: arc-easy/MEAP_2005_8_14
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Question: When European settlers first came to North America, the average
+      thickness of the top layer of soil was approximately 23 cm. Today, the average
+      thickness of the top layer of soil is less than 15 cm. Which of the following
+      factors has most likely had the greatest effect on erosion of the top layer
+      of soil?\nA) farming\nB) restoring wetlands\nC) species reintroduction\nD) excessive
+      groundwater use\nAnswer with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: D
+    id: arc-easy/Mercury_7250128
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bD\b
+    prompt: "Question: Which structure do a rabbit cell and a bacillus cell have in
+      common?\nA) mitochondrion\nB) capsule\nC) nucleus\nD) DNA\nAnswer with the single
+      option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: A
+    id: arc-easy/Mercury_SC_408435
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Question: Which best explains why stars seen in the night sky are less
+      bright than the Sun?\nA) Other stars are farther from Earth than the Sun.\n\
+      B) Other stars are facing away from Earth.\nC) Other stars are smaller than
+      the Sun.\nD) Other stars are producing less light.\nAnswer with the single option
+      letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: B
+    id: arc-easy/LEAP__7_10341
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Question: A scientist studied a species of fish. She found that when
+      a certain nutrient was added to the diet of the fish just after hatching, the
+      fish gained an average of 3 kilograms in the first year. What additional information
+      is needed to determine whether the nutrient is affecting the growth of the fish?\n\
+      A) how much adult fish gained on average when the same nutrient was added to
+      their diet\nB) how much newly hatched fish in this species gain in the first
+      year without the nutrient in their diet\nC) how much of the nutrient is available
+      for the fish species in their natural surroundings\nD) how much other species
+      of fish gain in the first year when the nutrient is added to their diet\nAnswer
+      with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: A
+    id: arc-easy/AIMS_2008_4_18
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Question: Which of the following contains salt water?\nA) oceans\nB)
+      raindrops\nC) groundwater\nD) polar icecaps\nAnswer with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: B
+    id: arc-easy/Mercury_SC_401774
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Question: A whistle produces a sound because blowing air in the whistle
+      causes\nA) the whistle material to shake.\nB) the air inside the whistle to
+      vibrate.\nC) the air to be absorbed by the whistle.\nD) the air in the whistle
+      to heat up and expand.\nAnswer with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: A
+    id: arc-easy/Mercury_SC_LBS10270
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Question: Which of the following is an inherited human trait?\nA) eye
+      color\nB) sleep patterns\nC) sense of balance\nD) sense of humor\nAnswer with
+      the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: C
+    id: arc-easy/Mercury_414097
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bC\b
+    prompt: "Question: Most of the United States is a part of which tectonic plate?\n\
+      A) Pacific Plate\nB) Eurasian Plate\nC) North American Plate\nD) South American
+      Plate\nAnswer with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: D
+    id: arc-easy/NCEOGA_2013_5_27
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bD\b
+    prompt: "Question: People sitting around a campfire are able to feel the heat
+      from the fire. How are the people able to feel the heat from the fire without
+      touching the fire?\nA) The heat from the fire travels through the ground and
+      heats the ground around the people.\nB) The heat from the fire is conducted
+      through air molecules to the people.\nC) The heat from the fire rises in the
+      air and then settles around the people.\nD) The heat from the fire radiates
+      from the fire to the people.\nAnswer with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: C
+    id: arc-easy/CSZ20679
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bC\b
+    prompt: "Question: To express the distance between the Milky Way galaxy and other
+      galaxies, the most appropriate unit of measurement is the\nA) meter.\nB) kilometer.\n\
+      C) light-year.\nD) astronomical unit.\nAnswer with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: C
+    id: arc-easy/Mercury_7200200
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bC\b
+    prompt: "Question: Elizabeth uses a specific type of whistle to call her dogs.
+      The noise made by the whistle is heard by the dogs but cannot be heard by the
+      human ear. Which statement best describes why humans cannot hear the sound made
+      by the whistle?\nA) The speed of the sound is too fast.\nB) The amplitude of
+      the sound is too low.\nC) The frequency of the sound is too high.\nD) The wavelength
+      of the sound is too long.\nAnswer with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: A
+    id: arc-easy/ACTAAP_2008_7_13
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Question: According to Newton's first law of motion, what counteracts
+      gravity to keep a satellite in orbit?\nA) inertia\nB) energy\nC) friction\n\
+      D) magnetism\nAnswer with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: B
+    id: arc-easy/Mercury_SC_408250
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Question: Robin compared the properties of some rocks. Which property
+      did she most likely compare with a balance?\nA) density\nB) mass\nC) temperature\n\
+      D) volume\nAnswer with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: D
+    id: arc-easy/Mercury_7222320
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bD\b
+    prompt: "Question: The rover Spirit is a robotic probe that NASA has placed on
+      Mars. The gravitational attraction of Mars is approximately 62% less than that
+      of Earth. Compared to its measurements on Earth, on Mars the probe has\nA) the
+      same weight and the same mass.\nB) a larger weight, but smaller mass.\nC) a
+      smaller mass and larger weight.\nD) a smaller weight and the same mass.\nAnswer
+      with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: D
+    id: arc-easy/Mercury_7005058
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bD\b
+    prompt: "Question: Why is the light year often used to describe distances between
+      objects in the universe?\nA) because of the way planets reflect light\nB) because
+      of the great number of bright stars\nC) because of the way objects rotate and
+      revolve\nD) because of the large distance between objects in space\nAnswer with
+      the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: C
+    id: arc-easy/ACTAAP_2013_7_1
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bC\b
+    prompt: "Question: Aristotle taught that a force was always required to keep an
+      object moving. Which of the following states what Newton believed?\nA) Aristotle
+      was correct.\nB) Aristotle was correct for objects on Earth but not in space.\n\
+      C) An object will keep moving unless an unbalanced force stops it.\nD) A moving
+      object will eventually stop even though an unbalanced force keeps pushing on
+      it.\nAnswer with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: A
+    id: arc-easy/Mercury_7068705
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Question: Some plants need to be in an environment where water drains
+      easily. Which type of soil content will best benefit these plants?\nA) sand\n\
+      B) shale\nC) clay\nD) silt\nAnswer with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: A
+    id: arc-easy/Mercury_175963
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Question: The discovery of penicillin helped in the\nA) treatment of
+      infections.\nB) healing of bones.\nC) discovery of viruses.\nD) search for diseases.\n\
+      Answer with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: D
+    id: arc-easy/ACTAAP_2009_7_9
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bD\b
+    prompt: "Question: A ball rolling on the ground is observed to slow down and stop.
+      Based on Newton's first law of motion, what is the best conclusion?\nA) An object
+      in motion eventually stops.\nB) The ball must have been going slightly uphill.\n\
+      C) The ball did not have enough mass to keep going.\nD) There must have been
+      an outside force acting on the ball.\nAnswer with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: B
+    id: arc-easy/Mercury_7252263
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Question: Which two body systems maintain the level of glucose in the
+      blood?\nA) nervous and respiratory systems\nB) digestive and endocrine systems\n\
+      C) muscular and immune systems\nD) skeletal and cardiac systems\nAnswer with
+      the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: A
+    id: arc-easy/Mercury_403912
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Question: Due to extreme pressure, the inner core of Earth is\nA) solid.\n\
+      B) liquid.\nC) gas.\nD) plasma.\nAnswer with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: D
+    id: arc-easy/Mercury_SC_408357
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bD\b
+    prompt: "Question: Kurt drinks frozen fruit juice from a small cup. He measures
+      the amount of fruit juice in the cup. Which property is Kurt measuring?\nA)
+      density\nB) height\nC) temperature\nD) volume\nAnswer with the single option
+      letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: B
+    id: arc-easy/Mercury_7068425
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Question: Which condition is necessary for metamorphic rocks to form?\n\
+      A) constant weathering and erosion\nB) extreme pressure and heating\nC) rapid
+      burial of sediments\nD) slow cooling of magma\nAnswer with the single option
+      letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: B
+    id: arc-easy/Mercury_SC_406543
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Question: A student performed an experiment to see how long it would
+      take for a cup of water to freeze. Which information would another student most
+      likely need in order to perform the same experiment?\nA) the time to begin\n\
+      B) the volume of the cup\nC) the temperature of the ice\nD) the type of thermometer
+      to use\nAnswer with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: A
+    id: arc-easy/WASL_2005_5_10
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Question: Sheri went on a field trip with her class and saw a stream
+      with floating garbage. How could this pollution affect humans?\nA) There may
+      not be enough drinking water.\nB) There may not be enough water in the water
+      cycle.\nC) There may not be enough oxygen for humans to breathe.\nAnswer with
+      the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: B
+    id: arc-easy/Mercury_7198188
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Question: As global temperatures increase, certain organisms will be
+      more affected than others. The changes associated with global warming may result
+      in an increase in sea level. Which organisms will be affected most as a result
+      of the change in sea level?\nA) birds that eat fish from shallow waters\nB)
+      fish that live in coral reefs in shallow waters\nC) mammals that swim in cold,
+      deep ocean waters\nD) crustaceans at the bottom of deep sea ocean waters\nAnswer
+      with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: C
+    id: arc-easy/TIMSS_1995_8_I10
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bC\b
+    prompt: "Question: What is the BEST reason for including fruits and leafy vegetables
+      in a healthy diet?\nA) They have a high water content.\nB) They are the best
+      source of protein.\nC) They are rich in minerals and vitamins.\nD) They are
+      the best source of carbohydrates.\nAnswer with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: B
+    id: arc-easy/Mercury_7071418
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Question: A scientist finds a metamorphic rock formation next to a magma
+      chamber and determines that it was originally a sedimentary rock formation.
+      He concludes that the temperature of the magma chamber caused the rock formation
+      to become metamorphic. Which is another reliable explanation of how the rock
+      formation was changed?\nA) weight of heavy machinery moving over the rocks\n\
+      B) pressure on the rock formation inside Earth\nC) a sandstorm that caused the
+      rocks to be eroded\nD) a quick burial of the rocks by tons of volcanic ash\n\
+      Answer with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: C
+    id: arc-easy/TAKS_2009_8_24
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bC\b
+    prompt: "Question: As a river enters a larger body of water, sediments are deposited
+      over a wide area. Which of these landforms is likely to be formed at the site
+      of deposition?\nA) Cave\nB) Mountain\nC) Delta\nD) Valley\nAnswer with the single
+      option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: A
+    id: arc-easy/Mercury_7264145
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Question: Which type of radiation provides astronomers with the most
+      useful information about high-energy events such as stars colliding?\nA) gamma
+      radiation\nB) infrared radiation\nC) radio waves\nD) visible light\nAnswer with
+      the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: D
+    id: arc-easy/MCAS_2005_5_33
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bD\b
+    prompt: "Question: Sound reaches our ears because sound makes air particles\n\
+      A) heat up.\nB) cool down.\nC) slow down.\nD) vibrate.\nAnswer with the single
+      option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: D
+    id: arc-easy/MDSA_2010_8_38
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bD\b
+    prompt: "Question: When taken to a new habitat, non-native plants often threaten
+      native plants of the new habitat. Why do non-native plants threaten native plants?\n\
+      A) Non-native plants are able to mutate rapidly.\nB) Non-native plants cause
+      native animals to relocate.\nC) Non-native plants are able to be used for medicine.\n\
+      D) Non-native plants compete with native plants for resources.\nAnswer with
+      the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: B
+    id: arc-easy/Mercury_405057
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Question: During science class, a teacher explains that the samples the
+      students are studying are made of two or more minerals. What are the students
+      studying?\nA) gases\nB) rocks\nC) elements\nD) molecules\nAnswer with the single
+      option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: D
+    id: arc-easy/NCEOGA_2013_5_14
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bD\b
+    prompt: "Question: Which is a function of the cardiovascular system?\nA) to move
+      water throughout the body\nB) to provide structural support for the body\nC)
+      to eliminate waste from the body\nD) to transport gases throughout the body\n\
+      Answer with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: A
+    id: arc-easy/Mercury_179200
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Question: Often organisms seem similar in their outward appearances.
+      For example, a porpoise and a shark seem closely related, but they are not.
+      Such similarity is the result of\nA) convergent evolution.\nB) adaptive radiation.\n\
+      C) artificial selection.\nD) genetic equilibrium.\nAnswer with the single option
+      letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: C
+    id: arc-easy/Mercury_178710
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bC\b
+    prompt: "Question: A simple machine that has a mechanical advantage equal to 1
+      would most likely be used to\nA) decrease effort.\nB) decrease work.\nC) change
+      direction.\nD) change resistance.\nAnswer with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: B
+    id: arc-easy/CSZ30263
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Question: A ball is dropped from the top of a tall building. As the ball
+      falls, the upward force of air resistance becomes equal to the downward pull
+      of gravity. When these two forces become equal in magnitude, the ball will\n\
+      A) flatten due to the forces.\nB) fall at a constant speed.\nC) continue to
+      speed up.\nD) slow to a stop.\nAnswer with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: D
+    id: arc-easy/Mercury_SC_402241
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bD\b
+    prompt: "Question: A student measured liquid with a graduated cylinder. Which
+      of the following units could be used to record the volume of the liquid?\nA)
+      pounds\nB) meters\nC) grams\nD) milliliters\nAnswer with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: B
+    id: arc-easy/Mercury_7017728
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Question: The speed at which sound waves travel depends on the\nA) distance
+      between the vibration source and the receiver.\nB) type of material through
+      which the sound travels.\nC) size of the object making the sound.\nD) type of
+      device making the sound.\nAnswer with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: C
+    id: arc-easy/Mercury_7010798
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bC\b
+    prompt: "Question: A student finds a beaker with a chip in the rim. What should
+      he do with the beaker?\nA) use it and then dispose of it\nB) use it and then
+      return it to where he got it\nC) dispose of the beaker and get a new one\nD)
+      put it back where he found it and get a new one\nAnswer with the single option
+      letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: B
+    id: arc-easy/Mercury_410598
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Question: Roberto is sliding down a plastic slide on the playground.
+      After he reaches the ground, he feels a small electric shock when he touches
+      a piece of metal. What has been built up on his body that causes the shock?\n\
+      A) atoms\nB) electrons\nC) neutrons\nD) protons\nAnswer with the single option
+      letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: C
+    id: arc-easy/Mercury_7168140
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bC\b
+    prompt: "Question: One system of the human body works along with the skeletal
+      system by assisting movement and maintaining posture. Which system is being
+      described?\nA) respiratory\nB) circulatory\nC) muscular\nD) digestive\nAnswer
+      with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: D
+    id: arc-easy/Mercury_405107
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bD\b
+    prompt: "Question: A student has a mineral sample. He wonders if the sample is
+      the mineral mica. He knows the cleavage pattern of mica is a smooth, flat sheet.
+      The student can best find out the cleavage pattern of the sample by\nA) shining
+      a light on the mineral.\nB) soaking the mineral in water.\nC) rubbing a penny
+      against the mineral.\nD) breaking off a piece of the mineral.\nAnswer with the
+      single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: B
+    id: arc-easy/Mercury_SC_415492
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Question: Ernie made a diagram to model Earth's orbit. What shape is
+      most like what Ernie drew for the orbit?\nA) square\nB) oval\nC) triangle\n\
+      D) rectangle\nAnswer with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: C
+    id: arc-easy/Mercury_7248203
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bC\b
+    prompt: "Question: Two species of garter snake in the genus Thamnophis originated
+      from a single ancestor. These two species live in the same geographic area,
+      however, one lives in arid land and the other lives in water.Which of the following
+      best identifies the cause of speciation between these two garter snakes?\nA)
+      mechanical isolation\nB) behavioral isolation\nC) habitat isolation\nD) allopatric
+      isolation\nAnswer with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: A
+    id: arc-easy/NCEOGA_2013_8_6
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Question: Which is an example of a renewable energy resource?\nA) biomass\n\
+      B) coal\nC) gas\nD) oil\nAnswer with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: B
+    id: arc-easy/MCAS_2010_8_12008
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Question: What is the smallest unit of a chemical compound that still
+      has the properties of that compound?\nA) a nucleus\nB) a molecule\nC) an element\n\
+      D) an atom\nAnswer with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: C
+    id: arc-easy/NYSEDREGENTS_2015_4_10
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bC\b
+    prompt: "Question: A student pours water into a cup and places the cup in a freezer.
+      After many hours, the water will change from\nA) solid to gas\nB) solid to liquid\n\
+      C) liquid to solid\nD) liquid to gas\nAnswer with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: B
+    id: arc-easy/Mercury_192343
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Question: Many flowers attract bees. Bees consume nectar from the flower
+      for energy. How does this interaction benefit the plant?\nA) by increasing photosynthesis\n\
+      B) by pollinating it\nC) by limiting growth\nD) by reducing competition\nAnswer
+      with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: C
+    id: arc-easy/Mercury_7270270
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bC\b
+    prompt: "Question: A serotinous cone is a seed enclosure that requires intense
+      heat to open. When would a population of trees most benefit from having serotinous
+      cones?\nA) after a drought\nB) after a heat wave\nC) after a forest fire\nD)
+      after a tornado\nAnswer with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: A
+    id: arc-easy/Mercury_7128853
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Question: As the loudness of a sound wave increases, which will also
+      increase?\nA) amplitude\nB) frequency\nC) velocity\nD) wavelength\nAnswer with
+      the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: A
+    id: arc-easy/MCAS_2004_5_22
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Question: An earthworm was placed on top of a thick layer of moist topsoil
+      in a pan. The pan was placed in a room with the lights on. How did the earthworm
+      most likely respond to these conditions?\nA) by burrowing under the soil\nB)
+      by crawling around in the pan\nC) by staying where it was placed\nD) by trying
+      to crawl out of the pan\nAnswer with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: D
+    id: arc-easy/Mercury_7174895
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bD\b
+    prompt: "Question: Scientists often use mathematical models and computer simulations
+      to study systems. What is the main advantage of using these techniques for studying
+      the spread of infectious diseases?\nA) to reduce the amount of work for all
+      involved\nB) to reduce the cost of conducting experiments on people\nC) to obtain
+      results quickly in a short period of time\nD) to perform experiments that would
+      be irresponsible using human subjects\nAnswer with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: B
+    id: arc-easy/Mercury_7086765
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Question: Silica sand is a resource used in large volume in Nevada. This
+      resource is used to make which product?\nA) tar\nB) glass\nC) plastic\nD) electricity\n\
+      Answer with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: A
+    id: arc-easy/Mercury_7106610
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Question: What advantage do the offspring of a dandelion have by reproducing
+      asexually?\nA) Reproduction occurs rapidly.\nB) Reproductive competition is
+      increased.\nC) Mating compatibility improves.\nD) Diversity increases between
+      generations.\nAnswer with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: C
+    id: arc-easy/Mercury_SC_400868
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bC\b
+    prompt: "Question: Which characteristic would best help a rabbit survive in snow?\n\
+      A) short legs\nB) dim eyesight\nC) thick, white fur\nD) slow movement\nAnswer
+      with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: A
+    id: arc-easy/Mercury_SC_400048
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Question: Which form of energy is required for a television set to work?\n\
+      A) electrical\nB) heat\nC) light\nD) solar\nAnswer with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: D
+    id: arc-easy/MCAS_2000_8_24
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bD\b
+    prompt: "Question: Which is the best evidence for the theory of continental drift?\n\
+      A) the appearance of volcanoes at the boundaries where plates collide\nB) earthquakes
+      at boundaries where one plate slides past another\nC) cases where a species
+      exists in only one isolated place\nD) fossils of the same species found on widely
+      separated continents\nAnswer with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: A
+    id: arc-easy/Mercury_7205590
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Question: Solar radiation provides more heat near the equator than near
+      the poles on Earth. The greatest amount of heat is moved away from the equator
+      by\nA) ocean currents.\nB) aquatic plants.\nC) surface winds.\nD) tectonic plates.\n\
+      Answer with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: C
+    id: arc-easy/Mercury_SC_416166
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bC\b
+    prompt: "Question: What helps skin feel heat and pressure?\nA) muscle cells\n\
+      B) blood cells\nC) nerve cells\nD) bone cells\nAnswer with the single option
+      letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: A
+    id: arc-easy/Mercury_400837
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Question: Appearance, texture, and density are classified as\nA) physical
+      properties.\nB) chemical properties.\nC) magnetic properties.\nD) thermal properties.\n\
+      Answer with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: B
+    id: arc-easy/MCAS_2010_5_11981
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Question: Francis plugged a toaster into an electric outlet. He put a
+      piece of bread in the toaster and turned the toaster on. While the toaster was
+      on, it changed the electrical energy from the outlet into other forms of energy.
+      Which form of energy toasted the bread?\nA) chemical\nB) heat\nC) magnetic\n\
+      D) sound\nAnswer with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: D
+    id: arc-easy/Mercury_7283885
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bD\b
+    prompt: "Question: The human immunodeficiency virus (HIV) causes AIDS. The first
+      known human cases AIDS were in Africa in the late 1950s. Since then, tens of
+      millions of people have died from the disease, and tens of millions more people
+      all over the world are infected. Which term best describes the disease AIDS?\n\
+      A) isolated cases\nB) outbreak\nC) epidemic\nD) pandemic\nAnswer with the single
+      option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: D
+    id: arc-easy/Mercury_7179340
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bD\b
+    prompt: "Question: Coal, oil, and natural gas have high potential energies, which
+      makes them valuable energy resources. In order to benefit from the energy available
+      in these fossil fuels, the potential energy is converted most directly into
+      which type of energy?\nA) chemical\nB) electrical\nC) solar\nD) thermal\nAnswer
+      with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: D
+    id: arc-easy/Mercury_SC_416142
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bD\b
+    prompt: "Question: Which would most help pollinators find flowers that are pollinated
+      at night?\nA) shape\nB) color\nC) size\nD) fragrance\nAnswer with the single
+      option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: '4'
+    id: arc-easy/NYSEDREGENTS_2012_8_5
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \b4\b
+    prompt: "Question: Which human organ system produces most of the hormones that
+      regulate body functions?\n1) digestive\n2) nervous\n3) muscular\n4) endocrine\n\
+      Answer with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: D
+    id: arc-easy/Mercury_7044083
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bD\b
+    prompt: "Question: Why is it not a safe practice to place a fuel depot over an
+      aquifer?\nA) Aquifers are too high up in the mountains.\nB) The weight of the
+      depot is too great over the aquifer.\nC) The fumes escaping from the fuel depot
+      are explosive.\nD) If the fuel leaks, the water in the aquifer will become contaminated.\n\
+      Answer with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: '1'
+    id: arc-easy/NYSEDREGENTS_2013_8_8
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \b1\b
+    prompt: "Question: Humans are protected from some infections by specialized cells
+      which produce chemicals that\n1) destroy microbes\n2) recycle nutrients\n3)
+      allow locomotion\n4) coordinate movement\nAnswer with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: A
+    id: arc-easy/Mercury_SC_415415
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Question: What happens to climate and weather over a summer?\nA) Weather
+      varies more than climate.\nB) Climate varies more than weather.\nC) Climate
+      varies, but weather stays the same.\nD) Weather and climate vary to the same
+      degree.\nAnswer with the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: C
+    id: arc-easy/Mercury_SC_401253
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bC\b
+    prompt: "Question: A student mixes a teaspoon of sugar in a large glass of water.
+      What happens to the sugar when it is mixed with the water?\nA) It boils.\nB)
+      It melts.\nC) It dissolves.\nD) It evaporates.\nAnswer with the single option
+      letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+  - expected_output: C
+    id: arc-easy/MEA_2014_5_3
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bC\b
+    prompt: "Question: What happens when a warm object is put inside a cooler object?\n\
+      A) The warm object loses energy and the cool object gains energy so that both
+      objects stay at different temperatures.\nB) The warm object gains energy and
+      the cool object loses energy so that both objects stay at different temperatures.\n\
+      C) The warm object loses energy and the cool object gains energy until both
+      objects are the same temperature.\nD) The warm object gains energy and the cool
+      object loses energy until both objects are the same temperature.\nAnswer with
+      the single option letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - arc-easy
+      - science-mcq
+    temperature: null
+version: '1.0'

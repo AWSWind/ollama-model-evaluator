@@ -1,0 +1,1432 @@
+components:
+  schemas:
+    CancelRunResponse:
+      additionalProperties: false
+      description: Body of the 200 response from ``POST /api/runs/{id}/cancel``.
+      properties:
+        run_id:
+          title: Run Id
+          type: string
+        status:
+          description: The new status after the cancel flag is set.
+          title: Status
+          type: string
+      required:
+      - run_id
+      - status
+      title: CancelRunResponse
+      type: object
+    ComparisonReport:
+      additionalProperties: false
+      description: "Top-level Comparison_Report returned by :func:`compare`.\n\n``metric_diffs``\
+        \ and ``performance_diffs`` are lists (not dicts)\nto match the design's \xA7\
+        Data Models / Comparison_Report table and\nbecause list ordering is stable\
+        \ across re-renderings in the UI\n(Property 41). Ordering is deterministic:\
+        \ the lists are sorted\nlexicographically by key tuple so two independent\
+        \ invocations on\nequal inputs produce equal reports."
+      properties:
+        metric_diffs:
+          description: Per-``(model, metric)`` diffs over the intersection.
+          items:
+            $ref: '#/components/schemas/MetricDiff'
+          title: Metric Diffs
+          type: array
+        performance_diffs:
+          description: Per-model performance diffs over the intersection.
+          items:
+            $ref: '#/components/schemas/PerformanceDiff'
+          title: Performance Diffs
+          type: array
+        run_a:
+          description: '``RunReport.run_id`` of the base Run.'
+          title: Run A
+          type: string
+        run_b:
+          description: '``RunReport.run_id`` of the comparison Run.'
+          title: Run B
+          type: string
+      required:
+      - run_a
+      - run_b
+      - metric_diffs
+      - performance_diffs
+      title: ComparisonReport
+      type: object
+    ConfigFile:
+      additionalProperties: false
+      description: 'The on-disk Config_File loaded via the ``--config`` CLI flag.
+
+
+        A ``ConfigFile`` carries process-wide settings (Ollama base URL, where
+
+        to discover suites, where to write reports, logging verbosity, and
+
+        dataset-sourcing defaults) plus an embedded :class:`RunConfig`
+
+        describing the Run to execute.
+
+
+        ``hf_cache_dir`` defaults to ``None`` so the Backend can fall back to
+
+        the HuggingFace ``datasets`` library''s own cache resolution (``$HF_HOME``
+
+        or ``~/.cache/huggingface``) without the Config_File having to encode
+
+        platform-specific paths.'
+      properties:
+        dataset_mode:
+          default: local
+          description: Default ``dataset_mode`` for adapter-backed Evaluation_Suites
+            (Requirement 17.3). Individual suite files may override this per-suite.
+            ``local`` means read from disk; ``remote`` means stream from the HuggingFace
+            Hub at Run time.
+          enum:
+          - local
+          - remote
+          title: Dataset Mode
+          type: string
+        hf_cache_dir:
+          anyOf:
+          - format: path
+            type: string
+          - type: 'null'
+          description: Directory used by the HuggingFace ``datasets`` library for
+            its on-disk cache. When ``None`` the library's own default is used (``$HF_HOME``
+            or ``~/.cache/huggingface``).
+          title: Hf Cache Dir
+        log_level:
+          default: info
+          description: Global log verbosity (Requirement 10.6). The CLI ``--log-level``
+            flag overrides this value at runtime.
+          enum:
+          - debug
+          - info
+          - warn
+          - error
+          title: Log Level
+          type: string
+        ollama_base_url:
+          default: http://localhost:11434
+          description: Base URL of the Ollama_Server (Requirement 1.1). Must be an
+            absolute ``http://`` or ``https://`` URL.
+          title: Ollama Base Url
+          type: string
+        output_dir:
+          description: Directory where Run_Reports (``runs/{run_id}/report.json``
+            and ``report.md``) are written (Requirement 8.1).
+          format: path
+          title: Output Dir
+          type: string
+        run:
+          $ref: '#/components/schemas/RunConfig'
+          description: Run-level configuration (models, suites, concurrency, ...).
+        suites_dir:
+          description: Directory containing Evaluation_Suite files to discover at
+            Run start (Requirement 3.1). Required; there is no sensible default because
+            evaluation content is user-supplied.
+          format: path
+          title: Suites Dir
+          type: string
+      required:
+      - suites_dir
+      - run
+      title: ConfigFile
+      type: object
+    ErrorSummaryEntry:
+      additionalProperties: false
+      description: 'One entry in :class:`RunReport.error_summary` (Requirement 11.3).
+
+
+        Emitted once per ``TestCaseResult`` whose ``status`` is ``error`` or
+
+        ``timeout``. The entry repeats the identifying tuple from the
+
+        underlying result so the summary section can be rendered on its own
+
+        without cross-referencing ``RunReport.results`` (Property 22).'
+      properties:
+        error_message:
+          description: Human-readable error message from the underlying result.
+          title: Error Message
+          type: string
+        model:
+          description: Ollama model tag the failed execution ran against.
+          title: Model
+          type: string
+        repetition:
+          description: 1-indexed repetition number of the failed execution.
+          title: Repetition
+          type: integer
+        suite:
+          description: Evaluation_Suite name the failed test case belongs to.
+          title: Suite
+          type: string
+        test_case_id:
+          description: '``TestCase.id`` of the failed execution.'
+          title: Test Case Id
+          type: string
+      required:
+      - model
+      - suite
+      - test_case_id
+      - repetition
+      - error_message
+      title: ErrorSummaryEntry
+      type: object
+    EvaluationSuite:
+      additionalProperties: false
+      description: 'A named, versioned collection of :class:`TestCase` objects.
+
+
+        A suite is the primary on-disk artifact authored by users (YAML or JSON;
+
+        see ``suites/loader.py``) and the unit of filtering at Run time
+
+        (Requirement 3.6). Suites must have a non-empty ``name``, a non-empty
+
+        ``test_cases`` list, and every ``test_cases[i].id`` must be unique
+
+        within the suite (Requirement 3.3).'
+      properties:
+        defaults:
+          $ref: '#/components/schemas/GenerationDefaults'
+          description: Default generation parameters for every TestCase in this suite.
+        description:
+          anyOf:
+          - type: string
+          - type: 'null'
+          description: Optional free-form description shown in the UI.
+          title: Description
+        name:
+          description: Human-readable suite name, used by ``RunConfig.suites``.
+          title: Name
+          type: string
+        test_cases:
+          description: Ordered, non-empty list of test cases with unique ids.
+          items:
+            $ref: '#/components/schemas/TestCase'
+          title: Test Cases
+          type: array
+        version:
+          default: '1.0'
+          description: Authoring version string; informational only in v1.
+          title: Version
+          type: string
+      required:
+      - name
+      - test_cases
+      title: EvaluationSuite
+      type: object
+    GenerationDefaults:
+      additionalProperties: false
+      description: 'Run-level defaults for Ollama generation parameters.
+
+
+        A ``TestCase`` may override any of these fields individually. When a
+
+        ``TestCase`` leaves a field unset (``None``), the runner falls back to
+
+        the corresponding value from ``GenerationDefaults`` (see Requirement 5.4
+
+        and Property 7 in the design document).'
+      properties:
+        max_tokens:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          description: Maximum tokens to generate (``options.num_predict``). ``None``
+            means use the model's default.
+          title: Max Tokens
+        stop_sequences:
+          description: Default ``options.stop`` sequences applied to every Test_Case.
+          items:
+            type: string
+          title: Stop Sequences
+          type: array
+        temperature:
+          default: 0.0
+          description: Sampling temperature passed to Ollama (``options.temperature``).
+          title: Temperature
+          type: number
+      title: GenerationDefaults
+      type: object
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          title: Detail
+          type: array
+      title: HTTPValidationError
+      type: object
+    MetricAggregate:
+      additionalProperties: false
+      description: 'Mean and population stddev for a single ``(model, metric)`` pair.
+
+
+        Keyed by metric name inside :class:`ModelAggregate.metric_aggregates`.
+
+        The aggregation itself is computed by :mod:`runner.aggregate` using
+
+        :func:`statistics.fmean` and :func:`statistics.pstdev` (Property 15).
+
+
+        ``stddev`` is the *population* standard deviation, not the sample
+
+        variant. For a single-repetition Run (``count == 1``) this is the
+
+        well-defined value ``0``; sample stddev would be undefined. Sticking
+
+        to pstdev everywhere means the aggregator never has to special-case
+
+        ``count == 1``.'
+      properties:
+        count:
+          description: Number of per-repetition samples that fed this aggregate. Must
+            be >= 0.
+          title: Count
+          type: integer
+        mean:
+          description: Arithmetic mean of the per-repetition scores.
+          title: Mean
+          type: number
+        metric:
+          description: Metric name this aggregate corresponds to.
+          title: Metric
+          type: string
+        stddev:
+          description: Population standard deviation of the per-repetition scores.
+            Must be >= 0.
+          title: Stddev
+          type: number
+      required:
+      - metric
+      - mean
+      - stddev
+      - count
+      title: MetricAggregate
+      type: object
+    MetricConfig:
+      additionalProperties: false
+      description: "Configuration for a single metric attached to a :class:`TestCase`.\n\
+        \nDifferent built-in metrics accept different parameters (``exact-match``\n\
+        takes ``case_sensitive`` / ``trim``; ``regex-match`` takes ``pattern`` /\n\
+        ``flags``; ``json-schema-valid`` takes ``schema``; ``length-range`` takes\n\
+        ``min`` / ``max``; ``llm-as-judge`` takes ``rubric`` / ``judge_model``;\n\
+        and so on). Rather than enumerating every metric's schema at the suite\nlayer,\
+        \ ``MetricConfig`` exposes a ``name`` plus a generic ``params``\nmapping.\
+        \ The concrete metric implementations (``metrics/builtin.py``,\n``metrics/judge.py``)\
+        \ are responsible for validating the contents of\n``params`` themselves.\n\
+        \n``extra=\"forbid\"`` is still applied here \u2014 the only two top-level\
+        \ fields\npermitted are ``name`` and ``params``. This preserves the spec rule\
+        \ that\nevery suite model rejects unknown fields while still letting metrics\n\
+        carry arbitrary structured configuration."
+      properties:
+        name:
+          description: Identifier of a registered metric (e.g. 'exact-match').
+          title: Name
+          type: string
+        params:
+          additionalProperties: true
+          description: Metric-specific parameters passed verbatim to the metric implementation.
+            Validated by the metric itself, not here.
+          title: Params
+          type: object
+      required:
+      - name
+      title: MetricConfig
+      type: object
+    MetricDiff:
+      additionalProperties: false
+      description: "One row of :class:`ComparisonReport.metric_diffs`.\n\n``diff``\
+        \ is ``mean_b - mean_a``. Positive means Run B scored\nhigher than Run A on\
+        \ the given metric; negative means the\nopposite. The field is a ``float``\
+        \ (not ``float | None``)\nbecause the enclosing keyset is the *intersection*\
+        \ \u2014 a\n``MetricDiff`` is only emitted when both reports have a value."
+      properties:
+        diff:
+          description: '``mean_b - mean_a``.'
+          title: Diff
+          type: number
+        mean_a:
+          description: Mean score in Run A.
+          title: Mean A
+          type: number
+        mean_b:
+          description: Mean score in Run B.
+          title: Mean B
+          type: number
+        metric:
+          description: Metric name.
+          title: Metric
+          type: string
+        model:
+          description: Model tag the metric was scored for.
+          title: Model
+          type: string
+      required:
+      - model
+      - metric
+      - mean_a
+      - mean_b
+      - diff
+      title: MetricDiff
+      type: object
+    MetricResult:
+      additionalProperties: false
+      description: 'Score produced by a single metric for a single Test_Case execution.
+
+
+        A ``MetricResult`` is always carried on a :class:`TestCaseResult`,
+
+        even when the metric itself raises during scoring (Requirement 7.5).
+
+        In the error path the runner sets ``error`` to the raised message and
+
+        ``passed`` to ``False``; ``score`` is still required and the runner
+
+        records ``0.0`` by convention so the aggregation code can operate on
+
+        a uniform numeric field.
+
+
+        ``details`` is a free-form mapping reserved for metric-specific
+
+        context (for example, the captured response for the
+
+        ``response-capture`` metric, the matched regex group for
+
+        ``regex-match``, or the JSON-Schema validation errors for
+
+        ``json-schema-valid``). It intentionally has no internal schema here.'
+      properties:
+        details:
+          additionalProperties: true
+          description: Metric-specific structured context. Free-form; validated by
+            the metric implementation, not here.
+          title: Details
+          type: object
+        error:
+          anyOf:
+          - type: string
+          - type: 'null'
+          description: Populated when the metric raised during scoring (Requirement
+            7.5). ``passed`` is ``False`` in that case and the Run continues with
+            the remaining metrics.
+          title: Error
+        name:
+          description: Identifier of the metric that produced this result.
+          title: Name
+          type: string
+        passed:
+          description: Pass/fail classification against the metric's threshold (Requirement
+            7.4).
+          title: Passed
+          type: boolean
+        score:
+          description: Numeric score in the metric-defined range (Requirement 7.3).
+          title: Score
+          type: number
+        threshold:
+          anyOf:
+          - type: number
+          - type: 'null'
+          description: Threshold used by the metric to classify ``score`` as passed.
+            ``None`` for metrics that do not parametrise a threshold (e.g. boolean
+            metrics).
+          title: Threshold
+      required:
+      - name
+      - score
+      - passed
+      title: MetricResult
+      type: object
+    ModelAggregate:
+      additionalProperties: false
+      description: 'Aggregate statistics for a single evaluated model.
+
+
+        One ``ModelAggregate`` is produced per entry in
+
+        ``RunConfig.models``. Counters (``passed``/``failed``/``errored``/
+
+        ``timed_out``) sum the per-execution ``TestCaseResult.status`` values
+
+        filtered to this model. Performance means average across every
+
+        ``(test_case, repetition)`` for this model; ``mean_ttft_ms`` and
+
+        ``mean_tokens_per_second`` are nullable because the underlying
+
+        per-execution fields are nullable (Requirement 6.5).
+
+
+        ``metric_aggregates`` is keyed by metric name so the UI and
+
+        comparison report can look up a metric without scanning a list
+
+        (Property 19).'
+      properties:
+        errored:
+          description: Number of executions with ``status == 'error'``.
+          title: Errored
+          type: integer
+        failed:
+          description: Number of executions with ``status == 'fail'``.
+          title: Failed
+          type: integer
+        mean_tokens_per_second:
+          anyOf:
+          - type: number
+          - type: 'null'
+          description: Mean tokens-per-second, averaged across executions with a non-``None``
+            ``tokens_per_second``. ``None`` when no execution produced the derived
+            value.
+          title: Mean Tokens Per Second
+        mean_total_ms:
+          description: Mean total response time in milliseconds, averaged across every
+            execution for this model.
+          title: Mean Total Ms
+          type: number
+        mean_ttft_ms:
+          anyOf:
+          - type: number
+          - type: 'null'
+          description: Mean time-to-first-token in milliseconds, averaged across executions
+            with a non-``None`` ``ttft_ms``. ``None`` when no execution reported TTFT.
+          title: Mean Ttft Ms
+        metric_aggregates:
+          additionalProperties:
+            $ref: '#/components/schemas/MetricAggregate'
+          description: Per-metric mean/stddev aggregates keyed by metric name.
+          title: Metric Aggregates
+          type: object
+        model:
+          description: Ollama model tag these aggregates describe.
+          title: Model
+          type: string
+        passed:
+          description: Number of executions with ``status == 'pass'``.
+          title: Passed
+          type: integer
+        timed_out:
+          description: Number of executions with ``status == 'timeout'``.
+          title: Timed Out
+          type: integer
+      required:
+      - model
+      - passed
+      - failed
+      - errored
+      - timed_out
+      - mean_ttft_ms
+      - mean_total_ms
+      - mean_tokens_per_second
+      - metric_aggregates
+      title: ModelAggregate
+      type: object
+    ModelInfo:
+      additionalProperties: false
+      description: 'Identifying metadata for an evaluated Ollama model.
+
+
+        Populated from the Ollama_Server''s ``/api/tags`` response at Run
+
+        start (Requirement 2.5). ``digest`` and ``parameter_size`` are
+
+        nullable because some Ollama_Server versions omit them and because
+
+        a Run submitted against an inventory that is still pulling a model
+
+        may run before the digest is observable.'
+      properties:
+        digest:
+          anyOf:
+          - type: string
+          - type: 'null'
+          description: Content-addressed digest reported by the Ollama_Server.
+          title: Digest
+        name:
+          description: Ollama model tag, e.g. ``"llama3:8b"``.
+          title: Name
+          type: string
+        parameter_size:
+          anyOf:
+          - type: string
+          - type: 'null'
+          description: Human-readable parameter count (e.g. ``"8B"``).
+          title: Parameter Size
+      required:
+      - name
+      title: ModelInfo
+      type: object
+    PerformanceDiff:
+      additionalProperties: false
+      description: 'One row of :class:`ComparisonReport.performance_diffs`.
+
+
+        Populated per model present in both reports. ``*_tps_*`` fields
+
+        are nullable because the underlying per-model mean is nullable
+
+        (Requirement 6.5). ``tps_diff`` is ``None`` when either side is
+
+        ``None``; ``total_ms_diff`` is always a concrete ``float``
+
+        because ``mean_total_ms`` is non-nullable on
+
+        :class:`ModelAggregate`.'
+      properties:
+        mean_tokens_per_second_a:
+          anyOf:
+          - type: number
+          - type: 'null'
+          description: Run A's mean tokens-per-second for this model.
+          title: Mean Tokens Per Second A
+        mean_tokens_per_second_b:
+          anyOf:
+          - type: number
+          - type: 'null'
+          description: Run B's mean tokens-per-second for this model.
+          title: Mean Tokens Per Second B
+        mean_total_ms_a:
+          description: Run A's mean total response time for this model (ms).
+          title: Mean Total Ms A
+          type: number
+        mean_total_ms_b:
+          description: Run B's mean total response time for this model (ms).
+          title: Mean Total Ms B
+          type: number
+        model:
+          description: Model tag.
+          title: Model
+          type: string
+        total_ms_diff:
+          description: '``mean_total_ms_b - mean_total_ms_a``.'
+          title: Total Ms Diff
+          type: number
+        tps_diff:
+          anyOf:
+          - type: number
+          - type: 'null'
+          description: '``mean_tokens_per_second_b - mean_tokens_per_second_a``; ``None``
+            when either side is ``None``.'
+          title: Tps Diff
+      required:
+      - model
+      - mean_tokens_per_second_a
+      - mean_tokens_per_second_b
+      - mean_total_ms_a
+      - mean_total_ms_b
+      - tps_diff
+      - total_ms_diff
+      title: PerformanceDiff
+      type: object
+    PerformanceMetrics:
+      additionalProperties: false
+      description: "Per-execution timing and token-count measurements.\n\n``ttft_ms``\
+        \ and the token-count fields are nullable because the\nOllama_Server does\
+        \ not always populate them (Requirement 6.5). A\nmissing value must not be\
+        \ coerced to ``0`` \u2014 ``0`` is a valid\nmeasurement that means \"zero\
+        \ tokens\" or \"no delay\" and would be\nindistinguishable from \"unknown\"\
+        \ if we silently defaulted to it.\n\n``tokens_per_second`` is derived by the\
+        \ runner from ``response_tokens``\nand ``total_ms`` (Requirement 6.4, Property\
+        \ 10). It is stored on the\nmodel rather than recomputed on demand so that\
+        \ reports remain stable\neven if the derivation rule changes in a future version."
+      properties:
+        prompt_tokens:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          description: Prompt token count reported by the Ollama_Server (Requirement
+            6.3). ``None`` when the server omitted it.
+          title: Prompt Tokens
+        response_tokens:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          description: Response token count reported by the Ollama_Server (Requirement
+            6.3). ``None`` when the server omitted it.
+          title: Response Tokens
+        tokens_per_second:
+          anyOf:
+          - type: number
+          - type: 'null'
+          description: 'Derived throughput: ``response_tokens / (total_ms / 1000)``
+            (Requirement 6.4). ``None`` when ``response_tokens`` is ``None`` or ``total_ms``
+            is 0.'
+          title: Tokens Per Second
+        total_ms:
+          description: Total response time from request dispatch to the final chunk,
+            in milliseconds (Requirement 6.2).
+          title: Total Ms
+          type: number
+        ttft_ms:
+          anyOf:
+          - type: number
+          - type: 'null'
+          description: Wall-clock time from request dispatch to the first streamed
+            chunk, in milliseconds (Requirement 6.1). ``None`` when the server omitted
+            the timing (Requirement 6.5).
+          title: Ttft Ms
+      required:
+      - total_ms
+      title: PerformanceMetrics
+      type: object
+    RunConfig:
+      additionalProperties: false
+      description: 'Run-level configuration for a single Run.
+
+
+        ``RunConfig`` is the body the Backend_API accepts for
+
+        ``POST /api/runs`` and is also embedded in :class:`ConfigFile` as the
+
+        ``run:`` section. A ``RunConfig`` is serialised verbatim into every
+
+        ``RunReport`` so runs are reproducible from their report alone
+
+        (Requirement 8.4).
+
+
+        Validators enforce the numeric ranges specified in the Requirements
+
+        document and reject empty ``models`` / ``suites`` lists early, before
+
+        any Ollama_Server call is made.'
+      properties:
+        concurrency:
+          default: 1
+          description: Maximum number of in-flight Ollama_Server requests during this
+            Run. Must be >= 1 (Requirement 5.5).
+          title: Concurrency
+          type: integer
+        judge_model:
+          anyOf:
+          - type: string
+          - type: 'null'
+          description: Ollama model tag used by any configured ``llm-as-judge`` metric.
+            ``None`` means no judge model is configured; metrics that require one
+            will raise a validation error at Run start.
+          title: Judge Model
+        models:
+          description: Ollama model tags to evaluate in this Run (e.g. 'llama3:8b').
+            Must contain at least one model (Requirement 2.2).
+          items:
+            type: string
+          title: Models
+          type: array
+        ollama_timeout_s:
+          default: 120.0
+          description: Per-request timeout in seconds applied to every Ollama_Server
+            call made during this Run (Requirement 1.4). Must be > 0.
+          title: Ollama Timeout S
+          type: number
+        pull_missing_models:
+          default: false
+          description: If true, instruct the Ollama_Server to pull any requested Model
+            that is not already available (Requirement 2.4).
+          title: Pull Missing Models
+          type: boolean
+        repetitions:
+          default: 1
+          description: Number of times each Test_Case is executed per Model. Must
+            be >= 1 (Requirement 5.2).
+          title: Repetitions
+          type: integer
+        retry_max_attempts:
+          default: 2
+          description: Number of *additional* retry attempts per Test_Case execution
+            on retryable network errors (Requirement 11.1). Must be >= 0. A value
+            of 0 disables retries entirely.
+          title: Retry Max Attempts
+          type: integer
+        suites:
+          description: Names of Evaluation_Suites to run. Must contain at least one
+            name (Requirement 3.1).
+          items:
+            type: string
+          title: Suites
+          type: array
+        tag_filter:
+          description: Optional Test_Case tag filter (Requirement 3.6). When empty,
+            every Test_Case in the selected suites is included. When non-empty, only
+            Test_Cases whose ``tags`` intersect this list are selected.
+          items:
+            type: string
+          title: Tag Filter
+          type: array
+      required:
+      - models
+      - suites
+      title: RunConfig
+      type: object
+    RunReport:
+      additionalProperties: false
+      description: "Top-level Run_Report persisted to disk and returned by the REST\
+        \ API.\n\nA ``RunReport`` is the single source of truth for a completed Run\n\
+        (Requirement 8.4): it embeds the full submitted :class:`ConfigFile`,\nthe\
+        \ identifying metadata for every evaluated model, every\nper-execution result,\
+        \ the per-model aggregates, and an error\nsummary. Property 16 (Run_Report\
+        \ completeness) asserts this\ninvariant; Property 18 (round-trip) asserts\
+        \ that\n``RunReport.model_validate_json(r.model_dump_json()) == r`` for\n\
+        every valid ``r``.\n\n``status`` is a five-value literal covering the full\
+        \ state machine:\n\n* ``pending`` \u2014 the Run has been created but dispatch\
+        \ has not started.\n* ``running`` \u2014 at least one execution is in flight\
+        \ or queued.\n* ``completed`` \u2014 every planned execution has produced\
+        \ a result.\n* ``aborted`` \u2014 the Run was stopped by a cancel request\
+        \ or signal\n  before all planned executions completed (Requirement 11.4).\n\
+        * ``failed`` \u2014 the Run could not start (e.g. missing models in\n  preflight,\
+        \ Property 5) and no per-execution results exist.\n\nThe ``ended_at >= started_at``\
+        \ invariant is enforced in a model\nvalidator rather than field-by-field because\
+        \ it is a cross-field\nconstraint (Property 16)."
+      properties:
+        aggregates:
+          description: One ``ModelAggregate`` per evaluated model (Requirement 8.2).
+          items:
+            $ref: '#/components/schemas/ModelAggregate'
+          title: Aggregates
+          type: array
+        backend_version:
+          description: Version string of the Backend that produced this report.
+          title: Backend Version
+          type: string
+        config:
+          $ref: '#/components/schemas/ConfigFile'
+          description: Full submitted ``ConfigFile`` (Requirement 8.4).
+        ended_at:
+          anyOf:
+          - format: date-time
+            type: string
+          - type: 'null'
+          description: UTC timestamp when the Run reached a terminal state. ``None``
+            while the Run is still ``pending`` or ``running``.
+          title: Ended At
+        error_summary:
+          description: One entry per result with ``status`` in ``{'error', 'timeout'}``
+            (Requirement 11.3).
+          items:
+            $ref: '#/components/schemas/ErrorSummaryEntry'
+          title: Error Summary
+          type: array
+        models:
+          description: One ``ModelInfo`` per evaluated model (Requirement 2.5).
+          items:
+            $ref: '#/components/schemas/ModelInfo'
+          title: Models
+          type: array
+        ollama_version:
+          anyOf:
+          - type: string
+          - type: 'null'
+          description: Ollama_Server version string at Run start. ``None`` when the
+            Backend could not reach the server before failing.
+          title: Ollama Version
+        results:
+          description: One ``TestCaseResult`` per ``(model, test_case, repetition)``.
+          items:
+            $ref: '#/components/schemas/TestCaseResult'
+          title: Results
+          type: array
+        run_id:
+          description: Unique identifier for this Run (Property 25). Must be non-empty.
+          title: Run Id
+          type: string
+        started_at:
+          description: UTC timestamp when the Run started.
+          format: date-time
+          title: Started At
+          type: string
+        status:
+          description: Terminal or in-flight state of the Run (see class docstring).
+          enum:
+          - pending
+          - running
+          - completed
+          - aborted
+          - failed
+          title: Status
+          type: string
+      required:
+      - run_id
+      - backend_version
+      - ollama_version
+      - started_at
+      - ended_at
+      - status
+      - config
+      - models
+      - results
+      - aggregates
+      - error_summary
+      title: RunReport
+      type: object
+    SubmitRunResponse:
+      additionalProperties: false
+      description: Body of the 201 response from ``POST /api/runs`` (Requirement 13.3).
+      properties:
+        run_id:
+          description: Identifier of the newly queued Run.
+          title: Run Id
+          type: string
+        status:
+          description: Initial status; always ``pending``.
+          title: Status
+          type: string
+      required:
+      - run_id
+      - status
+      title: SubmitRunResponse
+      type: object
+    SuiteSummary:
+      additionalProperties: false
+      description: "Lightweight metadata for a single discovered Evaluation_Suite.\n\
+        \nSurfaced by ``GET /api/suites/summaries`` so clients (notably the\nUI's\
+        \ New Run page) can render per-suite case counts and a time\nestimate without\
+        \ issuing N full-suite fetches. Returning only the\ncounts (not the full ``test_cases``\
+        \ list) is a ~100\xD7 payload\nreduction for suites like ``mmlu`` (180 KB\
+        \ \u2192 ~100 bytes).\n\nThe field set is intentionally minimal; callers that\
+        \ need any\nadditional metadata can still issue the targeted\n``GET /api/suites/{name}``\
+        \ fetch."
+      properties:
+        description:
+          anyOf:
+          - type: string
+          - type: 'null'
+          description: Optional free-form description copied from the suite file.
+          title: Description
+        name:
+          description: Unique suite name (same identifier as ``GET /api/suites``).
+          title: Name
+          type: string
+        test_case_count:
+          description: Number of Test_Cases contained in the suite.
+          minimum: 0.0
+          title: Test Case Count
+          type: integer
+      required:
+      - name
+      - test_case_count
+      title: SuiteSummary
+      type: object
+    TestCase:
+      additionalProperties: false
+      description: 'A single evaluation unit within an :class:`EvaluationSuite`.
+
+
+        Each test case carries a prompt to send to the model, optional metadata
+
+        (system prompt, expected output, reference data, tags), optional
+
+        per-case generation overrides, and a non-empty list of
+
+        :class:`MetricConfig` entries describing how the response should be
+
+        scored.
+
+
+        Validators enforce:
+
+
+        * ``prompt`` is non-empty (Requirement 3.3).
+
+        * ``metrics`` contains at least one entry (Requirement 3.3).
+
+
+        Unknown fields are rejected by ``ConfigDict(extra="forbid")`` so typos
+
+        in user-authored suites surface as validation errors rather than being
+
+        silently ignored (Requirement 3.5).'
+      properties:
+        expected_output:
+          anyOf:
+          - type: string
+          - type: 'null'
+          description: Optional canonical answer used by exact/regex metrics.
+          title: Expected Output
+        id:
+          description: Stable identifier, unique within the enclosing suite.
+          title: Id
+          type: string
+        max_tokens:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          description: Per-case ``num_predict`` override. ``None`` means use defaults.
+          title: Max Tokens
+        metrics:
+          description: Scoring configuration. Must contain at least one entry.
+          items:
+            $ref: '#/components/schemas/MetricConfig'
+          title: Metrics
+          type: array
+        prompt:
+          description: User prompt sent to the Ollama model. Must be non-empty.
+          title: Prompt
+          type: string
+        reference_data:
+          anyOf:
+          - additionalProperties: true
+            type: object
+          - type: 'null'
+          description: Arbitrary structured context consumed by specific metrics.
+          title: Reference Data
+        stop_sequences:
+          anyOf:
+          - items:
+              type: string
+            type: array
+          - type: 'null'
+          description: Per-case ``stop`` override. ``None`` (not ``[]``) means fall
+            back to the run-level defaults; ``[]`` explicitly clears them.
+          title: Stop Sequences
+        system_prompt:
+          anyOf:
+          - type: string
+          - type: 'null'
+          description: Optional system prompt prepended to the request.
+          title: System Prompt
+        tags:
+          description: Free-form tags for filtering at Run time (Requirement 3.6).
+          items:
+            type: string
+          title: Tags
+          type: array
+        temperature:
+          anyOf:
+          - type: number
+          - type: 'null'
+          description: Per-case sampling temperature override. ``None`` means fall
+            back to the suite/run defaults.
+          title: Temperature
+      required:
+      - id
+      - prompt
+      - metrics
+      title: TestCase
+      type: object
+    TestCaseResult:
+      additionalProperties: false
+      description: "Outcome of a single ``(model, test_case, repetition)`` execution.\n\
+        \n``status`` is a four-value literal rather than a boolean because a\nRun\
+        \ distinguishes four outcome classes in both the report and the\nevent stream\
+        \ (Property 9):\n\n* ``pass`` \u2014 every configured metric classified the\
+        \ response as passing.\n* ``fail`` \u2014 at least one metric classified the\
+        \ response as failing.\n* ``error`` \u2014 the Ollama_Server call itself failed\
+        \ after all retries,\n  or a metric raised in a way that the runner treats\
+        \ as a hard error.\n* ``timeout`` \u2014 the Ollama_Server call exceeded ``ollama_timeout_s``.\n\
+        \n``repetition`` is 1-indexed (the first repetition is ``1``, not ``0``)\n\
+        so that the value can be displayed to users without re-indexing and\nso that\
+        \ ``repetition <= RunConfig.repetitions`` is the natural bound."
+      properties:
+        error_message:
+          anyOf:
+          - type: string
+          - type: 'null'
+          description: Human-readable error message for ``error``/``timeout`` outcomes.
+            ``None`` for ``pass``/``fail``.
+          title: Error Message
+        metrics:
+          description: One ``MetricResult`` per configured metric on the test case,
+            in the order declared on the ``TestCase``.
+          items:
+            $ref: '#/components/schemas/MetricResult'
+          title: Metrics
+          type: array
+        model:
+          description: Ollama model tag this execution ran against.
+          title: Model
+          type: string
+        performance:
+          $ref: '#/components/schemas/PerformanceMetrics'
+          description: Timing and token-count measurements for this execution.
+        repetition:
+          description: 1-indexed repetition number for this ``(model, test_case)``
+            pair. Must be >= 1.
+          title: Repetition
+          type: integer
+        response:
+          anyOf:
+          - type: string
+          - type: 'null'
+          description: Raw model response text, when available. ``None`` for ``error``/``timeout``
+            outcomes that never produced output.
+          title: Response
+        status:
+          description: Four-valued outcome (see class docstring).
+          enum:
+          - pass
+          - fail
+          - error
+          - timeout
+          title: Status
+          type: string
+        suite:
+          description: Name of the Evaluation_Suite the test case belongs to.
+          title: Suite
+          type: string
+        test_case_id:
+          description: '``TestCase.id`` within the enclosing suite.'
+          title: Test Case Id
+          type: string
+      required:
+      - model
+      - suite
+      - test_case_id
+      - repetition
+      - status
+      - performance
+      - metrics
+      title: TestCaseResult
+      type: object
+    ValidationError:
+      properties:
+        ctx:
+          title: Context
+          type: object
+        input:
+          title: Input
+        loc:
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+          title: Location
+          type: array
+        msg:
+          title: Message
+          type: string
+        type:
+          title: Error Type
+          type: string
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
+      type: object
+info:
+  description: Local evaluation harness for Ollama-hosted LLMs.
+  title: Ollama Model Evaluator
+  version: 0.1.0
+openapi: 3.1.0
+paths:
+  /api/compare:
+    get:
+      description: Return the comparison between two persisted Run_Reports.
+      operationId: compare_runs_api_compare_get
+      parameters:
+      - description: Run id of the base run.
+        in: query
+        name: a
+        required: true
+        schema:
+          description: Run id of the base run.
+          title: A
+          type: string
+      - description: Run id of the comparison run.
+        in: query
+        name: b
+        required: true
+        schema:
+          description: Run id of the comparison run.
+          title: B
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ComparisonReport'
+          description: Successful Response
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      summary: Compare Runs
+  /api/health:
+    get:
+      description: Liveness probe used by the UI to detect Backend availability.
+      operationId: health_api_health_get
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                additionalProperties:
+                  type: string
+                title: Response Health Api Health Get
+                type: object
+          description: Successful Response
+      summary: Health
+  /api/models:
+    get:
+      description: 'List models reported by the configured Ollama_Server.
+
+
+        Translates network/HTTP failures to ``502 ollama_unreachable``
+
+        so UI clients can branch on a well-known code.'
+      operationId: list_models_api_models_get
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  additionalProperties: true
+                  type: object
+                title: Response List Models Api Models Get
+                type: array
+          description: Successful Response
+      summary: List Models
+  /api/runs:
+    get:
+      description: Return stored runs matching the supplied filters.
+      operationId: list_runs_api_runs_get
+      parameters:
+      - in: query
+        name: model
+        required: false
+        schema:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Model
+      - in: query
+        name: suite
+        required: false
+        schema:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Suite
+      - in: query
+        name: status
+        required: false
+        schema:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Status
+      - in: query
+        name: since
+        required: false
+        schema:
+          anyOf:
+          - format: date-time
+            type: string
+          - type: 'null'
+          title: Since
+      - in: query
+        name: until
+        required: false
+        schema:
+          anyOf:
+          - format: date-time
+            type: string
+          - type: 'null'
+          title: Until
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  additionalProperties: true
+                  type: object
+                title: Response List Runs Api Runs Get
+                type: array
+          description: Successful Response
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      summary: List Runs
+    post:
+      description: Persist a new Run as ``pending`` and hand it to the supervisor.
+      operationId: submit_run_api_runs_post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RunConfig'
+        required: true
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SubmitRunResponse'
+          description: Successful Response
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      summary: Submit Run
+  /api/runs/{run_id}:
+    delete:
+      description: Delete a Run and its persisted artifacts (Requirement 12.5).
+      operationId: delete_run_api_runs__run_id__delete
+      parameters:
+      - in: path
+        name: run_id
+        required: true
+        schema:
+          title: Run Id
+          type: string
+      responses:
+        '204':
+          description: Successful Response
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      summary: Delete Run
+    get:
+      description: Return the full :class:`RunReport` for ``run_id``.
+      operationId: get_run_api_runs__run_id__get
+      parameters:
+      - in: path
+        name: run_id
+        required: true
+        schema:
+          title: Run Id
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RunReport'
+          description: Successful Response
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      summary: Get Run
+  /api/runs/{run_id}/cancel:
+    post:
+      description: Request cooperative cancellation of a live Run.
+      operationId: cancel_run_api_runs__run_id__cancel_post
+      parameters:
+      - in: path
+        name: run_id
+        required: true
+        schema:
+          title: Run Id
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CancelRunResponse'
+          description: Successful Response
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      summary: Cancel Run
+  /api/runs/{run_id}/report.md:
+    get:
+      description: Return the Run_Report rendered as ``text/markdown``.
+      operationId: get_run_markdown_api_runs__run_id__report_md_get
+      parameters:
+      - in: path
+        name: run_id
+        required: true
+        schema:
+          title: Run Id
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema: {}
+          description: Successful Response
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      summary: Get Run Markdown
+  /api/suites:
+    get:
+      description: Return sorted suite names discovered under ``suites_dir``.
+      operationId: list_suites_api_suites_get
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  type: string
+                title: Response List Suites Api Suites Get
+                type: array
+          description: Successful Response
+      summary: List Suites
+  /api/suites/summaries:
+    get:
+      description: 'Return lightweight metadata (name, case count, description) for
+        every suite.
+
+
+        Used by the UI''s New Run page to annotate the suites multi-select
+
+        with case counts and rough-ETA estimates without pulling every
+
+        Test_Case. Results are emitted in the same order as
+
+        ``GET /api/suites``.'
+      operationId: list_suite_summaries_api_suites_summaries_get
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/SuiteSummary'
+                title: Response List Suite Summaries Api Suites Summaries Get
+                type: array
+          description: Successful Response
+      summary: List Suite Summaries
+  /api/suites/{name}:
+    get:
+      description: Return the full :class:`EvaluationSuite` matching ``name``.
+      operationId: get_suite_api_suites__name__get
+      parameters:
+      - in: path
+        name: name
+        required: true
+        schema:
+          title: Name
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EvaluationSuite'
+          description: Successful Response
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      summary: Get Suite

@@ -1,0 +1,672 @@
+{
+  "$defs": {
+    "ConfigFile": {
+      "additionalProperties": false,
+      "description": "The on-disk Config_File loaded via the ``--config`` CLI flag.\n\nA ``ConfigFile`` carries process-wide settings (Ollama base URL, where\nto discover suites, where to write reports, logging verbosity, and\ndataset-sourcing defaults) plus an embedded :class:`RunConfig`\ndescribing the Run to execute.\n\n``hf_cache_dir`` defaults to ``None`` so the Backend can fall back to\nthe HuggingFace ``datasets`` library's own cache resolution (``$HF_HOME``\nor ``~/.cache/huggingface``) without the Config_File having to encode\nplatform-specific paths.",
+      "properties": {
+        "dataset_mode": {
+          "default": "local",
+          "description": "Default ``dataset_mode`` for adapter-backed Evaluation_Suites (Requirement 17.3). Individual suite files may override this per-suite. ``local`` means read from disk; ``remote`` means stream from the HuggingFace Hub at Run time.",
+          "enum": [
+            "local",
+            "remote"
+          ],
+          "title": "Dataset Mode",
+          "type": "string"
+        },
+        "hf_cache_dir": {
+          "anyOf": [
+            {
+              "format": "path",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Directory used by the HuggingFace ``datasets`` library for its on-disk cache. When ``None`` the library's own default is used (``$HF_HOME`` or ``~/.cache/huggingface``).",
+          "title": "Hf Cache Dir"
+        },
+        "log_level": {
+          "default": "info",
+          "description": "Global log verbosity (Requirement 10.6). The CLI ``--log-level`` flag overrides this value at runtime.",
+          "enum": [
+            "debug",
+            "info",
+            "warn",
+            "error"
+          ],
+          "title": "Log Level",
+          "type": "string"
+        },
+        "ollama_base_url": {
+          "default": "http://localhost:11434",
+          "description": "Base URL of the Ollama_Server (Requirement 1.1). Must be an absolute ``http://`` or ``https://`` URL.",
+          "title": "Ollama Base Url",
+          "type": "string"
+        },
+        "output_dir": {
+          "description": "Directory where Run_Reports (``runs/{run_id}/report.json`` and ``report.md``) are written (Requirement 8.1).",
+          "format": "path",
+          "title": "Output Dir",
+          "type": "string"
+        },
+        "run": {
+          "$ref": "#/$defs/RunConfig",
+          "description": "Run-level configuration (models, suites, concurrency, ...)."
+        },
+        "suites_dir": {
+          "description": "Directory containing Evaluation_Suite files to discover at Run start (Requirement 3.1). Required; there is no sensible default because evaluation content is user-supplied.",
+          "format": "path",
+          "title": "Suites Dir",
+          "type": "string"
+        }
+      },
+      "required": [
+        "suites_dir",
+        "run"
+      ],
+      "title": "ConfigFile",
+      "type": "object"
+    },
+    "ErrorSummaryEntry": {
+      "additionalProperties": false,
+      "description": "One entry in :class:`RunReport.error_summary` (Requirement 11.3).\n\nEmitted once per ``TestCaseResult`` whose ``status`` is ``error`` or\n``timeout``. The entry repeats the identifying tuple from the\nunderlying result so the summary section can be rendered on its own\nwithout cross-referencing ``RunReport.results`` (Property 22).",
+      "properties": {
+        "error_message": {
+          "description": "Human-readable error message from the underlying result.",
+          "title": "Error Message",
+          "type": "string"
+        },
+        "model": {
+          "description": "Ollama model tag the failed execution ran against.",
+          "title": "Model",
+          "type": "string"
+        },
+        "repetition": {
+          "description": "1-indexed repetition number of the failed execution.",
+          "title": "Repetition",
+          "type": "integer"
+        },
+        "suite": {
+          "description": "Evaluation_Suite name the failed test case belongs to.",
+          "title": "Suite",
+          "type": "string"
+        },
+        "test_case_id": {
+          "description": "``TestCase.id`` of the failed execution.",
+          "title": "Test Case Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "model",
+        "suite",
+        "test_case_id",
+        "repetition",
+        "error_message"
+      ],
+      "title": "ErrorSummaryEntry",
+      "type": "object"
+    },
+    "MetricAggregate": {
+      "additionalProperties": false,
+      "description": "Mean and population stddev for a single ``(model, metric)`` pair.\n\nKeyed by metric name inside :class:`ModelAggregate.metric_aggregates`.\nThe aggregation itself is computed by :mod:`runner.aggregate` using\n:func:`statistics.fmean` and :func:`statistics.pstdev` (Property 15).\n\n``stddev`` is the *population* standard deviation, not the sample\nvariant. For a single-repetition Run (``count == 1``) this is the\nwell-defined value ``0``; sample stddev would be undefined. Sticking\nto pstdev everywhere means the aggregator never has to special-case\n``count == 1``.",
+      "properties": {
+        "count": {
+          "description": "Number of per-repetition samples that fed this aggregate. Must be >= 0.",
+          "title": "Count",
+          "type": "integer"
+        },
+        "mean": {
+          "description": "Arithmetic mean of the per-repetition scores.",
+          "title": "Mean",
+          "type": "number"
+        },
+        "metric": {
+          "description": "Metric name this aggregate corresponds to.",
+          "title": "Metric",
+          "type": "string"
+        },
+        "stddev": {
+          "description": "Population standard deviation of the per-repetition scores. Must be >= 0.",
+          "title": "Stddev",
+          "type": "number"
+        }
+      },
+      "required": [
+        "metric",
+        "mean",
+        "stddev",
+        "count"
+      ],
+      "title": "MetricAggregate",
+      "type": "object"
+    },
+    "MetricResult": {
+      "additionalProperties": false,
+      "description": "Score produced by a single metric for a single Test_Case execution.\n\nA ``MetricResult`` is always carried on a :class:`TestCaseResult`,\neven when the metric itself raises during scoring (Requirement 7.5).\nIn the error path the runner sets ``error`` to the raised message and\n``passed`` to ``False``; ``score`` is still required and the runner\nrecords ``0.0`` by convention so the aggregation code can operate on\na uniform numeric field.\n\n``details`` is a free-form mapping reserved for metric-specific\ncontext (for example, the captured response for the\n``response-capture`` metric, the matched regex group for\n``regex-match``, or the JSON-Schema validation errors for\n``json-schema-valid``). It intentionally has no internal schema here.",
+      "properties": {
+        "details": {
+          "additionalProperties": true,
+          "description": "Metric-specific structured context. Free-form; validated by the metric implementation, not here.",
+          "title": "Details",
+          "type": "object"
+        },
+        "error": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Populated when the metric raised during scoring (Requirement 7.5). ``passed`` is ``False`` in that case and the Run continues with the remaining metrics.",
+          "title": "Error"
+        },
+        "name": {
+          "description": "Identifier of the metric that produced this result.",
+          "title": "Name",
+          "type": "string"
+        },
+        "passed": {
+          "description": "Pass/fail classification against the metric's threshold (Requirement 7.4).",
+          "title": "Passed",
+          "type": "boolean"
+        },
+        "score": {
+          "description": "Numeric score in the metric-defined range (Requirement 7.3).",
+          "title": "Score",
+          "type": "number"
+        },
+        "threshold": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Threshold used by the metric to classify ``score`` as passed. ``None`` for metrics that do not parametrise a threshold (e.g. boolean metrics).",
+          "title": "Threshold"
+        }
+      },
+      "required": [
+        "name",
+        "score",
+        "passed"
+      ],
+      "title": "MetricResult",
+      "type": "object"
+    },
+    "ModelAggregate": {
+      "additionalProperties": false,
+      "description": "Aggregate statistics for a single evaluated model.\n\nOne ``ModelAggregate`` is produced per entry in\n``RunConfig.models``. Counters (``passed``/``failed``/``errored``/\n``timed_out``) sum the per-execution ``TestCaseResult.status`` values\nfiltered to this model. Performance means average across every\n``(test_case, repetition)`` for this model; ``mean_ttft_ms`` and\n``mean_tokens_per_second`` are nullable because the underlying\nper-execution fields are nullable (Requirement 6.5).\n\n``metric_aggregates`` is keyed by metric name so the UI and\ncomparison report can look up a metric without scanning a list\n(Property 19).",
+      "properties": {
+        "errored": {
+          "description": "Number of executions with ``status == 'error'``.",
+          "title": "Errored",
+          "type": "integer"
+        },
+        "failed": {
+          "description": "Number of executions with ``status == 'fail'``.",
+          "title": "Failed",
+          "type": "integer"
+        },
+        "mean_tokens_per_second": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "Mean tokens-per-second, averaged across executions with a non-``None`` ``tokens_per_second``. ``None`` when no execution produced the derived value.",
+          "title": "Mean Tokens Per Second"
+        },
+        "mean_total_ms": {
+          "description": "Mean total response time in milliseconds, averaged across every execution for this model.",
+          "title": "Mean Total Ms",
+          "type": "number"
+        },
+        "mean_ttft_ms": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "Mean time-to-first-token in milliseconds, averaged across executions with a non-``None`` ``ttft_ms``. ``None`` when no execution reported TTFT.",
+          "title": "Mean Ttft Ms"
+        },
+        "metric_aggregates": {
+          "additionalProperties": {
+            "$ref": "#/$defs/MetricAggregate"
+          },
+          "description": "Per-metric mean/stddev aggregates keyed by metric name.",
+          "title": "Metric Aggregates",
+          "type": "object"
+        },
+        "model": {
+          "description": "Ollama model tag these aggregates describe.",
+          "title": "Model",
+          "type": "string"
+        },
+        "passed": {
+          "description": "Number of executions with ``status == 'pass'``.",
+          "title": "Passed",
+          "type": "integer"
+        },
+        "timed_out": {
+          "description": "Number of executions with ``status == 'timeout'``.",
+          "title": "Timed Out",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "model",
+        "passed",
+        "failed",
+        "errored",
+        "timed_out",
+        "mean_ttft_ms",
+        "mean_total_ms",
+        "mean_tokens_per_second",
+        "metric_aggregates"
+      ],
+      "title": "ModelAggregate",
+      "type": "object"
+    },
+    "ModelInfo": {
+      "additionalProperties": false,
+      "description": "Identifying metadata for an evaluated Ollama model.\n\nPopulated from the Ollama_Server's ``/api/tags`` response at Run\nstart (Requirement 2.5). ``digest`` and ``parameter_size`` are\nnullable because some Ollama_Server versions omit them and because\na Run submitted against an inventory that is still pulling a model\nmay run before the digest is observable.",
+      "properties": {
+        "digest": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Content-addressed digest reported by the Ollama_Server.",
+          "title": "Digest"
+        },
+        "name": {
+          "description": "Ollama model tag, e.g. ``\"llama3:8b\"``.",
+          "title": "Name",
+          "type": "string"
+        },
+        "parameter_size": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Human-readable parameter count (e.g. ``\"8B\"``).",
+          "title": "Parameter Size"
+        }
+      },
+      "required": [
+        "name"
+      ],
+      "title": "ModelInfo",
+      "type": "object"
+    },
+    "PerformanceMetrics": {
+      "additionalProperties": false,
+      "description": "Per-execution timing and token-count measurements.\n\n``ttft_ms`` and the token-count fields are nullable because the\nOllama_Server does not always populate them (Requirement 6.5). A\nmissing value must not be coerced to ``0`` \u2014 ``0`` is a valid\nmeasurement that means \"zero tokens\" or \"no delay\" and would be\nindistinguishable from \"unknown\" if we silently defaulted to it.\n\n``tokens_per_second`` is derived by the runner from ``response_tokens``\nand ``total_ms`` (Requirement 6.4, Property 10). It is stored on the\nmodel rather than recomputed on demand so that reports remain stable\neven if the derivation rule changes in a future version.",
+      "properties": {
+        "prompt_tokens": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Prompt token count reported by the Ollama_Server (Requirement 6.3). ``None`` when the server omitted it.",
+          "title": "Prompt Tokens"
+        },
+        "response_tokens": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Response token count reported by the Ollama_Server (Requirement 6.3). ``None`` when the server omitted it.",
+          "title": "Response Tokens"
+        },
+        "tokens_per_second": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Derived throughput: ``response_tokens / (total_ms / 1000)`` (Requirement 6.4). ``None`` when ``response_tokens`` is ``None`` or ``total_ms`` is 0.",
+          "title": "Tokens Per Second"
+        },
+        "total_ms": {
+          "description": "Total response time from request dispatch to the final chunk, in milliseconds (Requirement 6.2).",
+          "title": "Total Ms",
+          "type": "number"
+        },
+        "ttft_ms": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Wall-clock time from request dispatch to the first streamed chunk, in milliseconds (Requirement 6.1). ``None`` when the server omitted the timing (Requirement 6.5).",
+          "title": "Ttft Ms"
+        }
+      },
+      "required": [
+        "total_ms"
+      ],
+      "title": "PerformanceMetrics",
+      "type": "object"
+    },
+    "RunConfig": {
+      "additionalProperties": false,
+      "description": "Run-level configuration for a single Run.\n\n``RunConfig`` is the body the Backend_API accepts for\n``POST /api/runs`` and is also embedded in :class:`ConfigFile` as the\n``run:`` section. A ``RunConfig`` is serialised verbatim into every\n``RunReport`` so runs are reproducible from their report alone\n(Requirement 8.4).\n\nValidators enforce the numeric ranges specified in the Requirements\ndocument and reject empty ``models`` / ``suites`` lists early, before\nany Ollama_Server call is made.",
+      "properties": {
+        "concurrency": {
+          "default": 1,
+          "description": "Maximum number of in-flight Ollama_Server requests during this Run. Must be >= 1 (Requirement 5.5).",
+          "title": "Concurrency",
+          "type": "integer"
+        },
+        "judge_model": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Ollama model tag used by any configured ``llm-as-judge`` metric. ``None`` means no judge model is configured; metrics that require one will raise a validation error at Run start.",
+          "title": "Judge Model"
+        },
+        "models": {
+          "description": "Ollama model tags to evaluate in this Run (e.g. 'llama3:8b'). Must contain at least one model (Requirement 2.2).",
+          "items": {
+            "type": "string"
+          },
+          "title": "Models",
+          "type": "array"
+        },
+        "ollama_timeout_s": {
+          "default": 120.0,
+          "description": "Per-request timeout in seconds applied to every Ollama_Server call made during this Run (Requirement 1.4). Must be > 0.",
+          "title": "Ollama Timeout S",
+          "type": "number"
+        },
+        "pull_missing_models": {
+          "default": false,
+          "description": "If true, instruct the Ollama_Server to pull any requested Model that is not already available (Requirement 2.4).",
+          "title": "Pull Missing Models",
+          "type": "boolean"
+        },
+        "repetitions": {
+          "default": 1,
+          "description": "Number of times each Test_Case is executed per Model. Must be >= 1 (Requirement 5.2).",
+          "title": "Repetitions",
+          "type": "integer"
+        },
+        "retry_max_attempts": {
+          "default": 2,
+          "description": "Number of *additional* retry attempts per Test_Case execution on retryable network errors (Requirement 11.1). Must be >= 0. A value of 0 disables retries entirely.",
+          "title": "Retry Max Attempts",
+          "type": "integer"
+        },
+        "suites": {
+          "description": "Names of Evaluation_Suites to run. Must contain at least one name (Requirement 3.1).",
+          "items": {
+            "type": "string"
+          },
+          "title": "Suites",
+          "type": "array"
+        },
+        "tag_filter": {
+          "description": "Optional Test_Case tag filter (Requirement 3.6). When empty, every Test_Case in the selected suites is included. When non-empty, only Test_Cases whose ``tags`` intersect this list are selected.",
+          "items": {
+            "type": "string"
+          },
+          "title": "Tag Filter",
+          "type": "array"
+        }
+      },
+      "required": [
+        "models",
+        "suites"
+      ],
+      "title": "RunConfig",
+      "type": "object"
+    },
+    "TestCaseResult": {
+      "additionalProperties": false,
+      "description": "Outcome of a single ``(model, test_case, repetition)`` execution.\n\n``status`` is a four-value literal rather than a boolean because a\nRun distinguishes four outcome classes in both the report and the\nevent stream (Property 9):\n\n* ``pass`` \u2014 every configured metric classified the response as passing.\n* ``fail`` \u2014 at least one metric classified the response as failing.\n* ``error`` \u2014 the Ollama_Server call itself failed after all retries,\n  or a metric raised in a way that the runner treats as a hard error.\n* ``timeout`` \u2014 the Ollama_Server call exceeded ``ollama_timeout_s``.\n\n``repetition`` is 1-indexed (the first repetition is ``1``, not ``0``)\nso that the value can be displayed to users without re-indexing and\nso that ``repetition <= RunConfig.repetitions`` is the natural bound.",
+      "properties": {
+        "error_message": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Human-readable error message for ``error``/``timeout`` outcomes. ``None`` for ``pass``/``fail``.",
+          "title": "Error Message"
+        },
+        "metrics": {
+          "description": "One ``MetricResult`` per configured metric on the test case, in the order declared on the ``TestCase``.",
+          "items": {
+            "$ref": "#/$defs/MetricResult"
+          },
+          "title": "Metrics",
+          "type": "array"
+        },
+        "model": {
+          "description": "Ollama model tag this execution ran against.",
+          "title": "Model",
+          "type": "string"
+        },
+        "performance": {
+          "$ref": "#/$defs/PerformanceMetrics",
+          "description": "Timing and token-count measurements for this execution."
+        },
+        "repetition": {
+          "description": "1-indexed repetition number for this ``(model, test_case)`` pair. Must be >= 1.",
+          "title": "Repetition",
+          "type": "integer"
+        },
+        "response": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Raw model response text, when available. ``None`` for ``error``/``timeout`` outcomes that never produced output.",
+          "title": "Response"
+        },
+        "status": {
+          "description": "Four-valued outcome (see class docstring).",
+          "enum": [
+            "pass",
+            "fail",
+            "error",
+            "timeout"
+          ],
+          "title": "Status",
+          "type": "string"
+        },
+        "suite": {
+          "description": "Name of the Evaluation_Suite the test case belongs to.",
+          "title": "Suite",
+          "type": "string"
+        },
+        "test_case_id": {
+          "description": "``TestCase.id`` within the enclosing suite.",
+          "title": "Test Case Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "model",
+        "suite",
+        "test_case_id",
+        "repetition",
+        "status",
+        "performance",
+        "metrics"
+      ],
+      "title": "TestCaseResult",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "description": "Top-level Run_Report persisted to disk and returned by the REST API.\n\nA ``RunReport`` is the single source of truth for a completed Run\n(Requirement 8.4): it embeds the full submitted :class:`ConfigFile`,\nthe identifying metadata for every evaluated model, every\nper-execution result, the per-model aggregates, and an error\nsummary. Property 16 (Run_Report completeness) asserts this\ninvariant; Property 18 (round-trip) asserts that\n``RunReport.model_validate_json(r.model_dump_json()) == r`` for\nevery valid ``r``.\n\n``status`` is a five-value literal covering the full state machine:\n\n* ``pending`` \u2014 the Run has been created but dispatch has not started.\n* ``running`` \u2014 at least one execution is in flight or queued.\n* ``completed`` \u2014 every planned execution has produced a result.\n* ``aborted`` \u2014 the Run was stopped by a cancel request or signal\n  before all planned executions completed (Requirement 11.4).\n* ``failed`` \u2014 the Run could not start (e.g. missing models in\n  preflight, Property 5) and no per-execution results exist.\n\nThe ``ended_at >= started_at`` invariant is enforced in a model\nvalidator rather than field-by-field because it is a cross-field\nconstraint (Property 16).",
+  "properties": {
+    "aggregates": {
+      "description": "One ``ModelAggregate`` per evaluated model (Requirement 8.2).",
+      "items": {
+        "$ref": "#/$defs/ModelAggregate"
+      },
+      "title": "Aggregates",
+      "type": "array"
+    },
+    "backend_version": {
+      "description": "Version string of the Backend that produced this report.",
+      "title": "Backend Version",
+      "type": "string"
+    },
+    "config": {
+      "$ref": "#/$defs/ConfigFile",
+      "description": "Full submitted ``ConfigFile`` (Requirement 8.4)."
+    },
+    "ended_at": {
+      "anyOf": [
+        {
+          "format": "date-time",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "description": "UTC timestamp when the Run reached a terminal state. ``None`` while the Run is still ``pending`` or ``running``.",
+      "title": "Ended At"
+    },
+    "error_summary": {
+      "description": "One entry per result with ``status`` in ``{'error', 'timeout'}`` (Requirement 11.3).",
+      "items": {
+        "$ref": "#/$defs/ErrorSummaryEntry"
+      },
+      "title": "Error Summary",
+      "type": "array"
+    },
+    "models": {
+      "description": "One ``ModelInfo`` per evaluated model (Requirement 2.5).",
+      "items": {
+        "$ref": "#/$defs/ModelInfo"
+      },
+      "title": "Models",
+      "type": "array"
+    },
+    "ollama_version": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "description": "Ollama_Server version string at Run start. ``None`` when the Backend could not reach the server before failing.",
+      "title": "Ollama Version"
+    },
+    "results": {
+      "description": "One ``TestCaseResult`` per ``(model, test_case, repetition)``.",
+      "items": {
+        "$ref": "#/$defs/TestCaseResult"
+      },
+      "title": "Results",
+      "type": "array"
+    },
+    "run_id": {
+      "description": "Unique identifier for this Run (Property 25). Must be non-empty.",
+      "title": "Run Id",
+      "type": "string"
+    },
+    "started_at": {
+      "description": "UTC timestamp when the Run started.",
+      "format": "date-time",
+      "title": "Started At",
+      "type": "string"
+    },
+    "status": {
+      "description": "Terminal or in-flight state of the Run (see class docstring).",
+      "enum": [
+        "pending",
+        "running",
+        "completed",
+        "aborted",
+        "failed"
+      ],
+      "title": "Status",
+      "type": "string"
+    }
+  },
+  "required": [
+    "run_id",
+    "backend_version",
+    "ollama_version",
+    "started_at",
+    "ended_at",
+    "status",
+    "config",
+    "models",
+    "results",
+    "aggregates",
+    "error_summary"
+  ],
+  "title": "RunReport",
+  "type": "object"
+}

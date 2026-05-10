@@ -1,0 +1,4250 @@
+defaults:
+  max_tokens: 384
+  stop_sequences: []
+  temperature: 0.0
+description: 'CRUXEval (input-prediction): given a Python function and a target output,
+  find ANY matching input. Strict metric: only the canonical gold input counts as
+  a pass (multiple valid inputs often exist, so this under-reports real ability).'
+name: cruxeval-input
+test_cases:
+  - expected_output: "'C24Bxxx982ab'"
+    id: cruxeval-input/sample_536
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*'C24Bxxx982ab'
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(cat):\n\
+      \    digits = 0\n    for char in cat:\n        if char.isdigit():\n        \
+      \    digits += 1\n    return digits\n\nFind any input such that f(input) ==
+      5.\nRespond with 'Input: <value>' where <value> is a single-line Python literal.
+      Do not add any other text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: '["a", "b", "c"], " "'
+    id: cruxeval-input/sample_599
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*\["a",\ "b",\ "c"\],\ "\ "
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(a, b):\n\
+      \    a = b.join(a)\n    lst = []\n    for i in range(1, len(a)+1, 2):\n    \
+      \    lst.append(a[i-1:][:i])\n        lst.append(a[i-1:][i:])\n    return lst\n\
+      \nFind any input such that f(input) == ['a', ' b c', 'b c', '', 'c', ''].\n\
+      Respond with 'Input: <value>' where <value> is a single-line Python literal.
+      Do not add any other text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: '[]'
+    id: cruxeval-input/sample_428
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*\[\]
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(nums):\n\
+      \    for i in range(len(nums)):\n        if not i % 2:\n            nums.append(nums[i]
+      * nums[i + 1])\n    return nums\n\nFind any input such that f(input) == [].\n\
+      Respond with 'Input: <value>' where <value> is a single-line Python literal.
+      Do not add any other text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: "'\"Makers of a Statement\"'"
+    id: cruxeval-input/sample_424
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*'"Makers\ of\ a\ Statement"'
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(s):\n\
+      \    s = s.replace('\"', '')\n    lst = list(s)\n    col = 0\n    count = 1\n\
+      \    while col < len(lst) and lst[col] in \".:,\":\n        if lst[col] == \"\
+      .\":\n            count = ls[col] + 1\n        col += 1\n    return s[col+count:]\n\
+      \nFind any input such that f(input) == 'akers of a Statement'.\nRespond with
+      'Input: <value>' where <value> is a single-line Python literal. Do not add any
+      other text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: "'mJkLbn'"
+    id: cruxeval-input/sample_303
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*'mJkLbn'
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(text):\n\
+      \    i = (len(text) + 1) // 2\n    result = list(text)\n    while i < len(text):\n\
+      \        t = result[i].lower()\n        if t == result[i]:\n            i +=
+      1\n        else:\n            result[i] = t\n        i += 2\n    return ''.join(result)\n\
+      \nFind any input such that f(input) == 'mJklbn'.\nRespond with 'Input: <value>'
+      where <value> is a single-line Python literal. Do not add any other text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: "['wise king', 'young king'], ''"
+    id: cruxeval-input/sample_465
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*\['wise\ king',\ 'young\ king'\],\ ''
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(seq,
+      value):\n    roles = dict.fromkeys(seq, 'north')\n    if value:\n        roles.update(key.strip()
+      for key in value.split(', '))\n    return roles\n\nFind any input such that
+      f(input) == {'wise king': 'north', 'young king': 'north'}.\nRespond with 'Input:
+      <value>' where <value> is a single-line Python literal. Do not add any other
+      text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: "{'l':4, 'h':6, 'o':9}"
+    id: cruxeval-input/sample_130
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*\{'l':4,\ 'h':6,\ 'o':9\}
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(m):\n\
+      \    items = list(m.items())\n    for i in range(len(items)-2, -1, -1):\n  \
+      \      tmp = items[i]\n        items[i] = items[i+1] \n        items[i+1] =
+      tmp\n    return ['{}={}', '{1}={0}'][len(items) % 2].format(\n        *m.keys(),
+      **m\n    )\n\nFind any input such that f(input) == 'h=l'.\nRespond with 'Input:
+      <value>' where <value> is a single-line Python literal. Do not add any other
+      text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: '[1, -9, 7, 2, 6, -3, 3]'
+    id: cruxeval-input/sample_212
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*\[1,\ \-9,\ 7,\ 2,\ 6,\ \-3,\ 3\]
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(nums):\n\
+      \    for _ in range(len(nums) - 1):\n        nums.reverse()\n    return nums\n\
+      \nFind any input such that f(input) == [1, -9, 7, 2, 6, -3, 3].\nRespond with
+      'Input: <value>' where <value> is a single-line Python literal. Do not add any
+      other text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: "\"booty boot-boot bootclass\", 'k'"
+    id: cruxeval-input/sample_476
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*"booty\ boot\-boot\ bootclass",\ 'k'
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(a, split_on):\n\
+      \    t = a.split()\n    a = []\n    for i in t:\n        for j in i:\n     \
+      \       a.append(j)\n    if split_on in a:\n        return True\n    else:\n\
+      \        return False\n\nFind any input such that f(input) == False.\nRespond
+      with 'Input: <value>' where <value> is a single-line Python literal. Do not
+      add any other text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: "'244, 105, -90'"
+    id: cruxeval-input/sample_314
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*'244,\ 105,\ \-90'
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(text):\n\
+      \    if ',' in text:\n        before, _, after = text.partition(',')\n     \
+      \   return after + ' ' + before\n    return ',' + text.partition(' ')[-1] +
+      ' 0'\n\nFind any input such that f(input) == ' 105, -90 244'.\nRespond with
+      'Input: <value>' where <value> is a single-line Python literal. Do not add any
+      other text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: "'wW의IV]HDJjhgK[dGIUlVO@Ess$coZkBqu[Ct'"
+    id: cruxeval-input/sample_92
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*'wW의IV\]HDJjhgK\[dGIUlVO@Ess\$coZkBqu\[Ct'
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(text):\n\
+      \    return text.isascii()\n\nFind any input such that f(input) == False.\n\
+      Respond with 'Input: <value>' where <value> is a single-line Python literal.
+      Do not add any other text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: '{1: 2, 2: 4, 3: 3}, 3'
+    id: cruxeval-input/sample_265
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*\{1:\ 2,\ 2:\ 4,\ 3:\ 3\},\ 3
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(d, k):\n\
+      \    new_d = {}\n    for key, val in d.items():\n        if key < k:\n     \
+      \       new_d[key] = val\n    return new_d\n\nFind any input such that f(input)
+      == {1: 2, 2: 4}.\nRespond with 'Input: <value>' where <value> is a single-line
+      Python literal. Do not add any other text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: '[8, 8, -4, -9, 2, 8, -1, 8]'
+    id: cruxeval-input/sample_545
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*\[8,\ 8,\ \-4,\ \-9,\ 2,\ 8,\ \-1,\ 8\]
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(array):\n\
+      \    result = []\n    index = 0\n    while index < len(array):\n        result.append(array.pop())\n\
+      \        index += 2\n    return result\n\nFind any input such that f(input)
+      == [8, -1, 8].\nRespond with 'Input: <value>' where <value> is a single-line
+      Python literal. Do not add any other text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: "'', 'mi', 'siast'"
+    id: cruxeval-input/sample_480
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*'',\ 'mi',\ 'siast'
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(s, c1,
+      c2):\n    if s == '':\n        return s\n    ls = s.split(c1)\n    for index,
+      item in enumerate(ls):\n        if c1 in item:\n            ls[index] = item.replace(c1,
+      c2, 1)\n    return c1.join(ls)\n\nFind any input such that f(input) == ''.\n\
+      Respond with 'Input: <value>' where <value> is a single-line Python literal.
+      Do not add any other text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: '[], []'
+    id: cruxeval-input/sample_235
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*\[\],\ \[\]
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(array,
+      arr):\n    result = []\n    for s in arr:\n        result += list(filter(lambda
+      l: l != '', s.split(arr[array.index(s)])))\n    return result\n\nFind any input
+      such that f(input) == [].\nRespond with 'Input: <value>' where <value> is a
+      single-line Python literal. Do not add any other text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: '["a", "b", "car", "d"]'
+    id: cruxeval-input/sample_188
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*\["a",\ "b",\ "car",\ "d"\]
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(strings):\n\
+      \    new_strings = []\n    for string in strings:\n        first_two = string[:2]\n\
+      \        if first_two.startswith('a') or first_two.startswith('p'):\n      \
+      \      new_strings.append(first_two)\n\n    return new_strings\n\nFind any input
+      such that f(input) == ['a'].\nRespond with 'Input: <value>' where <value> is
+      a single-line Python literal. Do not add any other text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: "'coscifysu'"
+    id: cruxeval-input/sample_439
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*'coscifysu'
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(value):\n\
+      \    parts = value.partition(' ')[::2]\n    return ''.join(parts)\n\nFind any
+      input such that f(input) == 'coscifysu'.\nRespond with 'Input: <value>' where
+      <value> is a single-line Python literal. Do not add any other text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: '{}'
+    id: cruxeval-input/sample_396
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*\{\}
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(ets):\n\
+      \    while ets:\n        k, v = ets.popitem()\n        ets[k] = v**2\n    return
+      ets\n\nFind any input such that f(input) == {}.\nRespond with 'Input: <value>'
+      where <value> is a single-line Python literal. Do not add any other text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: '[5, 5, 5, 6, 4, 9]'
+    id: cruxeval-input/sample_540
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*\[5,\ 5,\ 5,\ 6,\ 4,\ 9\]
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(a):\n\
+      \    b = a.copy()\n    for k in range(0, len(a) - 1, 2):\n        b.insert(k
+      + 1, b[k])\n    b.append(b[0])\n    return b\n\nFind any input such that f(input)
+      == [5, 5, 5, 5, 5, 5, 6, 4, 9, 5].\nRespond with 'Input: <value>' where <value>
+      is a single-line Python literal. Do not add any other text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: "'docs.doc'"
+    id: cruxeval-input/sample_346
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*'docs\.doc'
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(filename):\n\
+      \    suffix = filename.split('.')[-1]\n    f2 = filename + suffix[::-1]\n  \
+      \  return f2.endswith(suffix)\n\nFind any input such that f(input) == False.\n\
+      Respond with 'Input: <value>' where <value> is a single-line Python literal.
+      Do not add any other text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: "'qdhstudentamxupuihbuztn', 'jdm'"
+    id: cruxeval-input/sample_595
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*'qdhstudentamxupuihbuztn',\ 'jdm'
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(text,
+      prefix):\n    if text.startswith(prefix):\n        text = text.removeprefix(prefix)\n\
+      \    text = text.capitalize()\n    return text\n\nFind any input such that f(input)
+      == 'Qdhstudentamxupuihbuztn'.\nRespond with 'Input: <value>' where <value> is
+      a single-line Python literal. Do not add any other text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: "'/CL44     '"
+    id: cruxeval-input/sample_425
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*'/CL44\ \ \ \ \ '
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(a):\n\
+      \    a = a.replace('/', ':')\n    z = a.rpartition(':')\n    return [z[0], z[1],
+      z[2]]\n\nFind any input such that f(input) == ['', ':', 'CL44     '].\nRespond
+      with 'Input: <value>' where <value> is a single-line Python literal. Do not
+      add any other text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: '""'
+    id: cruxeval-input/sample_325
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*""
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(s):\n\
+      \    l = list(s)\n    for i in range(len(l)):\n        l[i] = l[i].lower()\n\
+      \        if not l[i].isdigit():\n            return False\n    return True\n\
+      \nFind any input such that f(input) == True.\nRespond with 'Input: <value>'
+      where <value> is a single-line Python literal. Do not add any other text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: '[1, 1], 2, 3'
+    id: cruxeval-input/sample_481
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*\[1,\ 1\],\ 2,\ 3
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(values,
+      item1, item2):\n    if values[-1] == item2:\n        if values[0] not in values[1:]:\n\
+      \            values.append(values[0])\n    elif values[-1] == item1:\n     \
+      \   if values[0] == item2:\n            values.append(values[0])\n    return
+      values\n\nFind any input such that f(input) == [1, 1].\nRespond with 'Input:
+      <value>' where <value> is a single-line Python literal. Do not add any other
+      text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: '[0, 132], [5, 991, 32, 997]'
+    id: cruxeval-input/sample_278
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*\[0,\ 132\],\ \[5,\ 991,\ 32,\ 997\]
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(array1,
+      array2):\n    result = dict.fromkeys(array1)\n    for key in result:\n     \
+      \   result[key] = [el for el in array2 if key * 2 > el]\n    return result\n\
+      \nFind any input such that f(input) == {0: [], 132: [5, 32]}.\nRespond with
+      'Input: <value>' where <value> is a single-line Python literal. Do not add any
+      other text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: "'mmfbifen', 'i'"
+    id: cruxeval-input/sample_419
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*'mmfbifen',\ 'i'
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(text,
+      value):\n    if not value in text:\n        return ''\n    return text.rpartition(value)[0]\n\
+      \nFind any input such that f(input) == 'mmfb'.\nRespond with 'Input: <value>'
+      where <value> is a single-line Python literal. Do not add any other text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: "'akoon', 'sXo'"
+    id: cruxeval-input/sample_581
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*'akoon',\ 'sXo'
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(text,
+      sign):\n    length = len(text)\n    new_text = list(text)\n    sign = list(sign)\n\
+      \    for i in range(len(sign)):\n        new_text.insert((i * length - 1) //
+      2 + (i + 1) // 2, sign[i])\n    return ''.join(new_text)\n\nFind any input such
+      that f(input) == 'akoXoosn'.\nRespond with 'Input: <value>' where <value> is
+      a single-line Python literal. Do not add any other text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: '[-1, 2, 1, -8, -8, 2], 2'
+    id: cruxeval-input/sample_339
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*\[\-1,\ 2,\ 1,\ \-8,\ \-8,\ 2\],\ 2
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(array,
+      elem):\n    elem = str(elem)\n    d = 0\n    for i in array:\n        if str(i)
+      == elem:\n            d += 1\n    return d\n\nFind any input such that f(input)
+      == 2.\nRespond with 'Input: <value>' where <value> is a single-line Python literal.
+      Do not add any other text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: "'102x0zoq'"
+    id: cruxeval-input/sample_230
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*'102x0zoq'
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(text):\n\
+      \    result = ''\n    i = len(text)-1\n    while i >= 0:\n        c = text[i]\n\
+      \        if c.isalpha():\n            result += c\n        i -= 1\n    return
+      result\n\nFind any input such that f(input) == 'qozx'.\nRespond with 'Input:
+      <value>' where <value> is a single-line Python literal. Do not add any other
+      text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: "'hi '"
+    id: cruxeval-input/sample_59
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*'hi\ '
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(s):\n\
+      \    a = [char for char in s if char != ' ']\n    b = a\n    for c in reversed(a):\n\
+      \        if c == ' ':\n            b.pop()\n        else:\n            break\n\
+      \    return ''.join(b)\n\nFind any input such that f(input) == 'hi'.\nRespond
+      with 'Input: <value>' where <value> is a single-line Python literal. Do not
+      add any other text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: "'i am your father'"
+    id: cruxeval-input/sample_316
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*'i\ am\ your\ father'
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(name):\n\
+      \    return '| ' + ' '.join(name.split(' ')) + ' |'\n\nFind any input such that
+      f(input) == '| i am your father |'.\nRespond with 'Input: <value>' where <value>
+      is a single-line Python literal. Do not add any other text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: "'ED20 CW'"
+    id: cruxeval-input/sample_241
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*'ED20\ CW'
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(postcode):\n\
+      \    return postcode[postcode.index('C'):]\n\nFind any input such that f(input)
+      == 'CW'.\nRespond with 'Input: <value>' where <value> is a single-line Python
+      literal. Do not add any other text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: '{2: 3, 17: 3, 16: 6, 18: 6, 87: 7}'
+    id: cruxeval-input/sample_304
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*\{2:\ 3,\ 17:\ 3,\ 16:\ 6,\ 18:\ 6,\ 87:\ 7\}
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(d):\n\
+      \    key1 = sorted(d.items(), key=lambda x: x[0], reverse=True)[0][0]\n    val1
+      = d.pop(key1)\n    key2 = sorted(d.items(), key=lambda x: x[0], reverse=True)[0][0]\n\
+      \    val2 = d.pop(key2)\n    return dict({key1: val1, key2: val2})\n\nFind any
+      input such that f(input) == {87: 7, 18: 6}.\nRespond with 'Input: <value>' where
+      <value> is a single-line Python literal. Do not add any other text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: "'kumwwfv', 'k'"
+    id: cruxeval-input/sample_253
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*'kumwwfv',\ 'k'
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(text,
+      pref):\n    length = len(pref)\n    if pref == text[:length]:\n        return
+      text[length:]\n    return text\n\nFind any input such that f(input) == 'umwwfv'.\n\
+      Respond with 'Input: <value>' where <value> is a single-line Python literal.
+      Do not add any other text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: "'If you want to live a happy life! Daniel', 'Daniel'"
+    id: cruxeval-input/sample_12
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*'If\ you\ want\ to\ live\ a\ happy\ life!\ Daniel',\
+            'Daniel'
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(s, x):\n\
+      \    count = 0\n    while s[:len(x)] == x and count < len(s)-len(x):\n     \
+      \   s = s[len(x):]\n        count += len(x)\n    return s\n\nFind any input
+      such that f(input) == 'If you want to live a happy life! Daniel'.\nRespond with
+      'Input: <value>' where <value> is a single-line Python literal. Do not add any
+      other text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: '[11, 21, 0, 11]'
+    id: cruxeval-input/sample_371
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*\[11,\ 21,\ 0,\ 11\]
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(nums):\n\
+      \    for odd in nums[:]:\n        if odd % 2 != 0:\n            nums.remove(odd)\n\
+      \    sum_ = 0\n    for num in nums:\n        sum_ += num\n    return sum_\n\n\
+      Find any input such that f(input) == 0.\nRespond with 'Input: <value>' where
+      <value> is a single-line Python literal. Do not add any other text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: "'ml', 'mv'"
+    id: cruxeval-input/sample_345
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*'ml',\ 'mv'
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(a, b):\n\
+      \    if a < b:\n        return (b, a)\n    return (a, b)\n\nFind any input such
+      that f(input) == ('mv', 'ml').\nRespond with 'Input: <value>' where <value>
+      is a single-line Python literal. Do not add any other text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: "{ 4: 'a' }"
+    id: cruxeval-input/sample_487
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*\{\ 4:\ 'a'\ \}
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(dict):\n\
+      \    even_keys = []\n    for key in dict.keys():\n        if key % 2 == 0:\n\
+      \            even_keys.append(key)\n    return even_keys\n\nFind any input such
+      that f(input) == [4].\nRespond with 'Input: <value>' where <value> is a single-line
+      Python literal. Do not add any other text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: '[-5, 3, -2, -3, -1, 3, 5]'
+    id: cruxeval-input/sample_444
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*\[\-5,\ 3,\ \-2,\ \-3,\ \-1,\ 3,\ 5\]
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(nums):\n\
+      \    count = len(nums)\n    for i in range(count-1, 0, -2):\n        nums.insert(i,
+      nums.pop(0) + nums.pop(0))\n    return nums\n\nFind any input such that f(input)
+      == [5, -2, 2, -5].\nRespond with 'Input: <value>' where <value> is a single-line
+      Python literal. Do not add any other text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: '[1, 1, 2, 2]'
+    id: cruxeval-input/sample_21
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*\[1,\ 1,\ 2,\ 2\]
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(array):\n\
+      \    n = array.pop()\n    array.extend([n, n])\n    return array\n\nFind any
+      input such that f(input) == [1, 1, 2, 2, 2].\nRespond with 'Input: <value>'
+      where <value> is a single-line Python literal. Do not add any other text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: "'tflb omn rtt', 'm'"
+    id: cruxeval-input/sample_138
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*'tflb\ omn\ rtt',\ 'm'
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(text,
+      chars):\n    listchars = list(chars)\n    first = listchars.pop()\n    for i
+      in listchars:\n        text = text[0:text.find(i)]+i+text[text.find(i)+1:]\n\
+      \    return text\n\nFind any input such that f(input) == 'tflb omn rtt'.\nRespond
+      with 'Input: <value>' where <value> is a single-line Python literal. Do not
+      add any other text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: '[], 0, 1'
+    id: cruxeval-input/sample_435
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*\[\],\ 0,\ 1
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(numbers,
+      num, val):\n    while len(numbers) < num:\n        numbers.insert(len(numbers)
+      // 2, val)\n    for _ in range(len(numbers) // (num - 1) - 4):\n        numbers.insert(len(numbers)
+      // 2, val)\n    return ' '.join(numbers)\n\nFind any input such that f(input)
+      == ''.\nRespond with 'Input: <value>' where <value> is a single-line Python
+      literal. Do not add any other text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: '"he", "hello"'
+    id: cruxeval-input/sample_88
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*"he",\ "hello"
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(s1,
+      s2):\n    if s2.endswith(s1):\n        s2 = s2[:len(s1) * -1]\n    return s2\n\
+      \nFind any input such that f(input) == 'hello'.\nRespond with 'Input: <value>'
+      where <value> is a single-line Python literal. Do not add any other text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: '[4, 2, 5, 1, 3, 2, 6]'
+    id: cruxeval-input/sample_423
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*\[4,\ 2,\ 5,\ 1,\ 3,\ 2,\ 6\]
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(selfie):\n\
+      \    lo = len(selfie)\n    for i in range(lo-1, -1, -1):\n        if selfie[i]
+      == selfie[0]:\n            selfie.remove(selfie[lo-1])\n    return selfie\n\n\
+      Find any input such that f(input) == [4, 2, 5, 1, 3, 2].\nRespond with 'Input:
+      <value>' where <value> is a single-line Python literal. Do not add any other
+      text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: "[['Marie','Nelson','Oscar']]"
+    id: cruxeval-input/sample_251
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*\[\['Marie','Nelson','Oscar'\]\]
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(messages):\n\
+      \    phone_code = \"+353\"\n    result = []\n    for message in messages:\n\
+      \        message.extend(phone_code)\n        result.append(\";\".join(message))\n\
+      \    return \". \".join(result)\n\nFind any input such that f(input) == 'Marie;Nelson;Oscar;+;3;5;3'.\n\
+      Respond with 'Input: <value>' where <value> is a single-line Python literal.
+      Do not add any other text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: 8.50, 'grapes'
+    id: cruxeval-input/sample_145
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*8\.50,\ 'grapes'
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(price,
+      product):\n    inventory = ['olives', 'key', 'orange']\n    if product not in
+      inventory:\n        return price\n    else:\n        price *=.85\n        inventory.remove(product)\n\
+      \    return price\n\nFind any input such that f(input) == 8.5.\nRespond with
+      'Input: <value>' where <value> is a single-line Python literal. Do not add any
+      other text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: "'abc', 'abcd'"
+    id: cruxeval-input/sample_132
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*'abc',\ 'abcd'
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(a_str,
+      prefix):\n    if a_str.removeprefix(prefix):\n        return a_str\n    else:\n\
+      \        return prefix + a_str\n\nFind any input such that f(input) == 'abc'.\n\
+      Respond with 'Input: <value>' where <value> is a single-line Python literal.
+      Do not add any other text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: "'jh54kkk6'"
+    id: cruxeval-input/sample_329
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*'jh54kkk6'
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(text):\n\
+      \    for i in range(len(text)):\n        if text[i] == text[i].upper() and text[i-1].islower():\n\
+      \            return True\n    return False\n\nFind any input such that f(input)
+      == True.\nRespond with 'Input: <value>' where <value> is a single-line Python
+      literal. Do not add any other text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: "'czywZ'"
+    id: cruxeval-input/sample_315
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*'czywZ'
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(challenge):\n\
+      \    return challenge.casefold().replace('l', ',')\n\nFind any input such that
+      f(input) == 'czywz'.\nRespond with 'Input: <value>' where <value> is a single-line
+      Python literal. Do not add any other text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: "'pxcznyf'"
+    id: cruxeval-input/sample_307
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*'pxcznyf'
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(text):\n\
+      \    rtext = list(text)\n    for i in range(1, len(rtext) - 1):\n        rtext.insert(i
+      + 1, '|')\n    return ''.join(rtext)\n\nFind any input such that f(input) ==
+      'px|||||cznyf'.\nRespond with 'Input: <value>' where <value> is a single-line
+      Python literal. Do not add any other text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: "'s7 6s 1ss', [1, 3, 6, 1, 2]"
+    id: cruxeval-input/sample_436
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*'s7\ 6s\ 1ss',\ \[1,\ 3,\ 6,\ 1,\ 2\]
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(s, characters):\n\
+      \    return [s[i:i+1] for i in characters]\n\nFind any input such that f(input)
+      == ['7', '6', '1', '7', ' '].\nRespond with 'Input: <value>' where <value> is
+      a single-line Python literal. Do not add any other text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: '3.121'
+    id: cruxeval-input/sample_240
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*3\.121
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(float_number):\n\
+      \    number = str(float_number)\n    dot = number.find('.')\n    if dot != -1:\n\
+      \        return number[:dot] + '.' + number[dot+1:].ljust(2, '0')\n    return
+      number + '.00'\n\nFind any input such that f(input) == '3.121'.\nRespond with
+      'Input: <value>' where <value> is a single-line Python literal. Do not add any
+      other text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: '[7, 8, 2, 8]'
+    id: cruxeval-input/sample_417
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*\[7,\ 8,\ 2,\ 8\]
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(lst):\n\
+      \    lst.reverse()\n    lst.pop()\n    lst.reverse()\n    return lst\n\nFind
+      any input such that f(input) == [8, 2, 8].\nRespond with 'Input: <value>' where
+      <value> is a single-line Python literal. Do not add any other text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: '6173'
+    id: cruxeval-input/sample_297
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*6173
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(num):\n\
+      \    if 0 < num < 1000 and num != 6174:\n        return 'Half Life'\n    return
+      'Not found'\n\nFind any input such that f(input) == 'Not found'.\nRespond with
+      'Input: <value>' where <value> is a single-line Python literal. Do not add any
+      other text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: "{'b': 1, 'a': 2}"
+    id: cruxeval-input/sample_182
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*\{'b':\ 1,\ 'a':\ 2\}
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(dic):\n\
+      \    return sorted(dic.items(), key=lambda x: x[0])\n\nFind any input such that
+      f(input) == [('a', 2), ('b', 1)].\nRespond with 'Input: <value>' where <value>
+      is a single-line Python literal. Do not add any other text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: "'caabcfcabfc', 'ab'"
+    id: cruxeval-input/sample_218
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*'caabcfcabfc',\ 'ab'
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(string,
+      sep):\n    cnt = string.count(sep)\n    return((string+sep) * cnt)[::-1]\n\n\
+      Find any input such that f(input) == 'bacfbacfcbaacbacfbacfcbaac'.\nRespond
+      with 'Input: <value>' where <value> is a single-line Python literal. Do not
+      add any other text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: 3, 10, 1
+    id: cruxeval-input/sample_412
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*3,\ 10,\ 1
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(start,
+      end, interval):\n    steps = list(range(start, end + 1, interval))\n    if 1
+      in steps:\n        steps[-1] = end + 1\n    return len(steps)\n\nFind any input
+      such that f(input) == 8.\nRespond with 'Input: <value>' where <value> is a single-line
+      Python literal. Do not add any other text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: "'dEXE'"
+    id: cruxeval-input/sample_293
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*'dEXE'
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(text):\n\
+      \    s = text.lower()\n    for i in range(len(s)):\n        if s[i] == 'x':\n\
+      \            return 'no'\n    return text.isupper()\n\nFind any input such that
+      f(input) == 'no'.\nRespond with 'Input: <value>' where <value> is a single-line
+      Python literal. Do not add any other text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: "'qq0tt'"
+    id: cruxeval-input/sample_83
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*'qq0tt'
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(text):\n\
+      \    l = text.rpartition('0')\n    if l[2] == '':\n        return '-1:-1'\n\
+      \    return f'{len(l[0])}:{l[2].find(\"0\") + 1}'\n\nFind any input such that
+      f(input) == '2:0'.\nRespond with 'Input: <value>' where <value> is a single-line
+      Python literal. Do not add any other text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: "'ellod!p.nkyp.exa.bi.y.hain', '.n.in.ha.y'"
+    id: cruxeval-input/sample_383
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*'ellod!p\.nkyp\.exa\.bi\.y\.hain',\ '\.n\.in\.ha\.y'
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(text,
+      chars):\n    result = list(text)\n    while chars in result[-3::-2]:\n     \
+      \   result.remove(result[-3])\n        result.remove(result[-3])\n    return
+      ''.join(result).strip('.')\n\nFind any input such that f(input) == 'ellod!p.nkyp.exa.bi.y.hain'.\n\
+      Respond with 'Input: <value>' where <value> is a single-line Python literal.
+      Do not add any other text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: "'a', 'xxxaaxaaxx'"
+    id: cruxeval-input/sample_319
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*'a',\ 'xxxaaxaaxx'
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(needle,
+      haystack):\n    count = 0\n    while needle in haystack:\n        haystack =
+      haystack.replace(needle, '', 1)\n        count += 1\n    return count\n\nFind
+      any input such that f(input) == 4.\nRespond with 'Input: <value>' where <value>
+      is a single-line Python literal. Do not add any other text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: '[2, 0, 1, 9999, 3, -5]'
+    id: cruxeval-input/sample_554
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*\[2,\ 0,\ 1,\ 9999,\ 3,\ \-5\]
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(arr):\n\
+      \    return list(reversed(arr))\n\nFind any input such that f(input) == [-5,
+      3, 9999, 1, 0, 2].\nRespond with 'Input: <value>' where <value> is a single-line
+      Python literal. Do not add any other text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: "'zbzquiuqnmfkx', 'mk'"
+    id: cruxeval-input/sample_118
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*'zbzquiuqnmfkx',\ 'mk'
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(text,
+      chars):\n    num_applies = 2\n    extra_chars = ''\n    for i in range(num_applies):\n\
+      \        extra_chars += chars\n        text = text.replace(extra_chars, '')\n\
+      \    return text\n\nFind any input such that f(input) == 'zbzquiuqnmfkx'.\n\
+      Respond with 'Input: <value>' where <value> is a single-line Python literal.
+      Do not add any other text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: '"2 m2 \n\nbike"'
+    id: cruxeval-input/sample_394
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*"2\ m2\ \\n\\nbike"
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(text):\n\
+      \    k = text.splitlines()\n    i = 0\n    for j in k:\n        if len(j) ==
+      0:\n            return i\n        i+=1\n    return -1\n\nFind any input such
+      that f(input) == 1.\nRespond with 'Input: <value>' where <value> is a single-line
+      Python literal. Do not add any other text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: '[1, 1, 1, 1]'
+    id: cruxeval-input/sample_504
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*\[1,\ 1,\ 1,\ 1\]
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(values):\n\
+      \    values.sort()\n    return values\n\nFind any input such that f(input) ==
+      [1, 1, 1, 1].\nRespond with 'Input: <value>' where <value> is a single-line
+      Python literal. Do not add any other text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: "'pvtso'"
+    id: cruxeval-input/sample_186
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*'pvtso'
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(text):\n\
+      \    return ' '.join(map(str.lstrip, text.split()))\n\nFind any input such that
+      f(input) == 'pvtso'.\nRespond with 'Input: <value>' where <value> is a single-line
+      Python literal. Do not add any other text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: '[-1, 2, 1, -8, 2], 2'
+    id: cruxeval-input/sample_75
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*\[\-1,\ 2,\ 1,\ \-8,\ 2\],\ 2
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(array,
+      elem):\n    ind = array.index(elem)\n    return ind * 2 + array[-ind - 1] *
+      3\n\nFind any input such that f(input) == -22.\nRespond with 'Input: <value>'
+      where <value> is a single-line Python literal. Do not add any other text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: dict(did=0), 'u'
+    id: cruxeval-input/sample_378
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*dict\(did=0\),\ 'u'
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(dic,
+      key):\n    dic = dict(dic)\n    v = dic.pop(key, 0)\n    if v == 0:\n      \
+      \  return 'No such key!'\n    while len(dic) > 0:\n        dic[dic.popitem()[1]]
+      = dic.popitem()[0]\n    return int(dic.popitem()[0])\n\nFind any input such
+      that f(input) == 'No such key!'.\nRespond with 'Input: <value>' where <value>
+      is a single-line Python literal. Do not add any other text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: '{}, 200'
+    id: cruxeval-input/sample_116
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*\{\},\ 200
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(d, count):\n\
+      \    for i in range(count):\n        if d == {}:\n            break\n      \
+      \  d.popitem()\n    return d\n\nFind any input such that f(input) == {}.\nRespond
+      with 'Input: <value>' where <value> is a single-line Python literal. Do not
+      add any other text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: "'-stew---corn-and-beans-in soup-.-'"
+    id: cruxeval-input/sample_514
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*'\-stew\-\-\-corn\-and\-beans\-in\ soup\-\.\-'
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(text):\n\
+      \    for item in text.split():\n        text = text.replace('-{}'.format(item),
+      ' ').replace('{}-'.format(item), ' ')\n    return text.strip('-')\n\nFind any
+      input such that f(input) == 'stew---corn-and-beans-in soup-.'.\nRespond with
+      'Input: <value>' where <value> is a single-line Python literal. Do not add any
+      other text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: "''"
+    id: cruxeval-input/sample_579
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*''
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(text):\n\
+      \    if text.istitle():\n        if len(text) > 1 and text.lower() != text:\n\
+      \            return text[0].lower() + text[1:]\n    elif text.isalpha():\n \
+      \       return text.capitalize()\n    return text\n\nFind any input such that
+      f(input) == ''.\nRespond with 'Input: <value>' where <value> is a single-line
+      Python literal. Do not add any other text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: '[[395, 666, 7, 4], [], [4223, 111]]'
+    id: cruxeval-input/sample_564
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*\[\[395,\ 666,\ 7,\ 4\],\ \[\],\ \[4223,\ 111\]\]
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(lists):\n\
+      \    lists[1].clear()\n    lists[2] += lists[1]\n    return lists[0]\n\nFind
+      any input such that f(input) == [395, 666, 7, 4].\nRespond with 'Input: <value>'
+      where <value> is a single-line Python literal. Do not add any other text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: "'jivespdcxc', 'sx'"
+    id: cruxeval-input/sample_563
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*'jivespdcxc',\ 'sx'
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(text1,
+      text2):\n    nums = []\n    for i in range(len(text2)):\n        nums.append(text1.count(text2[i]))\n\
+      \    return sum(nums)\n\nFind any input such that f(input) == 2.\nRespond with
+      'Input: <value>' where <value> is a single-line Python literal. Do not add any
+      other text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: '{2: 0.76, 5: [3, 6, 9, 12]}'
+    id: cruxeval-input/sample_552
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*\{2:\ 0\.76,\ 5:\ \[3,\ 6,\ 9,\ 12\]\}
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(d):\n\
+      \    result = {}\n    for k, v in d.items():\n        if isinstance(k, float):\n\
+      \            for i in v:\n                result[i] = k\n        else:\n   \
+      \         result[k] = v\n    return result\n\nFind any input such that f(input)
+      == {2: 0.76, 5: [3, 6, 9, 12]}.\nRespond with 'Input: <value>' where <value>
+      is a single-line Python literal. Do not add any other text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: "'sjbrlfqmw', 'l'"
+    id: cruxeval-input/sample_335
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*'sjbrlfqmw',\ 'l'
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(text,
+      to_remove):\n    new_text = list(text)\n    if to_remove in new_text:\n    \
+      \    index = new_text.index(to_remove)\n        new_text.remove(to_remove)\n\
+      \        new_text.insert(index, '?')\n        new_text.remove('?')\n    return
+      ''.join(new_text)\n\nFind any input such that f(input) == 'sjbrfqmw'.\nRespond
+      with 'Input: <value>' where <value> is a single-line Python literal. Do not
+      add any other text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: "'ldebgp o', 'o'"
+    id: cruxeval-input/sample_462
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*'ldebgp\ o',\ 'o'
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(text,
+      value):\n    length = len(text)\n    letters = list(text)\n    if value not
+      in letters:\n        value = letters[0]\n    return value * length\n\nFind any
+      input such that f(input) == 'oooooooo'.\nRespond with 'Input: <value>' where
+      <value> is a single-line Python literal. Do not add any other text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: '"Dmreh,Sspp,T,G ,.tB,Vxk,Cct"'
+    id: cruxeval-input/sample_433
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*"Dmreh,Sspp,T,G\ ,\.tB,Vxk,Cct"
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(text):\n\
+      \    text = text.split(',')\n    text.pop(0)\n    text.insert(0, text.pop(text.index('T')))\n\
+      \    return 'T' + ',' + ','.join(text)\n\nFind any input such that f(input)
+      == 'T,T,Sspp,G ,.tB,Vxk,Cct'.\nRespond with 'Input: <value>' where <value> is
+      a single-line Python literal. Do not add any other text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: '[{"brown": 2}, {"blue": 5}, {"bright": 4}]'
+    id: cruxeval-input/sample_207
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*\[\{"brown":\ 2\},\ \{"blue":\ 5\},\ \{"bright":\ 
+            4\}\]
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(commands):\n\
+      \    d = {}\n    for c in commands:\n        d.update(c)\n    return d\n\nFind
+      any input such that f(input) == {'brown': 2, 'blue': 5, 'bright': 4}.\nRespond
+      with 'Input: <value>' where <value> is a single-line Python literal. Do not
+      add any other text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: "'upper case', 'lower case'"
+    id: cruxeval-input/sample_254
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*'upper\ case',\ 'lower\ case'
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(text,
+      repl):\n    trans = str.maketrans(text.lower(), repl.lower())\n    return text.translate(trans)\n\
+      \nFind any input such that f(input) == 'lwwer case'.\nRespond with 'Input: <value>'
+      where <value> is a single-line Python literal. Do not add any other text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: "'--4yrw 251-//4 6p'"
+    id: cruxeval-input/sample_201
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*'\-\-4yrw\ 251\-//4\ 6p'
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(text):\n\
+      \    chars = []\n    for c in text:\n        if c.isdigit():\n            chars.append(c)\n\
+      \    return ''.join(chars[::-1])\n\nFind any input such that f(input) == '641524'.\n\
+      Respond with 'Input: <value>' where <value> is a single-line Python literal.
+      Do not add any other text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: '[7, 1, 2, 6, 0, 2]'
+    id: cruxeval-input/sample_179
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*\[7,\ 1,\ 2,\ 6,\ 0,\ 2\]
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(nums):\n\
+      \    # Pass in a copy to avoid modifying nums\n    nums = nums[:]\n    count
+      = len(nums)\n    for i in range(-count+1, 0):\n        nums.insert(0, nums[i])\n\
+      \    return nums\n\nFind any input such that f(input) == [2, 0, 6, 2, 1, 7,
+      1, 2, 6, 0, 2].\nRespond with 'Input: <value>' where <value> is a single-line
+      Python literal. Do not add any other text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: '"zn kgd jw lnt", "h", "u"'
+    id: cruxeval-input/sample_15
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*"zn\ kgd\ jw\ lnt",\ "h",\ "u"
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(text,
+      wrong, right):\n    new_text = text.replace(wrong, right)\n    return new_text.upper()\n\
+      \nFind any input such that f(input) == 'ZN KGD JW LNT'.\nRespond with 'Input:
+      <value>' where <value> is a single-line Python literal. Do not add any other
+      text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: '[2, 8, -2, 9, 3, 3]'
+    id: cruxeval-input/sample_106
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*\[2,\ 8,\ \-2,\ 9,\ 3,\ 3\]
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(nums):\n\
+      \    count = len(nums)\n    for i in range(0, count):\n        nums.insert(i,
+      nums[i]*2)\n    return nums\n\nFind any input such that f(input) == [4, 4, 4,
+      4, 4, 4, 2, 8, -2, 9, 3, 3].\nRespond with 'Input: <value>' where <value> is
+      a single-line Python literal. Do not add any other text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: "'spider', 'ed'"
+    id: cruxeval-input/sample_548
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*'spider',\ 'ed'
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(text,
+      suffix):\n    if suffix and text and text.endswith(suffix):\n        return
+      text.removesuffix(suffix)\n    else:\n        return text\n\nFind any input
+      such that f(input) == 'spider'.\nRespond with 'Input: <value>' where <value>
+      is a single-line Python literal. Do not add any other text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: "'\\n\\n\\t\\tz\\td\\ng\\n\\t\\t\\te'"
+    id: cruxeval-input/sample_556
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*'\\n\\n\\t\\tz\\td\\ng\\n\\t\\t\\te'
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(text):\n\
+      \    for i in range(len(text)):\n        if text[i] == ' ':\n            text
+      = text.replace(' ', '\\t', 1)\n    return text.expandtabs(4)\n\nFind any input
+      such that f(input) == '\\n\\n        z   d\\ng\\n            e'.\nRespond with
+      'Input: <value>' where <value> is a single-line Python literal. Do not add any
+      other text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: "'lunabotics'"
+    id: cruxeval-input/sample_96
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*'lunabotics'
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(text):\n\
+      \    return not any([c.isupper() for c in text])\n\nFind any input such that
+      f(input) == True.\nRespond with 'Input: <value>' where <value> is a single-line
+      Python literal. Do not add any other text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: "'UppEr', 0"
+    id: cruxeval-input/sample_8
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*'UppEr',\ 0
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(string,
+      encryption):\n    if encryption == 0:\n        return string\n    else:\n  \
+      \      return string.upper().encode('rot13')\n\nFind any input such that f(input)
+      == 'UppEr'.\nRespond with 'Input: <value>' where <value> is a single-line Python
+      literal. Do not add any other text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: '""'
+    id: cruxeval-input/sample_279
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*""
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(text):\n\
+      \    ans = ''\n    while text != '':\n        x, sep, text = text.partition('(')\n\
+      \        ans = x + sep.replace('(', '|') + ans\n        ans = ans + text[0]
+      + ans\n        text = text[1:]\n    return ans\n\nFind any input such that f(input)
+      == ''.\nRespond with 'Input: <value>' where <value> is a single-line Python
+      literal. Do not add any other text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: '"1", 3'
+    id: cruxeval-input/sample_494
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*"1",\ 3
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(num,
+      l):\n    t = \"\"\n    while l > len(num):\n        t += '0'\n        l -= 1\n\
+      \    return t + num\n\nFind any input such that f(input) == '001'.\nRespond
+      with 'Input: <value>' where <value> is a single-line Python literal. Do not
+      add any other text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: "'a1234år'"
+    id: cruxeval-input/sample_495
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*'a1234år'
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(s):\n\
+      \    if str.isascii(s[-5:]):\n        return s[-5:], s[0:][:3]\n    elif str.isascii(s[:5]):\n\
+      \        return s[:5], s[-5:][3:]\n    else:\n        return s\n\nFind any input
+      such that f(input) == ('a1234', 'år').\nRespond with 'Input: <value>' where
+      <value> is a single-line Python literal. Do not add any other text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: '"x", "$", "2xz&5H3*1a@#a*1hris"'
+    id: cruxeval-input/sample_294
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*"x",\ "\$",\ "2xz\&5H3\*1a@\#a\*1hris"
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(n, m,
+      text):\n    if text.strip() == '':\n        return text\n    head, mid, tail
+      = text[0], text[1:-1], text[-1]\n    joined = head.replace(n, m) + mid.replace(n,
+      m) + tail.replace(n, m)\n    return joined\n\nFind any input such that f(input)
+      == '2$z&5H3*1a@#a*1hris'.\nRespond with 'Input: <value>' where <value> is a
+      single-line Python literal. Do not add any other text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: "'777'"
+    id: cruxeval-input/sample_312
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*'777'
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(str):\n\
+      \    if str.isalnum():\n        return \"True\"\n    return \"False\"\n\nFind
+      any input such that f(input) == 'True'.\nRespond with 'Input: <value>' where
+      <value> is a single-line Python literal. Do not add any other text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: '"x"'
+    id: cruxeval-input/sample_420
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*"x"
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(text):\n\
+      \    try:\n        return text.isalpha()\n    except:\n        return False\n\
+      \nFind any input such that f(input) == True.\nRespond with 'Input: <value>'
+      where <value> is a single-line Python literal. Do not add any other text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: "'happy', 'ha'"
+    id: cruxeval-input/sample_66
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*'happy',\ 'ha'
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(text,
+      prefix):\n    prefix_length = len(prefix)\n    if text.startswith(prefix):\n\
+      \        return text[(prefix_length - 1) // 2:\n                    (prefix_length
+      + 1) // 2 * -1:-1]\n    else:\n        return text\n\nFind any input such that
+      f(input) == ''.\nRespond with 'Input: <value>' where <value> is a single-line
+      Python literal. Do not add any other text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: '[1, 5, 2, 3, 6], 2, 4'
+    id: cruxeval-input/sample_479
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*\[1,\ 5,\ 2,\ 3,\ 6\],\ 2,\ 4
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(nums,
+      pop1, pop2):\n    nums.pop(pop1 - 1)\n    nums.pop(pop2 - 1)\n    return nums\n\
+      \nFind any input such that f(input) == [1, 2, 3].\nRespond with 'Input: <value>'
+      where <value> is a single-line Python literal. Do not add any other text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: "'GENERAL NAGOOR', 5"
+    id: cruxeval-input/sample_460
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*'GENERAL\ NAGOOR',\ 5
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(text,
+      amount):\n    length = len(text)\n    pre_text = '|'\n    if amount >= length:\n\
+      \        extra_space = amount - length\n        pre_text += ' ' * (extra_space
+      // 2)\n        return pre_text + text + pre_text\n    return text\n\nFind any
+      input such that f(input) == 'GENERAL NAGOOR'.\nRespond with 'Input: <value>'
+      where <value> is a single-line Python literal. Do not add any other text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: "'tcmfsmj', 'cfj'"
+    id: cruxeval-input/sample_198
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*'tcmfsmj',\ 'cfj'
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(text,
+      strip_chars):\n    return text[::-1].strip(strip_chars)[::-1]\n\nFind any input
+      such that f(input) == 'tcmfsm'.\nRespond with 'Input: <value>' where <value>
+      is a single-line Python literal. Do not add any other text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: '"Ibaskdjgblw asdl ", "djgblw"'
+    id: cruxeval-input/sample_531
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*"Ibaskdjgblw\ asdl\ ",\ "djgblw"
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(text,
+      x):\n    if text.removeprefix(x) == text:\n        return f(text[1:], x)\n \
+      \   else:\n        return text\n\nFind any input such that f(input) == 'djgblw
+      asdl '.\nRespond with 'Input: <value>' where <value> is a single-line Python
+      literal. Do not add any other text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: '[3, 4, 1, 2, 3]'
+    id: cruxeval-input/sample_171
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*\[3,\ 4,\ 1,\ 2,\ 3\]
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(nums):\n\
+      \    count = len(nums) // 2\n    for _ in range(count):\n        nums.pop(0)\n\
+      \    return nums\n\nFind any input such that f(input) == [1, 2, 3].\nRespond
+      with 'Input: <value>' where <value> is a single-line Python literal. Do not
+      add any other text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: "'abbkebaniuwurzvr', 'm'"
+    id: cruxeval-input/sample_492
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*'abbkebaniuwurzvr',\ 'm'
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(text,
+      value):\n    ls = list(text)\n    if (ls.count(value)) % 2 == 0:\n        while
+      value in ls:\n            ls.remove(value)\n    else:\n        ls.clear()\n\
+      \    return ''.join(ls)\n\nFind any input such that f(input) == 'abbkebaniuwurzvr'.\n\
+      Respond with 'Input: <value>' where <value> is a single-line Python literal.
+      Do not add any other text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: '1341240312'
+    id: cruxeval-input/sample_535
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*1341240312
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(n):\n\
+      \    for n in str(n):\n        if n not in \"012\" and n not in list(range(5,
+      10)):\n            return False\n    return True\n\nFind any input such that
+      f(input) == False.\nRespond with 'Input: <value>' where <value> is a single-line
+      Python literal. Do not add any other text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: "'l000*',"
+    id: cruxeval-input/sample_452
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*'l000\*',
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(text):\n\
+      \    counter = 0\n    for char in text:\n        if char.isalpha():\n      \
+      \      counter += 1\n    return counter\n\nFind any input such that f(input)
+      == 1.\nRespond with 'Input: <value>' where <value> is a single-line Python literal.
+      Do not add any other text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: '"vsnlygltaw"'
+    id: cruxeval-input/sample_119
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*"vsnlygltaw"
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(text):\n\
+      \    result = \"\"\n    for i in range(len(text)):\n        if i % 2 == 0:\n\
+      \            result += text[i].swapcase()\n        else:\n            result
+      += text[i]\n    return result\n\nFind any input such that f(input) == 'VsNlYgLtAw'.\n\
+      Respond with 'Input: <value>' where <value> is a single-line Python literal.
+      Do not add any other text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: "'querist', 'u'"
+    id: cruxeval-input/sample_409
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*'querist',\ 'u'
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(text,
+      char):\n    if text:\n        text = text.removeprefix(char)\n        text =
+      text.removeprefix(text[-1])\n        text = text[:-1] + text[-1].capitalize()\n\
+      \    return text\n\nFind any input such that f(input) == 'querisT'.\nRespond
+      with 'Input: <value>' where <value> is a single-line Python literal. Do not
+      add any other text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: '"2two programmers"'
+    id: cruxeval-input/sample_376
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*"2two\ programmers"
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(text):\n\
+      \    for i in range(len(text)):\n        if text[0:i].startswith(\"two\"):\n\
+      \            return text[i:]\n    return 'no'\n\nFind any input such that f(input)
+      == 'no'.\nRespond with 'Input: <value>' where <value> is a single-line Python
+      literal. Do not add any other text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: '[]'
+    id: cruxeval-input/sample_172
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*\[\]
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(array):\n\
+      \    for i in range(len(array)):\n        if array[i] < 0:\n            array.pop(i)\n\
+      \    return array\n\nFind any input such that f(input) == [].\nRespond with
+      'Input: <value>' where <value> is a single-line Python literal. Do not add any
+      other text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: '[1, 1, 1]'
+    id: cruxeval-input/sample_147
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*\[1,\ 1,\ 1\]
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(nums):\n\
+      \    middle = len(nums)//2\n    return nums[middle:] + nums[0:middle]\n\nFind
+      any input such that f(input) == [1, 1, 1].\nRespond with 'Input: <value>' where
+      <value> is a single-line Python literal. Do not add any other text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: "{'1': 'a', 1: 'a', 1: 'b', '1': 'b'}, [1]"
+    id: cruxeval-input/sample_100
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*\{'1':\ 'a',\ 1:\ 'a',\ 1:\ 'b',\ '1':\ 'b'\},\ 
+            \[1\]
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(d, rm):\n\
+      \    res = d.copy()\n    for k in rm:\n        if k in res:\n            del
+      res[k]\n    return res\n\nFind any input such that f(input) == {'1': 'b'}.\n\
+      Respond with 'Input: <value>' where <value> is a single-line Python literal.
+      Do not add any other text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: "'spain', 'b', 4"
+    id: cruxeval-input/sample_168
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*'spain',\ 'b',\ 4
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(text,
+      new_value, index):\n    key = text.maketrans(text[index], new_value)\n    return
+      text.translate(key)\n\nFind any input such that f(input) == 'spaib'.\nRespond
+      with 'Input: <value>' where <value> is a single-line Python literal. Do not
+      add any other text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: '"591237865"'
+    id: cruxeval-input/sample_560
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*"591237865"
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(text):\n\
+      \    x = 0\n    if text.islower():\n        for c in text:\n            if int(c)
+      in list(range(90)):\n                x+=1\n    return x\n\nFind any input such
+      that f(input) == 0.\nRespond with 'Input: <value>' where <value> is a single-line
+      Python literal. Do not add any other text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: "'E jIkx HtDpV G'"
+    id: cruxeval-input/sample_340
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*'E\ jIkx\ HtDpV\ G'
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(text):\n\
+      \    uppercase_index = text.find('A')\n    if uppercase_index >= 0:\n      \
+      \  return text[:uppercase_index] + text[text.find('a') + 1 :]\n    else:\n \
+      \       return ''.join(sorted(text))\n\nFind any input such that f(input) ==
+      '   DEGHIVjkptx'.\nRespond with 'Input: <value>' where <value> is a single-line
+      Python literal. Do not add any other text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: '"breakfast", "e"'
+    id: cruxeval-input/sample_586
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*"breakfast",\ "e"
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(text,
+      char):\n    return text.rindex(char)\n\nFind any input such that f(input) ==
+      2.\nRespond with 'Input: <value>' where <value> is a single-line Python literal.
+      Do not add any other text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: "'jao mt', 'house'"
+    id: cruxeval-input/sample_200
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*'jao\ mt',\ 'house'
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(text,
+      value):\n    length = len(text)\n    index = 0\n    while length > 0:\n    \
+      \    value = text[index] + value\n        length -= 1\n        index += 1\n\
+      \    return value\n\nFind any input such that f(input) == 'tm oajhouse'.\nRespond
+      with 'Input: <value>' where <value> is a single-line Python literal. Do not
+      add any other text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: "'pn', 'p'"
+    id: cruxeval-input/sample_451
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*'pn',\ 'p'
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(text,
+      char):\n    text = list(text)\n    for count, item in enumerate(text):\n   \
+      \     if item == char:\n            text.remove(item)\n            return ''.join(text)\n\
+      \    return text\n\nFind any input such that f(input) == 'n'.\nRespond with
+      'Input: <value>' where <value> is a single-line Python literal. Do not add any
+      other text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: "'Hi there'"
+    id: cruxeval-input/sample_140
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*'Hi\ there'
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(st):\n\
+      \    if st.lower().rindex('h', st.lower().rindex('i')) >= st.lower().rindex('i'):\n\
+      \        return 'Hey'\n    else:\n        return 'Hi'\n\nFind any input such
+      that f(input) == 'Hey'.\nRespond with 'Input: <value>' where <value> is a single-line
+      Python literal. Do not add any other text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: '[44, 34, 23, 82, 24, 11, 63, 99], 4, 15'
+    id: cruxeval-input/sample_74
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*\[44,\ 34,\ 23,\ 82,\ 24,\ 11,\ 63,\ 99\],\ 4,\ 15
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(lst,
+      i, n):\n    lst.insert(i, n)\n    return lst\n\nFind any input such that f(input)
+      == [44, 34, 23, 82, 15, 24, 11, 63, 99].\nRespond with 'Input: <value>' where
+      <value> is a single-line Python literal. Do not add any other text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: '000'
+    id: cruxeval-input/sample_22
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*000
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(a):\n\
+      \    if a == 0:\n        return [0]\n    result = []\n    while a > 0:\n   \
+      \     result.append(a%10)\n        a = a//10\n    result.reverse()\n    return
+      int(''.join(str(i) for i in result))\n\nFind any input such that f(input) ==
+      [0].\nRespond with 'Input: <value>' where <value> is a single-line Python literal.
+      Do not add any other text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: "'!klcd!ma:ri', '!'"
+    id: cruxeval-input/sample_192
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*'!klcd!ma:ri',\ '!'
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(text,
+      suffix):\n    output = text\n    while text.endswith(suffix):\n        output
+      = text[:-len(suffix)]\n        text = output\n    return output\n\nFind any
+      input such that f(input) == '!klcd!ma:ri'.\nRespond with 'Input: <value>' where
+      <value> is a single-line Python literal. Do not add any other text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: '[]'
+    id: cruxeval-input/sample_324
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*\[\]
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(nums):\n\
+      \    asc, desc = nums.copy(), []\n    asc.reverse()\n    desc = asc[:len(asc)//2]\n\
+      \    return desc + asc + desc\n\nFind any input such that f(input) == [].\n\
+      Respond with 'Input: <value>' where <value> is a single-line Python literal.
+      Do not add any other text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: "'   OOP   '"
+    id: cruxeval-input/sample_14
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*'\ \ \ OOP\ \ \ '
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(s):\n\
+      \    arr = list(s.strip())\n    arr.reverse()\n    return ''.join(arr)\n\nFind
+      any input such that f(input) == 'POO'.\nRespond with 'Input: <value>' where
+      <value> is a single-line Python literal. Do not add any other text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: "'jysrhfm ojwesf xgwwdyr dlrul ymba bpq', 'j', '1'"
+    id: cruxeval-input/sample_416
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*'jysrhfm\ ojwesf\ xgwwdyr\ dlrul\ ymba\ bpq',\ 'j',\
+            '1'
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(text,
+      old, new):\n    index = text.rfind(old, 0, text.find(old))\n    result = list(text)\n\
+      \    while index > 0:\n        result[index:index+len(old)] = new\n        index
+      = text.rfind(old, 0, index)\n    return ''.join(result)\n\nFind any input such
+      that f(input) == 'jysrhfm ojwesf xgwwdyr dlrul ymba bpq'.\nRespond with 'Input:
+      <value>' where <value> is a single-line Python literal. Do not add any other
+      text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: thigh_o_two[:], 3, 3, 2
+    id: cruxeval-input/sample_258
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*thigh_o_two\[:\],\ 3,\ 3,\ 2
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\nthigh_o_one
+      = [1, 2, 7, 8, 9]\nthigh_o_two = [1, 2, 7, 9]\ndef f(L, m, start, step):\n \
+      \   L.insert(start, m)\n    for x in range(start-1, 0, -step):\n        start
+      -= 1\n        L.insert(start, L.pop(L.index(m)-1))\n    return L\n\nFind any
+      input such that f(input) == [1, 2, 7, 3, 9].\nRespond with 'Input: <value>'
+      where <value> is a single-line Python literal. Do not add any other text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: '[4, 3, 2, 1, 2, -1, 4, 2]'
+    id: cruxeval-input/sample_42
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*\[4,\ 3,\ 2,\ 1,\ 2,\ \-1,\ 4,\ 2\]
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(nums):\n\
+      \    nums.clear()\n    for num in nums:\n        nums.append(num*2)\n    return
+      nums\n\nFind any input such that f(input) == [].\nRespond with 'Input: <value>'
+      where <value> is a single-line Python literal. Do not add any other text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: "'2imo 12 tfiqr.', 'm'"
+    id: cruxeval-input/sample_148
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*'2imo\ 12\ tfiqr\.',\ 'm'
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(forest,
+      animal):\n    index = forest.index(animal)\n    result = list(forest)\n    while
+      index < len(forest)-1:\n        result[index] = forest[index+1]\n        index
+      += 1\n    if index == len(forest)-1:\n        result[index] = '-'\n    return
+      ''.join(result)\n\nFind any input such that f(input) == '2io 12 tfiqr.-'.\n\
+      Respond with 'Input: <value>' where <value> is a single-line Python literal.
+      Do not add any other text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: '"ua6hajq"'
+    id: cruxeval-input/sample_107
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*"ua6hajq"
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(text):\n\
+      \    result = []\n    for i in range(len(text)):\n        if not text[i].isascii():\n\
+      \            return False\n        elif text[i].isalnum():\n            result.append(text[i].upper())\n\
+      \        else:\n            result.append(text[i])\n    return ''.join(result)\n\
+      \nFind any input such that f(input) == 'UA6HAJQ'.\nRespond with 'Input: <value>'
+      where <value> is a single-line Python literal. Do not add any other text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: '[4, 5]'
+    id: cruxeval-input/sample_262
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*\[4,\ 5\]
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(nums):\n\
+      \    count = len(nums)\n    score = {0: \"F\", 1: \"E\", 2: \"D\", 3: \"C\"\
+      , 4: \"B\", 5: \"A\", 6: \"\"}\n    result = []\n    for i in range(count):\n\
+      \        result.append(score.get(nums[i]))\n    return ''.join(result)\n\nFind
+      any input such that f(input) == 'BA'.\nRespond with 'Input: <value>' where <value>
+      is a single-line Python literal. Do not add any other text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: "['sdfs', 'drcr', '2e'], ['sdfs', 'dr2c', 'QWERTY'], 0"
+    id: cruxeval-input/sample_86
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*\['sdfs',\ 'drcr',\ '2e'\],\ \['sdfs',\ 'dr2c',\ 
+            'QWERTY'\],\ 0
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(instagram,
+      imgur, wins):\n    photos = [instagram, imgur]\n    if instagram == imgur:\n\
+      \        return wins\n    if wins == 1:\n        return photos.pop()\n    else:\n\
+      \        photos.reverse()\n        return photos.pop()\n\nFind any input such
+      that f(input) == ['sdfs', 'drcr', '2e'].\nRespond with 'Input: <value>' where
+      <value> is a single-line Python literal. Do not add any other text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: '[9, 2]'
+    id: cruxeval-input/sample_269
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*\[9,\ 2\]
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(array):\n\
+      \    zero_len = (len(array) - 1) % 3\n    for i in range(zero_len):\n      \
+      \  array[i] = '0'\n    for i in range(zero_len + 1, len(array), 3):\n      \
+      \  array[i - 1:i + 2] = ['0', '0', '0']\n    return array\n\nFind any input
+      such that f(input) == ['0', 2].\nRespond with 'Input: <value>' where <value>
+      is a single-line Python literal. Do not add any other text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: '[0, 0, 1, 2, 2, 2, 2], 4'
+    id: cruxeval-input/sample_178
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*\[0,\ 0,\ 1,\ 2,\ 2,\ 2,\ 2\],\ 4
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(array,
+      n):\n    return array[n:]\n\nFind any input such that f(input) == [2, 2, 2].\n\
+      Respond with 'Input: <value>' where <value> is a single-line Python literal.
+      Do not add any other text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: '"a\nkgf\nasd\n"'
+    id: cruxeval-input/sample_131
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*"a\\nkgf\\nasd\\n"
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(text):\n\
+      \    a = len(text)\n    count = 0\n    while text:\n        if text.startswith('a'):\n\
+      \            count += text.find(' ')\n        else:\n            count += text.find('\\\
+      n')\n        text = text[text.find('\\n')+1:text.find('\\n')+a+1]\n    return
+      count\n\nFind any input such that f(input) == 1.\nRespond with 'Input: <value>'
+      where <value> is a single-line Python literal. Do not add any other text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: "'VTBAEPJSLGAHINS'"
+    id: cruxeval-input/sample_562
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*'VTBAEPJSLGAHINS'
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(text):\n\
+      \    return text.upper() == str(text)\n\nFind any input such that f(input) ==
+      True.\nRespond with 'Input: <value>' where <value> is a single-line Python literal.
+      Do not add any other text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: '{-1: -1, 5: 5, 3: 6, -4: -4}'
+    id: cruxeval-input/sample_463
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*\{\-1:\ \-1,\ 5:\ 5,\ 3:\ 6,\ \-4:\ \-4\}
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(dict):\n\
+      \    result = dict.copy()\n    remove_keys = []\n    for k, v in dict.items():\n\
+      \        if v in dict:\n            del result[k]\n    return result\n\nFind
+      any input such that f(input) == {3: 6}.\nRespond with 'Input: <value>' where
+      <value> is a single-line Python literal. Do not add any other text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: '"lorem ipsum"'
+    id: cruxeval-input/sample_443
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*"lorem\ ipsum"
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(text):\n\
+      \    for space in text:\n        if space == ' ':\n            text = text.lstrip()\n\
+      \        else:\n            text = text.replace('cd', space)\n    return text\n\
+      \nFind any input such that f(input) == 'lorem ipsum'.\nRespond with 'Input:
+      <value>' where <value> is a single-line Python literal. Do not add any other
+      text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: '"11"'
+    id: cruxeval-input/sample_395
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*"11"
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(s):\n\
+      \    for i in range(len(s)):\n        if s[i].isdecimal():\n            return
+      i + (s[i] == '0')\n        elif s[i] == '0':\n            return -1\n    return
+      -1\n\nFind any input such that f(input) == 0.\nRespond with 'Input: <value>'
+      where <value> is a single-line Python literal. Do not add any other text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: '"x--y-z-5-C"'
+    id: cruxeval-input/sample_472
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*"x\-\-y\-z\-5\-C"
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(text):\n\
+      \    d = {}\n    for char in text.replace('-', '').lower():\n        d[char]
+      = d[char] + 1 if char in d else 1\n    d = sorted(d.items(), key=lambda x: x[1])\n\
+      \    return [val for i, val in d]\n\nFind any input such that f(input) == [1,
+      1, 1, 1, 1].\nRespond with 'Input: <value>' where <value> is a single-line Python
+      literal. Do not add any other text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: '[]'
+    id: cruxeval-input/sample_446
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*\[\]
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(array):\n\
+      \    l = len(array)\n    if l % 2 == 0:\n        array.clear()\n    else:\n\
+      \        array.reverse()\n    return array\n\nFind any input such that f(input)
+      == [].\nRespond with 'Input: <value>' where <value> is a single-line Python
+      literal. Do not add any other text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: '[1, 2, 3], 8, 5'
+    id: cruxeval-input/sample_426
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*\[1,\ 2,\ 3\],\ 8,\ 5
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(numbers,
+      elem, idx):\n    numbers.insert(idx, elem)\n    return numbers\n\nFind any input
+      such that f(input) == [1, 2, 3, 8].\nRespond with 'Input: <value>' where <value>
+      is a single-line Python literal. Do not add any other text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: '"first-second-third"'
+    id: cruxeval-input/sample_559
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*"first\-second\-third"
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(n):\n\
+      \    n = str(n)\n    return n[0] + '.'+n[1:].replace('-', '_')\n\nFind any input
+      such that f(input) == 'f.irst_second_third'.\nRespond with 'Input: <value>'
+      where <value> is a single-line Python literal. Do not add any other text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: "'Fred Smith'"
+    id: cruxeval-input/sample_502
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*'Fred\ Smith'
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(name):\n\
+      \    return '*'.join(name.split(' '))\n\nFind any input such that f(input) ==
+      'Fred*Smith'.\nRespond with 'Input: <value>' where <value> is a single-line
+      Python literal. Do not add any other text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: '[1,2,3,4,5,6,7,8,9,10], 11, 4'
+    id: cruxeval-input/sample_286
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*\[1,2,3,4,5,6,7,8,9,10\],\ 11,\ 4
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(array,
+      x, i):\n    if i < -len(array) or i > len(array) - 1:\n        return 'no'\n\
+      \    temp = array[i]\n    array[i] = x\n    return array\n\nFind any input such
+      that f(input) == [1, 2, 3, 4, 11, 6, 7, 8, 9, 10].\nRespond with 'Input: <value>'
+      where <value> is a single-line Python literal. Do not add any other text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: "'?XyZ'"
+    id: cruxeval-input/sample_455
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*'\?XyZ'
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(text):\n\
+      \    uppers = 0\n    for c in text:\n        if c.isupper():\n            uppers
+      += 1\n    return text.upper() if uppers >= 10 else text\n\nFind any input such
+      that f(input) == '?XyZ'.\nRespond with 'Input: <value>' where <value> is a single-line
+      Python literal. Do not add any other text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: '21'
+    id: cruxeval-input/sample_51
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*21
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ns = '<' *
+      10\ndef f(num):\n    if num % 2 == 0:\n        return s\n    else:\n       \
+      \ return num - 1\n\nFind any input such that f(input) == 20.\nRespond with 'Input:
+      <value>' where <value> is a single-line Python literal. Do not add any other
+      text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: " '\\ngiyixjkvu\\n\\r\\r \\frgjuo'"
+    id: cruxeval-input/sample_490
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*\ '\\ngiyixjkvu\\n\\r\\r\ \\frgjuo'
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(s):\n\
+      \    return ''.join([c for c in s if c.isspace()])\n\nFind any input such that
+      f(input) == '\\n\\n\\r\\r \\x0c'.\nRespond with 'Input: <value>' where <value>
+      is a single-line Python literal. Do not add any other text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: "' vup a zwwo oihee amuwuuw! ', 'a', 'u'"
+    id: cruxeval-input/sample_317
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*'\ vup\ a\ zwwo\ oihee\ amuwuuw!\ ',\ 'a',\ 'u'
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(text,
+      a, b):\n    text = text.replace(a, b)\n    return text.replace(b, a)\n\nFind
+      any input such that f(input) == ' vap a zwwo oihee amawaaw! '.\nRespond with
+      'Input: <value>' where <value> is a single-line Python literal. Do not add any
+      other text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: "'Hey DUdE THis $nd^ &*&this@#'"
+    id: cruxeval-input/sample_177
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*'Hey\ DUdE\ THis\ \$nd\^\ \&\*\&this@\#'
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(text):\n\
+      \    text = list(text)\n    for i in range(len(text)):\n        if i % 2 ==
+      1:\n            text[i] = text[i].swapcase()\n    return ''.join(text)\n\nFind
+      any input such that f(input) == 'HEy Dude tHIs $Nd^ &*&tHiS@#'.\nRespond with
+      'Input: <value>' where <value> is a single-line Python literal. Do not add any
+      other text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: "'123x John z', 'z'"
+    id: cruxeval-input/sample_355
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*'123x\ John\ z',\ 'z'
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(text,
+      prefix):\n    return text[len(prefix):]\n\nFind any input such that f(input)
+      == '23x John z'.\nRespond with 'Input: <value>' where <value> is a single-line
+      Python literal. Do not add any other text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: '"5123807309875480094949830"'
+    id: cruxeval-input/sample_584
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*"5123807309875480094949830"
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(txt):\n\
+      \    return txt.format(*('0'*20,))\n\nFind any input such that f(input) == '5123807309875480094949830'.\n\
+      Respond with 'Input: <value>' where <value> is a single-line Python literal.
+      Do not add any other text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: "'uzlwaqiaj', 'u'"
+    id: cruxeval-input/sample_237
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*'uzlwaqiaj',\ 'u'
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(text,
+      char):\n    if char in text:\n        suff, char, pref = text.partition(char)\n\
+      \        pref = suff[:-len(char)] + suff[len(char):] + char + pref\n       \
+      \ return suff + char + pref\n    return text\n\nFind any input such that f(input)
+      == 'uuzlwaqiaj'.\nRespond with 'Input: <value>' where <value> is a single-line
+      Python literal. Do not add any other text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: "'omeunhwpvr.dq', 'omeunh'"
+    id: cruxeval-input/sample_68
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*'omeunhwpvr\.dq',\ 'omeunh'
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(text,
+      pref):\n    if text.startswith(pref):\n        n = len(pref)\n        text =
+      '.'.join(text[n:].split('.')[1:] + text[:n].split('.')[:-1])\n    return text\n\
+      \nFind any input such that f(input) == 'dq'.\nRespond with 'Input: <value>'
+      where <value> is a single-line Python literal. Do not add any other text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: '[5, 8, 1, 3, 0]'
+    id: cruxeval-input/sample_164
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*\[5,\ 8,\ 1,\ 3,\ 0\]
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(lst):\n\
+      \    lst.sort()\n    return lst[0:3]\n\nFind any input such that f(input) ==
+      [0, 1, 3].\nRespond with 'Input: <value>' where <value> is a single-line Python
+      literal. Do not add any other text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: '"abca dea ead"'
+    id: cruxeval-input/sample_211
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*"abca\ dea\ ead"
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(s):\n\
+      \    count = 0\n    for c in s:\n        if s.rindex(c) != s.index(c):\n   \
+      \         count+=1\n    return count\n\nFind any input such that f(input) ==
+      10.\nRespond with 'Input: <value>' where <value> is a single-line Python literal.
+      Do not add any other text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: "'1::1'"
+    id: cruxeval-input/sample_193
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*'1::1'
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(string):\n\
+      \    count = string.count(':')\n    return string.replace(':', '', count - 1)\n\
+      \nFind any input such that f(input) == '1:1'.\nRespond with 'Input: <value>'
+      where <value> is a single-line Python literal. Do not add any other text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: '"dskjs hjcdjnxhjicnn", 4'
+    id: cruxeval-input/sample_155
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*"dskjs\ hjcdjnxhjicnn",\ 4
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(ip,
+      n):\n    i = 0\n    out = ''\n    for c in ip:\n        if i == n:\n       \
+      \     out += '\\n'\n            i = 0\n        i += 1\n        out += c\n  \
+      \  return out\n\nFind any input such that f(input) == 'dskj\\ns hj\\ncdjn\\\
+      nxhji\\ncnn'.\nRespond with 'Input: <value>' where <value> is a single-line
+      Python literal. Do not add any other text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: '[10, 4], 3'
+    id: cruxeval-input/sample_575
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*\[10,\ 4\],\ 3
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(nums,
+      val):\n    new_list = []\n    [new_list.extend([i] * val) for i in nums]\n \
+      \   return sum(new_list)\n\nFind any input such that f(input) == 42.\nRespond
+      with 'Input: <value>' where <value> is a single-line Python literal. Do not
+      add any other text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: '"PermissioN is GRANTed"'
+    id: cruxeval-input/sample_105
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*"PermissioN\ is\ GRANTed"
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(text):\n\
+      \    if not text.istitle():\n        return text.title()\n    return text.lower()\n\
+      \nFind any input such that f(input) == 'Permission Is Granted'.\nRespond with
+      'Input: <value>' where <value> is a single-line Python literal. Do not add any
+      other text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: "'za1fd1as8f7afasdfam97adfa', '7'"
+    id: cruxeval-input/sample_45
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*'za1fd1as8f7afasdfam97adfa',\ '7'
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(text,
+      letter):\n    counts = {}\n    for char in text:\n        if char not in counts:\n\
+      \            counts[char] = 1\n        else:\n            counts[char] += 1\n\
+      \    return counts.get(letter, 0)\n\nFind any input such that f(input) == 2.\n\
+      Respond with 'Input: <value>' where <value> is a single-line Python literal.
+      Do not add any other text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: '"{{{{}}}}", {}'
+    id: cruxeval-input/sample_189
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*"\{\{\{\{\}\}\}\}",\ \{\}
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(out,
+      mapping):\n    for key in mapping:\n        out.format_map(mapping)\n      \
+      \  if len(re.findall(r'{\\w}', out)) == 0:\n            break\n        mapping[key][1]
+      = mapping[key][1][::-1]\n    return out\n\nFind any input such that f(input)
+      == '{{{{}}}}'.\nRespond with 'Input: <value>' where <value> is a single-line
+      Python literal. Do not add any other text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: "'raruwa'"
+    id: cruxeval-input/sample_60
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*'raruwa'
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(doc):\n\
+      \    for x in doc:\n        if x.isalpha():\n            return x.capitalize()\n\
+      \    return '-'\n\nFind any input such that f(input) == 'R'.\nRespond with 'Input:
+      <value>' where <value> is a single-line Python literal. Do not add any other
+      text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: "'hrsiajiajieihruejfhbrisvlmmy', 'hr'"
+    id: cruxeval-input/sample_403
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*'hrsiajiajieihruejfhbrisvlmmy',\ 'hr'
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(full,
+      part):\n    length = len(part)\n    index = full.find(part)\n    count = 0\n\
+      \    while index >= 0:\n        full = full[index + length:]\n        index
+      = full.find(part)\n        count += 1\n    return count\n\nFind any input such
+      that f(input) == 2.\nRespond with 'Input: <value>' where <value> is a single-line
+      Python literal. Do not add any other text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: '[3, 6, 4, -2, 5]'
+    id: cruxeval-input/sample_158
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*\[3,\ 6,\ 4,\ \-2,\ 5\]
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(arr):\n\
+      \    n = [item for item in arr if item%2 == 0]\n    m = n+arr\n    for i in
+      m:\n        if m.index(i) >= len(n):\n            m.remove(i)\n    return m\n\
+      \nFind any input such that f(input) == [6, 4, -2, 6, 4, -2].\nRespond with 'Input:
+      <value>' where <value> is a single-line Python literal. Do not add any other
+      text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: '[2, 3, 4, 6, -2]'
+    id: cruxeval-input/sample_266
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*\[2,\ 3,\ 4,\ 6,\ \-2\]
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(nums):\n\
+      \    for i in range(len(nums)-1, -1, -1):\n        if nums[i] % 2 == 1:\n  \
+      \          nums.insert(i+1, nums[i])\n    return nums\n\nFind any input such
+      that f(input) == [2, 3, 3, 4, 6, -2].\nRespond with 'Input: <value>' where <value>
+      is a single-line Python literal. Do not add any other text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: '[1,2]'
+    id: cruxeval-input/sample_184
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*\[1,2\]
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(digits):\n\
+      \    digits.reverse()\n    if len(digits) < 2:\n        return digits\n    for
+      i in range(0, len(digits), 2):\n        digits[i], digits[i+1] = digits[i+1],
+      digits[i]\n    return digits\n\nFind any input such that f(input) == [1, 2].\n\
+      Respond with 'Input: <value>' where <value> is a single-line Python literal.
+      Do not add any other text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: '[[1, 2, 3], [], [1, 2, 3]]'
+    id: cruxeval-input/sample_90
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*\[\[1,\ 2,\ 3\],\ \[\],\ \[1,\ 2,\ 3\]\]
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(array):\n\
+      \    return_arr = []\n    for a in array:\n        return_arr.append(a.copy())\n\
+      \    return return_arr\n\nFind any input such that f(input) == [[1, 2, 3], [],
+      [1, 2, 3]].\nRespond with 'Input: <value>' where <value> is a single-line Python
+      literal. Do not add any other text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: "'bpxa24fc5.', '.'"
+    id: cruxeval-input/sample_221
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*'bpxa24fc5\.',\ '\.'
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(text,
+      delim):\n    first, second = text.split(delim)\n    return second + delim +
+      first\n\nFind any input such that f(input) == '.bpxa24fc5'.\nRespond with 'Input:
+      <value>' where <value> is a single-line Python literal. Do not add any other
+      text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: "'ndbtdabdahesyehu', 'n'"
+    id: cruxeval-input/sample_63
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*'ndbtdabdahesyehu',\ 'n'
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(text,
+      prefix):\n    while text.startswith(prefix):\n        text = text[len(prefix):]
+      or text\n    return text\n\nFind any input such that f(input) == 'dbtdabdahesyehu'.\n\
+      Respond with 'Input: <value>' where <value> is a single-line Python literal.
+      Do not add any other text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: "['r', '9']"
+    id: cruxeval-input/sample_391
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*\['r',\ '9'\]
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(students):\n\
+      \    seatlist = students\n    seatlist.reverse()\n    cnt = 0\n    for cnt in
+      range(len(seatlist)):\n        cnt += 2\n        seatlist[cnt - 1:cnt] = ['+']\n\
+      \    seatlist.append('+')\n    return seatlist\n\nFind any input such that f(input)
+      == ['9', '+', '+', '+'].\nRespond with 'Input: <value>' where <value> is a single-line
+      Python literal. Do not add any other text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: "'1'"
+    id: cruxeval-input/sample_449
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*'1'
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(x):\n\
+      \    n = len(x)\n    i = 0\n    while i < n and x[i].isdigit():\n        i +=
+      1\n    return i == n\n\nFind any input such that f(input) == True.\nRespond
+      with 'Input: <value>' where <value> is a single-line Python literal. Do not
+      add any other text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: "'tezmgvn 651h', '6'"
+    id: cruxeval-input/sample_488
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*'tezmgvn\ 651h',\ '6'
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(text,
+      char):\n    count = text.count(char)\n    chars = list(text)\n    if count >
+      0:\n        index = chars.index(char) + 1\n        chars[:index:index+1] = [c
+      for c in chars[index:index+count:1]]\n    return ''.join(chars)\n\nFind any
+      input such that f(input) == '5ezmgvn 651h'.\nRespond with 'Input: <value>' where
+      <value> is a single-line Python literal. Do not add any other text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: "'Thisisastring'"
+    id: cruxeval-input/sample_326
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*'Thisisastring'
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(text):\n\
+      \    number = 0\n    for t in text:\n        if t.isnumeric():\n           \
+      \ number += 1\n    return number\n\nFind any input such that f(input) == 0.\n\
+      Respond with 'Input: <value>' where <value> is a single-line Python literal.
+      Do not add any other text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: "'1  \\t\\t\\t3'"
+    id: cruxeval-input/sample_438
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*'1\ \ \\t\\t\\t3'
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(string):\n\
+      \    bigTab = 100\n    for i in range(10, 30):\n        if 0 < string.count('\\\
+      t') < 20:\n            bigTab = i\n            break\n    return string.expandtabs(bigTab)\n\
+      \nFind any input such that f(input) == '1                             3'.\n\
+      Respond with 'Input: <value>' where <value> is a single-line Python literal.
+      Do not add any other text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: "'xxjarczx', 'x'"
+    id: cruxeval-input/sample_380
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*'xxjarczx',\ 'x'
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(text,
+      delimiter):\n    text = text.rpartition(delimiter)\n    return text[0] + text[-1]\n\
+      \nFind any input such that f(input) == 'xxjarcz'.\nRespond with 'Input: <value>'
+      where <value> is a single-line Python literal. Do not add any other text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: "'--4/0-209'"
+    id: cruxeval-input/sample_505
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*'\-\-4/0\-209'
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(string):\n\
+      \    while string:\n        if string[-1].isalpha():\n            return string\n\
+      \        string = string[:-1]\n    return string\n\nFind any input such that
+      f(input) == ''.\nRespond with 'Input: <value>' where <value> is a single-line
+      Python literal. Do not add any other text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: '"       "'
+    id: cruxeval-input/sample_110
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*"\ \ \ \ \ \ \ "
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(text):\n\
+      \    a = ['']\n    b = ''\n    for i in text:\n        if not i.isspace():\n\
+      \            a.append(b)\n            b = ''\n        else:\n            b +=
+      i\n    return len(a)\n\nFind any input such that f(input) == 1.\nRespond with
+      'Input: <value>' where <value> is a single-line Python literal. Do not add any
+      other text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: "\"This be Pirate's Speak for 'help'!\", ' '"
+    id: cruxeval-input/sample_285
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*"This\ be\ Pirate's\ Speak\ for\ 'help'!",\ '\ '
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(text,
+      ch):\n    \"\"\"Counting vowels in Pirates' Curse\"\"\"\n    return text.count(ch)\n\
+      \nFind any input such that f(input) == 5.\nRespond with 'Input: <value>' where
+      <value> is a single-line Python literal. Do not add any other text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: '{27:39}, 1'
+    id: cruxeval-input/sample_187
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*\{27:39\},\ 1
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(d, index):\n\
+      \    length = len(d.items())\n    idx = index % length\n    v = d.popitem()[1]\n\
+      \    for _ in range(idx):\n        d.popitem()\n    return v\n\nFind any input
+      such that f(input) == 39.\nRespond with 'Input: <value>' where <value> is a
+      single-line Python literal. Do not add any other text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: (32332, 23543, 132323, 33300), ','
+    id: cruxeval-input/sample_149
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*\(32332,\ 23543,\ 132323,\ 33300\),\ ','
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(tuple_list,
+      joint):\n    string = ''\n    for num in tuple_list:\n        string += dict.fromkeys(str(num),
+      joint * len(str(num))).popitem()[0] + joint\n    return string\n\nFind any input
+      such that f(input) == '2,4,2,0,'.\nRespond with 'Input: <value>' where <value>
+      is a single-line Python literal. Do not add any other text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: '"#! : #!"'
+    id: cruxeval-input/sample_361
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*"\#!\ :\ \#!"
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(text):\n\
+      \    return text.split(':')[0].count('#')\n\nFind any input such that f(input)
+      == 1.\nRespond with 'Input: <value>' where <value> is a single-line Python literal.
+      Do not add any other text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: "'s a a b s d s a a s a a'"
+    id: cruxeval-input/sample_427
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*'s\ a\ a\ b\ s\ d\ s\ a\ a\ s\ a\ a'
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(s):\n\
+      \    count = len(s) - 1\n    reverse_s = s[::-1]\n    while count > 0 and reverse_s[::2].rfind('sea')
+      == -1:\n        count -= 1\n        reverse_s = reverse_s[:count]\n    return
+      reverse_s[count:]\n\nFind any input such that f(input) == ''.\nRespond with
+      'Input: <value>' where <value> is a single-line Python literal. Do not add any
+      other text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: "'no asw', 'j', 1"
+    id: cruxeval-input/sample_255
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*'no\ asw',\ 'j',\ 1
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(text,
+      fill, size):\n    if size < 0:\n        size = -size\n    if len(text) > size:\n\
+      \        return text[len(text) - size:]\n    return text.rjust(size, fill)\n\
+      \nFind any input such that f(input) == 'w'.\nRespond with 'Input: <value>' where
+      <value> is a single-line Python literal. Do not add any other text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: "'the speed is -36 miles per hour'"
+    id: cruxeval-input/sample_518
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*'the\ speed\ is\ \-36\ miles\ per\ hour'
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(text):\n\
+      \    return not text.isdecimal()\n\nFind any input such that f(input) == True.\n\
+      Respond with 'Input: <value>' where <value> is a single-line Python literal.
+      Do not add any other text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: "'some text', 'some'"
+    id: cruxeval-input/sample_176
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*'some\ text',\ 'some'
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(text,
+      to_place):\n    after_place = text[:text.find(to_place, 0) + 1]\n    before_place
+      = text[text.find(to_place, 0) + 1:]\n    return after_place + before_place\n\
+      \nFind any input such that f(input) == 'some text'.\nRespond with 'Input: <value>'
+      where <value> is a single-line Python literal. Do not add any other text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: '"", "sdasdnakjsda80"'
+    id: cruxeval-input/sample_19
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*"",\ "sdasdnakjsda80"
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(x, y):\n\
+      \    tmp = ''.join(['0' if c == '9' else '9' for c in y[::-1]])\n    if (x.isnumeric()
+      and tmp.isnumeric()):\n        return x + tmp\n    else:\n        return x\n\
+      \nFind any input such that f(input) == ''.\nRespond with 'Input: <value>' where
+      <value> is a single-line Python literal. Do not add any other text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: '[5, 8]'
+    id: cruxeval-input/sample_28
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*\[5,\ 8\]
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(mylist):\n\
+      \    revl = mylist[:]\n    revl.reverse()\n    mylist.sort(reverse=True)\n \
+      \   return mylist == revl\n\nFind any input such that f(input) == True.\nRespond
+      with 'Input: <value>' where <value> is a single-line Python literal. Do not
+      add any other text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: "'Manolo'"
+    id: cruxeval-input/sample_227
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*'Manolo'
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(text):\n\
+      \    text = text.lower()\n    head, tail = text[0], text[1:]\n    return head.upper()
+      + tail\n\nFind any input such that f(input) == 'Manolo'.\nRespond with 'Input:
+      <value>' where <value> is a single-line Python literal. Do not add any other
+      text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: '"daaX", "daaX"'
+    id: cruxeval-input/sample_143
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*"daaX",\ "daaX"
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(s, n):\n\
+      \    return s.casefold() == n.casefold()\n\nFind any input such that f(input)
+      == True.\nRespond with 'Input: <value>' where <value> is a single-line Python
+      literal. Do not add any other text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: "'faqo osax f', 'f'"
+    id: cruxeval-input/sample_309
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*'faqo\ osax\ f',\ 'f'
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(text,
+      suffix):\n    text += suffix\n    while text[-len(suffix):] == suffix:\n   \
+      \     text = text[:-1]\n    return text\n\nFind any input such that f(input)
+      == 'faqo osax '.\nRespond with 'Input: <value>' where <value> is a single-line
+      Python literal. Do not add any other text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: "'rvr', 'r'"
+    id: cruxeval-input/sample_580
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*'rvr',\ 'r'
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(text,
+      char):\n    new_text = text\n    a = []\n    while char in new_text:\n     \
+      \   a.append(new_text.index(char))\n        new_text = new_text.replace(char,\"\
+      \",1)\n    return a\n\nFind any input such that f(input) == [0, 1].\nRespond
+      with 'Input: <value>' where <value> is a single-line Python literal. Do not
+      add any other text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: "')'"
+    id: cruxeval-input/sample_215
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*'\)'
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(text):\n\
+      \    new_text = text\n    while len(text) > 1 and text[0] == text[-1]:\n   \
+      \     new_text = text = text[1:-1]\n    return new_text\n\nFind any input such
+      that f(input) == ')'.\nRespond with 'Input: <value>' where <value> is a single-line
+      Python literal. Do not add any other text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: '"987yhNSHAshd 93275yrgSgbgSshfbsfB"'
+    id: cruxeval-input/sample_113
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*"987yhNSHAshd\ 93275yrgSgbgSshfbsfB"
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(line):\n\
+      \    count = 0\n    a = []\n    for i in range(len(line)):\n        count +=
+      1\n        if count%2==0:\n            a.append(line[i].swapcase())\n      \
+      \  else:\n            a.append(line[i])\n    return ''.join(a)\n\nFind any input
+      such that f(input) == '987YhnShAShD 93275yRgsgBgssHfBsFB'.\nRespond with 'Input:
+      <value>' where <value> is a single-line Python literal. Do not add any other
+      text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: "'qpfi jzm', 'j'"
+    id: cruxeval-input/sample_501
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*'qpfi\ jzm',\ 'j'
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(text,
+      char):\n    index = text.rindex(char)\n    result = list(text)\n    while index
+      > 0:\n        result[index] = result[index-1]\n        result[index-1] = char\n\
+      \        index -= 2\n    return ''.join(result)\n\nFind any input such that
+      f(input) == 'jqjfj zm'.\nRespond with 'Input: <value>' where <value> is a single-line
+      Python literal. Do not add any other text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: "'Hello World', 'W'"
+    id: cruxeval-input/sample_411
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*'Hello\ World',\ 'W'
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(text,
+      pref):\n    if isinstance(pref, list):\n        return ', '.join(text.startswith(x)
+      for x in pref)\n    else:\n        return text.startswith(pref)\n\nFind any
+      input such that f(input) == False.\nRespond with 'Input: <value>' where <value>
+      is a single-line Python literal. Do not add any other text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: 7, 5
+    id: cruxeval-input/sample_582
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*7,\ 5
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(k, j):\n\
+      \    arr = []\n    for i in range(k):\n        arr.append(j)\n    return arr\n\
+      \nFind any input such that f(input) == [5, 5, 5, 5, 5, 5, 5].\nRespond with
+      'Input: <value>' where <value> is a single-line Python literal. Do not add any
+      other text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: 0, ['aaa', 'bbb']
+    id: cruxeval-input/sample_402
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*0,\ \['aaa',\ 'bbb'\]
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(n, l):\n\
+      \    archive = {}\n    for _ in range(n):\n        archive.clear()\n       \
+      \ archive.update({x + 10: x * 10 for x in l})\n    return archive\n\nFind any
+      input such that f(input) == {}.\nRespond with 'Input: <value>' where <value>
+      is a single-line Python literal. Do not add any other text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: "'urecord', 8"
+    id: cruxeval-input/sample_313
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*'urecord',\ 8
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(s, l):\n\
+      \    return s.ljust(l, '=').rpartition('=')[0]\n\nFind any input such that f(input)
+      == 'urecord'.\nRespond with 'Input: <value>' where <value> is a single-line
+      Python literal. Do not add any other text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: 1, 3
+    id: cruxeval-input/sample_431
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*1,\ 3
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(n, m):\n\
+      \    arr = list(range(1, n+1))\n    for i in range(m):\n        arr.clear()\n\
+      \    return arr\n\nFind any input such that f(input) == [].\nRespond with 'Input:
+      <value>' where <value> is a single-line Python literal. Do not add any other
+      text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: "{}, {'foo': 'bar'}"
+    id: cruxeval-input/sample_11
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*\{\},\ \{'foo':\ 'bar'\}
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(a, b):\n\
+      \    for key, value in b.items():\n        if key not in a:\n            a[key]
+      = [value]\n        else:\n            a[key].append(value)\n    return a\n\n\
+      Find any input such that f(input) == {'foo': ['bar']}.\nRespond with 'Input:
+      <value>' where <value> is a single-line Python literal. Do not add any other
+      text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: '44'
+    id: cruxeval-input/sample_497
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*44
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(n):\n\
+      \    b = list(str(n))\n    for i in range(2,len(b)): b[i] += '+'\n    return
+      b\n\nFind any input such that f(input) == ['4', '4'].\nRespond with 'Input:
+      <value>' where <value> is a single-line Python literal. Do not add any other
+      text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: "'I am hungry! eat food.'"
+    id: cruxeval-input/sample_400
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*'I\ am\ hungry!\ eat\ food\.'
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(multi_string):\n\
+      \    cond_string = map(str.isascii, multi_string.split())\n    if True in cond_string:\n\
+      \        return ', '.join(x for x in multi_string.split() if x.isascii())\n\
+      \    return ''\n\nFind any input such that f(input) == 'I, am, hungry!, eat,
+      food.'.\nRespond with 'Input: <value>' where <value> is a single-line Python
+      literal. Do not add any other text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: '["La", "Q", "9", "La", "La"]'
+    id: cruxeval-input/sample_308
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*\["La",\ "Q",\ "9",\ "La",\ "La"\]
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(strings):\n\
+      \    occurances = {}\n    for string in strings:\n        if string not in occurances:\n\
+      \            occurances[string] = strings.count(string)\n    return occurances\n\
+      \nFind any input such that f(input) == {'La': 3, 'Q': 1, '9': 1}.\nRespond with
+      'Input: <value>' where <value> is a single-line Python literal. Do not add any
+      other text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+  - expected_output: "'new-medium-performing-application - XQuery 2.2', '0123456789-'"
+    id: cruxeval-input/sample_23
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: Input:\s*'new\-medium\-performing\-application\ \-\ XQuery\ 
+            2\.2',\ '0123456789\-'
+    prompt: "You will be given a Python function and a target output. Find any input
+      that, when passed to the function, produces the target output.\n\ndef f(text,
+      chars):\n    if chars:\n        text = text.rstrip(chars)\n    else:\n     \
+      \   text = text.rstrip(' ')\n    if text == '':\n        return '-'\n    return
+      text\n\nFind any input such that f(input) == 'new-medium-performing-application
+      - XQuery 2.'.\nRespond with 'Input: <value>' where <value> is a single-line
+      Python literal. Do not add any other text."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - cruxeval
+      - input-prediction
+      - code-reasoning
+    temperature: null
+version: '1.0'

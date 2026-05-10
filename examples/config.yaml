@@ -1,0 +1,16 @@
+ollama_base_url: http://localhost:11434
+suites_dir: examples/suites
+output_dir: examples/runs
+log_level: info
+dataset_mode: local
+run:
+  models:
+    - llama3:8b
+  suites:
+    - reasoning-basics
+  repetitions: 1
+  concurrency: 1
+  pull_missing_models: false
+  retry_max_attempts: 2
+  tag_filter: []
+  ollama_timeout_s: 120.0

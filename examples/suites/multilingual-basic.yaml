@@ -1,0 +1,95 @@
+name: multilingual-basic
+version: '1.0'
+description: >
+  Same simple factual question in several languages. Tests whether the
+  model understands non-English prompts and can respond in the requested
+  language.
+defaults:
+  temperature: 0.0
+  max_tokens: 128
+  stop_sequences: []
+test_cases:
+  - id: french-capital
+    prompt: "Quelle est la capitale de la France ? Réponds seulement par le nom de la ville."
+    expected_output: "Paris"
+    tags: [multilingual, fr]
+    metrics:
+      - name: contains
+        params:
+          substrings: ["Paris"]
+          mode: any
+  - id: spanish-capital
+    prompt: "¿Cuál es la capital de España? Responde solo con el nombre de la ciudad."
+    expected_output: "Madrid"
+    tags: [multilingual, es]
+    metrics:
+      - name: contains
+        params:
+          substrings: ["Madrid"]
+          mode: any
+  - id: german-capital
+    prompt: "Was ist die Hauptstadt von Deutschland? Antworte nur mit dem Stadtnamen."
+    expected_output: "Berlin"
+    tags: [multilingual, de]
+    metrics:
+      - name: contains
+        params:
+          substrings: ["Berlin"]
+          mode: any
+  - id: chinese-capital
+    prompt: "中国的首都是哪里?请只回答城市名称。"
+    expected_output: "北京"
+    tags: [multilingual, zh]
+    metrics:
+      - name: contains
+        params:
+          substrings: ["北京", "Beijing"]
+          mode: any
+  - id: japanese-capital
+    prompt: "日本の首都はどこですか?都市名だけで答えてください。"
+    expected_output: "東京"
+    tags: [multilingual, ja]
+    metrics:
+      - name: contains
+        params:
+          substrings: ["東京", "Tokyo"]
+          mode: any
+  - id: korean-capital
+    prompt: "한국의 수도는 어디입니까? 도시 이름만 답하세요."
+    expected_output: "서울"
+    tags: [multilingual, ko]
+    metrics:
+      - name: contains
+        params:
+          substrings: ["서울", "Seoul"]
+          mode: any
+  - id: french-count
+    prompt: "Combien font 5 + 7 ? Réponds uniquement avec le nombre."
+    expected_output: "12"
+    tags: [multilingual, fr, math]
+    metrics:
+      - name: regex-match
+        params:
+          pattern: '\b12\b'
+  - id: chinese-color
+    prompt: "血液的颜色是什么?请只回答一个颜色。"
+    tags: [multilingual, zh, factual]
+    metrics:
+      - name: contains
+        params:
+          substrings: ["红", "红色", "红的", "Red", "red"]
+          mode: any
+  - id: translate-en-to-fr
+    prompt: "Translate the following English sentence into French, response in French only: 'The book is on the table.'"
+    tags: [multilingual, translation]
+    metrics:
+      - name: regex-match
+        params:
+          pattern: '(?i)(?:le\s+livre).+(?:sur\s+la\s+table)'
+  - id: translate-en-to-zh
+    prompt: "Translate the following English sentence into Simplified Chinese, response in Chinese only: 'I like apples.'"
+    tags: [multilingual, translation]
+    metrics:
+      - name: regex-match
+        params:
+          pattern: '(?:我).{0,4}(?:喜欢|爱).{0,4}(?:苹果)'

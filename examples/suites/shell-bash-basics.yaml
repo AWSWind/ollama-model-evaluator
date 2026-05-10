@@ -1,0 +1,192 @@
+defaults:
+  max_tokens: 256
+  stop_sequences: []
+  temperature: 0.0
+description: 10 hand-authored Bash one-liners covering listing, searching, file 
+  mgmt, process mgmt, and formatted output. Metrics match the canonical command 
+  shape; minor style variants may miss.
+name: shell-bash-basics
+test_cases:
+  - expected_output: null
+    id: bash-basics/01
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          flags: m
+          pattern: ^\s*ls\b(?!.*-[a-zA-Z]*a)
+    prompt: Write a single-line bash command that prints every non-hidden file 
+      in the current directory, one per line. Respond with the command only — no
+      commentary, no backticks, no trailing explanation.
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - bash
+      - shell
+      - code
+    temperature: null
+  - expected_output: null
+    id: bash-basics/02
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: wc\s+-l\s+/var/log/syslog
+    prompt: Write a single-line bash command that counts the number of lines in 
+      the file /var/log/syslog. Respond with the command only.
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - bash
+      - shell
+      - code
+    temperature: null
+  - expected_output: null
+    id: bash-basics/03
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          flags: i
+          pattern: grep\s+(?:.*-r|.*--recursive).*TODO|rg\s+.*TODO.*--?type\s+py
+    prompt: Write a single-line bash command that searches every *.py file under
+      the current directory recursively for the word TODO, printing the filename
+      and line. Respond with the command only.
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - bash
+      - shell
+      - code
+    temperature: null
+  - expected_output: null
+    id: bash-basics/04
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: 
+            find\s+/var/log.*-name\s+['\"]?\*\.log['\"]?.*-mtime\s+(?:-1|0)
+    prompt: Write a single-line bash command that finds every file named *.log 
+      modified in the last 24 hours under /var/log and prints their paths. 
+      Respond with the command only.
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - bash
+      - shell
+      - code
+    temperature: null
+  - expected_output: null
+    id: bash-basics/05
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: head\s+(?:-n\s+)?10\s+access\.log
+    prompt: Write a single-line bash command that prints the first 10 lines of 
+      access.log in the current directory. Respond with the command only.
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - bash
+      - shell
+      - code
+    temperature: null
+  - expected_output: null
+    id: bash-basics/06
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: 
+            (?:du\s+.*-a.*\|\s*sort.*-n.*\|\s*(?:tail|head))|(?:find\s+\..*-printf.*\|\s*sort.*\|\s*(?:head|tail))
+    prompt: Write a single-line bash command that lists the top 5 largest files 
+      under the current directory (recursive), sorted by size descending. 
+      Respond with the command only.
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - bash
+      - shell
+      - code
+    temperature: null
+  - expected_output: null
+    id: bash-basics/07
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: 
+            (?:pkill\s+(?:-f\s+)?uvicorn|(?:ps.*\|\s*grep.*uvicorn.*\|\s*(?:awk|xargs).*kill))
+    prompt: Write a single-line bash command that kills every process whose name
+      contains 'uvicorn'. Respond with the command only.
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - bash
+      - shell
+      - code
+    temperature: null
+  - expected_output: null
+    id: bash-basics/08
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: du\s+(?:.*-h.*-s|.*-sh)\s+/home/\*\s*\|\s*sort\s+-h(?:r|.*-r)
+    prompt: Write a single-line bash command that shows disk usage of every 
+      top-level directory under /home, sorted from largest to smallest, 
+      human-readable. Respond with the command only.
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - bash
+      - shell
+      - code
+    temperature: null
+  - expected_output: null
+    id: bash-basics/09
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          flags: i
+          pattern: for\s+f\s+in.*\*\.jpeg|rename\s+.*jpeg.*jpg|mmv.*jpeg.*jpg
+    prompt: Write a single-line bash command that renames every *.jpeg file in 
+      the current directory to use a *.jpg extension. Respond with the command 
+      only.
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - bash
+      - shell
+      - code
+    temperature: null
+  - expected_output: null
+    id: bash-basics/10
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: date\s+(?:\+%Y|\+\"%Y\"|\+'%Y')
+    prompt: Write a single-line bash command that prints the current year (just 
+      the 4-digit year). Respond with the command only.
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - bash
+      - shell
+      - code
+    temperature: null
+version: '1.0'

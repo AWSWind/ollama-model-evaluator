@@ -1,0 +1,108 @@
+name: reasoning-advanced
+version: '1.0'
+description: >
+  Logic puzzles, deductive chains, and short multi-step reasoning.
+  Each prompt asks for a "Final answer:" line so the regex metric can
+  anchor without depending on surrounding text.
+defaults:
+  temperature: 0.0
+  max_tokens: 512
+  stop_sequences: []
+test_cases:
+  - id: syllogism
+    prompt: |
+      All cats are mammals. All mammals are warm-blooded.
+      Is the following true or false: "All cats are warm-blooded"?
+      Answer as "Final answer: true" or "Final answer: false".
+    expected_output: "true"
+    tags: [logic, syllogism]
+    metrics:
+      - name: regex-match
+        params:
+          pattern: 'Final answer:\s*true\b'
+          flags: i
+  - id: false-syllogism
+    prompt: |
+      Some birds can fly. Penguins are birds. Is it necessarily true that
+      "penguins can fly"?
+      Answer as "Final answer: true" or "Final answer: false".
+    expected_output: "false"
+    tags: [logic, syllogism]
+    metrics:
+      - name: regex-match
+        params:
+          pattern: 'Final answer:\s*false\b'
+          flags: i
+  - id: ages-puzzle
+    prompt: |
+      Ann is twice as old as Bob, and Bob is 3 years older than Carol. If Carol
+      is 7, how old is Ann? Answer as "Final answer: <number>".
+    expected_output: "20"
+    tags: [reasoning, arithmetic]
+    metrics:
+      - name: regex-match
+        params:
+          pattern: 'Final answer:\s*20\b'
+          flags: i
+  - id: sock-drawer
+    prompt: |
+      A drawer contains 10 black socks and 10 white socks, randomly mixed.
+      What is the minimum number of socks you must pull out (without looking)
+      to guarantee at least one matching pair?
+      Answer as "Final answer: <number>".
+    expected_output: "3"
+    tags: [reasoning, pigeonhole]
+    metrics:
+      - name: regex-match
+        params:
+          pattern: 'Final answer:\s*3\b'
+          flags: i
+  - id: racing-positions
+    prompt: |
+      In a race, you overtake the second-place runner. What position are you
+      in now? Answer as "Final answer: <ordinal>".
+    expected_output: "second"
+    tags: [reasoning, trick]
+    metrics:
+      - name: regex-match
+        params:
+          pattern: 'Final answer:\s*(?:second|2nd)\b'
+          flags: i
+  - id: river-crossing-count
+    prompt: |
+      A farmer must cross a river with a wolf, a goat, and a cabbage. The boat
+      can carry the farmer and only one of the three at a time. The wolf cannot
+      be left alone with the goat, and the goat cannot be left alone with the
+      cabbage. What is the minimum number of one-way boat trips the farmer
+      must make? Answer as "Final answer: <number>".
+    expected_output: "7"
+    tags: [reasoning, puzzle]
+    metrics:
+      - name: regex-match
+        params:
+          pattern: 'Final answer:\s*7\b'
+          flags: i
+  - id: knights-and-knaves
+    prompt: |
+      On an island every inhabitant is either a knight (always tells the truth)
+      or a knave (always lies). You meet A who says: "I am a knave."
+      Is A a knight, a knave, or is the statement a contradiction?
+      Answer as "Final answer: <knight|knave|contradiction>".
+    expected_output: "contradiction"
+    tags: [logic, self-reference]
+    metrics:
+      - name: regex-match
+        params:
+          pattern: 'Final answer:\s*(?:contradiction|paradox|impossible)\b'
+          flags: i
+  - id: clock-angle
+    prompt: |
+      What is the angle in degrees between the hour hand and the minute hand
+      of an analogue clock at exactly 3:00? Answer as "Final answer: <number>".
+    expected_output: "90"
+    tags: [reasoning, geometry]
+    metrics:
+      - name: regex-match
+        params:
+          pattern: 'Final answer:\s*90\b'
+          flags: i

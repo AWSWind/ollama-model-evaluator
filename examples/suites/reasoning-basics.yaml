@@ -1,0 +1,32 @@
+name: reasoning-basics
+version: '1.0'
+description: Tiny smoke suite for the Ollama Model Evaluator
+defaults:
+  temperature: 0.0
+  max_tokens: 512
+  stop_sequences: []
+test_cases:
+  - id: arithmetic-simple
+    prompt: "What is 2 + 2? Answer with just the number."
+    expected_output: "4"
+    tags: [math]
+    metrics:
+      - name: regex-match
+        params:
+          pattern: "\\b4\\b"
+  - id: capital-of-france
+    prompt: "What is the capital of France? Answer with just the city name."
+    expected_output: "Paris"
+    tags: [geography]
+    metrics:
+      - name: contains
+        params:
+          substrings: ["Paris"]
+          mode: any
+  - id: python-syntax
+    prompt: "Write a Python one-liner that returns the square of 5. Respond with code only."
+    tags: [code]
+    metrics:
+      - name: regex-match
+        params:
+          pattern: "25"

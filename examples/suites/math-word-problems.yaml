@@ -1,0 +1,123 @@
+name: math-word-problems
+version: '1.0'
+description: >
+  Multi-step arithmetic, percentages, unit conversions, and algebra.
+  Uses numeric regex anchors so valid answers pass whether or not the
+  model includes reasoning steps.
+defaults:
+  temperature: 0.0
+  max_tokens: 512
+  stop_sequences: []
+test_cases:
+  - id: apples-and-oranges
+    prompt: |
+      Sarah has 12 apples. She gives 3 apples to her friend and buys 7 more.
+      How many apples does she have now?
+      Put your final answer on a new line as: "Final answer: <number>".
+    expected_output: "16"
+    tags: [arithmetic, word]
+    metrics:
+      - name: regex-match
+        params:
+          pattern: 'Final answer:\s*16\b'
+          flags: i
+  - id: train-speed-time
+    prompt: |
+      A train travels 240 km in 3 hours at constant speed. What is its speed
+      in km per hour? Respond with "Final answer: <number>" on its own line.
+    expected_output: "80"
+    tags: [arithmetic, rates]
+    metrics:
+      - name: regex-match
+        params:
+          pattern: 'Final answer:\s*80\b'
+          flags: i
+  - id: percentage-tip
+    prompt: |
+      A restaurant bill is $45.00. If you leave a 20% tip, what is the total
+      amount paid? Answer as "Final answer: $<number>".
+    expected_output: "54"
+    tags: [percentage, money]
+    metrics:
+      - name: regex-match
+        params:
+          pattern: 'Final answer:\s*\$?54(?:\.00)?\b'
+          flags: i
+  - id: compound-discount
+    prompt: |
+      A shirt costs $80. There is a 25% discount. What is the sale price?
+      Answer as "Final answer: $<number>".
+    expected_output: "60"
+    tags: [percentage, money]
+    metrics:
+      - name: regex-match
+        params:
+          pattern: 'Final answer:\s*\$?60(?:\.00)?\b'
+          flags: i
+  - id: rectangle-area
+    prompt: |
+      A rectangle has length 12 meters and width 5 meters. What is its area
+      in square meters? Answer as "Final answer: <number>".
+    expected_output: "60"
+    tags: [geometry]
+    metrics:
+      - name: regex-match
+        params:
+          pattern: 'Final answer:\s*60\b'
+          flags: i
+  - id: age-problem
+    prompt: |
+      Alice is 3 times as old as her brother Bob. In 5 years, she will be twice
+      as old as Bob. How old is Bob now? Answer as "Final answer: <number>".
+    expected_output: "5"
+    tags: [algebra, word]
+    metrics:
+      - name: regex-match
+        params:
+          pattern: 'Final answer:\s*5\b'
+          flags: i
+  - id: linear-equation
+    prompt: |
+      Solve for x: 3x + 7 = 22. Answer as "Final answer: x = <number>".
+    expected_output: "5"
+    tags: [algebra]
+    metrics:
+      - name: regex-match
+        params:
+          pattern: 'Final answer:\s*x\s*=\s*5\b'
+          flags: i
+  - id: unit-conversion
+    prompt: |
+      How many minutes are there in 3 hours and 45 minutes?
+      Answer as "Final answer: <number>".
+    expected_output: "225"
+    tags: [conversion]
+    metrics:
+      - name: regex-match
+        params:
+          pattern: 'Final answer:\s*225\b'
+          flags: i
+  - id: probability-coin
+    prompt: |
+      A fair coin is flipped 3 times. What is the probability of getting
+      exactly 2 heads? Express as a fraction in lowest terms.
+      Answer as "Final answer: <fraction>".
+    expected_output: "3/8"
+    tags: [probability]
+    metrics:
+      - name: regex-match
+        params:
+          pattern: 'Final answer:\s*3\s*/\s*8\b'
+          flags: i
+  - id: multi-step
+    prompt: |
+      A shop sold 12 cakes on Monday, twice as many on Tuesday, and 5 fewer on
+      Wednesday than on Tuesday. How many cakes did the shop sell in total
+      across the three days? Answer as "Final answer: <number>".
+    expected_output: "55"
+    tags: [arithmetic, multistep]
+    metrics:
+      - name: regex-match
+        params:
+          pattern: 'Final answer:\s*55\b'
+          flags: i

@@ -1,0 +1,110 @@
+name: llm-as-judge-general
+version: '1.0'
+description: >
+  Open-ended answers graded by a judge model (configured at run time via
+  RunConfig.judge_model). The judge returns "Score: X/Y" which the
+  llm-as-judge metric normalises to X/Y in [0, 1].
+
+  Run this suite with --judge-model <some-model> or set judge_model in
+  the run config. Good judge choices are the larger Qwen variants
+  available on .224, e.g. qwen3.5:35b-a3b or qwen3.6:27b.
+defaults:
+  temperature: 0.3
+  max_tokens: 512
+  stop_sequences: []
+test_cases:
+  - id: explain-quantum-to-child
+    prompt: "Explain what a computer does in two sentences a seven-year-old would understand."
+    tags: [llm-judge, explanation]
+    metrics:
+      - name: llm-as-judge
+        params:
+          rubric: |
+            You are scoring an answer that explains what a computer does to a 7-year-old.
+            A good answer:
+              - is at most two sentences;
+              - uses simple words a child would understand (no jargon such as
+                "processor", "memory", "algorithm");
+              - gives a correct high-level idea (takes input, does something useful,
+                shows output).
+            Return a single line: "Score: X/10" where 10 means excellent and 0 means wrong or inappropriate.
+  - id: short-limerick
+    prompt: "Write a short, family-friendly limerick about a cat who loves pizza."
+    tags: [llm-judge, creative]
+    metrics:
+      - name: llm-as-judge
+        params:
+          rubric: |
+            Score a limerick about a cat who loves pizza.
+            A limerick has 5 lines with an AABBA rhyme scheme.
+            Also check:
+              - lines 1, 2, 5 rhyme with each other;
+              - lines 3, 4 rhyme with each other;
+              - it is family-friendly;
+              - it references a cat AND pizza.
+            Return a single line: "Score: X/10".
+  - id: recipe-summary
+    prompt: |
+      In 3 bullet points, summarise how to make a basic tomato pasta sauce.
+      Each bullet should be a single imperative sentence.
+    tags: [llm-judge, instructions]
+    metrics:
+      - name: llm-as-judge
+        params:
+          rubric: |
+            Score a 3-bullet summary of how to make a basic tomato pasta sauce.
+            Required: exactly 3 bullets; each bullet is a single imperative
+            sentence (starts with a verb); covers the essential steps (sautee
+            aromatics, add tomatoes, simmer/season). Deduct for missing steps,
+            extra or fewer bullets, or non-imperative phrasing.
+            Return a single line: "Score: X/10".
+  - id: code-explainer
+    prompt: |
+      Explain in plain English what this Python function does:
+
+      def mystery(xs):
+          return [x for x in xs if x > 0]
+
+      Reply with one short paragraph.
+    tags: [llm-judge, code-explanation]
+    metrics:
+      - name: llm-as-judge
+        params:
+          rubric: |
+            Score a plain-English explanation of a Python list comprehension that
+            keeps positive numbers from an input list.
+            A good answer conveys:
+              - the function takes a list / iterable;
+              - it returns only the elements that are positive (greater than zero);
+              - it uses a list comprehension (or equivalent concept).
+            Answers that are accurate but too long, or short but missing a key point,
+            score in the middle. Incorrect answers score low.
+            Return a single line: "Score: X/10".
+  - id: polite-rejection
+    prompt: |
+      Write a polite 2-sentence decline to a meeting invitation. Offer an
+      alternative time.
+    tags: [llm-judge, writing]
+    metrics:
+      - name: llm-as-judge
+        params:
+          rubric: |
+            Score a 2-sentence polite decline to a meeting invitation that
+            offers an alternative time.
+            Required: exactly 2 sentences; polite tone; clear decline; proposes
+            an alternative time. Deduct for rudeness, missing alternative time,
+            or wrong sentence count.
+            Return a single line: "Score: X/10".
+  - id: pros-cons
+    prompt: "List three pros and three cons of remote work. Use two short bullet lists labelled 'Pros:' and 'Cons:'."
+    tags: [llm-judge, structured]
+    metrics:
+      - name: llm-as-judge
+        params:
+          rubric: |
+            Score a pros-vs-cons summary for remote work.
+            Required: an explicit "Pros:" section with 3 bullets and a
+            "Cons:" section with 3 bullets. Each bullet should be a coherent,
+            relevant point. Deduct for missing labels, wrong counts, duplicate
+            or incoherent bullets.
+            Return a single line: "Score: X/10".

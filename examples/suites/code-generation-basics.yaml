@@ -1,0 +1,90 @@
+name: code-generation-basics
+version: '1.0'
+description: >
+  Basic Python code generation — one-liners and small functions.
+  Metrics look for syntactic markers (keywords, operators) that a
+  correct solution is very likely to contain. Not a substitute for
+  executing the code; for that, use the humaneval adapter.
+defaults:
+  temperature: 0.0
+  max_tokens: 384
+  stop_sequences: []
+test_cases:
+  - id: square-one-liner
+    prompt: "Write a Python lambda that returns the square of 5. Respond with code only, no commentary."
+    tags: [python, one-liner]
+    metrics:
+      - name: regex-match
+        params:
+          pattern: 'lambda[^:]*:\s*[^*]*(?:\*\*\s*2|\*\s*5|25)'
+  - id: sum-list
+    prompt: "Write a Python function called total that takes a list of numbers and returns their sum. Respond with code only."
+    tags: [python, function]
+    metrics:
+      - name: regex-match
+        params:
+          pattern: 'def\s+total\s*\([^)]*\)\s*:'
+      - name: contains
+        params:
+          substrings: ["sum("]
+          mode: any
+  - id: fizzbuzz
+    prompt: |
+      Write a Python function fizzbuzz(n) that returns a list of strings for i in 1..n:
+      "Fizz" if divisible by 3, "Buzz" if divisible by 5, "FizzBuzz" if both, otherwise str(i).
+      Respond with code only.
+    tags: [python, classic]
+    metrics:
+      - name: regex-match
+        params:
+          pattern: 'def\s+fizzbuzz\s*\([^)]*\)\s*:'
+      - name: contains
+        params:
+          substrings: ["FizzBuzz", "Fizz", "Buzz"]
+          mode: all
+  - id: is-palindrome
+    prompt: "Write a Python function is_palindrome(s) that returns True iff s reads the same forwards and backwards. Respond with code only."
+    tags: [python, string]
+    metrics:
+      - name: regex-match
+        params:
+          pattern: 'def\s+is_palindrome\s*\([^)]*\)\s*:'
+      - name: regex-match
+        params:
+          pattern: '\[\s*::\s*-1\s*\]|reversed\s*\('
+  - id: reverse-string
+    prompt: "Write a Python one-liner that reverses the string 'hello'. Respond with code only."
+    tags: [python, string, one-liner]
+    metrics:
+      - name: regex-match
+        params:
+          pattern: "['\"]hello['\"]\\s*\\[\\s*::\\s*-1\\s*\\]|''.join\\(reversed\\(['\"]hello['\"]\\)\\)"
+  - id: factorial-recursive
+    prompt: "Write a Python function factorial(n) using recursion. Respond with code only."
+    tags: [python, recursion]
+    metrics:
+      - name: regex-match
+        params:
+          pattern: 'def\s+factorial\s*\(\s*n\s*\)\s*:'
+      - name: contains
+        params:
+          substrings: ["factorial(n - 1)", "factorial(n-1)"]
+          mode: any
+  - id: read-file
+    prompt: "Write a Python snippet that reads the file 'data.txt' and prints each line. Respond with code only."
+    tags: [python, io]
+    metrics:
+      - name: regex-match
+        params:
+          pattern: "open\\(\\s*['\"]data\\.txt['\"]"
+      - name: contains
+        params:
+          substrings: ["for", "print"]
+          mode: all
+  - id: dict-comprehension
+    prompt: "Using a Python dict comprehension, build a dictionary mapping integers 1..5 to their squares. Respond with code only."
+    tags: [python, comprehension]
+    metrics:
+      - name: regex-match
+        params:
+          pattern: '\{\s*[^}]*for\s+\w+\s+in\s+range\s*\(\s*1\s*,\s*6\s*\)\s*\}'

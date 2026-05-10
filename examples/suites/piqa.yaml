@@ -1,0 +1,5590 @@
+defaults:
+  max_tokens: 128
+  stop_sequences: []
+  temperature: 0.0
+description: "Physical Interaction QA: 'A vs B' commonsense about how everyday physical
+  tasks work. Probes whether the model has grounded everyday-world knowledge."
+name: piqa
+test_cases:
+  - expected_output: A
+    id: piqa/0
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Goal: To prepare a loaf pan for Blueberry Lemon Financiers.\nA) Grease
+      and flour a six-cavity mini loaf pan or a standard 12-cavity muffin pan.\nB)
+      Grease and sugar a six-cavity mini loaf pan or a standard 12-cavity muffin pan.\n\
+      Which solution (A or B) achieves the goal? Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: B
+    id: piqa/1
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Goal: how do you buckle down on something?\nA) leave it alone.\nB) concentrate
+      on nothing else.\nWhich solution (A or B) achieves the goal? Answer with a single
+      letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: B
+    id: piqa/2
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Goal: How do you organize dirty clothes?\nA) Keep them in a pile in the
+      corner of your room so you always have access to them.\nB) Keep them in hampers,
+      split if certain colors are washed separately.\nWhich solution (A or B) achieves
+      the goal? Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: B
+    id: piqa/3
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Goal: Use peroxide to lighten hair\nA) Put peroxide on the parts of your
+      hair that you want to lighten. Leave on overnight or longer for best results\n\
+      B) Put peroxide on the parts of your hair that you want to lighten. Wait 30
+      minutes and rinse.\nWhich solution (A or B) achieves the goal? Answer with a
+      single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: B
+    id: piqa/4
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Goal: microscope\nA) Can be made from drawer alone\nB) can enlarge drawer
+      when lit\nWhich solution (A or B) achieves the goal? Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: B
+    id: piqa/5
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Goal: To increase the flavor intensity in a pot of soup,\nA) add extra
+      water to the pot at the end.\nB) cook without a lid so that the water evaporates.\n\
+      Which solution (A or B) achieves the goal? Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: B
+    id: piqa/6
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Goal: How do I prevent my muscles from getting sore after lifting weights
+      or exercise?\nA) After exercising or lifting weights extensively, apply a topical
+      analgesic to the parts of the body you were training. Also apply an ice pack
+      if needed to reduce swelling.\nB) When exercising or lifting weights, drink
+      plenty of water. Being dehydrated increases the chances of pulling a muscle,
+      or becoming sore after the exercise.\nWhich solution (A or B) achieves the goal?
+      Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: B
+    id: piqa/7
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Goal: Ingredients for strawberry glaze sauce.\nA) 1 pound (450 g) of
+      strawberries, 1/3 cup (67 g) of molasses sugar and 1 tablespoon (15 ml) of lemon
+      juice.\nB) 1 pound (450 g) of strawberries, 1/3 cup (67 g) of granulated sugar
+      and 1 tablespoon (15 ml) of lemon juice.\nWhich solution (A or B) achieves the
+      goal? Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: B
+    id: piqa/8
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Goal: Mold and shape eyeglasses.\nA) Heat up with hot iron to mold.\n\
+      B) Heat up with hair dryer to mold.\nWhich solution (A or B) achieves the goal?
+      Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: A
+    id: piqa/9
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Goal: my eggs are almost expired, do I have to toss them?\nA) crack,
+      and freeze in plastic bags.\nB) bake the eggs whole in their shells for six
+      hours, and freeze.\nWhich solution (A or B) achieves the goal? Answer with a
+      single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: A
+    id: piqa/10
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Goal: How to grow a new grapevine using cuttings.\nA) In the fall, snip
+      off the dormant vines in pieces about 3 feet long. You need 4 buds for every
+      piece that you cut. Leave the green or wet parts alone at the bottom of the
+      plant. Let the cuttings dry over the winter, and in the spring place them in
+      the soil with 3 buds in the soil and the top bud above the soil, and they will
+      germinate again.\nB) In the spring, snip off the dormant vines in pieces about
+      3 feet long. You need 4 buds for every piece that you cut. Leave the green or
+      wet parts alone at the bottom of the plant. This will release new growth until
+      the next winter, when you can cut them back again. Each cutting will produce
+      a new plant that will germinate again.\nWhich solution (A or B) achieves the
+      goal? Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: A
+    id: piqa/11
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Goal: Prepare clay for a kiln\nA) Allow clay to dry completely then take
+      a damp smooth sponge and smooth away imperfections\nB) Soak clay in water then
+      take a damp smooth sponge and smooth away imperfections\nWhich solution (A or
+      B) achieves the goal? Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: A
+    id: piqa/12
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Goal: To discourage house flies from living in your home,\nA) keep basil
+      plants in the kitchen or windows.\nB) keep lavender plants in the kitchen or
+      window.\nWhich solution (A or B) achieves the goal? Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: B
+    id: piqa/13
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Goal: How do you separate the yolk from the egg white?\nA) Crack the
+      egg and split the shell in quarters.  Gently pass the yolk back and forth between
+      the shell quarters until the egg white is removed.\nB) Crack the egg and split
+      the shell in half.  Gently pass the yolk back and forth between the shell halves
+      until the egg white is removed.\nWhich solution (A or B) achieves the goal?
+      Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: A
+    id: piqa/14
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Goal: Organize small item supplies.\nA) Clean out tuna fish cans and
+      place inside drawers.\nB) Clean out soda cans and place inside drawers.\nWhich
+      solution (A or B) achieves the goal? Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: B
+    id: piqa/15
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Goal: how to remove collar stains\nA) use a facial mask for oily hair\n\
+      B) use a shampoo for oily hair\nWhich solution (A or B) achieves the goal? Answer
+      with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: B
+    id: piqa/16
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Goal: To reduce the volume of the sounds that can be heard through a
+      wall,\nA) turn on loud devices outside the room to muffle the volume from the
+      room.\nB) place egg cartons on the wall to muffle the sounds in the room.\n\
+      Which solution (A or B) achieves the goal? Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: A
+    id: piqa/17
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Goal: piece of nylon pantyhose\nA) cover face \nB) cover building \n\
+      Which solution (A or B) achieves the goal? Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: B
+    id: piqa/18
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Goal: How to use an earth magnet to find a stud in the wall.\nA) Slide
+      it over the wall until it sticks. It finds the screws that attach the drywall
+      to the clamps.\nB) Slide it over the wall until it sticks. It finds the screws
+      that attach the drywall to the studs.\nWhich solution (A or B) achieves the
+      goal? Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: B
+    id: piqa/19
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Goal: To save cookie dough to use at a later date, you can\nA) Store
+      it in the oven until you need it again\nB) Store it in the refrigerator until
+      you need it again\nWhich solution (A or B) achieves the goal? Answer with a
+      single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: B
+    id: piqa/20
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Goal: To create a template for a 3D papercraft project.\nA) Use paper
+      and pencil to model it first.\nB) Use 3D software to model it first.\nWhich
+      solution (A or B) achieves the goal? Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: A
+    id: piqa/21
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Goal: When working on the electrical components inside a lamp, you should\n\
+      A) Make sure to unplug the lamp\nB) Make sure to leave the lamp plugged in\n\
+      Which solution (A or B) achieves the goal? Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: A
+    id: piqa/22
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Goal: How to download an app on an iphone\nA) Open the apple app store
+      and search for app.\nB) Open the google play store and search for app.\nWhich
+      solution (A or B) achieves the goal? Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: A
+    id: piqa/23
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Goal: key\nA) can be hidden inside a tablecloth \nB) can be hidden inside
+      a whisk \nWhich solution (A or B) achieves the goal? Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: A
+    id: piqa/24
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Goal: How to flip chicken in a pan\nA) Take a pair of tongs, and gently
+      squeeze it so that the ends grab a hold of the chicken. Twist your hand to make
+      the chicken rotate 180 degrees, and then set it back down in the pan.\nB) Take
+      a pair of tongs, and gently squeeze it so that the ends grab a hold of the chicken.
+      Twist your hand to make the chicken rotate 360 degrees, and then set it back
+      down in the pan.\nWhich solution (A or B) achieves the goal? Answer with a single
+      letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: A
+    id: piqa/25
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Goal: Remove hair from kitchen drain.\nA) Pour full 2 liter bottle of
+      coke soda down kitchen drain.\nB) Pour full 2 liter bottle of club soda down
+      kitchen drain.\nWhich solution (A or B) achieves the goal? Answer with a single
+      letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: A
+    id: piqa/26
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Goal: To prevent egg shells in your cookie dough,\nA) crack the eggs
+      open over another smaller container first and check for egg shells before adding
+      them to the rest of the dough\nB) crack the eggs open over the container with
+      the dough and check for egg shells before adding them to the rest of the dough\n\
+      Which solution (A or B) achieves the goal? Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: B
+    id: piqa/27
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Goal: Make bean sprouts at home.\nA) Purchase some small canned beans
+      and put into a mason jar. Add muslin to top and rinse beans. Allow them to drain.
+      Do this repeatedly until sprouts are large enough to eat.\nB) Purchase some
+      small dry beans and put into a mason jar. Add muslin to top and rinse beans.
+      Allow them to drain. Do this repeatedly until sprouts are large enough to eat.\n\
+      Which solution (A or B) achieves the goal? Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: B
+    id: piqa/28
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Goal: Prevent cake from sticking to pan.\nA) Set pan on a dry towel after
+      taking out of oven.\nB) Set pan on a damp towel after taking out of oven.\n\
+      Which solution (A or B) achieves the goal? Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: A
+    id: piqa/29
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Goal: To more easily access popular rides at a theme park,\nA) go to
+      the theme park a day after a drinking based holiday.\nB) go to the theme park
+      on a popular holiday instead.\nWhich solution (A or B) achieves the goal? Answer
+      with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: B
+    id: piqa/30
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Goal: how to make grapefruit taste sweeter\nA) add citric acid to the
+      grapefruit\nB) add salt to the grapefruit\nWhich solution (A or B) achieves
+      the goal? Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: A
+    id: piqa/31
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Goal: Avoid frozen wiper blades.\nA) Fill car with cold weather rated
+      wiper fluid.\nB) Fill car with warm weather rated wiper fluid.\nWhich solution
+      (A or B) achieves the goal? Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: B
+    id: piqa/32
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Goal: To spare the plant while picking lettuce\nA) grab one leaf with
+      one hand, bend the plant stalk near the leaf with the other hand, and pull it
+      down and away from the leaf.\nB) grab one leaf with one hand, hold the stalk
+      near the leaf with the other hand, and then pull the leaf down breaking it from
+      the plant.\nWhich solution (A or B) achieves the goal? Answer with a single
+      letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: A
+    id: piqa/33
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Goal: How to finish your braided cord bracelet?\nA) Tuck the cords under
+      the loops then cut and use a lighter to melt the ends.\nB) Tuck the cords over
+      the loops then cut and use a lighter to melt the ends.\nWhich solution (A or
+      B) achieves the goal? Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: B
+    id: piqa/34
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Goal: Keep cutting board in place.\nA) Place damp tissue paper under
+      board.\nB) Place damp paper towel under board.\nWhich solution (A or B) achieves
+      the goal? Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: A
+    id: piqa/35
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Goal: Detect odd car noise.\nA) Record the noise to show a mechanic.\n\
+      B) Mimic the noise to a mechanic.\nWhich solution (A or B) achieves the goal?
+      Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: B
+    id: piqa/36
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Goal: how do you take soap off of clean dishes?\nA) wipe it off with
+      a rag.\nB) rinse it in water.\nWhich solution (A or B) achieves the goal? Answer
+      with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: B
+    id: piqa/37
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Goal: To keep from making a mess when putting holes in drywall.\nA) Tape
+      an elastic below small drywall projects to keep clean-up easy.\nB) Tape an envelope
+      below small drywall projects to keep clean-up easy.\nWhich solution (A or B)
+      achieves the goal? Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: A
+    id: piqa/38
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Goal: how do you blame someone?\nA) say they did it.\nB) say you did
+      it for them.\nWhich solution (A or B) achieves the goal? Answer with a single
+      letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: A
+    id: piqa/39
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Goal: how do you open a wrapped present?\nA) tear off all the wrapping.\n\
+      B) cut off the wrapping paper.\nWhich solution (A or B) achieves the goal? Answer
+      with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: A
+    id: piqa/40
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Goal: a knife\nA) can transfer grapes from a glass.\nB) can transfer
+      liquid from a glass.\nWhich solution (A or B) achieves the goal? Answer with
+      a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: B
+    id: piqa/41
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Goal: how do you turn on an iphone?\nA) press the side button for one
+      second and let go.\nB) press the side button opposite from the volume buttons,
+      and hold it until the apple sign appears.\nWhich solution (A or B) achieves
+      the goal? Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: A
+    id: piqa/42
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Goal: How can I get the best Bell pepper?\nA) Look at the bottom part
+      of the pepper, if it has 4 bumps it is a female and has more seeds but the flesh
+      is sweeter and better for raw eating, the males have 3 bumps and are firmer
+      and good for cooking.\nB) Look at the bottom part of the plastic bag, if it
+      has 4 bumps it is a female and has more seeds but the flesh is sweeter and better
+      for raw eating, the males have 3 bumps and are firmer and good for cooking.\n\
+      Which solution (A or B) achieves the goal? Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: B
+    id: piqa/43
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Goal: To glue the pieces together,\nA) Lay out the pieces and put lines
+      of wood glue along the seams\nB) Lay the pieces flat and put thin lines of wood
+      glue along the seams between the two pieces\nWhich solution (A or B) achieves
+      the goal? Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: A
+    id: piqa/44
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Goal: To make the monkeys ears on the monkey cupcake\nA) Take two mini
+      vanilla wafers and place them out to either side letting the wafer hang off
+      the monkeys head.\nB) Take two bananas and place them under either side letting
+      the banana hang off the monkeys mouth.\nWhich solution (A or B) achieves the
+      goal? Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: B
+    id: piqa/45
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Goal: One seeks to make a cord weave.\nA) One will need a short amount
+      of cord.\nB) One will need a long amount of cord.\nWhich solution (A or B) achieves
+      the goal? Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: A
+    id: piqa/46
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Goal: fertilizer\nA) can be used for  growing plants \nB) can be used
+      for  growing rocks \nWhich solution (A or B) achieves the goal? Answer with
+      a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: A
+    id: piqa/47
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Goal: How to beautify a hanging basket.\nA) Tie skinny ribbons around
+      the plant here and there to add color\nB) Hang christmas ornaments from the
+      plant.\nWhich solution (A or B) achieves the goal? Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: B
+    id: piqa/48
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Goal: how do you check your credit score?\nA) call a credit card company.\n\
+      B) go to credit karma.com. type in all your information and create an account.
+      then you can check your score whenever you want.\nWhich solution (A or B) achieves
+      the goal? Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: A
+    id: piqa/49
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Goal: Write a message with candles.\nA) Use small tealight candles to
+      form letters.\nB) Use matchsticks to form letters.\nWhich solution (A or B)
+      achieves the goal? Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: A
+    id: piqa/50
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Goal: How do I make a hanging lamp with Christmas lights?\nA) Buy some
+      craft wire, twist the wire into a lampshade form and attach the Christmas lights
+      to it, hang and plug in the lights.\nB) Buy some craft wire, twist the wire
+      into a lampshade form and attach the Christmas lights to it, hang and pull off
+      all of the lights.\nWhich solution (A or B) achieves the goal? Answer with a
+      single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: A
+    id: piqa/51
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Goal: To insert a G-Tube into a stoma,\nA) lubricate the g-tube, gently
+      press into the stoma, then fill the balloon with water to secure in place.\n\
+      B) do not lubricate the g-tube, gently press into the stoma, then fill the balloon
+      with water to secure in place.\nWhich solution (A or B) achieves the goal? Answer
+      with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: A
+    id: piqa/52
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Goal: How do you break down the leaves harvested from a Yucca plant in
+      order to process it for fiber?\nA) Lay the Yucca leaf on a flat, hard surface.
+      Hold a flat, smooth, and heavy rock above the leave and bring it swiftly down
+      on top of the leaf. Do this repeatedly along the length of the leaf to break
+      down the plant fibers.\nB) Lay the Yucca leaf on a flat, soft surface. Hold
+      a flat, smooth, and heavy rock above the leave and bring it swiftly down on
+      top of the leaf. Do this repeatedly along the length of the leaf to break down
+      the plant fibers.\nWhich solution (A or B) achieves the goal? Answer with a
+      single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: A
+    id: piqa/53
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Goal: dresser\nA) can be a stand for a  flower vase  \nB) can be a stand
+      for a  shoe \nWhich solution (A or B) achieves the goal? Answer with a single
+      letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: A
+    id: piqa/54
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Goal: telescope\nA) can puncture a dish towel \nB) can puncture a hammer\
+      \ \nWhich solution (A or B) achieves the goal? Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: A
+    id: piqa/55
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Goal: How to remove water stains from shower glass?\nA) Use shaving cream.Apply
+      the shaving cream and let it sit for 15 minutes, then wipe off.\nB) Use whipped
+      cream.Apply the whipped cream and let it sit for 15 minutes, then wipe off.\n\
+      Which solution (A or B) achieves the goal? Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: B
+    id: piqa/56
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Goal: Make a quick tube dress for your daughter's barbie doll.\nA) Use
+      stretchy fabric, like an old sock is ideal, a smelly sock is best. Cut out the
+      toe part, and use ribbons to fasten the tube part around the doll. Looks amazing!\n\
+      B) Use stretchy fabric, like a sock is ideal, a small size is best. Cut out
+      the toe part, and use ribbons to fasten the tube part around the doll. Looks
+      amazing!\nWhich solution (A or B) achieves the goal? Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: B
+    id: piqa/57
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Goal: to keep from ruining the walls when painting\nA) Use double-sided
+      tape or hot glue UNDER painter's tape\nB) Use double-sided tape or hot glue
+      OVER painter's tape\nWhich solution (A or B) achieves the goal? Answer with
+      a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: A
+    id: piqa/58
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Goal: What can you use to sound dampen your room?\nA) You can use foam
+      panels and securely hang them on your wall.\nB) You can use a foam mattress
+      and rip it apart and glue it to your wall.\nWhich solution (A or B) achieves
+      the goal? Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: B
+    id: piqa/59
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Goal: comb\nA) is used to be smaller than soil \nB) is used to be smaller
+      than hatchet \nWhich solution (A or B) achieves the goal? Answer with a single
+      letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: A
+    id: piqa/60
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Goal: How do I get the weeds to stop coming back in my garden?\nA) Use
+      some weed killer on your garden.\nB) Use some fertilizer on your garden.\nWhich
+      solution (A or B) achieves the goal? Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: A
+    id: piqa/61
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Goal: Remove dust residue from chalk boards.\nA) Wipe down with baby
+      wipes.\nB) Wipe down with index cards.\nWhich solution (A or B) achieves the
+      goal? Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: B
+    id: piqa/62
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Goal: how to make smoked-trout salad\nA) Whisk 1 part cider vinegar with
+      3 parts olive oil, minced shallots, horseradish, dijon mustard, honey, cranberry
+      walnut bread and pepper. Toss with flaked smoked trout, julienned apples and
+      beets, and arugula.\nB) Whisk 1 part cider vinegar with 3 parts olive oil, minced
+      shallots, horseradish, dijon mustard, honey, salt and pepper. Toss with flaked
+      smoked trout, julienned apples and beets, and arugula.\nWhich solution (A or
+      B) achieves the goal? Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: A
+    id: piqa/63
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Goal: squinting\nA) makes wrinkles appear\nB) makes freckles appear\n\
+      Which solution (A or B) achieves the goal? Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: A
+    id: piqa/64
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Goal: How can I mark walls for hanging or placing something?\nA) Use
+      white chalk because the chalk will make easy to see marks that will quickly
+      disappear when wiped with a damp paper towel.\nB) Use black  permanent marker
+      because the chalk will make easy to see marks that will quickly disappear when
+      wiped with a damp paper towel.\nWhich solution (A or B) achieves the goal? Answer
+      with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: B
+    id: piqa/65
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Goal: how do you mark something?\nA) make it the same.\nB) make it different.\n\
+      Which solution (A or B) achieves the goal? Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: A
+    id: piqa/66
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Goal: Attach tooth picks to a cork board to create a thread spool holder.\n\
+      A) Place tooth picks pointed side down into cork board at 3 inch intervals.
+      Lightly tap the top of the tooth pick at a horizontal angle with a rubber mallet
+      to anchor into the cork board to create a thread spool holder.\nB) Place tooth
+      picks pointed side down into cork board at 3 inch intervals. Lightly tap the
+      top of the tooth pick at a horizontal angle with a rubber mallet to anchor into
+      the cookie sheet to create a thread spool holder.\nWhich solution (A or B) achieves
+      the goal? Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: A
+    id: piqa/67
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Goal: To hit a volleyball\nA) Stand with your feet shoulder width apart,
+      with most of your weight on the back foot.  Toss the ball in front of your hitting
+      arm.  Hit the ball with the upper part of your palm.\nB) Stand with your feet
+      shoulder width apart, with most of your weight on the front foot. Toss the ball
+      in front of your hitting arm.  Hit the ball with the lower part of your palm.\n\
+      Which solution (A or B) achieves the goal? Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: A
+    id: piqa/68
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Goal: How to wash your face?\nA) Wet your face with the sink. Put some
+      gentle soap onto your hands and massage it into your face evenly. Use the water
+      from the sink to rinse the soap off.\nB) Wet your face with the sink. Put some
+      dish soap onto your hands and massage it into your face evenly. Use the water
+      from the sink to rinse the soap off.\nWhich solution (A or B) achieves the goal?
+      Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: A
+    id: piqa/69
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Goal: Make extra money using my house this year.\nA) List an extra room
+      of your house on Airbnb and you can make even more by renting out the entire
+      house while you are on vacation.\nB) List an extra room of your house on Airbnb
+      and you can make even more by renting out the entire backyard while you are
+      on vacation.\nWhich solution (A or B) achieves the goal? Answer with a single
+      letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: B
+    id: piqa/70
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Goal: fried pickles\nA) pat dry before frying\nB) roll in flour and dep
+      fry\nWhich solution (A or B) achieves the goal? Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: A
+    id: piqa/71
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Goal: Make a bulletin board.\nA) Glue wine corks into a picture frame.\n\
+      B) Glue wine bottles into a picture frame.\nWhich solution (A or B) achieves
+      the goal? Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: B
+    id: piqa/72
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Goal: how to dry flowers\nA) Find a dark, moist area with good circulation,
+      such as an attic or unused closet. With unflavored dental floss, secure the
+      bottom of the flowers' stems to a hanger so that they hang upside down to dry.
+      Leave flowers for two to three weeks until completely dry.\nB) Find a dark,
+      dry area with good circulation, such as an attic or unused closet. With unflavored
+      dental floss, secure the bottom of the flowers' stems to a hanger so that they
+      hang upside down to dry. Leave flowers for two to three weeks until completely
+      dry.\nWhich solution (A or B) achieves the goal? Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: B
+    id: piqa/73
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Goal: How to entice picky fish to eat food treated with medications?\n\
+      A) Picky fish can be encouraged to eat medicated food by adding a little garlic
+      juice. The garlic juice is a natural attractant to the fish and will encourage
+      them to eat. Additionally, the garlic itself has some immune depressing qualities
+      and other health benefits.\nB) Picky fish can be encouraged to eat medicated
+      food by adding a little garlic juice. The garlic juice is a natural attractant
+      to the fish and will encourage them to eat. Additionally, the garlic itself
+      has some immune boosting qualities and other health benefits.\nWhich solution
+      (A or B) achieves the goal? Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: A
+    id: piqa/74
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Goal: To sprout seeds for your garden,\nA) fill old ice cube trays with
+      potting soil.  Plant seeds and set the tray in a window, to get direct sunlight.\n\
+      B) fill old ice cube trays with potting soil.  Plant seeds and set the tray
+      in a closet, to avoid direct sunlight.\nWhich solution (A or B) achieves the
+      goal? Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: A
+    id: piqa/75
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Goal: How can you  spread butter if it is cool or too hard to spread?\n\
+      A) Use a cheese grater to shave some of it off and pour shreds like you would
+      cheese.\nB) Use a razor to shave some of it off and pour shreds like you would
+      cheese.\nWhich solution (A or B) achieves the goal? Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: A
+    id: piqa/76
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Goal: How to make low fat Meringue baked clouds at home.\nA) Beat 3 egg
+      whites (Let them warm to room temp for 30 min.first) add 1/2 teaspoon vanilla,
+      1/4 teaspoon cream of tartar.  Beat with mixer until peaks form on egg whites.\
+      \  Ad gradually a bit at a time, 6 tablespoons of sugar.  Spoon this on baking
+      waxed paper.  Texture the whites to look like clouds or      your preference.\
+      \  Bake in oven until egg whites are browned (about 12 min.. check this though
+      and remove when you like the appearance.  Enjoy.\nB) Beat 3 whole eggs. (Let
+      them warm to room temp for 30 min.first) add 1/2 teaspoon vanilla, 1/4 teaspoon
+      cream of tartar.  Beat with mixer until peaks form on egg whites.  Ad gradually
+      a bit at a time, 6 tablespoons of sugar.  Spoon this on baking waxed paper.\
+      \  Texture the whites to look like clouds or      your preference.  Bake in
+      oven (at 275 degrees) until egg whites are browned (about 12 min.. check this
+      though and remove when you like the appearance.  Enjoy.\nWhich solution (A or
+      B) achieves the goal? Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: B
+    id: piqa/77
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Goal: How to prepare fishing line.\nA) Cut worm in half using a lure
+      and pierce half with the fishing hook.\nB) Cut worm in half using a knife and
+      pierce half with the fishing hook.\nWhich solution (A or B) achieves the goal?
+      Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: A
+    id: piqa/78
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Goal: To make a bedroom temperature colder without a fan or air conditioner,\n\
+      A) hang up a thick, and dark blanket over the windows and then ensure their
+      is proper air flow in the room.\nB) wave a large blanket up and down to generate
+      a gust of wind to cool the room down when it gets too hot.\nWhich solution (A
+      or B) achieves the goal? Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: A
+    id: piqa/79
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Goal: How do you remove gum from being stuck in hair?\nA) Apply an ice
+      cube and gently remove the hardened gum.\nB) Use a blow dryer and gently remove
+      melted gum.\nWhich solution (A or B) achieves the goal? Answer with a single
+      letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: B
+    id: piqa/80
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Goal: How can I cut cake perfectly and NOT smudge the nice icing?\nA)
+      Use dental dam, saw back and forth gently until you get to the bottom of the
+      cake, it will slice through better than a knife.\nB) Use dental floss, saw back
+      and forth gently until you get to the bottom of the cake, it will slice through
+      better than a knife.\nWhich solution (A or B) achieves the goal? Answer with
+      a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: A
+    id: piqa/81
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Goal: Prevent people from approaching you in public.\nA) Wear headphones.\n\
+      B) Wear a green hat.\nWhich solution (A or B) achieves the goal? Answer with
+      a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: B
+    id: piqa/82
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Goal: How to keep ice from melting in the freezer?\nA) Stack the ice
+      at the front panel of the freezer\nB) Stack the ice at the back panel of the
+      freezer\nWhich solution (A or B) achieves the goal? Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: A
+    id: piqa/83
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Goal: How to get water out of coconut.\nA) Use a hammer and a nail to
+      pierce a few holes in the top of the coconut. Pour into cup.\nB) Use a hammer
+      and a nail to pierce a few holes in the top of the coconut. Pour into colander.\n\
+      Which solution (A or B) achieves the goal? Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: B
+    id: piqa/84
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Goal: How can I sweat less?\nA) Use laser eye surgery because according
+      to dermatologist Mary Lupo, MD, although its purpose is getting rid of hair,
+      it works great for getting rid of excessive sweat in the underarm area, too:
+      “I find that it leads to less sweat production and decreases odor too, because
+      your hair accumulates more bacteria than your skin.”\nB) Use laser hair removal
+      because according to dermatologist Mary Lupo, MD, although its purpose is getting
+      rid of hair, it works great for getting rid of excessive sweat in the underarm
+      area, too: “I find that it leads to less sweat production and decreases odor
+      too, because your hair accumulates more bacteria than your skin.”\nWhich solution
+      (A or B) achieves the goal? Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: A
+    id: piqa/85
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Goal: How would a person reattach a handle portion of a styrofoam foam
+      board sword if it broke off?\nA) Stick a bamboo skewer or toothpick into the
+      broken off piece and then put hot glue on the broken off portion then push the
+      toothpick into the sword making sure the glue sticks as well.\nB) Stick a bamboo
+      leaf or tooth into the broken off piece and then put hot glue on the broken
+      off portion then push the toothpick into the sword making sure the glue sticks
+      as well.\nWhich solution (A or B) achieves the goal? Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: B
+    id: piqa/86
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Goal: What tool can I use to deburr a copper pipe when working on a plumbing
+      soldering project?\nA) You can use an all-in-one deburring tool, a pencil reamer
+      or a sharp utility string\nB) You can use an all-in-one deburring tool, a pencil
+      reamer or a sharp utility knife\nWhich solution (A or B) achieves the goal?
+      Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: A
+    id: piqa/87
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Goal: To bang a gavel.\nA) Hit the gavel hard on the appropriate surface.\n\
+      B) Hit the gavel soft on the appropriate surface.\nWhich solution (A or B) achieves
+      the goal? Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: A
+    id: piqa/88
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Goal: How do you harvest honey from a bee box?\nA) Smoke the bees. Once
+      they are calm, remove the frames that are completely filled with honey from
+      the hive. Use a sharp knife to cut off the wax that caps each comb. Once the
+      combs are all opened, you can use an extractor to drain the honey out of the
+      comb. You can also place the frame over a bucket and let the honey drain into
+      the bucket over a few days time.\nB) Smoke the bees. Once they are calm, remove
+      the frames that are completely filled with honey from the hive. Use a sharp
+      knife to cut off the comb from each frame. Once the combs are all opened, you
+      can use an extractor to drain the honey out of the comb. You can also place
+      the frame over a bucket and let the honey drain into the bucket over a few days
+      time.\nWhich solution (A or B) achieves the goal? Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: A
+    id: piqa/89
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Goal: Make vase structure (shell)\nA) Blow up a large balloon preferable
+      with a elongated end to give the a basic base design. Now cut small piece of
+      construction paper 3 to 4 inches square. Glue paper pieces onto balloon with
+      paste or glue covering entire balloon 2 layers will be needed. Let dry 24 hours.\n\
+      B) Blow up a large balloon preferable with a elongated end to give the a basic
+      base design. Now cut small piece of construction paper 3 to 4 inches square.
+      Glue paper pieces onto balloon with paste or glue covering entire balloon 2
+      layers will be needed. Let dry.\nWhich solution (A or B) achieves the goal?
+      Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: A
+    id: piqa/90
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Goal: What is one of the best aerobic exercizes?\nA) Jumping rope will
+      help the average person burn over 200 calories in about 10 to 15 min.\nB) Jumping
+      ship will help the average person burn over 200 calories in about 10 to 15 min.\n\
+      Which solution (A or B) achieves the goal? Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: B
+    id: piqa/91
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Goal: To protect a dish while it's in the fridge\nA) Cover it in house
+      tarp\nB) Cover it in plastic wrap\nWhich solution (A or B) achieves the goal?
+      Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: B
+    id: piqa/92
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Goal: Where can I find good music to listen to\nA) The best place to
+      find music is on Netflix.com\nB) The best place to find music is on Youtube.com\n\
+      Which solution (A or B) achieves the goal? Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: A
+    id: piqa/93
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Goal: To repair a dented automobile bumper at home.\nA) Use boiling water
+      and a hair dryer to heat the plastic bumper, making sure to keep the water and
+      hair dryer far apart to avoid electric shock, then, from below, press it back
+      into shape with a baseball bat.\nB) Use boiling water and a hair dryer to heat
+      the plastic bumper, making sure to keep the water and hair dryer close together
+      to cause electric shock, then, from below, press it back into shape with a baseball
+      bat.\nWhich solution (A or B) achieves the goal? Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: B
+    id: piqa/94
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Goal: One wishes to be more artistic with their smoking.\nA) One should
+      decorate their fire place.\nB) One should decorate their lighter.\nWhich solution
+      (A or B) achieves the goal? Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: B
+    id: piqa/95
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Goal: Dry out shoes quickly after rain.\nA) Stuff toilet paper in shoes
+      to absorb moisture.\nB) Stuff newspaper in shoes to absorb moisture.\nWhich
+      solution (A or B) achieves the goal? Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: A
+    id: piqa/96
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Goal: To prevent gunk buildup in cup holders of a car,\nA) place coffee
+      filters inside of the cup holders.\nB) pour a thin layer of oil into the cup
+      holders.\nWhich solution (A or B) achieves the goal? Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: A
+    id: piqa/97
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Goal: To make a graham cracker crust, to turn graham crackers to crumbs,
+      you can\nA) Run the graham crackers through a food processor\nB) Run the graham
+      crackers through a cheese grater\nWhich solution (A or B) achieves the goal?
+      Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: A
+    id: piqa/98
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Goal: To easily disburse pancake mix on a pan,\nA) squirt the mix out
+      of a ketch up bottle it is inside of.\nB) pour mix into a ladle and then dump
+      the ladle out.\nWhich solution (A or B) achieves the goal? Answer with a single
+      letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: A
+    id: piqa/99
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Goal: How do you get rid of Hiccups?\nA) Breathe into a paper bag.\n\
+      B) Breathe into your hands.\nWhich solution (A or B) achieves the goal? Answer
+      with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: A
+    id: piqa/100
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Goal: To shoot a nail gun.\nA) Aim the nail gun at the proper surface
+      and fire the nail. Wear goggles!\nB) Aim the nail gun at the proper surface
+      and fire the nail. Wear a hard hat!\nWhich solution (A or B) achieves the goal?
+      Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: A
+    id: piqa/101
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Goal: a brush\nA) helps keep nails clean\nB) helps keep light clean\n\
+      Which solution (A or B) achieves the goal? Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: B
+    id: piqa/102
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Goal: Increase chances of lost phone return.\nA) Label yourself as dentist
+      in the contact list.\nB) Label yourself as owner in the contact list.\nWhich
+      solution (A or B) achieves the goal? Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: A
+    id: piqa/103
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Goal: How do I know if a bell pepper is full of seeds?\nA) flip it over
+      and look at the bumps, the ones with four are female, and have more seeds.\n\
+      B) Ask a worker at the grocery store if they can do a price check, if the barcode
+      scans twice, its seedy.\nWhich solution (A or B) achieves the goal? Answer with
+      a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: A
+    id: piqa/104
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Goal: mallet\nA) can break binder clip off fastner\nB) can pry binder
+      clip off\nWhich solution (A or B) achieves the goal? Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: B
+    id: piqa/105
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Goal: watering can\nA) carry  children to the store\nB) carry  coins
+      to the store\nWhich solution (A or B) achieves the goal? Answer with a single
+      letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: A
+    id: piqa/106
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Goal: How can I make my keys easy to tell apart?\nA) Gather different
+      colors of nail polish and paint the top of your keys with a small paint brush.\n\
+      B) Gather one color of nail polish and paint the top of your keys with a small
+      paint brush.\nWhich solution (A or B) achieves the goal? Answer with a single
+      letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: A
+    id: piqa/107
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Goal: how do you serenade someone?\nA) sing to them only\nB) sing to
+      a group of people.\nWhich solution (A or B) achieves the goal? Answer with a
+      single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: A
+    id: piqa/108
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Goal: To keep berry and granola layers intact when making Granola Crunch
+      Berry Yogurt Popsicle.\nA) Make sure the final ingredient is the yogurt because
+      it acts as a binder and keeps the granola and berry layers intact\nB) Make sure
+      the final ingredient is the milk because it acts as a binder and keeps the granola
+      and berry layers intact\nWhich solution (A or B) achieves the goal? Answer with
+      a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: A
+    id: piqa/109
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Goal: How to prevent BBQ chicken skin from burning on the grill?\nA)
+      Place a drip tray underneath the chicken and above the coals to prevent flare
+      ups from happening\nB) Place a drip tray underneath the coals and the chicken
+      to prevent flare ups from happening\nWhich solution (A or B) achieves the goal?
+      Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: A
+    id: piqa/110
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Goal: How to make tuna salad.\nA) Once you've opened the can of tuna,
+      drain the brine away. Next, add the tuna to a bowl. Stir in the rest of your
+      ingredients : Mayo, celery, onion, pickle relish, garlic, and lemon juice. Mix
+      well and season to taste with salt and pepper.\nB) Once you've opened the can
+      of tuna, add the brine to the bowl. Next, add the tuna to a bowl. Stir in the
+      rest of your ingredients : Mayo, celery, onion, pickle relish, garlic, and lemon
+      juice. Mix well and season to taste with salt and pepper.\nWhich solution (A
+      or B) achieves the goal? Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: B
+    id: piqa/111
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Goal: how do you experiment with something?\nA) use it.\nB) test it out.\n\
+      Which solution (A or B) achieves the goal? Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: A
+    id: piqa/112
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Goal: How do I clean plantain leaves before cooking?\nA) Soak leaves
+      in warm water.  Gently rub off any dirt spots.  Rinse thoroughly.\nB) Soak leaves
+      in compost.  Gently rub off any dirt spots.  Rinse thoroughly.\nWhich solution
+      (A or B) achieves the goal? Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: A
+    id: piqa/113
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Goal: hands\nA) cut into fruit \nB) cut into metal \nWhich solution (A
+      or B) achieves the goal? Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: A
+    id: piqa/114
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Goal: To cook the leeks before adding rest of Skyrim tomato soup ingredients.\n\
+      A) Saute the leeks in the butter.\nB) Boil the leeks in water.\nWhich solution
+      (A or B) achieves the goal? Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: A
+    id: piqa/115
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Goal: how do you put a collar on a dog?\nA) place it around the dogs
+      neck.\nB) place it around the dogs arms.\nWhich solution (A or B) achieves the
+      goal? Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: B
+    id: piqa/116
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Goal: How to brush your teeth\nA) After applying toothpaste, grab the
+      toothbrush by the bristles and place handle in mouth.\nB) After applying toothpaste,
+      grab by the handle and place bristle side inside mouth.\nWhich solution (A or
+      B) achieves the goal? Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: B
+    id: piqa/117
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Goal: To prepare a potato to roast in a campfire after you have washed
+      it,\nA) puncture the potato with a fork or knife, then take a small piece of
+      aluminum metal and wrap it all around the potato.\nB) puncture the potato with
+      a fork or knife, then take a small piece of aluminum foil and wrap it all around
+      the potato.\nWhich solution (A or B) achieves the goal? Answer with a single
+      letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: B
+    id: piqa/118
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Goal: To create an orange pigment with paint you already have, you can\n\
+      A) Mix red paint and green paint together to achieve an orange pigment\nB) Mix
+      red paint and yellow paint together to achieve an orange pigment\nWhich solution
+      (A or B) achieves the goal? Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: A
+    id: piqa/119
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Goal: how do you chew your food?\nA) chomp it up with your teeth until
+      you can swallow it.\nB) mash it up before placing it in your mouth to swallow.\n\
+      Which solution (A or B) achieves the goal? Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: B
+    id: piqa/120
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Goal: To make as simple bread recipe,\nA) mix egg, yeast and water.\n\
+      B) mix flour, yeast and water.\nWhich solution (A or B) achieves the goal? Answer
+      with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: B
+    id: piqa/121
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Goal: To cut radiant foils to be used to cover the attics.\nA) Use the
+      attic or other closed  spaces to cut the foils according to the measurements
+      before going into the attic.\nB) Use the driveway or other wide open spaces
+      to cut the foils according to the measurements before going into the attic.\n\
+      Which solution (A or B) achieves the goal? Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: B
+    id: piqa/122
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Goal: Supplement a possible bad gift.\nA) Include a cheap greeting card
+      with it.\nB) Include a funny greeting card with it.\nWhich solution (A or B)
+      achieves the goal? Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: B
+    id: piqa/123
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Goal: How can I sneeze when I feel like I want to sneeze but can't?\n\
+      A) Look directly in front of you this will cause a reaction in your body and
+      you will sneeze.\nB) Look directly into sunlight, this will cause a reaction
+      in your body and you will sneeze.\nWhich solution (A or B) achieves the goal?
+      Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: B
+    id: piqa/124
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Goal: Make a picture for your fish tank.\nA) Get your crayons or paints
+      together and give them to your fish to use. Let him or her color what they want.\
+      \  Get that picture and tape to the backside of the fish tank. Make your fish
+      wonderfully happy.\nB) Get your crayons or paints together and think of what
+      kind of picture you would like to make to put on the back of your fish tank.
+      Make that picture and tape to the backside of the fish tank.\nWhich solution
+      (A or B) achieves the goal? Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: A
+    id: piqa/125
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Goal: To prevent splinters from cut wood,\nA) use a fine grained sandpaper
+      to sand down rough cut edges.\nB) use a fine grained nail file to sand down
+      rough cut edges.\nWhich solution (A or B) achieves the goal? Answer with a single
+      letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: A
+    id: piqa/126
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Goal: Remove seeds from  strawberries\nA) Blend the strawberries, pour
+      the mixture through a fine-mesh strainer with a bowl underneath to catch the
+      pulps and strain out the seeds\nB) Chop up the strawberries, pour the mixture
+      through a fine-mesh strainer with a bowl underneath to catch the pulps and strain
+      out the seeds\nWhich solution (A or B) achieves the goal? Answer with a single
+      letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: A
+    id: piqa/127
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Goal: How to properly dry and clean a knife?\nA) After rising the knife
+      with water and soap, use a kitchen towel and then a piece of paper towel to
+      dry the knife\nB) After rising the knife with water and soap, use a standard
+      towel to dry and polish the knife properly\nWhich solution (A or B) achieves
+      the goal? Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: A
+    id: piqa/128
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Goal: Prevent feet from sweating when wearing flats.\nA) Sprinkle inside
+      of shoes with dry shampoo.\nB) Sprinkle outside of shoes with dry shampoo.\n\
+      Which solution (A or B) achieves the goal? Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: B
+    id: piqa/129
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Goal: To simmer water, you can\nA) Place in a metal bowl in the microwave
+      on low heat\nB) Place in a metal bowl on the stove over low heat\nWhich solution
+      (A or B) achieves the goal? Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: B
+    id: piqa/130
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Goal: compactor\nA) can squish  water \nB) can squish  watermelon \n\
+      Which solution (A or B) achieves the goal? Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: B
+    id: piqa/131
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Goal: To make the caffeine in coffee release slowly after consumption,\n\
+      A) Use a non-fat coffee cream powder instead of cream or milk in your coffee,
+      to dilute the portion of coffee in the beverage.\nB) add butter to the coffee
+      so that the caffeine combines into the butter and trickles into the body slower.\n\
+      Which solution (A or B) achieves the goal? Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: B
+    id: piqa/132
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Goal: How to store bread so it does not go off?\nA) Place the bread in
+      the freezer in its original wrapping and remove the loaf as desired 30 seconds
+      before you want them so they can defrost before eating\nB) Place the bread in
+      the freezer in its original wrapping and remove slices as desired 5 minutes
+      before you want them so they can defrost before eating\nWhich solution (A or
+      B) achieves the goal? Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: B
+    id: piqa/133
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Goal: How to sleep in proper posture?\nA) Sleep straight with a pillow
+      over your head.\nB) Sleep straight with a pillow under your head.\nWhich solution
+      (A or B) achieves the goal? Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: B
+    id: piqa/134
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Goal: To make a ball of aluminum foil,\nA) take a sheet of aluminum foil
+      and fold it in half\nB) take a sheet of aluminum foil and crinkle it into a
+      ball.\nWhich solution (A or B) achieves the goal? Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: B
+    id: piqa/135
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Goal: How to make Beef Tallow (with a Slow Cooker).\nA) Get Your Materials
+      Ready, smoothly peel the tallow into half  inch cubes and put them in the food
+      processor, Once the food processor is half to 1/2 full. Turn it on intermittently
+      until the fat is blended, Once your slow cooker is just about full of beef fat,
+      turn it on high for 3-8 hours, store the tallow using a jar and freezer.\nB)
+      Get Your Materials Ready, Roughly chop the tallow into one inch cubes and put
+      them in the food processor, Once the food processor is half to 3/4 full. Turn
+      it on intermittently until the fat is blended, Once your slow cooker is just
+      about full of beef fat, turn it on low for 6-8 hours, store the tallow using
+      a jar and freezer.\nWhich solution (A or B) achieves the goal? Answer with a
+      single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: A
+    id: piqa/136
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Goal: How to Make Peach Puree\nA) Boil the peach slices and then lower
+      the heat. Let the fruit simmer for 2 minutes or so. Remove the pan from the
+      heat and leave it to cool for 30 minutes. Use a blender or food processor to
+      puree the peaches. Use the mixture within the same day, refrigerate up to 24
+      hours, or freeze the food up to a month.\nB) Boil the peach slices and then
+      lower the heat. Let the fruit simmer fortwo hours, and then blanch for six minutes.
+      Remove the pan from the heat and leave it to cool for 30 minutes. Use a blender
+      or food processor to puree the peaches. Use the mixture within the same day,
+      refrigerate up to 24 hours, or freeze the food up to a month.\nWhich solution
+      (A or B) achieves the goal? Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: B
+    id: piqa/137
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Goal: To prepare carrots before cooking with them, you can\nA) Run them
+      in the sink under boiling water\nB) Run them in the sink under cold water\n\
+      Which solution (A or B) achieves the goal? Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: B
+    id: piqa/138
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Goal: how do you use a zipper?\nA) pull it along the zip line unconnected
+      to close or open an object.\nB) pull it along the zip line to close or open
+      an object.\nWhich solution (A or B) achieves the goal? Answer with a single
+      letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: B
+    id: piqa/139
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Goal: To serve the microwave brownies\nA) Slice the brownies using a
+      spoon into desired sizes\nB) Slice the brownies using a sharp knife into desired
+      sizes\nWhich solution (A or B) achieves the goal? Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: B
+    id: piqa/140
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Goal: To make wires look like tree branches on a wire tree.\nA) Bend
+      wires grouped tightly together into loops. Use kitchen scissors to cut in the
+      middle of the loops. Use needle nose pliers to pull strands of wires away from
+      each other to look like branches.\nB) Bend wires grouped tightly together into
+      loops. Use wire cutters to cut in the middle of the loops. Use needle nose pliers
+      to pull strands of wires away from each other to look like branches.\nWhich
+      solution (A or B) achieves the goal? Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: B
+    id: piqa/141
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Goal: How to drain a bath tub.\nA) Reach down to the drain plug, and
+      push it. Wait for the water to gradually drain out of the tub.\nB) Reach down
+      to the drain plug, and pull it. Wait for the water to gradually drain out of
+      the tub.\nWhich solution (A or B) achieves the goal? Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: B
+    id: piqa/142
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Goal: how to store summer fruit for winter\nA) Buy fruit that is almost
+      spoiled and freeze it for winter baking.\nB) Buy fruit at its peak and freeze
+      it for winter baking.\nWhich solution (A or B) achieves the goal? Answer with
+      a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: B
+    id: piqa/143
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Goal: To learn French.\nA) Download an application on the phone that
+      will help you learn French easily.\nB) Attend an institution offering French
+      lessons.\nWhich solution (A or B) achieves the goal? Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: B
+    id: piqa/144
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Goal: To open up google,\nA) open a web browser and type www.google.co
+      into the web adress bar.\nB) open a web browser and type www.google.com into
+      the web adress bar.\nWhich solution (A or B) achieves the goal? Answer with
+      a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: A
+    id: piqa/145
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Goal: To attach the wooden boards the LED lights will be attached to
+      the wall.\nA) Use nails to place the boards.\nB) Use picture hangers to place
+      the boards.\nWhich solution (A or B) achieves the goal? Answer with a single
+      letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: A
+    id: piqa/146
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Goal: Easy bookshelf.\nA) Two planks of wood, 4 concrete bricks. Place
+      2 concrete bricks on the floor, as far apart as the planks are long. Place one
+      plank resting on these 2 bricks. Place the next 2 concrete bricks on top, and
+      place the 2nd plank on top. Voila, a sturdy easy book shelf.\nB) Two planks
+      of wood, 4 concrete bricks. Place 2 concrete bricks on the planks, as far apart
+      as the planks are wide. Place one plank resting on the other 2 bricks. Place
+      the next 2 concrete planks on top, and place the 1st plank on top of the last
+      one. Voila, a sturdy easy book shelf.\nWhich solution (A or B) achieves the
+      goal? Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: A
+    id: piqa/147
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Goal: How to teach a child to be responsible?\nA) Get a dog and teach
+      the child what the dog needs, over time let the child take over the responsibilities
+      themselves\nB) Get a dog and teach the child what the dog likes, over time let
+      the dog take over the responsibilities themselves\nWhich solution (A or B) achieves
+      the goal? Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: B
+    id: piqa/148
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Goal: how do you cut a sandwhich in half?\nA) break it apart into two
+      pieces.\nB) use a knife to slice through the bread top and bottom of the sandwhich
+      halfway across the sandwich.\nWhich solution (A or B) achieves the goal? Answer
+      with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: B
+    id: piqa/149
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Goal: Prevent drying paint.\nA) Place paint brushes in newspaper until
+      ready for use again.\nB) Place paint brushes in ziploc until ready for use again.\n\
+      Which solution (A or B) achieves the goal? Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: B
+    id: piqa/150
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Goal: To remove the rust from a small garden tool,\nA) soak the tool
+      in a bowl of cold water overnight.\nB) soak the tool in a bowl of vinegar overnight.\n\
+      Which solution (A or B) achieves the goal? Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: A
+    id: piqa/151
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Goal: How do I arrange fresh flowers in a vase?\nA) Take your vase and
+      add water, then take your bouquet of flowers, one at a time, and cut the bottom
+      of the stem at a 45 degree angle to the appropriate size for the flower to fit
+      in the vase and then place each flower into the vase gently working from the
+      outside in.\nB) Take your vase and add water, then take your bouquet of flowers,
+      one at a time, and tear the bottom of the stem with your hands to the appropriate
+      size for the flower to fit in the vase, twisting and turning if you have to,
+      then place each flower into the vase gently working from the outside in.\nWhich
+      solution (A or B) achieves the goal? Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: B
+    id: piqa/152
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Goal: How to sharpen scissors easily.\nA) Cut some soft fabric with scissors
+      several times.\nB) Cut some aluminum foil with scissors several times.\nWhich
+      solution (A or B) achieves the goal? Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: B
+    id: piqa/153
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Goal: How to make the dough for your peppermint candy?\nA) In a large
+      bowl cream butter and sugar until creamy, add extract and egg to the bowl and
+      mix together. Add flour and salt into bowl and mix until all the ingredients
+      become a hard dough. Cut dough in half and color one half with red food coloring
+      and the other with green food coloring\nB) In a large bowl cream butter and
+      sugar until creamy, add extract and egg to the bowl and mix together. Add flour
+      and salt into bowl and mix until all the ingredients become a soft dough. Cut
+      dough in half and color one half with red food coloring and the other with green
+      food coloring\nWhich solution (A or B) achieves the goal? Answer with a single
+      letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: A
+    id: piqa/154
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Goal: Deep clean coffee grinder.\nA) Scrape with rice.\nB) Scrape with
+      flour.\nWhich solution (A or B) achieves the goal? Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: B
+    id: piqa/155
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Goal: How to make Caramel Chocolate chip Girl Scout Cookie Vanilla Ice
+      cream at home.\nA) In a medium mixing bowl combine 7 cups chilled Caramelized
+      Onions, 2 14 oz. cans sweetened condensed milk 1 teaspoon Vanilla extract. \
+      \ Beat with an electric mixer until soft Peaks form. Stir in 1 1/2 cups Caramel
+      Chocolate Chip Girl Scout cookies (Sliced in 3/4\" strips or crumbles)  and
+      1/2 cup Chocolate chips.  Transfer mixture to two 8x8x2 inch baking pans. Freeze
+      about 8 hours until firm.\nB) In a medium mixing bowl combine 7 cups chilled
+      whipping cream, 2 14 oz. cans sweetened condensed milk 1 teaspoon Vanilla extract.\
+      \  Beat with an electric mixer until soft Peaks form. Stir in 1 1/2 cups Caramel
+      Chocolate Chip Girl Scout cookies (Sliced in 3/4\" strips or crumbles)  and
+      1/2 cup Chocolate chips.  Transfer mixture to two 8x8x2 inch baking pans. Freeze
+      about 8 hours until firm.\nWhich solution (A or B) achieves the goal? Answer
+      with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: A
+    id: piqa/156
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Goal: How do you clean inside windows?\nA) Spray window cleaner on glass.
+      For the best streak-free results, clean glass using newspaper instead of paper
+      towel.\nB) Spray window cleaner on glass. For the best streak-free results,
+      clean glass using construction paper instead of paper towel.\nWhich solution
+      (A or B) achieves the goal? Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: A
+    id: piqa/157
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Goal: How to roll chocolate truffles.\nA) Wet the palm of your hands
+      with some water. Using a spoon, spoon some of the mixture onto your palm and
+      roll the mixture between your hands moving your hand in a circular motion. Once
+      you have a nice round shape, roll it in some coconut and place it on a plate.\n\
+      B) Wet the palm of your hands with some water. Using a fork, fork some of the
+      mixture onto your palm and roll the mixture between your hands moving your hand
+      in a circular motion. Once you have a nice round shape, roll it in some coconut
+      and place it on a plate.\nWhich solution (A or B) achieves the goal? Answer
+      with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: A
+    id: piqa/158
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Goal: What are the benefits of anti-allergen vacuum cleaners?\nA) Even
+      though they are much more expensive, anti-allergen vacuum cleaners, by preventing
+      allergens from being present in you home, will keep your family much healthier
+      in the long run.\nB) Even though they are much less expensive, anti-allergen
+      vacuum cleaners, by preventing allergens from being present in you home, will
+      keep your family much healthier in the long run.\nWhich solution (A or B) achieves
+      the goal? Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: B
+    id: piqa/159
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Goal: how do you stand a bike up by itself?\nA) stand it up and then
+      lean it against something.\nB) stand it up and push the stand down then lean
+      the bike on it.\nWhich solution (A or B) achieves the goal? Answer with a single
+      letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: B
+    id: piqa/160
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Goal: What is the best way to check if a baby's milk isn't too hot?\n\
+      A) Sprinkle a few drops on the inside of your baby's wrist to check the temperature.\n\
+      B) Sprinkle a few drops on the inside of your wrist to check the temperature.\n\
+      Which solution (A or B) achieves the goal? Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: A
+    id: piqa/161
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Goal: to keep your word?\nA) do what you say you will\nB) do what you
+      say you won't\nWhich solution (A or B) achieves the goal? Answer with a single
+      letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: A
+    id: piqa/162
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Goal: how to make carne asada tacos\nA) Brown 2 ounces diced dried chorizo
+      in a skillet; remove with a slotted spoon. Melt 1/2 pound chopped monterey jack
+      in the skillet. Serve in flour tortillas with the chorizo.\nB) Brown 2 ounces
+      diced dried chorizo in a skillet; remove with a slotted spoon. Melt 1/2 pound
+      chopped monterey jack, and 1 pound pickles in the skillet. Serve in flour tortillas
+      with the chorizo.\nWhich solution (A or B) achieves the goal? Answer with a
+      single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: A
+    id: piqa/163
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Goal: To mark lines in a piece of dough, you can\nA) Use the blunt side
+      of a knife\nB) Use the handle of a hammer\nWhich solution (A or B) achieves
+      the goal? Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: B
+    id: piqa/164
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Goal: spear\nA) can be used to pick up jello off the ground\nB) can be
+      used to pick up papers off the ground\nWhich solution (A or B) achieves the
+      goal? Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: B
+    id: piqa/165
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Goal: Extend life of flowers in vase.\nA) Add small amount of coffee
+      in vase.\nB) Add small amount of 7UP in vase.\nWhich solution (A or B) achieves
+      the goal? Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: B
+    id: piqa/166
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Goal: How do you properly prepare a steak.\nA) Take the steak out of
+      warm storage and let come to room temperature, generously add salt and pepper
+      to both sides and let sit for 10 minutes.\nB) Take the steak out of cold storage
+      and let come to room temperature, generously add salt and pepper to both sides
+      and let sit for 10 minutes.\nWhich solution (A or B) achieves the goal? Answer
+      with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: A
+    id: piqa/167
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Goal: How do you get rid of acne scars?\nA) Aloe Vera. Fresh aloe vera
+      gel is a potent source of vitamins which can help to heal skin and fade scars.\n\
+      B) Aloe Vera. Fresh aloe vera gel is a potent source of vitamins which can help
+      to seal skin and fade scars.\nWhich solution (A or B) achieves the goal? Answer
+      with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: B
+    id: piqa/168
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Goal: Make a candy cane ornament out of beads and a pipe cleaner\nA)
+      Thread alternating red and white beads onto a pipe. Fold over the last bead
+      to create a knot. Bend into a candy cane shape\nB) Thread alternating red and
+      white beads onto a pipe cleaner. Fold over the last bead to create a knot. Bend
+      into a candy cane shape\nWhich solution (A or B) achieves the goal? Answer with
+      a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: A
+    id: piqa/169
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Goal: To prevent the jars from breaking when they are filled and processed
+      with homemade dog food\nA) Preheat the jars by placing the jars in a pan with
+      water and boil the water\nB) Preheat the jars by placing the jars in a pan with
+      water and freezel the water\nWhich solution (A or B) achieves the goal? Answer
+      with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: A
+    id: piqa/170
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Goal: peeler\nA) can be used as a decoration on a television \nB) can
+      be used as a decoration on a sock \nWhich solution (A or B) achieves the goal?
+      Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: B
+    id: piqa/171
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Goal: To thicken syrup made with berries.\nA) Mash a few raspberries
+      and blueberries until I had enough juice. I added a pinch of Arrow Root starch
+      flour and mixed it thoroughly. I cooked it over a low heat until it just began
+      to thin.\nB) Mash a few raspberries and blueberries until I had enough juice.
+      I added a pinch of Arrow Root starch flour and mixed it thoroughly. I cooked
+      it over a low heat until it just began to thicken.\nWhich solution (A or B)
+      achieves the goal? Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: B
+    id: piqa/172
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Goal: To get rid of a mouse infestation in a home,\nA) look for any mouse
+      you see and then put them back outside afterwards.\nB) place mouse traps in
+      tucked away spaces and use rat poisoned food.\nWhich solution (A or B) achieves
+      the goal? Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: A
+    id: piqa/173
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Goal: how do you cheese something?\nA) sprinkle cheese all over it.\n\
+      B) sprinkle cheese underneath it.\nWhich solution (A or B) achieves the goal?
+      Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: A
+    id: piqa/174
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Goal: How to cut dragonfly wings out of metal.\nA) Use cutting disc and
+      cut along lines carefully.\nB) Use scissors and cut along lines carefully.\n\
+      Which solution (A or B) achieves the goal? Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: A
+    id: piqa/175
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Goal: To allow the oil for the turkey fryer to reach the correct cooking
+      temp\nA) Allow approximately 40 mins for the oil to come up to the correct temperature.\n\
+      B) Allow approximately 4 hours for the oil to come up to the correct temperature.\n\
+      Which solution (A or B) achieves the goal? Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: A
+    id: piqa/176
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Goal: tongs\nA) can mix salad \nB) can mix dressing \nWhich solution
+      (A or B) achieves the goal? Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: A
+    id: piqa/177
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Goal: How to change to a new Wifi connection on Windows 10\nA) Move the
+      mouse pointer to the wifi icon in the lower right and left click it. Find the
+      Wifi you wish to connect to, left click it, and click Connect.\nB) Move the
+      mouse pointer to the wifi icon in the lower right and right click it. Find the
+      Wifi you wish to connect to, right click it, and click Connect.\nWhich solution
+      (A or B) achieves the goal? Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: B
+    id: piqa/178
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Goal: To cook the kebab meat on a grill\nA) Place the kebab meat on the
+      grill.\nB) Skewer the meat and put on grill.\nWhich solution (A or B) achieves
+      the goal? Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: A
+    id: piqa/179
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Goal: How can I fill dents and rough areas on the surface of a wooden
+      table I am building?\nA) Fill the dents with wood filler, then sand it smooth
+      and apply varnish.\nB) Fill the dents with wood glue, then sand it smooth and
+      apply varnish.\nWhich solution (A or B) achieves the goal? Answer with a single
+      letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: A
+    id: piqa/180
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Goal: desktop keyboard\nA) can be used to play a game on  a personal
+      computer \nB) can be used to play a game on  a basketball court \nWhich solution
+      (A or B) achieves the goal? Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: B
+    id: piqa/181
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Goal: How do I open a water bottle if I can't do it with my hands\nA)
+      Wrap a small cloth or napkin around it then shake it\nB) Wrap a small cloth
+      or napkin around it then twist\nWhich solution (A or B) achieves the goal? Answer
+      with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: A
+    id: piqa/182
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Goal: To flatten a woven rug so it doesn't bunch up, you can\nA) Spray
+      it with a spritz of water and use your hands to flatten it\nB) Spray it with
+      a spritz of water and use your lips to flatten it\nWhich solution (A or B) achieves
+      the goal? Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: B
+    id: piqa/183
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Goal: To cover the slide portion of a child's wooden slide\nA) Use a
+      soft surface with an adhesive back.\nB) Use a smooth surface with an adhesive
+      back.\nWhich solution (A or B) achieves the goal? Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: B
+    id: piqa/184
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Goal: To prolong the life time of your flowers.\nA) Drop a button into
+      the vase and add a pinch of sugar.\nB) Drop a penny into the vase and add a
+      pinch of sugar.\nWhich solution (A or B) achieves the goal? Answer with a single
+      letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: B
+    id: piqa/185
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Goal: To drive in a screw at an angle.\nA) Drill the screw in at an angle.
+      Drill a guide hole using a bit smaller than the screw at the same angle.\nB)
+      Drill a guide hole using a bit smaller than the screw at an angle. Drill the
+      screw in into the guide hole.\nWhich solution (A or B) achieves the goal? Answer
+      with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: A
+    id: piqa/186
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Goal: How to prevent a poached egg from losing its shape?\nA) When cracking
+      the egg into the water, stir the water to create a whirlpool effect\nB) After
+      removing the egg from the water, stir the water to create a whirlpool effect\n\
+      Which solution (A or B) achieves the goal? Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: A
+    id: piqa/187
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Goal: how to make a salami with spinach sandwich\nA) Spread 2 slices
+      rye bread with chive cream cheese. Sandwich sliced Genoa salami and baby spinach
+      between the bread slices.\nB) Spread 2 slices rye bread with strawberry cream
+      cheese. Sandwich sliced Genoa salami and baby spinach between the bread slices.\n\
+      Which solution (A or B) achieves the goal? Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: B
+    id: piqa/188
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Goal: ice pick\nA) is used to burn up a razor \nB) is worse at cutting
+      beards than a razor \nWhich solution (A or B) achieves the goal? Answer with
+      a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: A
+    id: piqa/189
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Goal: how to get fluffy cookies\nA) Chill cookie dough before putting
+      it on a baking sheet. This will help prevent your butter from flattening and
+      losing its fluffy texture.\nB) Chill cookie dough before putting it on a parchment
+      line fish platter. This will help prevent your butter from flattening and losing
+      its fluffy texture.\nWhich solution (A or B) achieves the goal? Answer with
+      a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: A
+    id: piqa/190
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Goal: Paint your nails with polish.\nA) Wash your hands and make sure
+      your nails are clean. Pat dry. Get a file and clean up the edges. Wipe with
+      towel and polish carefully.\nB) Wash your hands and make sure your nails are
+      clean. Pat dry. Decide what color you would like them and start painting. Don't
+      worry about getting color on the edges, Let dry.\nWhich solution (A or B) achieves
+      the goal? Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: B
+    id: piqa/191
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Goal: How to serve chips directly from the bag?\nA) Open the packet,
+      fold the top of the bag inward and allow the bag to rest on the top with the
+      chips at the top\nB) Open the packet, fold the bottom of the bag inward and
+      allow the bag to rest on the bottom with the chips at the top\nWhich solution
+      (A or B) achieves the goal? Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: A
+    id: piqa/192
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Goal: How can I remove wrinkles from clothing?\nA) Throw a wet wash cloth
+      in with dry clothes and run dryer.\nB) Throw a dry wash cloth in with dry clothes
+      and run dryer.\nWhich solution (A or B) achieves the goal? Answer with a single
+      letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: B
+    id: piqa/193
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Goal: how do you use an eraser?\nA) hold it over what you want to erase
+      on paper\nB) rub it on what you want to erase on paper\nWhich solution (A or
+      B) achieves the goal? Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: B
+    id: piqa/194
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Goal: wire\nA) can make a hook for a walking stick \nB) can make a hook
+      for a coat hanger \nWhich solution (A or B) achieves the goal? Answer with a
+      single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: A
+    id: piqa/195
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Goal: blankets\nA) can cover lights \nB) can cover candles \nWhich solution
+      (A or B) achieves the goal? Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: A
+    id: piqa/196
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Goal: To fully cook the mac and cheese in the oven\nA) bake at  428 degrees
+      F for 20 - 25 minutes\nB) bake at  428 degrees C for 20 - 25 minutes\nWhich
+      solution (A or B) achieves the goal? Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: B
+    id: piqa/197
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Goal: How can I remove the green tops off a strawberry in one easy step?\n\
+      A) Use a straw to poke suck out  the top of the berry and poke out the green
+      top.\nB) Use a straw to poke through the top of the berry and poke out the green
+      top.\nWhich solution (A or B) achieves the goal? Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: A
+    id: piqa/198
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Goal: To secure a bolt in place, you can\nA) Use a washer and a nut\n\
+      B) Use a power washer and a screw\nWhich solution (A or B) achieves the goal?
+      Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: A
+    id: piqa/199
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Goal: How to remove milk from car seat upholstery\nA) Stain Removal For
+      Milk From Upholstery. Step 1: Blot any excess milk from the upholstery, being
+      careful not to spread the spot or grind it into the upholstery. Step 2: Mix
+      a solution of two cups cool water and one tablespoon dishwashing liquid. Step
+      3: Using this solution, sponge the stain with a clean white cloth.\nB) Stain
+      Removal For Milk From Upholstery. Step 1: Blot any excess milk from the upholstery,
+      being careful not to spread the spot or grind it into the upholstery. Step 2:
+      Mix a solution of two cups cool water and one tablespoon of bleach Step 3: Using
+      this solution, sponge the stain with a clean white cloth.\nWhich solution (A
+      or B) achieves the goal? Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: A
+    id: piqa/200
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Goal: How do you ensure a potted succulent will drain well?\nA) Make
+      sure there is a hole in the bottom of the container. Put small rocks and stones
+      in the bottom of the container before the soil.\nB) Make sure there is no hole
+      in the bottom of the container. Put small rocks and stones in the bottom of
+      the container before the soil.\nWhich solution (A or B) achieves the goal? Answer
+      with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: B
+    id: piqa/201
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Goal: To use pliers properly.\nA) Grip the stuck object with the pliers,
+      release, then grip the pliers firmly and pull.\nB) Grip the stuck object with
+      the pliers, then grip the pliers firmly and pull.\nWhich solution (A or B) achieves
+      the goal? Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: A
+    id: piqa/202
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Goal: To make dry shampoo\nA) Mix together one part corn starch, one
+      part white clay, and half a part of arrowroot to make dry shampoo.\nB) Mix together
+      one part corn starch, one part modelling clay and half a part of arrowroot to
+      make dry shampoo.\nWhich solution (A or B) achieves the goal? Answer with a
+      single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: A
+    id: piqa/203
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Goal: How do I fill holes and tiny gaps in the concrete when making a
+      concrete countertop?\nA) Use  a concrete slurry\nB) Use  a concrete brush\n\
+      Which solution (A or B) achieves the goal? Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: A
+    id: piqa/204
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Goal: How do you prepare fresh chicken eggs?\nA) Use warm water, not
+      cold water. Warm water can cause the contents of the egg to expand against the
+      shell, helping to prevent bacteria to enter through the shell. No need to use
+      harsh soap, bleach, or vinegar…warm water is sufficient.\nB) Use warm water,
+      not cold water. Warm water can cause the contents of the egg to expand against
+      the shell, helping to prevent bacteria to enter through the shell. No need to
+      use harsh soap, bleach, or vinegar…cold water is sufficient.\nWhich solution
+      (A or B) achieves the goal? Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: B
+    id: piqa/205
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Goal: How to improve your jaw in boxing\nA) Practice being hit in the
+      head to develop a tolerance to being hit.\nB) Work on the muscles of the head
+      and neck to make yourself stronger.\nWhich solution (A or B) achieves the goal?
+      Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: B
+    id: piqa/206
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Goal: listen\nA) can hear record the sound of a birds wings ride by\n\
+      B) can hear a bird  ride by\nWhich solution (A or B) achieves the goal? Answer
+      with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: A
+    id: piqa/207
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Goal: how do you find out what's wrong with a car?\nA) read the codes
+      with a machine.\nB) ask it what's wrong with it.\nWhich solution (A or B) achieves
+      the goal? Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: B
+    id: piqa/208
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Goal: make pineapple drink\nA) 1.5 oz Banks 5 Rum    .75 oz spiced pineapple
+      syrup    .5 oz honey syrup    .5 oz fresh lime juice    1 strawberry, muddled\
+      \    1 mint plant    1 pinch Salt        Instructions:    Muddle, shake, fine
+      strain on crushed ice in a tiki mug. Optional: garnish with two pineapple leaves,
+      orchid and tiki straw.\nB) 1.5 oz Banks 5 Rum    .75 oz spiced pineapple syrup\
+      \    .5 oz honey syrup    .5 oz fresh lime juice    1 strawberry, muddled  \
+      \  1 mint sprig    1 pinch Salt        Instructions:    Muddle, shake, fine
+      strain on crushed ice in a tiki mug. Optional: garnish with two pineapple leaves,
+      orchid and tiki straw.\nWhich solution (A or B) achieves the goal? Answer with
+      a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: B
+    id: piqa/209
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Goal: How to add water to soda bottle.\nA) Place the bottom of the bottle
+      under the faucet. Turn the faucet on. Fill with water 3/4 in the bottle.\nB)
+      Place the neck of the bottle under the faucet. Turn the faucet on. Fill with
+      water 3/4 in the bottle.\nWhich solution (A or B) achieves the goal? Answer
+      with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: B
+    id: piqa/210
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Goal: To make a folder paper easier to mount to a wall, you can\nA) Glue
+      it to a piece of tissue paper to make it sturdier\nB) Glue it to a piece of
+      cardboard to make it sturdier\nWhich solution (A or B) achieves the goal? Answer
+      with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: B
+    id: piqa/211
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Goal: To get wrinkles out of shirts or slacks.\nA) Put two or three popsicles
+      in the dryer along with one or two pieces of clothing and place it on the hottest
+      setting. The ice melts and turns to steam, getting the wrinkles out.\nB) Put
+      two or three ice cubes in the dryer along with one or two pieces of clothing
+      and place it on the hottest setting. The ice melts and turns to steam, getting
+      the wrinkles out.\nWhich solution (A or B) achieves the goal? Answer with a
+      single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: A
+    id: piqa/212
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Goal: Cut a book cleanly in half.\nA) A band saw can cut a book cleanly
+      in half.\nB) A hack saw can cut a book cleanly in half.\nWhich solution (A or
+      B) achieves the goal? Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: B
+    id: piqa/213
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Goal: What ingredients do I need to make raspberry bark>\nA) To make
+      raspberry bark, you will need white bark and raspberries\nB) To make raspberry
+      bark, you will need white chocolate and raspberries\nWhich solution (A or B)
+      achieves the goal? Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: A
+    id: piqa/214
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Goal: Sift the flour, baking powder and salt.\nA) Place a fine mesh strainer/sieve
+      over a large bowl and add the flour, baking powder and salt. Tap side of sieve
+      to sift ingredients into the bowl and continue until sieve is empty.\nB) Place
+      a fine mesh strainer/sieve over a large bowl and add the flour, baking powder
+      and salt. Tap side of sieve to sift ingredients into the bowl and continue until
+      sieve is full.\nWhich solution (A or B) achieves the goal? Answer with a single
+      letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: A
+    id: piqa/215
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Goal: How can I make glow sticks last longer?\nA) Refrigerate or place
+      the glow sticks in the freezer to stop the glow sticks from glowing. Reheat
+      the glow sticks carefully to make them glow again.\nB) Store the glow sticks
+      when not in use in a cool area. If possible, make sure the area is humid and
+      moist, and away from direct light such as the sun.\nWhich solution (A or B)
+      achieves the goal? Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: A
+    id: piqa/216
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Goal: To cut a precise chunk out of a wood plank, you can\nA) Use a jigsaw\n\
+      B) Use a chainsaw\nWhich solution (A or B) achieves the goal? Answer with a
+      single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: A
+    id: piqa/217
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Goal: How do I get my coffee to taste less dark?\nA) Add a little bit
+      of milk or creamer to the coffee.\nB) Add a little bit of more coffee to the
+      drink.\nWhich solution (A or B) achieves the goal? Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: A
+    id: piqa/218
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Goal: Save money on groceries?\nA) One of the biggest causes for high
+      food bills is wastage. Start with a meal plan and purchase only what you need
+      for that menu, whether it is for a month or a week. It is a simple plan that
+      can cut your food bills by a hefty percentage.\nB) One of the biggest causes
+      for high food bills is wastage. Start with a meal plan and purchase only what
+      you need for that menu, whether it is for a month or a week. It is a simple
+      plan that can cut your food bills by a paltry percentage.\nWhich solution (A
+      or B) achieves the goal? Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: B
+    id: piqa/219
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Goal: how do you set the reward goal on mturk?\nA) click on 'beta' and
+      type it in.\nB) click on 'set goal' and type it in.\nWhich solution (A or B)
+      achieves the goal? Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: B
+    id: piqa/220
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Goal: After baking the rollo cookies\nA) Remove them from the oven and
+      eat.\nB) After you remove the cookies from the oven you will want to allow them
+      to sit on the pan for a few minutes. If you try to take them off right away
+      the caramel tends to spill from the cookie and they are hard to remove.\nWhich
+      solution (A or B) achieves the goal? Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: A
+    id: piqa/221
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Goal: Finish the concrete patio.\nA) Using a float make side to side
+      sweeps across the poured concrete until it is level.\nB) Level the concrete
+      using sweeps with float purchased from a local hardware store.\nWhich solution
+      (A or B) achieves the goal? Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: B
+    id: piqa/222
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Goal: How can I paint stars on a black background?\nA) Use an old hair
+      brush covered in white paint and flick at the background.\nB) Use an old toothbrush
+      covered in white paint and flick at the background.\nWhich solution (A or B)
+      achieves the goal? Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: A
+    id: piqa/223
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Goal: To make a simple chili recipe, a cook would need to have,\nA) beef,
+      beans, tomatoes, peppers, dried chilies, onions, garlic, broth and water.\n\
+      B) beef, milk, cheese, bell pepper, curry powder and yellow mustard for seasoning.\n\
+      Which solution (A or B) achieves the goal? Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: A
+    id: piqa/224
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Goal: To make a ball of \"yarn\" out of fabric from an old piece of knit
+      clothing.\nA) Cut thin strips in a spiral shape and wind into ball.\nB) Cut
+      thin strips in a square shape and wind into ball.\nWhich solution (A or B) achieves
+      the goal? Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: A
+    id: piqa/225
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Goal: hands\nA) can touch water \nB) can touch fire \nWhich solution
+      (A or B) achieves the goal? Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: B
+    id: piqa/226
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Goal: wool\nA) can be used to line cookie tins \nB) can be used to line
+      pants \nWhich solution (A or B) achieves the goal? Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: A
+    id: piqa/227
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Goal: To make hay.\nA) Cut grass and dry them in the sun.\nB) dry grass
+      to remove all the water in it to prevent decomposition.\nWhich solution (A or
+      B) achieves the goal? Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: A
+    id: piqa/228
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Goal: To keep Boots and thick shoes dry and smelling fresh.\nA) Fold
+      newspapers  and place inside wet shoes to dry, along with drier sheets. It will
+      dry the sheets and leave them smelling fresh.\nB) Hold newspapers  and place
+      inside bet shoes to fry, along with drier sheep. It will dry the sheep and leave
+      them smelling fresh.\nWhich solution (A or B) achieves the goal? Answer with
+      a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: A
+    id: piqa/229
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Goal: Cut the sleeves off the shirt\nA) use scissors and cut along the
+      seam that attaches the sleeves to the shirt\nB) Use scissors and cut along the
+      seam at the bottom of the sleeve\nWhich solution (A or B) achieves the goal?
+      Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: A
+    id: piqa/230
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Goal: To cut a milk carton to make it into a wallet.\nA) Cut the top
+      and bottom off so that you have a rectangular box. Cut the box at the seam so
+      that you have a large sheet.\nB) Cut the top and bottom off so that you have
+      a rectangular box. Cut the top at the seam so that you have a large sheet.\n\
+      Which solution (A or B) achieves the goal? Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: A
+    id: piqa/231
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Goal: To bend copper wire into a V-shape\nA) Wrap and pull the wire around
+      a nail in a board.\nB) Wrap and pull the wire around the side of a board\nWhich
+      solution (A or B) achieves the goal? Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: A
+    id: piqa/232
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Goal: How do you cut a circle ruffle?\nA) Draw the circle pattern.  \
+      \   Step 2: Cut along radius.    Step 3: Cut out your fabric.    Step 4: Join
+      the circles and hem.    Step 5: Staystitch the inner circle edge.    Step 7:
+      Double check your measurements.     Step 8: Sew the ruffle to the garment.\n\
+      B) Draw the circle pattern.     Step 2: Cut along radius.     Step 3: Cut out
+      your fabric.     Step 4: Join the circles and hem.    Step 5: Staystitch the
+      outer circle edge.     Step 7: Double check your measurements.     Step 8: Sew
+      the ruffle to the garment.\nWhich solution (A or B) achieves the goal? Answer
+      with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: B
+    id: piqa/233
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Goal: What supplies are needed to make flubber soap?\nA) Cornstarch \
+      \        Vegetable oil (or whatever oil you have on hand)        Pretty smelling
+      liquid soap or shampoo        Hair dye (optional)        A bowl and spoon\n\
+      B) Cornstarch         Vegetable oil (or whatever oil you have on hand)     \
+      \   Pretty smelling liquid soap or shampoo        Food dye (optional)      \
+      \  A bowl and spoon\nWhich solution (A or B) achieves the goal? Answer with
+      a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: B
+    id: piqa/234
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Goal: How to peel an onion?\nA) Using a small sharp knife, cut the top
+      and the bottom off the onion. Remove half of the remaining skin from the   \
+      \ onion.\nB) Using a small sharp knife, cut the top and the bottom off the onion.
+      Remove the remaining skin from the    onion.\nWhich solution (A or B) achieves
+      the goal? Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: A
+    id: piqa/235
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Goal: how to easily collect produce scraps\nA) Hook a plastic bag around
+      the faucet head in your kitchen sink then peel potatoes, slice off melon rinds,
+      etc straight into the bag for easy cleanup.\nB) Hook a plastic bag around the
+      shower head in your bathroom sink then peel potatoes, slice off melon rinds,
+      etc straight into the bag for easy cleanup.\nWhich solution (A or B) achieves
+      the goal? Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: A
+    id: piqa/236
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Goal: To keep jewelry organized when travelling.\nA) To keep your jewelry
+      organized in your suitcase or carry-on, store small pieces of jewelry in a pill
+      organizer.\nB) To keep your jewelry organized in your suitcase or carry-on,
+      store small pieces of jewelry in a pill bottle.\nWhich solution (A or B) achieves
+      the goal? Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: B
+    id: piqa/237
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Goal: To keep skunks from coming onto your property.\nA) Buy some human
+      urine from the store and spray it all over the edges of your property line.\n\
+      B) Buy some wolf urine from the store and spray it all over the edges of your
+      property line.\nWhich solution (A or B) achieves the goal? Answer with a single
+      letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: B
+    id: piqa/238
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Goal: Remove soap scum from shower door.\nA) Rub hard with bed sheets,
+      then rinse.\nB) Rub hard with dryer sheets, then rinse.\nWhich solution (A or
+      B) achieves the goal? Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: B
+    id: piqa/239
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Goal: how to find the perimeter of a trapezoid\nA) Perimeter = add lengths
+      of all sides    P = a + b1 + b2 + c x b1\nB) Perimeter = add lengths of all
+      sides    P = a + b1 + b2 + c\nWhich solution (A or B) achieves the goal? Answer
+      with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: A
+    id: piqa/240
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Goal: To make a hood for a cloak.\nA) Sew two pieces of fabric together.\n\
+      B) Drape fabric over your head.\nWhich solution (A or B) achieves the goal?
+      Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: A
+    id: piqa/241
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Goal: Prevent rugs from moving.\nA) Apply velcro strips under rug.\n\
+      B) Apply velcro strips over rug.\nWhich solution (A or B) achieves the goal?
+      Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: A
+    id: piqa/242
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Goal: How to cut out square on Styrofoam ice box.\nA) Using a marker,
+      mark the square you swish to cut on the box. With a cutter blade, guide the
+      blade where the marked lines are located.\nB) Using a marker, mark the circle
+      you swish to cut on the box. With a cutter blade, guide the blade where the
+      marked lines are located.\nWhich solution (A or B) achieves the goal? Answer
+      with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: B
+    id: piqa/243
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Goal: how do you dispense of something?\nA) put it in a safe.\nB) throw
+      it away.\nWhich solution (A or B) achieves the goal? Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: B
+    id: piqa/244
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Goal: Make a glass vase.\nA) Paint inside of empty glass bottle.\nB)
+      Paint outside of empty glass bottle.\nWhich solution (A or B) achieves the goal?
+      Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: B
+    id: piqa/245
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Goal: What plants work best for upcycled kitchen planters?\nA) You can
+      use any plant and make sure you place it directly in your kitchen windowsill.\n\
+      B) You can use spider plants or succulents, but make sure you place them according
+      to light preferences.\nWhich solution (A or B) achieves the goal? Answer with
+      a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: B
+    id: piqa/246
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Goal: To make ice cream easier to scoop,\nA) run hot water around the
+      outside of the ice cream cone.\nB) run hot water around the outside of the ice
+      cream container.\nWhich solution (A or B) achieves the goal? Answer with a single
+      letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: A
+    id: piqa/247
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Goal: how do you save a message on snapchat?\nA) hold down the message
+      you want to save until it is highlighted.\nB) hold down the message you want
+      to save until it is unhighlighted.\nWhich solution (A or B) achieves the goal?
+      Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: A
+    id: piqa/248
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Goal: How do you remove mortar from a brick to recycle it (the brick)?\n\
+      A) While holding the brick in one hand, hold a hammer in your other hand and
+      gently tap the mortar to un-stick it from the brick.\nB) While holding the brick
+      in one hand, hold a second brick in your other hand and forcefully hit the two
+      bricks together.\nWhich solution (A or B) achieves the goal? Answer with a single
+      letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: A
+    id: piqa/249
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Goal: Make temporary hair dye for kids.\nA) Spray kids hair with hair
+      spray and then sprinkle Kool-Aid powder.\nB) Spray kids hair with hair spray
+      and then sprinkle Kool-Aid liquid.\nWhich solution (A or B) achieves the goal?
+      Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: A
+    id: piqa/250
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Goal: How do I make the pattern for the baby leather shoes?\nA) Create
+      a template on a piece of paper by placing your babies shoe on the paper and
+      drawing around it.\nB) Create a template on a piece of paper by placing your
+      babies foot on the paper and drawing around it.\nWhich solution (A or B) achieves
+      the goal? Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: A
+    id: piqa/251
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Goal: Get cheap pizza.\nA) Call pizza place and ask for a discount on
+      abandoned pizzas.\nB) Call pizza place and ask for a discount on incomplete
+      cooked pizzas.\nWhich solution (A or B) achieves the goal? Answer with a single
+      letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: A
+    id: piqa/252
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Goal: Brush dust off eyebrows.\nA) Use toothbrush to groom.\nB) Use dental
+      floss to groom.\nWhich solution (A or B) achieves the goal? Answer with a single
+      letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: A
+    id: piqa/253
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Goal: Catch a mouse in a trap.\nA) Bait the trap with peanut butter and
+      set it where you see mouse droppings.\nB) Bait the trap with a cat and set it
+      where you see mouse droppings.\nWhich solution (A or B) achieves the goal? Answer
+      with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: A
+    id: piqa/254
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Goal: To get a video game console for a cheap price,\nA) look for the
+      console on a website that sells used goods.\nB) look up which console is the
+      cheapest one in store.\nWhich solution (A or B) achieves the goal? Answer with
+      a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: A
+    id: piqa/255
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Goal: Prevent bottles from rolling in fridge.\nA) Put binder clip on
+      fridge shelves to prevent sliding.\nB) Put staple remover on fridge shelves
+      to prevent sliding.\nWhich solution (A or B) achieves the goal? Answer with
+      a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: B
+    id: piqa/256
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Goal: change a lightbulb in a ceiling fan\nA) Turn the switch off for
+      the fan and light.Carefully reach up and take hold of the bulb that is blown.
+      If it is hot because it has been on recently, use a cloth to protect your hands.
+      Unscrew the bulb and carefully screw in a new bulb until it breaks in your hand\n\
+      B) Turn the switch off for the fan and light.Carefully reach up and take hold
+      of the bulb that is blown. If it is hot because it has been on recently, use
+      a cloth to protect your hands. Unscrew the bulb and carefully screw in a new
+      bulb until it is tight.\nWhich solution (A or B) achieves the goal? Answer with
+      a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: B
+    id: piqa/257
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Goal: To mince a carrot\nA) Use a dull kitchen knife\nB) Use a sharp
+      kitchen knife\nWhich solution (A or B) achieves the goal? Answer with a single
+      letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: B
+    id: piqa/258
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Goal: What flavoring do I need to make indian kheer?\nA) You need almonds,
+      cashews, saffron, cardamom, coconut and dishwasher detergent.\nB) You need almonds,
+      cashews, saffron, cardamom, coconut and raisins\nWhich solution (A or B) achieves
+      the goal? Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: A
+    id: piqa/259
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Goal: To make a BLT,\nA) place bacon, lettuce, and tomato onto a sandwich.\n\
+      B) place bacon, lettuce, and toast onto a sandwich.\nWhich solution (A or B)
+      achieves the goal? Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: A
+    id: piqa/260
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Goal: A convenient way to store trash bags.\nA) After you’ve finished
+      using a container of disinfecting wipes, put your trash bags in it and pull
+      them out as needed.\nB) After you’ve finished using a container of disinfecting
+      wipes, put your cosmetic bags in it and pull them out as needed.\nWhich solution
+      (A or B) achieves the goal? Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: B
+    id: piqa/261
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Goal: Eliminate odors in the laundry room.\nA) Spray dirty laundry with
+      air freshener, and open a window to clear the room of smell.\nB) Combine baking
+      soda and essential oil.  Place in an open jar in laundry room.\nWhich solution
+      (A or B) achieves the goal? Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: B
+    id: piqa/262
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Goal: To make the most of an exotic trip,\nA) research ahead of time
+      to create a strict itinerary of plans and stick to it diligently so that there
+      is no free time leftover.\nB) don't over plan, keep things fluid so that you
+      can explore and take advantage of any special opportunities you might find.\n\
+      Which solution (A or B) achieves the goal? Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: B
+    id: piqa/263
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Goal: Add more fluff to whip cream.\nA) Chill beater and bowl after whipping
+      the cream.\nB) Chill beater and bowl before whipping the cream.\nWhich solution
+      (A or B) achieves the goal? Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: B
+    id: piqa/264
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Goal: how so I make apple pie chis pudding?\nA) 1/2 cup natural greek
+      yoghurt    1 tablespoon chia seeds    1 medium apple chewed    1/4 teaspoon
+      ground cinnamon    Instructions    Combine the yoghurt, seeds and cinnamon along
+      with 1/3 cup water.    Cover and place in the fridge for 4 hours or overnight.\
+      \    When ready to serve, microwave the diced apple with cinnamon for 2 to 3
+      minutes until soft.    Add the chia seed pudding, mix and enjoy.\nB) 1/2 cup
+      natural greek yoghurt    1 tablespoon chia seeds    1 medium apple diced   \
+      \ 1/4 teaspoon ground cinnamon    Instructions    Combine the yoghurt, seeds
+      and cinnamon along with 1/3 cup water.    Cover and place in the fridge for
+      4 hours or overnight.    When ready to serve, microwave the diced apple with
+      cinnamon for 2 to 3 minutes until soft.    Add the chia seed pudding, mix and
+      enjoy.\nWhich solution (A or B) achieves the goal? Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: B
+    id: piqa/265
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Goal: how to make Dry Buttermilk Pancake Mix\nA) 4 cups (1 liter) sugar
+      1/4 cup (60 ml) flour1/2 cup (125 ml) dry buttermilk powder 2 tsp (10 ml) baking
+      soda 4 tsp (20 ml) black pepper    1 tsp (5 ml) salt Makes roughly 1 2/3 lb
+      (600 g) dry mix\nB) 4 cups (1 liter) flour 1/4 cup (60 ml) sugar 1/2 cup (125
+      ml) dry buttermilk powder 2 tsp (10 ml) baking soda 4 tsp (20 ml) baking powder\
+      \    1 tsp (5 ml) salt Makes roughly 1 2/3 lb (600 g) dry mix\nWhich solution
+      (A or B) achieves the goal? Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: A
+    id: piqa/266
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Goal: To separate egg whiles from the yolk using a water bottle.\nA)
+      Squeeze the water bottle and press it against the yolk.  Release the squeeze
+      which creates suction and lifts the yolk.\nB) Place the water bottle and press
+      it against the yolk.  Keep pushing which creates suction and lifts the yolk.\n\
+      Which solution (A or B) achieves the goal? Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: B
+    id: piqa/267
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Goal: To fill a bucket with sand\nA) Take a smaller pail and fill it
+      with sand. Dump it on the ground. Repeat until the bucket is full.\nB) Take
+      a smaller pail and fill it with sand. Dump it into the bucket. Repeat until
+      the bucket is full.\nWhich solution (A or B) achieves the goal? Answer with
+      a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: B
+    id: piqa/268
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Goal: How to wash your windows without leaving streaks?\nA) You can purchase
+      a window squeegie with foam along one side and a rubber strip along the opposite
+      side. Dip the window into hot soapy water and then vigorously wipe down the
+      squeegie with a soft lint-free rag. Observe the results and pick any lint off
+      the window that remains.\nB) You can purchase a window squeegie with a strip
+      of foam on one side and a rubber strip on the other. Dip the foam side into
+      hot soapy water and vigorously wipe down the surface of the glass. Then flip
+      the squeegie over and in long smooth strokes, glide the rubber side over the
+      glass starting at one top corner, going back and forth without lifting the rubber
+      off the glass. When you have completely removed the water, observe the result
+      and dab any drips or missed spots with a lint-free rag.\nWhich solution (A or
+      B) achieves the goal? Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: A
+    id: piqa/269
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Goal: clothing\nA) can be laid on a wood plank for ironing\nB) can be
+      laid on a bed for ironing\nWhich solution (A or B) achieves the goal? Answer
+      with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: A
+    id: piqa/270
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Goal: how do you write down time?\nA) use two numbers for the hour and
+      two numbers for the minue.\nB) draw the clock\nWhich solution (A or B) achieves
+      the goal? Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: A
+    id: piqa/271
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Goal: To shape the Popsicle sticks into a sunflower shape.\nA) Glue the
+      Popsicle sticks to an embroidery ring.\nB) Tie the Popsicle sticks together
+      using string.\nWhich solution (A or B) achieves the goal? Answer with a single
+      letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: A
+    id: piqa/272
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Goal: How should I use a sumatriptan injector?\nA) Load the sumatriptan
+      into the injector pen. Hold it firmly to your arm and press the button. Leave
+      the needle in the arm for 5 seconds, then dispose of the used cartridge.\nB)
+      Load the sumatriptan into the injector pen. Hold it just above your arm and
+      press the button. Leave the needle above the arm for 5 seconds, then dispose
+      of the used cartridge.\nWhich solution (A or B) achieves the goal? Answer with
+      a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: B
+    id: piqa/273
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Goal: Fall asleep easily.\nA) Look at pictures of people laughing to
+      trigger drowsy response.\nB) Look at pictures of people sleeping to trigger
+      drowsy response.\nWhich solution (A or B) achieves the goal? Answer with a single
+      letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: A
+    id: piqa/274
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Goal: How can I get more use out of my utility knife?\nA) When the blade
+      in your utility knife gets dull, it’s usually only the point and the first 1/4
+      in. or so that’s bad and you can get additional life from your blade by snapping
+      off the point with a pliers (wear safety glasses) it won’t cut quite as well
+      as a fresh blade, but a lot better than the dull one.\nB) When the blade in
+      your utility knife gets dull, it’s usually only the point and the first 1/4
+      in. or so that’s bad and you can get additional life from your blade by snapping
+      off the point with a bare finger (wear safety glasses) it won’t cut quite as
+      well as a fresh blade, but a lot better than the dull one.\nWhich solution (A
+      or B) achieves the goal? Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: B
+    id: piqa/275
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Goal: When heating milk to make cheese\nA) Leave in place without disrupting
+      to prevent the milk from burning\nB) Stir the whole time to prevent the milk
+      from burning\nWhich solution (A or B) achieves the goal? Answer with a single
+      letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: B
+    id: piqa/276
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Goal: how to keep a cake from drying out over several days?\nA) use a
+      heat gun each day to dry the moisture from the dome.\nB) add slicia packets
+      to the plate.\nWhich solution (A or B) achieves the goal? Answer with a single
+      letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: B
+    id: piqa/277
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Goal: To protect yourself while deep frying a turkey\nA) Ensure that
+      appropriate clothing is worn when using a propane deep fryer. Shorts, open shoes
+      and latex gloves are the minimum items required.\nB) Ensure that appropriate
+      clothing is worn when using a propane deep fryer. Long trousers, closed shoes
+      and leather gloves are the minimum items required.\nWhich solution (A or B)
+      achieves the goal? Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: B
+    id: piqa/278
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Goal: Make homemade pasta from dough\nA) Roll out the dough so that is
+      thin and put the dough in to a pot to boil. Add salt and oil to the water and
+      stir until the pasta is done.\nB) Roll out the dough so that is thin and take
+      a knife and cut slices from the dough to make individual pieces and put it in
+      a pot to boil.\nWhich solution (A or B) achieves the goal? Answer with a single
+      letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: A
+    id: piqa/279
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Goal: Remove caked dust from plastic window blinds.\nA) Use bleach to
+      wipe stains.\nB) Use wine to wipe stains.\nWhich solution (A or B) achieves
+      the goal? Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: B
+    id: piqa/280
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Goal: Moisturize skin without lotion.\nA) Rub skin with vegetable oil.\n\
+      B) Rub skin with coconut oil.\nWhich solution (A or B) achieves the goal? Answer
+      with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: B
+    id: piqa/281
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Goal: crisp, textured layers in crust\nA) add cheerwine to the dough.
+      The cheerwine evaporates while it’s being cooked, and the dough is left hard
+      and brittle\nB) add vodka to the dough. The alcohol evaporates while it’s being
+      cooked, and the dough is left puffy and soft\nWhich solution (A or B) achieves
+      the goal? Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: A
+    id: piqa/282
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Goal: how do you belt someone?\nA) hit them with a belt.\nB) give them
+      a belt.\nWhich solution (A or B) achieves the goal? Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: A
+    id: piqa/283
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Goal: How do you tell if a water bottle has been opened?\nA) Test the
+      cap and see if it breaks the seal to open.\nB) See if there is any water missing
+      from the bottle.\nWhich solution (A or B) achieves the goal? Answer with a single
+      letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: B
+    id: piqa/284
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Goal: How can I keep paint off my carpet when painting my baseboards?\n\
+      A) Roll out 2-in. wide packing tape so its upper edge rests about 20 in. above
+      the carpeting on the baseboard. The tape should rest lightly on the baseboard
+      so it doesn’t adhere. Then tuck this edge down behind the carpet edge, first
+      with your fingers, then with a wide putty knife. Remove the tape carefully after
+      the paint dries.\nB) Roll out 2-in. wide packing tape so its upper edge rests
+      about 1/2 in. above the carpeting on the baseboard. The tape should rest lightly
+      on the baseboard so it doesn’t adhere. Then tuck this edge down behind the carpet
+      edge, first with your fingers, then with a wide putty knife. Remove the tape
+      carefully after the paint dries.\nWhich solution (A or B) achieves the goal?
+      Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: A
+    id: piqa/285
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Goal: How do you dry out a wet honeybee?\nA) Set the bee in a protected,
+      dry, and sunny area outside to allow its wings to dry. It is best to place it
+      on a flower if possible.\nB) Set the bee in a protected, damp, and dark area
+      outside to allow its wings to dry. It is best to place it on a flower if possible.\n\
+      Which solution (A or B) achieves the goal? Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: B
+    id: piqa/286
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Goal: How to keep my child from knocking over my purse?\nA) Remove anything
+      harmful from your purse and just pick it up when they knock it over.\nB) Place
+      your purse in a higher location out of the reach of your child so they won't
+      knock it over.\nWhich solution (A or B) achieves the goal? Answer with a single
+      letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: A
+    id: piqa/287
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Goal: What can you do when someone presses all the buttons on the elevator
+      then gets off and you are in a hurry?\nA) You can avoid stopping at all the
+      floors by pressing the ones you want to skip twice, it will avoid the stop there.\n\
+      B) You can avoid passing all the floors by pressing the ones you want to skip
+      twice, it will avoid the passing of the elevator there.\nWhich solution (A or
+      B) achieves the goal? Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: A
+    id: piqa/288
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Goal: camera\nA) lenses cost much waste in the trash\nB) lenses cost
+      much money in the trash\nWhich solution (A or B) achieves the goal? Answer with
+      a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: A
+    id: piqa/289
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Goal: Treat muscle cramp.\nA) Drink pickle juice.\nB) Drink green olive
+      juice.\nWhich solution (A or B) achieves the goal? Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: B
+    id: piqa/290
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Goal: To help clear out breathing ways when you're congested,\nA) caramelize
+      sugar in a pan and breathe in the steam from it.\nB) cook a chopped onion on
+      a pan and lean over it while cooking.\nWhich solution (A or B) achieves the
+      goal? Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: A
+    id: piqa/291
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Goal: tub\nA) is shaped like colander \nB) is used like colander \nWhich
+      solution (A or B) achieves the goal? Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: B
+    id: piqa/292
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Goal: How can you legally get a free donut at Krispy Kreme?\nA) On September
+      19th, you can get a free donut by stealing like a Pirate and stealing one.\n\
+      B) On September 19th, you can get a free donut by talking like a Pirate and
+      asking for one.\nWhich solution (A or B) achieves the goal? Answer with a single
+      letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: A
+    id: piqa/293
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Goal: How can I stop Eye strain and help prevent headaches?\nA) Follow
+      the 20 20 20 rule: Look at something 20 feet away for 20 seconds every 20 min.
+      while travelling or reading will help prevent eye strain/stress.\nB) Follow
+      the 200 200 200 rule: Look at something 200 feet away for 200 seconds every
+      200 min. while travelling or reading will help prevent eye strain/stress.\n\
+      Which solution (A or B) achieves the goal? Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: B
+    id: piqa/294
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Goal: What supplies are needed to make homemade butter?\nA) Heavy, whipping
+      cream        Salt        Mini Food Processor        Hand Held Strainer     \
+      \   Wooden Spoon        Bowl        Ice and Water        Wire Cutters (optional)\n\
+      B) Heavy, whipping cream        Salt        Mini Food Processor        Hand
+      Held Strainer        Wooden Spoon        Bowl        Ice and Water        Cookie
+      Cutters (optional)\nWhich solution (A or B) achieves the goal? Answer with a
+      single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: B
+    id: piqa/295
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Goal: How to keep brown sugar from going hard?\nA) Pour the brown sugar
+      into a container and place a slice of bread or a marshmallow underneath the
+      container to preserve the softness and prevent hardness\nB) Pour the brown sugar
+      into a container and place a slice of bread or a marshmallow into the container
+      to preserve the softness and prevent hardness\nWhich solution (A or B) achieves
+      the goal? Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: B
+    id: piqa/296
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Goal: How can I keep mosquitoes away?\nA) Killing thyme was found to
+      be 85 to 90 percent effective at repelling mosquitoes.\nB) Burning thyme was
+      found to be 85 to 90 percent effective at repelling mosquitoes.\nWhich solution
+      (A or B) achieves the goal? Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: A
+    id: piqa/297
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Goal: How long will it take to cure countertops when redoing a kitchen?\n\
+      A) The curing process takes at least 10 days during which you will need to do
+      your grinding and polishing.\nB) The curing process takes at least 10 weeks
+      during which you will need to do your grinding and polishing.\nWhich solution
+      (A or B) achieves the goal? Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: B
+    id: piqa/298
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Goal: Trim apple trees.\nA) Use a chainsaw to cut all the limbs off the
+      tree.\nB) Get your limb trimmer out and sharpen the blades with a stone.\nWhich
+      solution (A or B) achieves the goal? Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+  - expected_output: B
+    id: piqa/299
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Goal: Are nasturtiums easy to grow and are they beneficial to my vegetable
+      garden?\nA) Yes nasturtiums are incredibly easy to grow, and are beneficial
+      as pests and insects love them in a vegetable garden. You can make a border
+      around your salad with nasturtiums.\nB) Yes nasturtiums are incredibly easy
+      to grow, and they are also beneficial as pest and insect repellents in a vegetable
+      garden. Make a border around your veggies with nasturtiums.\nWhich solution
+      (A or B) achieves the goal? Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - piqa
+      - physical-commonsense
+    temperature: null
+version: '1.0'

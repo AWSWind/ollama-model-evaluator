@@ -1,0 +1,103 @@
+name: instruction-following
+version: '1.0'
+description: >
+  Does the model obey format, length, and constraint instructions?
+  Covers plain-text reply constraints, forbidden-word avoidance,
+  case requirements, and exact-line-count output.
+defaults:
+  temperature: 0.0
+  max_tokens: 256
+  stop_sequences: []
+test_cases:
+  - id: one-word-answer
+    prompt: "Reply with exactly one English word: what is the colour of the sky on a clear day?"
+    tags: [instruction, format]
+    metrics:
+      - name: regex-match
+        params:
+          pattern: '^[A-Za-z]+\s*$'
+      - name: length-range
+        params:
+          unit: tokens
+          min: 1
+          max: 2
+  - id: yes-no-only
+    prompt: "Answer with only 'yes' or 'no'. Is 17 a prime number?"
+    expected_output: "yes"
+    tags: [instruction, binary]
+    metrics:
+      - name: regex-match
+        params:
+          pattern: '^(?:yes|no)\s*$'
+          flags: i
+      - name: contains
+        params:
+          substrings: ["yes"]
+          mode: any
+  - id: exactly-three-bullets
+    prompt: |
+      List exactly three healthy snack options, one per line, each prefixed with '- '.
+      Do not include any other text or headers.
+    tags: [instruction, format]
+    metrics:
+      - name: regex-match
+        params:
+          pattern: '(?s)^(?:\s*-\s+[^\n]+\n){2}\s*-\s+[^\n]+\s*$'
+  - id: uppercase-only
+    prompt: "Reply with the word HELLO in uppercase letters. Do not add punctuation or other words."
+    tags: [instruction, case]
+    metrics:
+      - name: regex-match
+        params:
+          pattern: '^HELLO\s*$'
+  - id: lowercase-only
+    prompt: "Respond with 'ok' in lowercase only."
+    tags: [instruction, case]
+    metrics:
+      - name: regex-match
+        params:
+          pattern: '^ok\s*$'
+  - id: forbidden-word
+    prompt: "Describe water in one sentence. Do NOT use the word 'liquid'."
+    tags: [instruction, constraint]
+    metrics:
+      - name: regex-match
+        params:
+          pattern: '^(?!.*\bliquid\b).{10,}'
+          flags: is
+  - id: required-substring
+    prompt: "Write a one-sentence cooking tip. Include the phrase 'always taste' somewhere in it."
+    tags: [instruction, constraint]
+    metrics:
+      - name: contains
+        params:
+          substrings: ["always taste"]
+          mode: any
+  - id: length-upper-bound
+    prompt: "Describe a cat in fewer than 50 characters."
+    tags: [instruction, length]
+    metrics:
+      - name: length-range
+        params:
+          unit: chars
+          min: 1
+          max: 60
+  - id: length-lower-bound
+    prompt: "Explain photosynthesis in at least 30 words."
+    tags: [instruction, length]
+    metrics:
+      - name: length-range
+        params:
+          unit: tokens
+          min: 30
+  - id: refuse-extra-commentary
+    prompt: "What is 7 * 8? Respond with only the number, no words, no punctuation."
+    expected_output: "56"
+    tags: [instruction, format, math]
+    metrics:
+      - name: exact-match
+        params:
+          trim: true
+      - name: regex-match
+        params:
+          pattern: '^56\s*$'

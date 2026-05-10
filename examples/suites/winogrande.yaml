@@ -1,0 +1,5167 @@
+defaults:
+  max_tokens: 128
+  stop_sequences: []
+  temperature: 0.0
+description: 'WinoGrande XL: pronoun resolution benchmark. Tests whether the model
+  uses world knowledge to disambiguate which noun a pronoun refers to.'
+name: winogrande
+test_cases:
+  - expected_output: A
+    id: winogrande/0
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: The wooden
+      doors at my friends work are worse than the wooden desks at my work, because
+      the _ material is cheaper.\nA) doors\nB) desks\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: A
+    id: winogrande/1
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: I hated
+      the project this year compared to the essay last year, because the _ required
+      more work.\nA) project\nB) essay\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: B
+    id: winogrande/2
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: Mary
+      goes around telling everyone that Christine is too clingy because _ likes  to
+      be touched..\nA) Mary\nB) Christine\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: A
+    id: winogrande/3
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: When
+      other people were smoking, Kayla was more disgusted than Erin because _ had
+      always avoided smoke.\nA) Kayla\nB) Erin\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: B
+    id: winogrande/4
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: Research
+      came easy to Monica as compared to Erin because _ 's father was a landscaper.\n\
+      A) Monica\nB) Erin\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: B
+    id: winogrande/5
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: Christine
+      told Samantha at court their reasons for their expired license, since _ had
+      the responsibility to judge.\nA) Christine\nB) Samantha\nAnswer with a single
+      letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: B
+    id: winogrande/6
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: Emily
+      decided to eat a lot more yucca than Carrie did. _ was still hungry.\nA) Emily\n\
+      B) Carrie\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: A
+    id: winogrande/7
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: The bank
+      permitted Michael to open a checking account, but not Matthew, because _ was
+      employed.\nA) Michael\nB) Matthew\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: A
+    id: winogrande/8
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: Jason
+      considers he and Benjamin to be friends so _ puts a lot of effort into their
+      relationship.\nA) Jason\nB) Benjamin\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: A
+    id: winogrande/9
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: Cynthia
+      had to pee after one large coffee but Betty did not as _ had a very small bladder.\n\
+      A) Cynthia\nB) Betty\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: A
+    id: winogrande/10
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: Tina
+      made a schedule to keep track of her work and school obligations.  She preferred
+      to focus on the _ because she wanted to learn.\nA) school\nB) work\nAnswer with
+      a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: B
+    id: winogrande/11
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: Eric
+      went to Leslie's house to play with the new dog, but there was no answer. _
+      was at the park.\nA) Eric\nB) Leslie\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: A
+    id: winogrande/12
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: Since
+      Craig threw aluminum cans in the trash and Benjamin recycled, _ was environmentally
+      irresponsible.\nA) Craig\nB) Benjamin\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: B
+    id: winogrande/13
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: Erin
+      was eating more than Betty was eating for dinner because _ had a big lunch.\n\
+      A) Erin\nB) Betty\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: B
+    id: winogrande/14
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: If I
+      want to build a swing should I build it out of wood or use a tire? It seems
+      like the _ would get rotten eventually.\nA) tire\nB) wood\nAnswer with a single
+      letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: B
+    id: winogrande/15
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: The chef
+      added butter to the pan on the stove and it began to melt right away because
+      the _ was soft.\nA) pan\nB) butter\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: B
+    id: winogrande/16
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: My employer
+      offers a bonus of either a phone or a television, but unfortunately the _ is
+      just way too small to be useful.\nA) phone\nB) television\nAnswer with a single
+      letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: B
+    id: winogrande/17
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: Samantha
+      was pretty good at math while Natalie was better at English. _ enrolled in a
+      storytelling class this semester.\nA) Samantha\nB) Natalie\nAnswer with a single
+      letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: B
+    id: winogrande/18
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: Elena
+      brought the horse to the stables owned by Cynthia, so _ could buy the animal.\n\
+      A) Elena\nB) Cynthia\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: B
+    id: winogrande/19
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: Craig
+      gifted Eric a new picnic table, because _ lent him some money a while ago.\n\
+      A) Craig\nB) Eric\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: A
+    id: winogrande/20
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: The smell
+      in the kitchen of the home is unbearable, while the laundry room smells fine.
+      The _ must have been cleaned longer ago.\nA) kitchen\nB) laundry room\nAnswer
+      with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: B
+    id: winogrande/21
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: Betty
+      used glue to fix Megan's toy because _ was too young to use superglue.\nA) Betty\n\
+      B) Megan\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: A
+    id: winogrande/22
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: Rachel
+      wanted children, but Megan had no interest, so _ looked for someone else to
+      have babies with.\nA) Rachel\nB) Megan\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: A
+    id: winogrande/23
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: Natalie
+      tended to wear their hair in a ponytail, while Maria wasn't able to, because
+      _ had long hair.\nA) Natalie\nB) Maria\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: A
+    id: winogrande/24
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: In order
+      to grow his plants naturally, he bought fertilizer and water. The _ was filled
+      with nutrients.\nA) fertilizer\nB) water\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: A
+    id: winogrande/25
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: Kenneth
+      had worse skin than Craig so _ had to use more of the moisturizer.\nA) Kenneth\n\
+      B) Craig\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: A
+    id: winogrande/26
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: I loved
+      my old gifts but not the new dishes, because the _ were so beautiful.\nA) gifts\n\
+      B) dishes\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: B
+    id: winogrande/27
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: Michael
+      was on a diet, but cheated by eating junk food with Christopher. _ felt bad
+      for ruining his plan.\nA) Michael\nB) Christopher\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: A
+    id: winogrande/28
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: The personal
+      trainer gave Laura but not Victoria the more difficult exercise because _ was
+      in shape.\nA) Laura\nB) Victoria\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: A
+    id: winogrande/29
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: The brutal
+      boxing match was suitable for Christopher but not Samuel because _ did damage
+      to his opponent.\nA) Christopher\nB) Samuel\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: B
+    id: winogrande/30
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: At dinner
+      time, Tanya ate Erin's serving of peas even though _ really likes green vegetables.\n\
+      A) Tanya\nB) Erin\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: B
+    id: winogrande/31
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: Randy
+      showed Samuel the abused horse that he rescued from the shelter.  _ was proud
+      of his friend.\nA) Randy\nB) Samuel\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: B
+    id: winogrande/32
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: Joel
+      researched laws and helped to open a preschool for Eric. Because _ is very good
+      with kids.\nA) Joel\nB) Eric\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: A
+    id: winogrande/33
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: Jeffrey
+      asked Hunter when was the date set for the wedding because _ was his best man.\n\
+      A) Jeffrey\nB) Hunter\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: B
+    id: winogrande/34
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: Anxiety
+      is a feeling Rebecca gets when she has face Erin who is a probation officer,
+      _ does not  a fear of authority.\nA) Rebecca\nB) Erin\nAnswer with a single
+      letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: A
+    id: winogrande/35
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: Kerry
+      was running later when he took his car to work than when he took a taxi because
+      he ran into more traffic in the _ .\nA) car\nB) taxi\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: B
+    id: winogrande/36
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: Kevin
+      drew the blood from Ian's arm, because _ was giving it to do some tests.\nA)
+      Kevin\nB) Ian\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: A
+    id: winogrande/37
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: Erin
+      has a teenager whereas Patricia has toddler-age children because _ became a
+      mother first.\nA) Erin\nB) Patricia\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: A
+    id: winogrande/38
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: The girl
+      put her money in her bag instead of her pocket because the bully looked in the
+      _ .\nA) pocket\nB) bag\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: A
+    id: winogrande/39
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: I got
+      more use in the gym than at the playground because the _ had more things to
+      do.\nA) gym\nB) playground\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: B
+    id: winogrande/40
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: For her
+      birthday gifts, Sarah was upset with the pearls, but felt the opposite about
+      the rings she received. The _ were fancier.\nA) pearls\nB) rings\nAnswer with
+      a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: B
+    id: winogrande/41
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: Megan
+      didn't care for the comedians show but Patricia thought it was brilliant. _
+      hung out for the comedian's second set.\nA) Megan\nB) Patricia\nAnswer with
+      a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: B
+    id: winogrande/42
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: Jessica
+      wanted Mary to help them decorate their new house because _ asked them not to
+      do it alone.\nA) Jessica\nB) Mary\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: B
+    id: winogrande/43
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: John
+      painted the pole red close to the color of the wall and painted the frame white
+      and now the _ is similar.\nA) frame\nB) pole\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: A
+    id: winogrande/44
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: Starting
+      the engine of the car took less time unlike the truck since the _ 's engine
+      was working at the time.\nA) car\nB) truck\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: A
+    id: winogrande/45
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: Tanya
+      spent more on the children's birthday party than Amy. _ thought a magician was
+      a good use of funds.\nA) Tanya\nB) Amy\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: A
+    id: winogrande/46
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: Tanya
+      loved pepperoni on their pizza and Katrina loved sausage, so when it had just
+      sausage _ was not very happy.\nA) Tanya\nB) Katrina\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: B
+    id: winogrande/47
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: Katrina
+      turned out to be much more spoiled than Felicia because _ did not have wealthy
+      or generous parents.\nA) Katrina\nB) Felicia\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: A
+    id: winogrande/48
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: Laura
+      asked Rachel if she could borrow some clothes because _ loved her fashion sense.\n\
+      A) Laura\nB) Rachel\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: B
+    id: winogrande/49
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: The pine
+      trees were still green in December, but the oak trees were not, because the
+      _ keep their leaves in fall.\nA) oak trees\nB) pine trees\nAnswer with a single
+      letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: B
+    id: winogrande/50
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: They
+      discussed the company's budget at the business meeting but the _ was boring
+      and the topic of the budget ran long.\nA) budget\nB) meeting\nAnswer with a
+      single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: A
+    id: winogrande/51
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: Cynthia
+      gave a rabbit as a companion to Carrie because _ thought they were lonely.\n\
+      A) Cynthia\nB) Carrie\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: A
+    id: winogrande/52
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: Garrett
+      was always feeling fatigued because of the energy his job demands. The _ of
+      the job is too much.\nA) demand\nB) energy\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: A
+    id: winogrande/53
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: Tommy
+      was able to carry the tripod himself, but his friend had to help him carry the
+      camera because the _ was heavier.\nA) camera\nB) tripod\nAnswer with a single
+      letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: A
+    id: winogrande/54
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: You can
+      grow cilantro in a garden or buy it at the store, but the _ variety will taste
+      better because it will be fresh.\nA) garden\nB) store\nAnswer with a single
+      letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: A
+    id: winogrande/55
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: the region
+      was too crowded for our comfortable stay for all the people sent there , the
+      _ were too small..\nA) region\nB) people\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: B
+    id: winogrande/56
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: Despite
+      the fact that Joseph was sick and Craig was healthy, _ still stayed home from
+      work that day.\nA) Joseph\nB) Craig\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: B
+    id: winogrande/57
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: The color
+      of the paint was quite pleasing to Jessica however Natalie believed it to be
+      too bright. _ painted their room with a subdued color paint.\nA) Jessica\nB)
+      Natalie\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: B
+    id: winogrande/58
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: Megan
+      liked to read a book good more than Samantha because _ hated the peace and quiet.\n\
+      A) Megan\nB) Samantha\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: B
+    id: winogrande/59
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: Cynthia
+      had to pee after one large coffee but Betty did not as _ had a very big bladder.\n\
+      A) Cynthia\nB) Betty\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: B
+    id: winogrande/60
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: At the
+      dance, Adam asked the girl to dance before Donald, so _ is angry with himself.\n\
+      A) Adam\nB) Donald\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: A
+    id: winogrande/61
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: In her
+      newly purchased house, Patricia was upset to discover a woodworm infestation
+      and called the realtor Victoria. _ wanted the sellers to pay for an exterminator.\n\
+      A) Patricia\nB) Victoria\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: B
+    id: winogrande/62
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: In the
+      hotel laundry room, Felicia burned Mary's shirt while ironing it, so the manager
+      gave _ a refund.\nA) Felicia\nB) Mary\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: A
+    id: winogrande/63
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: A background
+      check was performed on Natalie by Lindsey due to _ being a nanny.\nA) Natalie\n\
+      B) Lindsey\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: A
+    id: winogrande/64
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: Adam
+      decided to shave Denniss beard before the reuinion, because _ thought it was
+      too long.\nA) Adam\nB) Dennis\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: B
+    id: winogrande/65
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: Donald
+      stuck his nose up and scoffed at William's ragged outfit, because _ looked like
+      the working class.\nA) Donald\nB) William\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: B
+    id: winogrande/66
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: In order
+      to grow his plants naturally, he bought fertilizer and water. The _ was lacking
+      with nutrients.\nA) fertilizer\nB) water\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: A
+    id: winogrande/67
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: Samuel
+      tried unsuccessfully to get Brett to skip school because _ was a truant that
+      didn't follow the rules.\nA) Samuel\nB) Brett\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: B
+    id: winogrande/68
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: Jen planned
+      a retreat to a mountain or the park. She chose the _ because it was warmer.\n\
+      A) mountain\nB) park\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: B
+    id: winogrande/69
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: Caroline
+      works in the catering and food wholesale industries, but enjoys food distribution
+      more, so she prefers her work in the _ industry.\nA) catering\nB) food wholesale\n\
+      Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: B
+    id: winogrande/70
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: She decided
+      to report the accident and the burglary, but the _ required much less investigation.\n\
+      A) burglary\nB) accident\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: B
+    id: winogrande/71
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: They
+      had to eat a lot to gain the strength they had lost and be able to work, the
+      _ was too little.\nA) work\nB) strength\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: B
+    id: winogrande/72
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: Throughout
+      the practice Rachel pushed the limits of Megan to get ready for the game because
+      _ was the athlete.\nA) Rachel\nB) Megan\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: B
+    id: winogrande/73
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: Smoke
+      still rose from the house but had subsided at the barn.  The fire was doused
+      at the _ .\nA) house\nB) barn\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: B
+    id: winogrande/74
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: Rachel
+      told Patricia to pick up some baby powder at the store but _ had sweaty feet
+      too.\nA) Rachel\nB) Patricia\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: B
+    id: winogrande/75
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: The computer
+      of Victoria ran slower than that of Carrie because _ downloaded less files.\n\
+      A) Victoria\nB) Carrie\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: A
+    id: winogrande/76
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: Rachel
+      hated their new in-laws, but tried to keep it secret from Monica.  Eventually
+      _ told them.\nA) Rachel\nB) Monica\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: B
+    id: winogrande/77
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: The garbage
+      can smells much worse than the recycling, so the _ is probably a lot more sterile.\n\
+      A) garbage\nB) recycling\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: A
+    id: winogrande/78
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: Leslie
+      had a lot of issues that Kyle was tired of dealing with, so _ felt abandoned
+      when they finally moved out.\nA) Leslie\nB) Kyle\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: A
+    id: winogrande/79
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: Since
+      Craig wears clear contacts and William wears colored ones, it is safe to assume
+      that _ loves the color of their eyes.\nA) Craig\nB) William\nAnswer with a single
+      letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: A
+    id: winogrande/80
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: Tanya
+      looked for an escape route while Elena did not because _ liked to be aware of
+      all the surroundings.\nA) Tanya\nB) Elena\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: A
+    id: winogrande/81
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: Logan
+      ended up calling the police over an incident involving Jason because _ was scratched
+      by them.\nA) Logan\nB) Jason\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: B
+    id: winogrande/82
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: Jason
+      considers he and Benjamin to be friends even though _ puts little effort into
+      their relationship.\nA) Jason\nB) Benjamin\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: A
+    id: winogrande/83
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: Mary
+      was more reliable and hardworking than Rachel, but to be fair, _ had a better
+      foundation as a child.\nA) Mary\nB) Rachel\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: A
+    id: winogrande/84
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: The woman
+      moved the urn in front of the vase on the shelf because the _ was attractive.\n\
+      A) urn\nB) vase\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: A
+    id: winogrande/85
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: It was
+      easy for Matthew but not Logan to practice yoga because _ wanted to improve
+      their mind and body.\nA) Matthew\nB) Logan\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: A
+    id: winogrande/86
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: Carrie
+      kept written records of their expenses but not Laura because _ had a faulty
+      memory.\nA) Carrie\nB) Laura\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: A
+    id: winogrande/87
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: Donald
+      was able to catch the Frisbee thrown by Eric, then _ threw the Frisbee back.\n\
+      A) Donald\nB) Eric\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: A
+    id: winogrande/88
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: Amy went
+      over to the waiting room at the hospital to calm Samantha because _ was placid.\n\
+      A) Amy\nB) Samantha\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: A
+    id: winogrande/89
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: Patricia
+      has a trouble with training her horse and wants Tanya's help, because _ wants
+      her horse to behave.\nA) Patricia\nB) Tanya\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: A
+    id: winogrande/90
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: We were
+      making orange jack o lanterns and  bought candles to put in the oranges, the
+      candles did not fit. The _ were too big.\nA) candles\nB) oranges\nAnswer with
+      a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: A
+    id: winogrande/91
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: The new
+      cream didn't remove the warts like the last lotion, because the _ was not powerful
+      enough.\nA) cream\nB) lotion\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: A
+    id: winogrande/92
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: Cynthia
+      has a pond in their backyard, but Carrie cannot afford one, which means _ lives
+      in the richer neighborhood.\nA) Cynthia\nB) Carrie\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: A
+    id: winogrande/93
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: My mom
+      didn't fit the shape into the painting, because the _ was too awkward.\nA) shape\n\
+      B) painting\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: B
+    id: winogrande/94
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: The clothing
+      in the north was warmer than the clothing in the south because there was more
+      snow in the _ .\nA) south\nB) north\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: A
+    id: winogrande/95
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: While
+      at the store, Logan grabbed a head of lettuce for Eric to use for dinner because
+      _ knew there was none at home.\nA) Logan\nB) Eric\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: A
+    id: winogrande/96
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: Mary
+      thought poodles were a cool dog but Rachel thought Great Danes were cooler.
+      _ bought a small dog bed for their pet.\nA) Mary\nB) Rachel\nAnswer with a single
+      letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: B
+    id: winogrande/97
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: She wanted
+      to shop for more clothes and ultimately decided on the velvet dress instead
+      of the denim jacket because the _ was more casual.\nA) dress\nB) jacket\nAnswer
+      with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: A
+    id: winogrande/98
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: The virus
+      stuck to the clothes better than it stuck to the walls, because the _ had more
+      deterrents on them.\nA) walls\nB) clothes\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: A
+    id: winogrande/99
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: Kyle
+      paid Craig to board the family dog at the kennel for a week, because _ was going
+      on vacation.\nA) Kyle\nB) Craig\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: A
+    id: winogrande/100
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: Natalie
+      took a longer time to take a bath than Jennifer because _ liked relaxing in
+      the tub.\nA) Natalie\nB) Jennifer\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: B
+    id: winogrande/101
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: Kenneth
+      is accused of destroying drywall in Jeffrey's house, _ is leasing out the house.\n\
+      A) Kenneth\nB) Jeffrey\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: A
+    id: winogrande/102
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: Ben wanted
+      to propose to his girlfriend by hiding the ring in either cake or water. He
+      decided to hide it in the _ because she drank the water fast.\nA) cake\nB) water\n\
+      Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: A
+    id: winogrande/103
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: She wanted
+      to sew a shirt from silk she bought and a jacket in denim from old jeans so
+      the _ was recycled.\nA) denim\nB) silk\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: A
+    id: winogrande/104
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: Joel
+      has experience driving large vehicles and Lawrence doesn't. _ drives their RV
+      with accuracy.\nA) Joel\nB) Lawrence\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: B
+    id: winogrande/105
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: Robert
+      was simply not as stoic as Joel , as _ tended to handle things gracefully.\n\
+      A) Robert\nB) Joel\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: B
+    id: winogrande/106
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: Jay could
+      comfort sad people better instead of happy people because the _ people weren't
+      realistic.\nA) sad\nB) happy\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: B
+    id: winogrande/107
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: The commodities
+      trader decided to buy wool and sell cotton because the _ was priced high.\n\
+      A) wool\nB) cotton\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: B
+    id: winogrande/108
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: Henry
+      wanted to stop yelling and start using a more effective type of communication
+      because the _ was nice.\nA) yelling\nB) communication\nAnswer with a single
+      letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: A
+    id: winogrande/109
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: I started
+      playing drums young.  Sometimes I played in the garage and sometimes my room,
+      but my parents preferred knowing I was in the  _  .\nA) garage\nB) room\nAnswer
+      with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: A
+    id: winogrande/110
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: The bird
+      squawked at Mary's rushed approached and quieted when Jennifer came in since
+      _ was threatening.\nA) Mary\nB) Jennifer\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: A
+    id: winogrande/111
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: I was
+      driving my car and tried to get through the intersection, but the light turned
+      red. The _ is too fast.\nA) light\nB) car\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: A
+    id: winogrande/112
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: Tom recently
+      was approved for botox therapy.  He had a choice between near the office or
+      near his house and went with his weekday convenience of the _ .\nA) office\n\
+      B) house\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: B
+    id: winogrande/113
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: The hotel
+      had a terrible gym but a nice restaurant; the _ was something management attended
+      to.\nA) gym\nB) restaurant\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: A
+    id: winogrande/114
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: Katrina
+      turned out to be much more spoiled than Felicia because _ had wealthy and generous
+      parents.\nA) Katrina\nB) Felicia\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: B
+    id: winogrande/115
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: Steven
+      was disappointed as Logan asked him if he had any herb.  _ was a stoner.\nA)
+      Steven\nB) Logan\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: A
+    id: winogrande/116
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: Monica
+      was worried that Mary might be caught in a scam when they started their new
+      job, but _ decided to trust their friend's judgement.\nA) Monica\nB) Mary\n\
+      Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: B
+    id: winogrande/117
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: We set
+      up the treasure hunt, but the treasure chest was found easily on the path because
+      the _ was short.\nA) chest\nB) path\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: A
+    id: winogrande/118
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: She wanted
+      to learn how to pair wine so she bought book instead of using a magazine because
+      the _ was too broad.\nA) magazine\nB) book\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: A
+    id: winogrande/119
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: The water
+      in the car was cooler than the water in the truck because the engine in the
+      _ had run more recently.\nA) truck\nB) car\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: B
+    id: winogrande/120
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: Megan
+      wrote on the paper with a pencil unlike Jennifer who wrote with a pen, because
+      _ wanted to keep it for later.\nA) Megan\nB) Jennifer\nAnswer with a single
+      letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: B
+    id: winogrande/121
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: Brett
+      was actively engaged in weight loss whereas Benjamin was trying to gain weight,
+      so _ maximized their caloric intake.\nA) Brett\nB) Benjamin\nAnswer with a single
+      letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: B
+    id: winogrande/122
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: Hugh
+      scrubbed the mold in his apartment with a cleaner but had to call a pro because
+      the _ was too weak.\nA) mold\nB) cleaner\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: A
+    id: winogrande/123
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: John
+      sold the three chairs and used the money to buy twelve shoes. The _ were more
+      expensive.\nA) chairs\nB) shoes\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: A
+    id: winogrande/124
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: To pay
+      for dinner, he used the credit card rather than cash. The _ was not available.\n\
+      A) cash\nB) card\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: B
+    id: winogrande/125
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: Jennifer
+      was more of a morning person than Natalie although _ always went to bed early
+      and got a good night's rest.\nA) Jennifer\nB) Natalie\nAnswer with a single
+      letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: A
+    id: winogrande/126
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: Samuel
+      was blown away to find out from Lawrence that goldfish are a type of carp, so
+      _ decided to fact check his friend.\nA) Samuel\nB) Lawrence\nAnswer with a single
+      letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: A
+    id: winogrande/127
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: Aaron
+      wanted to go the gym but the others wanted to go to the park because the _ did
+      require membership.\nA) gym\nB) park\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: B
+    id: winogrande/128
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: Applying
+      to dance in music videos was great for Erin but not Lindsey because _ was a
+      beginner dancer.\nA) Erin\nB) Lindsey\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: B
+    id: winogrande/129
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: The wages
+      at the factory were lower than the wages at the plant since it was more safe
+      to work at the _ .\nA) plant\nB) factory\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: A
+    id: winogrande/130
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: Ryan
+      was always behind Donald in high school because _ had a diagnosed learning disability.\n\
+      A) Ryan\nB) Donald\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: A
+    id: winogrande/131
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: Megan
+      took Monica to a wood shack in the mountains, because _ was a kidnapper trying
+      to hide.\nA) Megan\nB) Monica\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: B
+    id: winogrande/132
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: I was
+      wearing wool socks when I went to try on my new boots but I couldn't get them
+      on because the _ were too large.\nA) boots\nB) socks\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: B
+    id: winogrande/133
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: Amy thought
+      she was the mirror image of Natalie , but _ could not be convinced to see the
+      similarity.\nA) Amy\nB) Natalie\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: A
+    id: winogrande/134
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: Connie
+      likes to cook at home and decided to forgo a roast in favor of tofu because
+      the _ is useless for a vegetarian meal.\nA) roast\nB) tofu\nAnswer with a single
+      letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: A
+    id: winogrande/135
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: Al got
+      solar panels and a small generator installed at his house for electricity as
+      the _ would be his main power supply.\nA) panels\nB) generator\nAnswer with
+      a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: B
+    id: winogrande/136
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: When
+      the dog behaves I like to give him a sausage otherwise I give him a ball. I
+      gave him the _ since he was bad.\nA) sausage\nB) ball\nAnswer with a single
+      letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: A
+    id: winogrande/137
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: All the
+      clutter in the house excited Leslie but not Derrick because cleaning energized
+      _ very much.\nA) Leslie\nB) Derrick\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: A
+    id: winogrande/138
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: Bobby
+      had to use his pen to finish the exam rather than the pencil because the _ was
+      full of ink.\nA) pen\nB) pencil\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: A
+    id: winogrande/139
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: Katrina
+      drove Emily to the prison, so that _ could say goodbye to them before they went
+      to jail.\nA) Katrina\nB) Emily\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: A
+    id: winogrande/140
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: Judy
+      bought new brushes to paint the etched glasses crack but it didn't fit. The
+      _ was too wide.\nA) brush\nB) crack\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: A
+    id: winogrande/141
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: The rib-eye
+      steak needed some artisan pepper to season it because the _ was bland.\nA) steak\n\
+      B) pepper\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: A
+    id: winogrande/142
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: Late
+      at night, Rebecca was more tired than Jessica so _ was able to go right to sleep.\n\
+      A) Rebecca\nB) Jessica\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: A
+    id: winogrande/143
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: He went
+      to put his pocket watch into his pocket, but realized the chain had broke. \
+      \ Without it, the _ doesn't function correctly.\nA) pocket watch\nB) chain\n\
+      Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: B
+    id: winogrande/144
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: The maid
+      took away a cozy blanket from Lawrence but not Nick because _ was very cold.\n\
+      A) Lawrence\nB) Nick\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: B
+    id: winogrande/145
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: The cleaning
+      crew always used rags instead of washcloths, although the _ tended to wear out
+      quickly.\nA) washcloths\nB) rags\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: B
+    id: winogrande/146
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: Christopher
+      was getting ready to wash Joel's hair,so _  got out shampoo by the sink and
+      sat in the chair.\nA) Christopher\nB) Joel\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: B
+    id: winogrande/147
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: Jeffrey
+      went to the doctor to treat their ailments but not Robert so _ became sicker.\n\
+      A) Jeffrey\nB) Robert\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: A
+    id: winogrande/148
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: Elena
+      waited patiently for Angela, as _ arrived early to meet at their prearranged
+      spot.\nA) Elena\nB) Angela\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: A
+    id: winogrande/149
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: I couldn't
+      decide if I should pressure cook or smoke the pig feet.  After looking outside,
+      I decided the weather was good enough to _ them.\nA) smoke\nB) pressure cook\n\
+      Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: B
+    id: winogrande/150
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: Kenneth
+      did not like Hunter because he was not a good manager. But he still respected
+      _ because he was his superior.\nA) Kenneth\nB) Hunter\nAnswer with a single
+      letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: B
+    id: winogrande/151
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: Sally
+      knew the exam would be hard so she developed a study schedule. The _ was 4 weeks
+      long.\nA) exam\nB) schedule\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: B
+    id: winogrande/152
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: Robert
+      took voice lessons from Randy, because _ was known to be on American Idol.\n\
+      A) Robert\nB) Randy\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: B
+    id: winogrande/153
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: Erin
+      ordered a martini when Tanya only ordered a tonic water with lemon, because
+      _ was pregnant.\nA) Erin\nB) Tanya\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: A
+    id: winogrande/154
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: Cynthia
+      ate all of the dessert while Sarah did not have any since _ was not trying to
+      lose any weight.\nA) Cynthia\nB) Sarah\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: A
+    id: winogrande/155
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: Christine
+      was going to Jessica's house to do some cleaning in the kitchen, because _ was
+      a energetic person.\nA) Christine\nB) Jessica\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: A
+    id: winogrande/156
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: The barista
+      loved to make all types of coffee including iced and hot. The _ coffee was popular
+      in the hotter weathers.\nA) iced\nB) hot\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: B
+    id: winogrande/157
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: Victoria
+      was eager to make the big sale to Sarah , as _ had the money that day.\nA) Victoria\n\
+      B) Sarah\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: B
+    id: winogrande/158
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: Laura
+      used too much super glue on Erins hands, so _ needed to get to the doctor to
+      separate their hands.\nA) Laura\nB) Erin\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: A
+    id: winogrande/159
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: I couldn't
+      figure out what my costume would be for Halloween Peter Pan or Snow White. The
+      _ costume I'd have to make myself a boy.\nA) Peter Pan\nB) Snow White\nAnswer
+      with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: A
+    id: winogrande/160
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: Victoria
+      was eager to make the big sale to Sarah , as _ needed the money that day.\n\
+      A) Victoria\nB) Sarah\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: A
+    id: winogrande/161
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: Derrick
+      showed Jason how to cut the tiles for their kitchen, and _ was shown appreciation
+      for their help.\nA) Derrick\nB) Jason\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: B
+    id: winogrande/162
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: For work
+      I can either get there by car or bicycle. I'm going to take the _ today because
+      the weather is supposed to be rainy.\nA) bicycle\nB) car\nAnswer with a single
+      letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: B
+    id: winogrande/163
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: Aaron
+      drank plenty of water before the hike, but Christopher forgot to, so _ ended
+      up getting dehydrated.\nA) Aaron\nB) Christopher\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: A
+    id: winogrande/164
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: Even
+      though Ian had less of a sweet tooth than Robert, _ liked chocolate more.\n\
+      A) Ian\nB) Robert\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: B
+    id: winogrande/165
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: Joe immediately
+      went to bakery before the bank because the _ had a substantial supply of what
+      he wanted.\nA) bakery\nB) bank\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: A
+    id: winogrande/166
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: Michael
+      just bought brand new wheels for his truck unlike Leslie because _ wheels were
+      old and used.\nA) Michael\nB) Leslie\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: A
+    id: winogrande/167
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: Michael
+      had less money than Samuel did because _ liked to shop and spend money too much.\n\
+      A) Michael\nB) Samuel\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: A
+    id: winogrande/168
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: The remote
+      control worked better than the toy car because the batteries in the _ were fresher.\n\
+      A) remote control\nB) toy car\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: A
+    id: winogrande/169
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: I have
+      both glasses and contacts, but the cleaning solution was empty so I wore the
+      _ today.\nA) glasses\nB) contacts\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: A
+    id: winogrande/170
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: He had
+      enough time between classes to go to a cafe or to the library. He went to the
+      _ because his paper could wait.\nA) cafe\nB) library\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: B
+    id: winogrande/171
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: The beef
+      tasted better than the pork did although the _ had been slightly undercooked.\n\
+      A) pork\nB) beef\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: A
+    id: winogrande/172
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: Craig
+      grew frustrated trying to coach Nick in soccer, as _ lacked the patience needed
+      for the task.\nA) Craig\nB) Nick\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: B
+    id: winogrande/173
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: Samuel
+      had a shorter expected lifespan than Kenneth, so _ procrastinated in following
+      all their dreams.\nA) Samuel\nB) Kenneth\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: A
+    id: winogrande/174
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: She decided
+      to report the accident and the burglary, but the _ required much more investigation.\n\
+      A) burglary\nB) accident\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: B
+    id: winogrande/175
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: John
+      cannot touch the cup as it was just brought out of the refrigerator. He wanted
+      some air to blow around it. The _ is very warm.\nA) cup\nB) air\nAnswer with
+      a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: A
+    id: winogrande/176
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: While
+      playing soccer, Robert got kicked in the head and Joel laughed at him causing
+      the coach to look at _ with pity.\nA) Robert\nB) Joel\nAnswer with a single
+      letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: A
+    id: winogrande/177
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: Amy tried
+      to spread the cake icing all over the cake but the _ was not enough.\nA) icing\n\
+      B) cake\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: A
+    id: winogrande/178
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: Warts
+      appeared on Jerry's limbs after he went through the jungle because the _ were
+      infectious.\nA) warts\nB) limbs\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: A
+    id: winogrande/179
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: People
+      do not want to eat James burnt cake but they love his burger because the _ is
+      tasteless.\nA) cake\nB) burger\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: B
+    id: winogrande/180
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: After
+      Logan pitched a ball that got clobbered for a home run by Justin in a baseball
+      game, _ felt exultant.\nA) Logan\nB) Justin\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: A
+    id: winogrande/181
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: Nick
+      struggled with unresolved trauma that Ian couldn't understand, since _ had never
+      experienced childhood abuse.\nA) Nick\nB) Ian\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: B
+    id: winogrande/182
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: Michael
+      made pickled eggs for Kenneth, but _ really loved his own and wanted to share
+      them.\nA) Michael\nB) Kenneth\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: B
+    id: winogrande/183
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: Maria
+      never received flowers from the customers unlike Monica, by virtue of _ being
+      polite.\nA) Maria\nB) Monica\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: B
+    id: winogrande/184
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: Gem had
+      a husky breed named Ben. Ben liked both bones and toys. However, he liked the
+      _ the best because it was inedible.\nA) bones\nB) toys\nAnswer with a single
+      letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: B
+    id: winogrande/185
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: Although
+      William liked animals less overall than Justin, _ couldn't stand to be around
+      hamsters.\nA) William\nB) Justin\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: B
+    id: winogrande/186
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: It took
+      a minute longer to melt the chocolate in the microwave than the caramel, because
+      the _ was very soft.\nA) chocolate\nB) caramel\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: A
+    id: winogrande/187
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: The teacher
+      asked for the homework. Elena played games the night before and Tanya did not,
+      so _ got an F.\nA) Elena\nB) Tanya\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: B
+    id: winogrande/188
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: The market
+      was going out of business so they sold their products but not the lots as the
+      _ were useful.\nA) products\nB) lots\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: B
+    id: winogrande/189
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: Jessica
+      enjoyed a simple, basic life with Betty, but _ was bored having a quiet existence.\n\
+      A) Jessica\nB) Betty\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: B
+    id: winogrande/190
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: The man
+      finally decided to become a guardian for the child at the orphanage because
+      the _ was loving.\nA) orphanage\nB) guardian\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: A
+    id: winogrande/191
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: Maria
+      planned to spring clean this weekend and told Katrina they should help too.
+      _ expected her help.\nA) Maria\nB) Katrina\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: B
+    id: winogrande/192
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: Benjamin
+      has a spouse and Kyle is single after being divorced, so _ is celebrating their
+      independence this year.\nA) Benjamin\nB) Kyle\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: A
+    id: winogrande/193
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: Craig
+      gifted Eric a new picnic table, because _ borrowed some money a while ago.\n\
+      A) Craig\nB) Eric\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: B
+    id: winogrande/194
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: Mark
+      preferred his drinks in paper cups over styrofoam cups because the _ are strong.\n\
+      A) styrofoam cups\nB) paper cups\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: A
+    id: winogrande/195
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: Laura
+      brought extensions to Monica at the salon, so that _ could get their dreads
+      treated professionally.\nA) Laura\nB) Monica\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: B
+    id: winogrande/196
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: Lindsey
+      was considered more masculine than Amy because every year _ went into the woods
+      to French kiss deer.\nA) Lindsey\nB) Amy\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: B
+    id: winogrande/197
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: Donald
+      had to wax a lot more frequently than Ian because _ had blonde colored hair.\n\
+      A) Donald\nB) Ian\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: A
+    id: winogrande/198
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: In the
+      hotel laundry room, Felicia burned Mary's shirt while ironing it, so the manager
+      wrote _ up.\nA) Felicia\nB) Mary\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: A
+    id: winogrande/199
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: William
+      wanted to go biking but Aaron wanted to stay home, so _ went out by themselves.\n\
+      A) William\nB) Aaron\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: B
+    id: winogrande/200
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: Benjamin
+      asked Samuel to buy them a puppy, because _ could not have a pet.\nA) Benjamin\n\
+      B) Samuel\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: B
+    id: winogrande/201
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: Natalie
+      committed a bunch of good deeds in Samantha's name, because _ wanted all the
+      credit.\nA) Natalie\nB) Samantha\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: B
+    id: winogrande/202
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: The stain
+      was lighter on Jason's shirt than Donald's because _ spilled red wine and not
+      white wine.\nA) Jason\nB) Donald\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: B
+    id: winogrande/203
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: Jill
+      was on a budget so she only bought a new dress for the ceremony and wore an
+      old hat. She figured the _ would be less noticeable.\nA) dress\nB) hat\nAnswer
+      with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: B
+    id: winogrande/204
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: Pete
+      preferred to use the sheet to the blanket, because the _ was much hotter.\n\
+      A) sheet\nB) blanket\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: A
+    id: winogrande/205
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: Sally
+      knew the exam would be hard so she developed a study schedule. The _ was 4 weeks
+      away.\nA) exam\nB) schedule\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: B
+    id: winogrande/206
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: It was
+      easier to get the soil loosened up with the pick than with the shovel, because
+      the _ was solid.\nA) shovel\nB) pick\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: A
+    id: winogrande/207
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: Jessica
+      wants to protect herself from infectious diseases so she goes to doctor Samantha,
+      because _ is careful.\nA) Jessica\nB) Samantha\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: A
+    id: winogrande/208
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: If you
+      are trying to get rid of blood spots from clothes use cold water instead of
+      hot water the _ releases the stain.\nA) cold water\nB) hot water\nAnswer with
+      a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: B
+    id: winogrande/209
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: Police
+      arrested Maria but let Cynthia go as _ had no paint on their hand from the spray
+      paint used for graffiti.\nA) Maria\nB) Cynthia\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: B
+    id: winogrande/210
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: Kevin
+      ate large amounts of food but not Adam. _ didn't have to get checked to see
+      if they had a tapeworm.\nA) Kevin\nB) Adam\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: B
+    id: winogrande/211
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: Beautiful
+      to Angela means something physical, while it's mental to Emily, so _ is deeper.\n\
+      A) Angela\nB) Emily\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: A
+    id: winogrande/212
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: Victoria
+      decided to adopt a Yorkie, but Elena wouldn't even consider it, because _ loved
+      small dogs.\nA) Victoria\nB) Elena\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: A
+    id: winogrande/213
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: After
+      a boring meeting, Monica closed her eyes and dozed while Carrie took a walk,
+      as _ had gone to bed late the night before.\nA) Monica\nB) Carrie\nAnswer with
+      a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: A
+    id: winogrande/214
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: Jason
+      missed his work shift in order to finish his research paper, because the _ was
+      less important.\nA) work shift\nB) research paper\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: A
+    id: winogrande/215
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: Neil
+      was a very popular kid in school unlike Jeffrey, because _ was very extroverted.\n\
+      A) Neil\nB) Jeffrey\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: A
+    id: winogrande/216
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: Erin
+      showed Maria to use the fork and knife in a proper manner as _ attended etiquette
+      school.\nA) Erin\nB) Maria\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: B
+    id: winogrande/217
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: Joe brought
+      the horse out to the country quite a distance and gave him food but the _ was
+      too much.\nA) food\nB) distance\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: B
+    id: winogrande/218
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: Craig
+      grew frustrated trying to coach Nick in soccer, as _ lacked the aptitude needed
+      for the task.\nA) Craig\nB) Nick\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: B
+    id: winogrande/219
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: Ian won
+      a fish from Kenneth at the carnival so _ bagged it up and sent it home.\nA)
+      Ian\nB) Kenneth\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: B
+    id: winogrande/220
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: Jennifer
+      returned the pan to Sarah because _ had loaned it to her for the potluck party.\n\
+      A) Jennifer\nB) Sarah\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: A
+    id: winogrande/221
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: Adam's
+      mindset was a lot stronger than William's because _ was able to control it.\n\
+      A) Adam\nB) William\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: A
+    id: winogrande/222
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: Using
+      a needle to sew together both the leather and silk was difficult.  The _ was
+      hard get through.\nA) leather\nB) silk\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: A
+    id: winogrande/223
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: Keeping
+      the doors closed and the windows opened kept the apartment cool , because the
+      _ kept out the heat.\nA) doors\nB) windows\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: A
+    id: winogrande/224
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: Justin
+      went with Donald to the game because _ wanted to be the designated driver.\n\
+      A) Justin\nB) Donald\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: A
+    id: winogrande/225
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: Justin
+      bought a new RV but Lawrence liked his old one, so _ decided to sell it.\nA)
+      Justin\nB) Lawrence\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: B
+    id: winogrande/226
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: The athletes
+      on the team of Christine were more tired than those on the team of Monica because
+      the ones with _ did less laps.\nA) Christine\nB) Monica\nAnswer with a single
+      letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: B
+    id: winogrande/227
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: Victoria
+      taught Elena how to count in Malay for their trip, because _ was a visitor of
+      the island.\nA) Victoria\nB) Elena\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: A
+    id: winogrande/228
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: The maid
+      took away a cozy blanket from Lawrence but not Nick because _ was very hot.\n\
+      A) Lawrence\nB) Nick\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: B
+    id: winogrande/229
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: The dog
+      ran into the bedroom during the rainstorm while we stayed in the kitchen because
+      the rain was softer in the _ .\nA) kitchen\nB) bedroom\nAnswer with a single
+      letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: A
+    id: winogrande/230
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: He made
+      a few dishes to serve. One was a salad and the other was a steak. The _ was
+      healthy.\nA) salad\nB) steak\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: A
+    id: winogrande/231
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: Joe brought
+      his books to school in a suitcase instead of a backpack because the _ was bigger.\n\
+      A) suitcase\nB) backpack\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: A
+    id: winogrande/232
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: The stain
+      in the bucket could not be cleaned with the brush because the _ is tough.\n\
+      A) stain\nB) brush\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: B
+    id: winogrande/233
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: He liked
+      filling the bucket with the hose better than the faucet, because the _ provided
+      extra water pressure.\nA) faucet\nB) hose\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: A
+    id: winogrande/234
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: The installation
+      process was simpler for the cable over the internet because the man had already
+      installed the _ previously.\nA) cable\nB) internet\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: B
+    id: winogrande/235
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: Derrick
+      needed Kenneth to go to the store and get a baby bib, but _ said the one they
+      had was still ok.\nA) Derrick\nB) Kenneth\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: A
+    id: winogrande/236
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: I always
+      wonder how people prefer reading in a library instead of at the house because
+      the amount of people at the _ would make it hard to concentrate.\nA) library\n\
+      B) house\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: A
+    id: winogrande/237
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: The dog
+      was more suspicious of the locker than of the package because the drugs were
+      in the _ .\nA) locker\nB) package\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: A
+    id: winogrande/238
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: The cat
+      of Sarah has some mouth problems, so she takes it to see Maria. _ is a responsible
+      cat owner.\nA) Sarah\nB) Maria\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: A
+    id: winogrande/239
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: Neil
+      looked all over the neighborhood for their missing dog until Samuel called and
+      _ got their dog back.\nA) Neil\nB) Samuel\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: B
+    id: winogrande/240
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: William
+      went on the ride more than Matthew did because _ thought it was scary.\nA) William\n\
+      B) Matthew\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: B
+    id: winogrande/241
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: A very
+      active Randy injured their elbow playing basketball against Lawrence, so _ said
+      sorry.\nA) Randy\nB) Lawrence\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: A
+    id: winogrande/242
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: My face
+      was more familiar than it was at the bar than the gym because I went to the
+      _ several times a week.\nA) bar\nB) gym\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: A
+    id: winogrande/243
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: Kayla
+      was very civil when dealing with Emily so that _ would be accepted by her.\n\
+      A) Kayla\nB) Emily\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: A
+    id: winogrande/244
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: Sarah
+      rolls her eyes as Monica extolls the virtues of vinegar as a cleaning solution
+      for everything since _ is bored.\nA) Sarah\nB) Monica\nAnswer with a single
+      letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: B
+    id: winogrande/245
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: Victoria
+      was still grieving the death of a friend more than Elena, because _ had a more
+      distant relationship with the friend.\nA) Victoria\nB) Elena\nAnswer with a
+      single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: A
+    id: winogrande/246
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: Pine
+      trees were a big part of Erin s Christmas tree farm while Megan was jewish but
+      helped _ celebrate anyhow.\nA) Erin\nB) Megan\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: B
+    id: winogrande/247
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: Jane's
+      hair was bound by a band until the band was cut because the _ is bulky.\nA)
+      band\nB) hair\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: B
+    id: winogrande/248
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: Of the
+      two owners, Jessica was far worse than Jennifer, because _ like to treat the
+      dogs.\nA) Jessica\nB) Jennifer\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: A
+    id: winogrande/249
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: The president
+      had their speech at the auditorium rather than the park because the _ was bigger.\n\
+      A) auditorium\nB) park\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: A
+    id: winogrande/250
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: Logan
+      reads a lot, while Donald almost never picks up a book because _ is a student.\n\
+      A) Logan\nB) Donald\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: B
+    id: winogrande/251
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: The filter
+      in the living room needed to be changed more often than the one in the bedroom
+      because the _ was cleaner.\nA) living room\nB) bedroom\nAnswer with a single
+      letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: B
+    id: winogrande/252
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: The rib-eye
+      steak needed some artisan pepper to season it because the _ was flavorful.\n\
+      A) steak\nB) pepper\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: B
+    id: winogrande/253
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: Dennis
+      did not enjoy their afternoon but Hunter did because _ left work after the sunrise.\n\
+      A) Dennis\nB) Hunter\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: B
+    id: winogrande/254
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: Michael
+      just bought brand new wheels for his truck unlike Leslie because _ wheels were
+      new and perfect.\nA) Michael\nB) Leslie\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: B
+    id: winogrande/255
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: So _
+      ignored their ear because Jessica has a ear infection and Felicia was fine.\n\
+      A) Jessica\nB) Felicia\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: B
+    id: winogrande/256
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: He wanted
+      to kill time at the house instead of the playground, because everyone at the
+      _ was fun.\nA) playground\nB) house\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: B
+    id: winogrande/257
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: Steven
+      helped Derrick do research on the paper because _ did not have access to the
+      internet.\nA) Steven\nB) Derrick\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: A
+    id: winogrande/258
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: Mary
+      wanted to surprise Cynthia with a puppy for Christmas, so _ asked about allergies
+      to dogs.\nA) Mary\nB) Cynthia\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: A
+    id: winogrande/259
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: The market
+      was going out of business so they sold their products but not the lots as the
+      _ were useless.\nA) products\nB) lots\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: A
+    id: winogrande/260
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: Donna
+      needed dentures or implants for her bad teeth. She chose the _ because they
+      are cheaper.\nA) dentures\nB) implants\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: A
+    id: winogrande/261
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: The man
+      used  his eyes to read the letters but the _ were too small.\nA) letters\nB)
+      eyes\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: A
+    id: winogrande/262
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: She used
+      vinegar to wipe down the cabinets hourly and a wood cleaner monthly.  The _
+      was overused.\nA) vinegar\nB) cleaner\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: B
+    id: winogrande/263
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: Matt
+      wanted to change either the plain bathroom or the colorful bedroom, but the
+      _ was already plain.\nA) bedroom\nB) bathroom\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: B
+    id: winogrande/264
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: Kyle
+      wanted to crush Ryan 's dreams of becoming a movie actor. _ was a threat to
+      him.\nA) Kyle\nB) Ryan\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: A
+    id: winogrande/265
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: Randy
+      only ever added a little bit of hot sauce to his food, especially compared to
+      Adam, as _ was much more sensitive to spice.\nA) Randy\nB) Adam\nAnswer with
+      a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: A
+    id: winogrande/266
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: Monica
+      was caught napping in class more often than Katrina because _ stayed up all
+      night.\nA) Monica\nB) Katrina\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: B
+    id: winogrande/267
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: Donald's
+      understanding of math isn't as good as Joseph's, so _ is more likely a professor.\n\
+      A) Donald\nB) Joseph\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: A
+    id: winogrande/268
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: Natalie
+      had a phobia about crossing over high bridges but Tanya didn't. _ had to re-route
+      their trip to avoid bridges.\nA) Natalie\nB) Tanya\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: A
+    id: winogrande/269
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: The wind
+      during the last hurricane tried to knock over their new house, but the _ was
+      too strong.\nA) house\nB) wind\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: A
+    id: winogrande/270
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: I like
+      to drink mineral water over tap water when I travel outside of the USA because
+      the _ water in other countries is safe.\nA) mineral\nB) tap\nAnswer with a single
+      letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: A
+    id: winogrande/271
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: Neil
+      used a chainsaw to cut down the tree instead of a regular saw like William,
+      because _ believed in modern equipment.\nA) Neil\nB) William\nAnswer with a
+      single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: A
+    id: winogrande/272
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: Erin
+      was eating more than Betty was eating for dinner because _ had skipped lunch.\n\
+      A) Erin\nB) Betty\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: B
+    id: winogrande/273
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: Nick
+      struggled with unresolved trauma that Ian couldn't understand, since _ had frequently
+      experienced childhood abuse.\nA) Nick\nB) Ian\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: B
+    id: winogrande/274
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: Randy's
+      hair is dry when compared to Ian's due to _ using a strong conditioner.\nA)
+      Randy\nB) Ian\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: B
+    id: winogrande/275
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: Ann's
+      babies were crying, and she could give them a bottle or a rattle.  She tried
+      the _ first in case they were bored.\nA) bottle\nB) rattle\nAnswer with a single
+      letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: B
+    id: winogrande/276
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: Craig
+      had cereal for breakfast while Dennis had a shake, so _ finished drinking their
+      breakfast.\nA) Craig\nB) Dennis\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: B
+    id: winogrande/277
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: Aaron
+      showed Donald how to use google play on an android because _ owned an apple
+      phone.\nA) Aaron\nB) Donald\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: B
+    id: winogrande/278
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: The water
+      in the car was hotter than the water in the truck because the engine in the
+      _ had run more recently.\nA) truck\nB) car\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: B
+    id: winogrande/279
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: Nelson
+      teased Christopher about needing to find a homecoming date because _ could not
+      find one.\nA) Nelson\nB) Christopher\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: B
+    id: winogrande/280
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: The stove
+      was left on after Matthew used it, so Nelson turned it off. _ was careful.\n\
+      A) Matthew\nB) Nelson\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: A
+    id: winogrande/281
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: Aaron
+      drank plenty of water before the hike, but Christopher forgot to, so _ ended
+      up staying hydrated.\nA) Aaron\nB) Christopher\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: A
+    id: winogrande/282
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: It is
+      an article of faith that the paper is more important than the exam , even though
+      the _ weighs less heavily on the grade.\nA) paper\nB) exam\nAnswer with a single
+      letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: A
+    id: winogrande/283
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: In the
+      accident the vehicle of Nelson received more damage than that of Justin, since
+      _ vehicle was smaller.\nA) Nelson\nB) Justin\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: A
+    id: winogrande/284
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: John
+      never mentioned his canoe, but had a long conversation with Ron about the raft,
+      because John rarely used the _ .\nA) canoe\nB) raft\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: B
+    id: winogrande/285
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: The sink
+      in the bathroom looked good but the toilet was leaking so James kept the _ .\n\
+      A) toilet\nB) sink\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: A
+    id: winogrande/286
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: Harold
+      liked to play with dolls more than cars because the _ talked back to him.\n\
+      A) dolls\nB) cars\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: B
+    id: winogrande/287
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: Laura
+      just loved the taste of green beans but Felicia hated the taste of them. _ didn't
+      have a second serving.\nA) Laura\nB) Felicia\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: B
+    id: winogrande/288
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: Dennis
+      is changing the sand in a pool filter for Joseph, because _ is a bit lazy.\n\
+      A) Dennis\nB) Joseph\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: B
+    id: winogrande/289
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: I couldn't
+      figure out what my costume would be for Halloween Peter Pan or Snow White. The
+      _ costume I'd have to wear a dress.\nA) Peter Pan\nB) Snow White\nAnswer with
+      a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: B
+    id: winogrande/290
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: Angela
+      loved to wear sun glasses but Jessica didn't. _ bought a fancy new pair of shoes.\n\
+      A) Angela\nB) Jessica\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: A
+    id: winogrande/291
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: Jen made
+      charcoal to use as a mask and as toothpaste, but using the _ made her skin very
+      black.\nA) mask\nB) toothpaste\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: B
+    id: winogrande/292
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: John
+      could not buy anything from the store than night and he went to the kiosk to
+      buy some things because the _ is opened.\nA) store\nB) kiosk\nAnswer with a
+      single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: B
+    id: winogrande/293
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: Emily
+      said that Victoria's hijab was silly and old fashioned. _ heard some very offensive
+      things.\nA) Emily\nB) Victoria\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: A
+    id: winogrande/294
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: The doctor
+      told Kevin to exercise more often but not Neil. _ had always been lazy and unmotivated.\n\
+      A) Kevin\nB) Neil\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: B
+    id: winogrande/295
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: The barista
+      loved to make all types of coffee including iced and hot. The _ coffee was popular
+      in the cooler weathers.\nA) iced\nB) hot\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: B
+    id: winogrande/296
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: Donald
+      was able to catch the Frisbee thrown by Eric, then _ was thrown the Frisbee
+      back.\nA) Donald\nB) Eric\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: B
+    id: winogrande/297
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bB\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: Paolo
+      tries to remember what he read in the textbook, but all he can think of is the
+      email from his friend because he read the _ ages ago.\nA) email\nB) textbook\n\
+      Answer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: A
+    id: winogrande/298
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: Jennifer
+      was more of a morning person than Natalie because _ always went to bed early
+      and got a good night's rest.\nA) Jennifer\nB) Natalie\nAnswer with a single
+      letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+  - expected_output: A
+    id: winogrande/299
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: \bA\b
+    prompt: "Fill in the blank ('_') with one of the two options.\nSentence: His addiction
+      was getting bad so they handed him over to therapy and stopped taking medicine
+      since the _ was cheaper.\nA) therapy\nB) medicine\nAnswer with a single letter."
+    reference_data: null
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - winogrande
+      - coreference
+    temperature: null
+version: '1.0'

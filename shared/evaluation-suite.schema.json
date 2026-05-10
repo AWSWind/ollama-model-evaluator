@@ -1,0 +1,228 @@
+{
+  "$defs": {
+    "GenerationDefaults": {
+      "additionalProperties": false,
+      "description": "Run-level defaults for Ollama generation parameters.\n\nA ``TestCase`` may override any of these fields individually. When a\n``TestCase`` leaves a field unset (``None``), the runner falls back to\nthe corresponding value from ``GenerationDefaults`` (see Requirement 5.4\nand Property 7 in the design document).",
+      "properties": {
+        "max_tokens": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Maximum tokens to generate (``options.num_predict``). ``None`` means use the model's default.",
+          "title": "Max Tokens"
+        },
+        "stop_sequences": {
+          "description": "Default ``options.stop`` sequences applied to every Test_Case.",
+          "items": {
+            "type": "string"
+          },
+          "title": "Stop Sequences",
+          "type": "array"
+        },
+        "temperature": {
+          "default": 0.0,
+          "description": "Sampling temperature passed to Ollama (``options.temperature``).",
+          "title": "Temperature",
+          "type": "number"
+        }
+      },
+      "title": "GenerationDefaults",
+      "type": "object"
+    },
+    "MetricConfig": {
+      "additionalProperties": false,
+      "description": "Configuration for a single metric attached to a :class:`TestCase`.\n\nDifferent built-in metrics accept different parameters (``exact-match``\ntakes ``case_sensitive`` / ``trim``; ``regex-match`` takes ``pattern`` /\n``flags``; ``json-schema-valid`` takes ``schema``; ``length-range`` takes\n``min`` / ``max``; ``llm-as-judge`` takes ``rubric`` / ``judge_model``;\nand so on). Rather than enumerating every metric's schema at the suite\nlayer, ``MetricConfig`` exposes a ``name`` plus a generic ``params``\nmapping. The concrete metric implementations (``metrics/builtin.py``,\n``metrics/judge.py``) are responsible for validating the contents of\n``params`` themselves.\n\n``extra=\"forbid\"`` is still applied here \u2014 the only two top-level fields\npermitted are ``name`` and ``params``. This preserves the spec rule that\nevery suite model rejects unknown fields while still letting metrics\ncarry arbitrary structured configuration.",
+      "properties": {
+        "name": {
+          "description": "Identifier of a registered metric (e.g. 'exact-match').",
+          "title": "Name",
+          "type": "string"
+        },
+        "params": {
+          "additionalProperties": true,
+          "description": "Metric-specific parameters passed verbatim to the metric implementation. Validated by the metric itself, not here.",
+          "title": "Params",
+          "type": "object"
+        }
+      },
+      "required": [
+        "name"
+      ],
+      "title": "MetricConfig",
+      "type": "object"
+    },
+    "TestCase": {
+      "additionalProperties": false,
+      "description": "A single evaluation unit within an :class:`EvaluationSuite`.\n\nEach test case carries a prompt to send to the model, optional metadata\n(system prompt, expected output, reference data, tags), optional\nper-case generation overrides, and a non-empty list of\n:class:`MetricConfig` entries describing how the response should be\nscored.\n\nValidators enforce:\n\n* ``prompt`` is non-empty (Requirement 3.3).\n* ``metrics`` contains at least one entry (Requirement 3.3).\n\nUnknown fields are rejected by ``ConfigDict(extra=\"forbid\")`` so typos\nin user-authored suites surface as validation errors rather than being\nsilently ignored (Requirement 3.5).",
+      "properties": {
+        "expected_output": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Optional canonical answer used by exact/regex metrics.",
+          "title": "Expected Output"
+        },
+        "id": {
+          "description": "Stable identifier, unique within the enclosing suite.",
+          "title": "Id",
+          "type": "string"
+        },
+        "max_tokens": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Per-case ``num_predict`` override. ``None`` means use defaults.",
+          "title": "Max Tokens"
+        },
+        "metrics": {
+          "description": "Scoring configuration. Must contain at least one entry.",
+          "items": {
+            "$ref": "#/$defs/MetricConfig"
+          },
+          "title": "Metrics",
+          "type": "array"
+        },
+        "prompt": {
+          "description": "User prompt sent to the Ollama model. Must be non-empty.",
+          "title": "Prompt",
+          "type": "string"
+        },
+        "reference_data": {
+          "anyOf": [
+            {
+              "additionalProperties": true,
+              "type": "object"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Arbitrary structured context consumed by specific metrics.",
+          "title": "Reference Data"
+        },
+        "stop_sequences": {
+          "anyOf": [
+            {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Per-case ``stop`` override. ``None`` (not ``[]``) means fall back to the run-level defaults; ``[]`` explicitly clears them.",
+          "title": "Stop Sequences"
+        },
+        "system_prompt": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Optional system prompt prepended to the request.",
+          "title": "System Prompt"
+        },
+        "tags": {
+          "description": "Free-form tags for filtering at Run time (Requirement 3.6).",
+          "items": {
+            "type": "string"
+          },
+          "title": "Tags",
+          "type": "array"
+        },
+        "temperature": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Per-case sampling temperature override. ``None`` means fall back to the suite/run defaults.",
+          "title": "Temperature"
+        }
+      },
+      "required": [
+        "id",
+        "prompt",
+        "metrics"
+      ],
+      "title": "TestCase",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "description": "A named, versioned collection of :class:`TestCase` objects.\n\nA suite is the primary on-disk artifact authored by users (YAML or JSON;\nsee ``suites/loader.py``) and the unit of filtering at Run time\n(Requirement 3.6). Suites must have a non-empty ``name``, a non-empty\n``test_cases`` list, and every ``test_cases[i].id`` must be unique\nwithin the suite (Requirement 3.3).",
+  "properties": {
+    "defaults": {
+      "$ref": "#/$defs/GenerationDefaults",
+      "description": "Default generation parameters for every TestCase in this suite."
+    },
+    "description": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "Optional free-form description shown in the UI.",
+      "title": "Description"
+    },
+    "name": {
+      "description": "Human-readable suite name, used by ``RunConfig.suites``.",
+      "title": "Name",
+      "type": "string"
+    },
+    "test_cases": {
+      "description": "Ordered, non-empty list of test cases with unique ids.",
+      "items": {
+        "$ref": "#/$defs/TestCase"
+      },
+      "title": "Test Cases",
+      "type": "array"
+    },
+    "version": {
+      "default": "1.0",
+      "description": "Authoring version string; informational only in v1.",
+      "title": "Version",
+      "type": "string"
+    }
+  },
+  "required": [
+    "name",
+    "test_cases"
+  ],
+  "title": "EvaluationSuite",
+  "type": "object"
+}

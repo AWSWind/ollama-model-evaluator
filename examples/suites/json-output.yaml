@@ -1,0 +1,176 @@
+name: json-output
+version: '1.0'
+description: >
+  Structured-output competence. Each case asks for JSON matching a specific
+  schema. Critical for tool-calling and agent pipelines.
+defaults:
+  temperature: 0.0
+  max_tokens: 512
+  stop_sequences: []
+test_cases:
+  - id: person-object
+    prompt: |
+      Respond with a JSON object describing a person named Alice who is 30 years old.
+      Use the keys "name" (string) and "age" (number). Output JSON only, no markdown fences.
+    tags: [json, simple]
+    metrics:
+      - name: json-schema-valid
+        params:
+          schema:
+            type: object
+            required: [name, age]
+            properties:
+              name:
+                type: string
+              age:
+                type: integer
+            additionalProperties: false
+  - id: string-array
+    prompt: |
+      Output a JSON array of exactly three primary colours as lowercase strings.
+      No prose, no code fences, just the JSON array.
+    tags: [json, array]
+    metrics:
+      - name: json-schema-valid
+        params:
+          schema:
+            type: array
+            minItems: 3
+            maxItems: 3
+            items:
+              type: string
+              pattern: '^[a-z]+$'
+  - id: nested-object
+    prompt: |
+      Produce a JSON object describing a book. Shape:
+      {
+        "title": string,
+        "author": { "first_name": string, "last_name": string },
+        "year": integer >= 1000 and <= 2100
+      }
+      Use "The Hobbit" by J.R.R. Tolkien, published 1937. JSON only.
+    tags: [json, nested]
+    metrics:
+      - name: json-schema-valid
+        params:
+          schema:
+            type: object
+            required: [title, author, year]
+            properties:
+              title:
+                type: string
+              author:
+                type: object
+                required: [first_name, last_name]
+                properties:
+                  first_name:
+                    type: string
+                  last_name:
+                    type: string
+                additionalProperties: false
+              year:
+                type: integer
+                minimum: 1000
+                maximum: 2100
+            additionalProperties: false
+  - id: enum-field
+    prompt: |
+      Return JSON describing a traffic light currently showing stop.
+      Shape: {"signal": one of "red", "amber", "green"}. JSON only.
+    tags: [json, enum]
+    metrics:
+      - name: json-schema-valid
+        params:
+          schema:
+            type: object
+            required: [signal]
+            properties:
+              signal:
+                type: string
+                enum: [red, amber, green]
+            additionalProperties: false
+  - id: boolean-and-null
+    prompt: |
+      Return JSON with boolean and nullable fields. Use these values exactly:
+      {"active": true, "error": null}. JSON only.
+    tags: [json, primitives]
+    metrics:
+      - name: json-schema-valid
+        params:
+          schema:
+            type: object
+            required: [active, error]
+            properties:
+              active:
+                type: boolean
+              error:
+                type: ["null", string]
+            additionalProperties: false
+  - id: tool-call-shape
+    prompt: |
+      You are planning to call a tool. Output a JSON object with:
+        "name" = "search_web", "arguments" = {"query": "ollama model evaluator"}.
+      No prose. No markdown.
+    tags: [json, tool-call]
+    metrics:
+      - name: json-schema-valid
+        params:
+          schema:
+            type: object
+            required: [name, arguments]
+            properties:
+              name:
+                type: string
+              arguments:
+                type: object
+                required: [query]
+                properties:
+                  query:
+                    type: string
+            additionalProperties: false
+  - id: reject-markdown-fences
+    prompt: |
+      Output exactly this JSON and nothing else (no backticks, no commentary):
+      {"ok": true, "count": 3}
+    tags: [json, format]
+    metrics:
+      - name: json-schema-valid
+        params:
+          schema:
+            type: object
+            required: [ok, count]
+            properties:
+              ok:
+                type: boolean
+                const: true
+              count:
+                type: integer
+                const: 3
+            additionalProperties: false
+      - name: regex-match
+        params:
+          pattern: '^[^`]*$'
+  - id: list-of-objects
+    prompt: |
+      Output a JSON array with exactly two todo items, each shaped
+      {"id": integer, "title": string, "done": boolean}.
+      JSON only.
+    tags: [json, list-of-objects]
+    metrics:
+      - name: json-schema-valid
+        params:
+          schema:
+            type: array
+            minItems: 2
+            maxItems: 2
+            items:
+              type: object
+              required: [id, title, done]
+              properties:
+                id:
+                  type: integer
+                title:
+                  type: string
+                done:
+                  type: boolean
+              additionalProperties: false

@@ -1,0 +1,263 @@
+defaults:
+  max_tokens: 384
+  stop_sequences: []
+  temperature: 0.0
+description: 14 hand-authored Python 'fix-this-bug' tasks covering off-by-one 
+  errors, mutable defaults, resource handling, equality pitfalls, and recursion.
+  Regex-based metrics look for the canonical fix pattern, so pass-rate is a 
+  lower bound.
+name: python-bugfix-mini
+test_cases:
+  - expected_output: null
+    id: python-bugfix/01
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: range\s*\(\s*1\s*,\s*n\s*\+\s*1\s*\)
+    prompt: "Fix the bug in this Python function so it returns the sum of integers
+      from 1 to n inclusive (e.g. n=3 → 6). Respond with the corrected code only.\n\
+      \ndef sum_to(n):\n    total = 0\n    for i in range(n):\n        total += i\n\
+      \    return total\n"
+    reference_data:
+      description: Off-by-one in range
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - python-bugfix
+      - code
+    temperature: null
+  - expected_output: null
+    id: python-bugfix/02
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: items\s*=\s*None
+    prompt: "Fix the classic bug here so each call starts with an empty list. Respond
+      with the corrected code only.\n\ndef append_item(item, items=[]):\n    items.append(item)\n\
+      \    return items\n"
+    reference_data:
+      description: Mutable default argument
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - python-bugfix
+      - code
+    temperature: null
+  - expected_output: null
+    id: python-bugfix/03
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: sum\s*\(\s*nums\s*\)\s*/\s*len\s*\(\s*nums\s*\)
+    prompt: "Fix the bug so the function returns a float average. Respond with the
+      corrected code only.\n\ndef average(nums):\n    return sum(nums) // len(nums)\n"
+    reference_data:
+      description: Integer division vs float
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - python-bugfix
+      - code
+    temperature: null
+  - expected_output: null
+    id: python-bugfix/04
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: return\s+x\s*\*\s*2
+    prompt: "Fix the bug so the function returns the doubled value. Respond with the
+      corrected code only.\n\ndef double(x):\n    x * 2\n"
+    reference_data:
+      description: Missing return
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - python-bugfix
+      - code
+    temperature: null
+  - expected_output: null
+    id: python-bugfix/05
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: (?:d\.get\s*\(\s*key\s*\)|try\s*:)
+    prompt: "Fix the bug so the function returns None when the key is missing, without
+      raising. Respond with the corrected code only.\n\ndef lookup(d, key):\n    return
+      d[key]\n"
+    reference_data:
+      description: Dict KeyError handling
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - python-bugfix
+      - code
+    temperature: null
+  - expected_output: null
+    id: python-bugfix/06
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: s\s*=\s*['\"]{2}|''\.join\s*\(
+    prompt: "Fix the bug so the function returns a single concatenated string. Respond
+      with the corrected code only.\n\ndef join_words(words):\n    s = 0\n    for
+      w in words:\n        s += w\n    return s\n"
+    reference_data:
+      description: String concat in loop type bug
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - python-bugfix
+      - code
+    temperature: null
+  - expected_output: null
+    id: python-bugfix/07
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: 
+            xs\s*\[\s*-\s*1\s*\]|xs\s*\[\s*len\s*\(\s*xs\s*\)\s*-\s*1\s*\]
+    prompt: "Fix the bug so last_item returns the last element of xs, or None if empty.
+      Respond with the corrected code only.\n\ndef last_item(xs):\n    return xs[len(xs)]\n"
+    reference_data:
+      description: Off-by-one in index access
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - python-bugfix
+      - code
+    temperature: null
+  - expected_output: null
+    id: python-bugfix/08
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: 
+            (?:\[\s*x\s+for\s+x\s+in\s+xs\s+if\s+x\s*>=\s*0\s*\]|list\s*\(\s*filter)
+    prompt: "Fix the bug so the function correctly removes all negatives without skipping
+      elements. Respond with the corrected code only.\n\ndef drop_negatives(xs):\n\
+      \    for x in xs:\n        if x < 0:\n            xs.remove(x)\n    return xs\n"
+    reference_data:
+      description: Modifying list while iterating
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - python-bugfix
+      - code
+    temperature: null
+  - expected_output: null
+    id: python-bugfix/09
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: xs\s+is\s+None|not\s+xs
+    prompt: "Fix the bug so is_empty returns True for both None and empty iterables,
+      without raising on None. Respond with the corrected code only.\n\ndef is_empty(xs):\n\
+      \    return len(xs) == 0\n"
+    reference_data:
+      description: None vs empty check
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - python-bugfix
+      - code
+    temperature: null
+  - expected_output: null
+    id: python-bugfix/10
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: role\s*==\s*['\"]admin['\"]
+    prompt: "Fix the bug so is_admin returns True only when role equals 'admin'. Respond
+      with the corrected code only.\n\ndef is_admin(role):\n    return role = 'admin'\n"
+    reference_data:
+      description: Wrong equality operator
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - python-bugfix
+      - code
+    temperature: null
+  - expected_output: null
+    id: python-bugfix/11
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: if\s+n\s*(?:<=\s*1|==\s*0)
+    prompt: "Fix the bug by adding the missing base case so factorial(0) == 1. Respond
+      with the corrected code only.\n\ndef factorial(n):\n    return n * factorial(n
+      - 1)\n"
+    reference_data:
+      description: Infinite recursion base case
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - python-bugfix
+      - code
+    temperature: null
+  - expected_output: null
+    id: python-bugfix/12
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: with\s+open\s*\(
+    prompt: "Fix the bug so the file is closed even if an exception is raised during
+      read. Respond with the corrected code only.\n\ndef read_first_line(path):\n\
+      \    f = open(path)\n    return f.readline()\n"
+    reference_data:
+      description: Closing resource
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - python-bugfix
+      - code
+    temperature: null
+  - expected_output: null
+    id: python-bugfix/13
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: abs\s*\(\s*a\s*-\s*b\s*\)\s*<\s*(?:1e-9|0\.000000001)
+    prompt: "Fix the bug so the function returns True for pairs that are approximately
+      equal to within 1e-9. Respond with the corrected code only.\n\ndef approx_equal(a,
+      b):\n    return a == b\n"
+    reference_data:
+      description: Float equality
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - python-bugfix
+      - code
+    temperature: null
+  - expected_output: null
+    id: python-bugfix/14
+    max_tokens: null
+    metrics:
+      - name: regex-match
+        params:
+          pattern: 
+            (?:f['\"]Hello\s*\{name\}|\.format\s*\(\s*name\s*=\s*name\s*\))
+    prompt: "Fix the bug so the function uses an f-string (or .format) correctly with
+      the 'name' variable. Respond with the corrected code only.\n\ndef greet(name):\n\
+      \    return 'Hello {name}'\n"
+    reference_data:
+      description: String formatting KeyError
+    stop_sequences: null
+    system_prompt: null
+    tags:
+      - python-bugfix
+      - code
+    temperature: null
+version: '1.0'

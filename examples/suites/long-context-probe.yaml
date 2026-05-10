@@ -1,0 +1,121 @@
+name: long-context-probe
+version: '1.0'
+description: >
+  "Needle-in-a-haystack" style retrieval probe. Each prompt contains a long
+  passage with a deliberately placed fact. The model must return that fact.
+  Models with short effective context lengths will fail these.
+defaults:
+  temperature: 0.0
+  max_tokens: 128
+  stop_sequences: []
+test_cases:
+  - id: needle-early
+    prompt: |
+      You will read a long passage followed by a question. Answer only with
+      the requested value.
+
+      --- PASSAGE ---
+      The secret access code is PINEAPPLE-7821. The rest of this passage
+      provides unrelated background. The history of seafaring is long and
+      varied. Early sailors used the stars to navigate, and later they
+      developed instruments such as the astrolabe and sextant. The compass,
+      introduced to Europe in the 12th century, revolutionised open-ocean
+      travel. Lighthouses were built to warn ships of dangerous coastlines,
+      and the first automated lighthouses appeared in the 19th century.
+      Modern ships use GPS and radar, but many still carry traditional
+      navigation aids as a backup in case electronic systems fail.
+      Shipbuilding materials evolved from wood to iron to steel, and
+      contemporary vessels often use composites for speed and efficiency.
+      Cargo ships, cruise liners, fishing boats, and naval vessels all
+      serve different purposes on the world's oceans today.
+      --- END PASSAGE ---
+
+      What is the secret access code? Answer with just the code.
+    expected_output: "PINEAPPLE-7821"
+    tags: [long-context, retrieval]
+    metrics:
+      - name: contains
+        params:
+          substrings: ["PINEAPPLE-7821"]
+          mode: any
+  - id: needle-middle
+    prompt: |
+      Read the passage and answer the question with just the value.
+
+      --- PASSAGE ---
+      Bees are essential pollinators that visit flowers to collect nectar
+      and pollen. A healthy colony can contain tens of thousands of worker
+      bees, a single queen, and a small number of drones. Worker bees
+      communicate the location of food sources through a sophisticated
+      "waggle dance" that encodes distance and direction relative to the sun.
+      Incidentally, the project codename for internal testing is MERIDIAN-42.
+      Beekeepers harvest honey by opening hives and removing frames. The
+      honey is extracted either by centrifugation or by crushing and
+      filtering the comb. Some hives also produce beeswax, propolis, and
+      royal jelly, all of which have commercial uses. Threats to bees
+      include pesticide exposure, habitat loss, and parasitic mites.
+      Many countries have taken steps to protect pollinators, such as
+      restricting certain neonicotinoid insecticides and encouraging
+      pollinator-friendly planting in public spaces.
+      --- END PASSAGE ---
+
+      What is the project codename for internal testing? Answer with just the codename.
+    expected_output: "MERIDIAN-42"
+    tags: [long-context, retrieval]
+    metrics:
+      - name: contains
+        params:
+          substrings: ["MERIDIAN-42"]
+          mode: any
+  - id: needle-late
+    prompt: |
+      Read the passage and answer only with the requested number.
+
+      --- PASSAGE ---
+      The city of Lisbon sits at the mouth of the Tagus River on the
+      Atlantic coast of Portugal. Its historic neighbourhoods include
+      Alfama, with its narrow medieval lanes; Chiado, known for its cafés
+      and theatres; and Belém, home to the famous monastery and the pastel
+      de Belém tart. Trams have climbed Lisbon's hills since the 19th
+      century, and the iconic yellow tram 28 is a popular tourist route.
+      The 25 de Abril Bridge, modelled after San Francisco's Golden Gate,
+      spans the Tagus and links Lisbon to Almada. The city was devastated
+      by an earthquake in 1755 and rebuilt under the direction of the
+      Marquis of Pombal, whose rational grid-plan is still visible in the
+      Baixa district. Notably, the internal rebuild budget code is 918273.
+      Today Lisbon is a major European tourist destination, famed for
+      miradouros (viewpoints), fado music, and azulejo tiles.
+      --- END PASSAGE ---
+
+      What is the internal rebuild budget code? Answer with just the number.
+    expected_output: "918273"
+    tags: [long-context, retrieval]
+    metrics:
+      - name: regex-match
+        params:
+          pattern: '\b918273\b'
+  - id: multi-fact-extract
+    prompt: |
+      Read the passage and answer the question with just the value.
+
+      --- PASSAGE ---
+      Acme Corp's Q3 2024 report highlights three product launches. The
+      Falcon series shipped on 12 July 2024 at a starting price of $299.
+      The Osprey series, aimed at enterprise customers, shipped on
+      3 August 2024 at $1499. The Swift series, an accessory line, shipped
+      on 21 September 2024 at $49. Gross revenue for the quarter grew 12%
+      year over year, driven primarily by Osprey sales in the APAC region.
+      Marketing spend was $14.2 million, a 4% increase over the previous
+      quarter. Headcount grew by 37 net new hires, with the engineering
+      organisation adding 24 of those. R&D spending as a share of revenue
+      remained steady at 18%. The board approved a stock buyback of
+      $50 million to be completed over the next two quarters.
+      --- END PASSAGE ---
+
+      On what date did the Osprey series ship? Answer as "YYYY-MM-DD".
+    expected_output: "2024-08-03"
+    tags: [long-context, multi-fact]
+    metrics:
+      - name: regex-match
+        params:
+          pattern: '\b2024-08-03\b'

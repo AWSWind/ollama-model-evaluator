@@ -1,0 +1,109 @@
+name: factual-qa
+version: '1.0'
+description: >
+  Short-answer factual accuracy. Covers geography, history, science,
+  and pop-culture facts that should be stable over time.
+defaults:
+  temperature: 0.0
+  max_tokens: 128
+  stop_sequences: []
+test_cases:
+  - id: capital-japan
+    prompt: "What is the capital of Japan? Answer with just the city name."
+    expected_output: "Tokyo"
+    tags: [geography]
+    metrics:
+      - name: contains
+        params:
+          substrings: ["Tokyo"]
+          mode: any
+  - id: capital-australia
+    prompt: "What is the capital of Australia? Answer with just the city name."
+    expected_output: "Canberra"
+    tags: [geography]
+    metrics:
+      - name: contains
+        params:
+          substrings: ["Canberra"]
+          mode: any
+  - id: largest-ocean
+    prompt: "Which ocean is the largest by area? Answer with just the name."
+    expected_output: "Pacific"
+    tags: [geography]
+    metrics:
+      - name: contains
+        params:
+          substrings: ["Pacific"]
+          mode: any
+  - id: speed-of-light
+    prompt: "What is the approximate speed of light in meters per second? Answer with just the number to three significant figures."
+    tags: [science]
+    metrics:
+      - name: regex-match
+        params:
+          pattern: '3(?:\.00)?\s*(?:x|\*|×)?\s*10\^?8|299[,.\s]?79[0-9]{1,3}'
+  - id: water-boiling-point
+    prompt: "At what temperature in degrees Celsius does water boil at standard atmospheric pressure? Answer with just the number."
+    expected_output: "100"
+    tags: [science]
+    metrics:
+      - name: regex-match
+        params:
+          pattern: '\b100\b'
+  - id: human-chromosomes
+    prompt: "How many chromosomes are in a normal human somatic cell? Answer with just the number."
+    expected_output: "46"
+    tags: [science, biology]
+    metrics:
+      - name: regex-match
+        params:
+          pattern: '\b46\b'
+  - id: year-wwii-ended
+    prompt: "In what year did World War II end? Answer with just the year."
+    expected_output: "1945"
+    tags: [history]
+    metrics:
+      - name: regex-match
+        params:
+          pattern: '\b1945\b'
+  - id: first-moon-landing-year
+    prompt: "In what year did humans first land on the Moon? Answer with just the year."
+    expected_output: "1969"
+    tags: [history, space]
+    metrics:
+      - name: regex-match
+        params:
+          pattern: '\b1969\b'
+  - id: pi-three-decimals
+    prompt: "Give the value of pi rounded to three decimal places. Just the number."
+    expected_output: "3.142"
+    tags: [math]
+    metrics:
+      - name: regex-match
+        params:
+          pattern: '\b3\.14[12]\b'
+  - id: chemical-symbol-gold
+    prompt: "What is the chemical symbol for gold? Answer with just the symbol."
+    expected_output: "Au"
+    tags: [science, chemistry]
+    metrics:
+      - name: regex-match
+        params:
+          pattern: '\bAu\b'
+  - id: planets-in-solar-system
+    prompt: "How many planets are currently recognised in the solar system? Answer with just the number."
+    expected_output: "8"
+    tags: [science, astronomy]
+    metrics:
+      - name: regex-match
+        params:
+          pattern: '\b8\b'
+  - id: shakespeare-hamlet-protagonist
+    prompt: "Who is the title character of Shakespeare's play 'Hamlet'? Answer with the single given name."
+    expected_output: "Hamlet"
+    tags: [literature]
+    metrics:
+      - name: contains
+        params:
+          substrings: ["Hamlet"]
+          mode: any
