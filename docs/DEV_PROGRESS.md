@@ -72,6 +72,27 @@ $REMOTE_PW   = '<your-ssh-password>'
 
 ## Session Log
 
+### 2026-05-11 (session 11) — Doc audit
+
+Audit following the UI redesign commit. Fixed:
+
+- `README.md`:
+  - Added a "What's inside" summary listing the UI features, 33 suites / 4 910 cases, public-benchmark adapter list, and the comparison/dark-mode points.
+  - Updated the Repository-layout section with the actual contents of `scripts/`, `docs/`, and accurate test counts.
+- `docs/USER_MANUAL.md`:
+  - Section 5 (UI pages) rewritten for the redesigned UI — mentions tooltips, categorised picker, per-model live table, summary-by-model + model×suite breakdown on terminal reports, theming.
+  - Section 8 (Supported benchmarks) expanded from 5 adapters → full 18-row table covering every HuggingFace-backed suite we ship, with the dataset ref and scoring metric for each.
+
+Verified (no code changes):
+
+- `make help`, `make validate`, `make list-models` all succeed on the remote.
+- `scripts/start.sh` and `scripts/install.sh` both resolve `ui/dist/index.html` by existence — bundle filenames change on every build, but the launcher doesn't care, so the UI redesign didn't break the one-button deploy.
+- `Makefile`'s `serve` target already used `$$PWD` correctly — I re-verified but didn't need to change it.
+- The live LAN UI serves the new bundle (`index-Btpmhoz3.js`) and every endpoint still responds.
+- 447 backend tests + 18 UI tests pass locally.
+
+Synced to `.224`: README.md, docs/USER_MANUAL.md.
+
 ### 2026-05-10 (10th session) — UI redesign (Option A · dense data-first + dark mode)
 
 Moved the UI from inline styles to a real design system:

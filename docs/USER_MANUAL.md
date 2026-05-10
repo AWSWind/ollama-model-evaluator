@@ -397,21 +397,35 @@ Leave this command running. Open a browser to `http://<host>:8765/`.
 
 ### UI pages
 
-- **New Run** (`/runs/new`). Select models from a dropdown, pick one or more
-  suites, set repetitions and concurrency, click *Submit Run*. You are
+- **New Run** (`/runs/new`). Pick models (chips with size / quantisation
+  shown in the hover tooltip) and pick suites (grouped by category —
+  Reasoning, Knowledge, Coding, Math, Instruction, Multilingual, Long
+  context, Safety, Open-ended). Each suite shows name · case count · rough
+  ETA inline; hover reveals the full methodology caveats. Set repetitions,
+  concurrency, optional tag filter, then click *Submit Run*. You are
   immediately navigated to the Run Detail page.
 
-- **Run Detail** (`/runs/:id`). Live progress bar, counters (passed / failed /
-  error / timeout), and a table that fills in as each test case completes.
-  A red banner appears if the stream disconnects. There is a *Cancel* button
-  while the Run is in progress. When the Run finishes, a download link appears
-  for the JSON and Markdown reports.
+- **Run Detail** (`/runs/:id`). Live progress bar, four KPI cards
+  (passed / failed / errored / timeout), a live per-model table updating
+  as each test case completes, and an execution table with status pills.
+  A red banner appears if the stream disconnects. There is a *Cancel*
+  button while the Run is in progress. When the Run finishes, the report
+  panel shows Summary by model, a Model × Suite breakdown table, every
+  per-test-case row, and download links for the JSON and Markdown reports.
 
-- **History** (`/history`). Every past Run. Filter by model, suite, status,
-  or date. Check two rows and click *Compare* to open a diff view.
+- **History** (`/history`). Every past Run. Filter by model, suite,
+  status, or date (URL-encoded so links are shareable). Check two rows
+  and click *Compare selected* to open a diff view.
 
-- **Compare** (`/compare?a=…&b=…`). Side-by-side metric scores and performance
-  numbers for two Runs.
+- **Compare** (`/compare?a=…&b=…`). Side-by-side metric scores and
+  performance numbers for two Runs, with signed deltas coloured green
+  (B better) or red (A better).
+
+### Theming
+
+The top-right *Light* / *Dark* toggle flips the theme instantly. First
+visit auto-matches your OS's `prefers-color-scheme`; subsequent visits
+respect your stored choice. No flash of wrong theme on reload.
 
 Stop the server with `Ctrl-C`.
 
@@ -585,13 +599,34 @@ HuggingFace loader.
 
 ### Supported benchmarks
 
+We ship 33 suites totalling ~4 910 cases. The hand-authored ones
+(`reasoning-basics`, `factual-qa`, `instruction-following`, `json-output`,
+`math-word-problems`, `code-generation-basics`, `reasoning-advanced`,
+`safety-refusal`, `multilingual-basic`, `long-context-probe`,
+`llm-as-judge-general`, `python-bugfix-mini`, `shell-bash-basics`) live
+under `examples/suites/`. The benchmark-backed ones were materialised from
+HuggingFace via helper scripts under `scripts/`:
+
 | Benchmark | Dataset | Metric | Notes |
 |---|---|---|---|
-| MMLU | `cais/mmlu` | regex-match (letter A/B/C/D) | Per-subject suites |
-| HellaSwag | `Rowan/hellaswag` | regex-match | Continuation selection |
-| TruthfulQA | `truthful_qa:multiple_choice` | regex-match | MC1 form only |
+| MMLU | `cais/mmlu` | regex-match (letter A/B/C/D) | 57-subject academic MCQ |
+| HellaSwag | `Rowan/hellaswag` | regex-match | Commonsense sentence completion |
+| TruthfulQA | `truthful_qa:multiple_choice` | regex-match | MC1 form |
 | GSM8K | `openai/gsm8k` | regex-match + numeric equality | Grade-school math |
-| HumanEval | `openai_humaneval` | response-capture | v1 does not execute code |
+| HumanEval | `openai_humaneval` | response-capture | Capture-only; execution-based `pass@1` grading pending |
+| BigBench-Hard | `lukaemon/bbh` (8 subsets) | regex-match on `Final answer:` | Hard reasoning |
+| ARC Challenge / Easy | `allenai/ai2_arc` | regex-match | Science MCQ, two difficulty splits |
+| PIQA | `piqa:plain_text` | regex-match (A/B) | Physical commonsense |
+| WinoGrande | `winogrande:winogrande_xl` | regex-match (A/B) | Pronoun resolution |
+| C-Eval | `ceval/ceval-exam` (6 subjects) | regex-match (A/B/C/D) | Chinese academic MCQ |
+| MATH-500 | `HuggingFaceH4/MATH-500` | response-capture | Competition math |
+| MBPP | `google-research-datasets/mbpp` | response-capture | Python function writing |
+| SQuAD v2 | `rajpurkar/squad_v2` | contains | Extractive reading + unanswerable |
+| IFEval | `google/IFEval` | response-capture | Instruction following |
+| MT-Bench | `HuggingFaceH4/mt_bench_prompts` | llm-as-judge | Open-ended, judge-scored |
+| PubMedQA | `qiaojin/PubMedQA:pqa_labeled` | regex-match (yes/no/maybe) | Biomedical QA |
+| CRUXEval-in / out | `cruxeval-org/cruxeval` | regex-match | Code-reasoning without sandbox |
+| Spider | `spider` | regex-match | Natural-language → SQL |
 
 ### Converting a benchmark to a suite file
 

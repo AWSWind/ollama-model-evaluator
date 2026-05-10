@@ -4,6 +4,21 @@ Local evaluation harness for LLMs hosted by a running [Ollama](https://ollama.co
 
 Score quality, measure speed, and compare models side-by-side — all offline.
 
+## What's inside
+
+- **Web UI** with light/dark theme, live progress, per-model breakdowns.
+- **33 evaluation suites / 4 910 test cases** covering reasoning, knowledge,
+  coding, math, instruction-following, multilingual, long-context, safety,
+  and judge-scored open-ended tasks. Every suite groups into a category in
+  the picker and carries a short inline summary.
+- **Adapters for public benchmarks** (MMLU, HellaSwag, TruthfulQA, GSM8K,
+  HumanEval, BBH, ARC, PIQA, WinoGrande, C-Eval, MATH-500, MBPP, SQuAD v2,
+  IFEval, MT-Bench, PubMedQA).
+- **REST + WebSocket API** at `http://localhost:8765` with an OpenAPI 3.1
+  document at `/openapi.json`.
+- **Multi-model comparison** — per-model × per-suite pass-rate tables in
+  every Run report.
+
 ## Start the whole project with one command
 
 ### Linux/macOS
@@ -148,12 +163,12 @@ make help                 # See every target
 
 ```
 .
-├── backend/         # Python backend (FastAPI + CLI)
-├── ui/              # Vite + React + TypeScript UI
+├── backend/         # Python backend (FastAPI + CLI + 447 tests)
+├── ui/              # Vite + React + TypeScript UI (Tailwind + Radix primitives)
 ├── shared/          # OpenAPI + JSON Schemas shared by both
-├── examples/        # Sample config + suite you can run today
-├── scripts/         # install.sh / install.ps1 / deploy-remote.sh / .ps1
-├── docs/            # USER_MANUAL.md
+├── examples/        # 33 evaluation suites + sample configs
+├── scripts/         # install, start, stop, deploy + suite-materialisation helpers
+├── docs/            # USER_MANUAL.md, DEV_PROGRESS.md, UI style previews
 └── .kiro/specs/     # Requirements, design, task list
 ```
 
